@@ -86,42 +86,162 @@ UXDA Public Core 从 `v0.1.0-beta.1`（源码公开受限测试版）起开启�
 
 ---
 
-## 🚀 快速上手
+## 🚀 安装、调用与案例演示
 
-### 1. 安装配置 (Installation)
-将技能克隆或复制至智能体平台的共享技能目录（默认为 `~/.agents/skills/`）：
+### 1. 安装两套 Skill（macOS / Linux）
+
+UXDA 是一组 **Agent Skill，并不是独立运行的 App**。需要宿主 AI Agent 具备读取本地技能文件的能力。下面的命令只安装公共技能，不会安装大模型或自动启动服务；不同 Agent 的自动识别机制也可能不同。
 
 ```bash
-# 克隆代码仓库
-git clone https://github.com/<org>/uxda.git
-
-# 复制技能到 Agent 共享技能目录
+git clone https://github.com/RagnTec/User-Experience-Decision-Assistant.git
+cd User-Experience-Decision-Assistant
 mkdir -p ~/.agents/skills
-cp -r uxda/skills/ux-decision-assistant-router ~/.agents/skills/
-cp -r uxda/skills/evidence-based-design-review ~/.agents/skills/
+cp -R skills/ux-decision-assistant-router ~/.agents/skills/
+cp -R skills/evidence-based-design-review ~/.agents/skills/
 
-# (可选) 建立指向 Antigravity 全局配置的软链接
-mkdir -p ~/.gemini/config/skills
-ln -s ~/.agents/skills/ux-decision-assistant-router ~/.gemini/config/skills/
-ln -s ~/.agents/skills/evidence-based-design-review ~/.gemini/config/skills/
+# 确认两个技能入口文件存在
+test -f ~/.agents/skills/ux-decision-assistant-router/SKILL.md
+test -f ~/.agents/skills/evidence-based-design-review/SKILL.md
 ```
-详细平台配置与注意事项见 [安装指南 (INSTALLATION.md)](INSTALLATION.md)。
 
-### 2. 基础调用示例 (Basic Invocation)
-在对话中直接向 AI 编程助手输入自然语言提示词：
+**Google Antigravity（如当前环境需要额外的发现目录链接）：**
+
+```bash
+mkdir -p ~/.gemini/config/skills
+ln -s ~/.agents/skills/ux-decision-assistant-router ~/.gemini/config/skills/ux-decision-assistant-router
+ln -s ~/.agents/skills/evidence-based-design-review ~/.gemini/config/skills/evidence-based-design-review
+```
+
+重复执行前，请检查同名链接或文件夹是否已经存在。上述路径仅为已使用环境的安装示例，**不代表 Gemini CLI、Claude Code、Cursor 等平台都采用同一路径**。其他宿主应结合 [INSTALLATION.md](INSTALLATION.md) 和对应平台的 Skill 发现规则配置。**目前仓库仍为 Private，克隆时需要具备仓库访问权限。**
+
+### 2. 如何在对话中调用？
+
+UXDA Beta **没有统一的专用斜杠命令或云端 API**。在可以加载本地 Skill 的 Agent 对话中，直接明确指定技能和任务范围即可。
+
+**Router：适合教学引导、方案决策与研究项目推进**
 
 ```text
-"请评审这一结账流程改版方案：产品团队希望移除最终确认弹窗以提升转化速度。
-请从认知失误模式、容错风险等维度进行评估，并给出具有防御性的替代方案建议。"
+请使用已安装的 ux-decision-assistant-router Skill，以 decision（决策支持）
+模式分析一个文件批量删除流程。比较“删除前二次确认”和“可撤销删除”
+两种方案，说明认知失误风险、适用条件、关键反例及仍需验证的事项。
+如果无法读取 Skill，请明确告知，不要假装已经调用。
 ```
 
-UXDA 将引导智能体自动执行以下步骤：
-1. 触发**单门禁前置审查 (Single-Gate pre-flight audit)**（校验输入证据边界）；
-2. 在输出顶部渲染**业务推进图 (`业务推进图`)**；
-3. 构建结构化的**竞争性假说 (Competing Hypotheses)**（如操作习惯化滑退 vs 反馈延迟容忍）；
-4. 提供具有可操作性、解耦的权衡取舍建议，杜绝“零风险”等无依据断言。
+**Specialist：适合直接进行设计与人因专项评审**
 
----
+```text
+请直接使用 evidence-based-design-review Skill，不进入 Router 的模式选择。
+基于我提供的界面和任务，评价关键交互机制、潜在体验风险和可执行的
+修改建议；区分设计已知事实、人因推论与尚未验证的信息。
+若无法读取 Skill，请说明限制。
+```
+
+如果 Agent 未自动识别，可以在它支持本地文件读取的前提下，明确要求读取安装目录下的相应 `SKILL.md`。没有企业项目扩展或私有数据，也可以根据当前对话提供的通用场景材料执行 Public Core 分析。
+
+### 3. 四个不同能力的通用案例
+
+以下均为**合成情境下的输出结构示例，不是真实 Agent 运行截图，也不是用户研究实测结果**。片段只展示 UXDA 预期支持的分析方式，实际回复取决于宿主模型、输入材料与确认的任务范围。
+
+<details>
+<summary><strong>案例 A｜教学引导：研究方法如何选择（Router · guided）</strong></summary>
+
+**直接复制这段提示词：**
+
+```text
+请使用 ux-decision-assistant-router 的 guided（教学引导）模式。
+某通用购物 App 的团队怀疑用户难以找到筛选功能。
+请解释访谈、任务型可用性测试和问卷分别能回答什么问题，
+并设计一个最小 Pilot，说明每种方法不能支持的结论。
+目前没有任何真实受访者数据。
+```
+
+**效果片段（示意）：**
+
+```text
+研究问题：用户能否在商品查找任务中发现并使用筛选功能？
+建议路径：先做小规模任务型 Pilot，再决定是否量化问题分布。
+观察内容：任务完成、绕行路径、犹豫节点、参与者解释。
+证据边界：“筛选难找”仍是待验证假设，不能报告问题发生率。
+后续决策：依据观察结果细化问题，再判断是否需要问卷。
+```
+
+</details>
+
+<details>
+<summary><strong>案例 B｜设计决策：操作效率与容错权衡（Router · decision）</strong></summary>
+
+**直接复制这段提示词：**
+
+```text
+请使用 ux-decision-assistant-router 的 decision（决策支持）模式。
+某素材管理工具准备取消批量删除前的确认弹窗。
+比较保留弹窗、可撤销删除两种方案，考虑误操作、习惯化、
+不可逆后果与任务效率；给出有条件的推荐，不要编造效率提升幅度。
+```
+
+**效果片段（示意）：**
+
+```text
+当前建议：若删除可可靠恢复，可比较“删除后撤销”与确认弹窗；
+          若不可逆，应保留更强的执行前保护。
+最强反例：无法保证撤销成功时，Undo 不等同于可靠恢复。
+关键未知：恢复机制、操作频次和真实误删证据。
+决策边界：条件未确认前，不应宣称某方案全面优于另一方案。
+```
+
+</details>
+
+<details>
+<summary><strong>案例 C｜项目推进：低成本可用性 Pilot（Router · project）</strong></summary>
+
+**直接复制这段提示词：**
+
+```text
+请使用 ux-decision-assistant-router 的 project（方案推进）模式。
+为一款通用任务管理工具的两版导航布局设计小规模可用性 Pilot。
+明确任务、观察指标、顺序效应控制、记录字段及结果可支持的决策。
+现在仅设计方案，尚未实施研究，请勿生成虚构结果。
+```
+
+**效果片段（示意）：**
+
+```text
+Pilot 目标：识别显著的任务查找障碍，而非推断总体差异。
+执行控制：尽可能平衡方案呈现顺序，保持两版任务目标一致。
+记录字段：方案、顺序、任务是否完成、求助、绕行和观察备注。
+下一步：试跑并检查相互矛盾的案例，再决定是否扩大样本。
+未评估：任何优势比例、显著性检验或用户偏好率。
+```
+
+</details>
+
+<details>
+<summary><strong>案例 D｜专项评审：触控尺寸与真实操作情境（Specialist）</strong></summary>
+
+**直接复制这段提示词：**
+
+```text
+请独立使用 evidence-based-design-review Skill，不进入 Router 模式选择。
+某工业设备采用 10.1 英寸、1280×800 分辨率的触摸屏，
+控件可视尺寸为 36×36 px，操作员可能佩戴保温手套。
+请估算物理显示尺寸，区分可视图形与实际触控热区，
+分析可能的人因风险和需要补充的测量或测试。
+不要自行编造 ISO 强制尺寸阈值。
+```
+
+**效果片段（示意）：**
+
+```text
+参数换算：约 149.5 PPI；36 px 对应约 6.1 mm（基于所给屏幕参数）。
+体验风险：可视图形、有效触控热区、戴手套时的接触范围未必一致；
+          仅靠像素尺寸无法判断实际可用性。
+建议行动：补充有效热区尺寸，使用真实手套和任务验证触控表现。
+结论边界：这不是合规认证，也不是已观察到的误触率。
+```
+
+</details>
+
+**想看可视化报告？** 如果宿主 Agent 具备本地文件写入能力，可以在分析后补充：“请先建议适合的 H5/HTML 摘要结构，等我确认后再生成文件。”这是按需的交付形式，不是保证存在的独立图形界面。后续可将真实测试会话的局部截图补入仓库；这里不使用伪造的工具运行截图或量化效果。
 
 ## 📖 文档导航
 
@@ -145,7 +265,7 @@ UXDA 将引导智能体自动执行以下步骤：
 
 **UXDA Public Core 目前处于公开 Beta 测试阶段。**
 
-我们欢迎个人用户、研究者及符合许可条件的组织使用 UXDA，探索其在人因工程、用户体验研究和交互设计评审中的实际价值，并通过 [GitHub Issues](https://github.com/your-org/uxda/issues) 分享使用体验、发现的问题和改进建议。
+我们欢迎个人用户、研究者及符合许可条件的组织使用 UXDA，探索其在人因工程、用户体验研究和交互设计评审中的实际价值，并通过 [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Assistant/issues) 分享使用体验、发现的问题和改进建议。
 
 由于项目仍处于持续开发与验证阶段，部分专业规则、分析能力及跨平台适配尚未完成充分的实际应用验证。因此，**现阶段更建议将 UXDA 用于学习、研究、功能体验和方法评估，不建议直接部署至正式生产环境，或将其输出作为关键业务、安全与合规决策的唯一依据。**
 

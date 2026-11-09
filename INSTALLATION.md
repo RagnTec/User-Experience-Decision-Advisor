@@ -17,7 +17,9 @@ This guide covers installing and verifying the UXDA Public Core (`v0.1.0-beta.1`
 
 ---
 
-**Access note:** While the repository is Private, GitHub access is required to clone it. When it becomes Public, the same URL will work without repository membership.\n\n## Method 1: Global Installation (Recommended)
+**Access note:** While the repository is Private, GitHub access is required to clone it. When it becomes Public, the same URL will work without repository membership.
+
+## Method 1: Global Installation (Recommended)
 
 Following the standard multi-agent convention, reusable skills should be installed globally under `~/.agents/skills/`.
 

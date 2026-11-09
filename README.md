@@ -86,43 +86,166 @@ UXDA Public Core begins its public semantic versioning lifecycle at `v0.1.0-beta
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Install, Invoke, and Explore
 
-### 1. Installation
-Clone or copy the skills into your agent's shared skills directory (defaults to `~/.agents/skills/`):
+### 1. Install the two skills (macOS / Linux)
+
+UXDA is an **agent skill package, not a standalone app**. You need an AI agent that can read local skill files. The commands below install both public skills; they do not install an LLM, run a service, or guarantee that every host will discover the skills automatically.
 
 ```bash
-# Clone the repository
-git clone https://github.com/<org>/uxda.git
-
-# Copy skills to shared agent directory
+git clone https://github.com/RagnTec/User-Experience-Decision-Assistant.git
+cd User-Experience-Decision-Assistant
 mkdir -p ~/.agents/skills
-cp -r uxda/skills/ux-decision-assistant-router ~/.agents/skills/
-cp -r uxda/skills/evidence-based-design-review ~/.agents/skills/
+cp -R skills/ux-decision-assistant-router ~/.agents/skills/
+cp -R skills/evidence-based-design-review ~/.agents/skills/
 
-# (Optional) Link to Antigravity global configuration
-mkdir -p ~/.gemini/config/skills
-ln -s ~/.agents/skills/ux-decision-assistant-router ~/.gemini/config/skills/
-ln -s ~/.agents/skills/evidence-based-design-review ~/.gemini/config/skills/
+# Verify the two entry files exist
+test -f ~/.agents/skills/ux-decision-assistant-router/SKILL.md
+test -f ~/.agents/skills/evidence-based-design-review/SKILL.md
 ```
-See [INSTALLATION.md](INSTALLATION.md) for detailed platform-specific steps and caveats.
 
-### 2. Basic Invocation
-Ask your AI assistant using natural prompt phrasing:
+**Google Antigravity (optional discovery links, if required by your setup):**
+
+```bash
+mkdir -p ~/.gemini/config/skills
+ln -s ~/.agents/skills/ux-decision-assistant-router ~/.gemini/config/skills/ux-decision-assistant-router
+ln -s ~/.agents/skills/evidence-based-design-review ~/.gemini/config/skills/evidence-based-design-review
+```
+
+Check for an existing link or folder before running `ln -s` again. This is a setup example from the tested environment, **not a universal installation path** for Gemini CLI, Claude Code, Cursor, or every agent host. Consult [INSTALLATION.md](INSTALLATION.md) and your host's skill-discovery settings. **While this repository is Private, cloning requires GitHub access to it.**
+
+### 2. Invoke a skill in your agent chat
+
+There is **no UXDA-specific slash command or hosted API** in this beta. In a compatible agent session, use an explicit natural-language prompt. Skill discovery and actual tool/file access depend on your host.
+
+**Router (guided learning / decision support / project work)**
 
 ```text
-"Review this proposed checkout redesign: The product team wants to remove the 
-final confirmation screen to increase conversion speed. Evaluate the cognitive failure 
-modes, error tolerance risks, and recommend defensible alternatives."
+Use the installed ux-decision-assistant-router skill for this task.
+Choose decision mode. Compare two ways of handling an accidental bulk-delete:
+(a) a confirmation dialog; (b) reversible deletion with Undo.
+Explain the trade-offs, assumptions, and what evidence would change the recommendation.
+If the skill is not accessible, tell me instead of pretending it was loaded.
 ```
 
-UXDA will guide the agent to:
-1. Initialize the **Single-Gate pre-flight audit** (verifying evidence limits);
-2. Render a top-of-screen **Business Progress Map** (`业务推进图`);
-3. Formulate structured **Competing Hypotheses** (e.g., habituation slips vs. feedback latency);
-4. Provide actionable, decoupled trade-off recommendations without unsupported claims of zero risk.
+**Direct Specialist (focused design review, without starting the Router workflow)**
 
----
+```text
+Use the installed evidence-based-design-review skill directly.
+Evaluate the interaction risks of these two interface variants for the
+specified task. Separate observable design facts, human-factors inference,
+and unknown conditions. Recommend only actionable next steps.
+If you cannot access the skill, report that limitation.
+```
+
+If your host cannot auto-discover a skill, point it to the corresponding `SKILL.md` in the installed folder **only if the host supports reading local files**. You can also paste a sanitized design description directly; no private extension or company project data is required.
+
+### 3. What can I try? Four short, generic demonstrations
+
+These are **synthetic, illustrative walkthroughs, not captured model sessions or measured UX outcomes**. The excerpts show the *type* of result UXDA is intended to support, not a guaranteed verbatim response. Outputs will differ with the host model, input evidence, and requested scope.
+
+<details>
+<summary><strong>A · Guided learning (Router): choose an appropriate UX research method</strong></summary>
+
+**Try this prompt:**
+
+```text
+Use ux-decision-assistant-router in guided mode.
+In a generic shopping app, we suspect people have trouble locating filters.
+Teach me how to decide between interviews, task-based usability testing,
+and a survey. Give a minimal pilot plan and explain what each method cannot prove.
+No real participant data is available yet.
+```
+
+**Illustrative result excerpt:**
+
+```text
+Research question: Can people find and use the filter during a product task?
+Suggested first step: Observe a small task-based pilot before measuring prevalence.
+What to record: task success, navigation detours, hesitation, and participant comments.
+Evidence boundary: The difficulty is a hypothesis; no failure rate can be reported yet.
+Next decision: Use pilot observations to refine the problem and the later survey.
+```
+
+</details>
+
+<details>
+<summary><strong>B · Decision support (Router): speed versus error recovery</strong></summary>
+
+**Try this prompt:**
+
+```text
+Use ux-decision-assistant-router in decision mode.
+A media manager proposes removing the confirmation dialog before deleting
+several files. Compare keeping the dialog with a reversible delete + Undo.
+Consider accidental actions, habituation, irreversibility and effort.
+Recommend a conditional choice; do not invent completion-time improvements.
+```
+
+**Illustrative result excerpt:**
+
+```text
+Current recommendation: Compare Undo + recoverable deletion when recovery is
+reliable; retain stronger confirmation before irreversible deletion.
+Counterexample: If the platform cannot guarantee recovery, Undo is not equivalent.
+Still unknown: actual deletion reversibility, usage frequency, and error reports.
+Decision gate: Do not approve a final design without confirming those conditions.
+```
+
+</details>
+
+<details>
+<summary><strong>C · Project work (Router): plan a low-cost pilot, not fictional results</strong></summary>
+
+**Try this prompt:**
+
+```text
+Use ux-decision-assistant-router in project mode.
+Help plan a small usability pilot for two navigation layouts in a generic
+task manager. Define tasks, observations, possible order effects, a simple
+recording table and the decision this pilot can inform.
+This is a plan only; no sessions have been run.
+```
+
+**Illustrative result excerpt:**
+
+```text
+Pilot goal: Identify major findability problems, not estimate population effects.
+Design: Counterbalance layout order where feasible; use the same goal-driven tasks.
+Record: layout, sequence, task completion, assistance, detours, qualitative notes.
+Next step: Run the pilot, inspect conflicting cases, then decide whether to scale.
+Not evaluated: Any observed advantage, significance test, or user preference rate.
+```
+
+</details>
+
+<details>
+<summary><strong>D · Direct Specialist: physical touch target and context review</strong></summary>
+
+**Try this prompt:**
+
+```text
+Use evidence-based-design-review directly, without Router mode selection.
+A 10.1-inch 1280×800 industrial touch display uses 36×36 px controls.
+Operators may wear insulated gloves. Estimate the displayed control size
+from the supplied screen dimensions, identify interaction risks, and propose
+what physical measurements or user trials are still needed.
+Do not invent a mandatory ISO minimum.
+```
+
+**Illustrative result excerpt:**
+
+```text
+Calculated estimate: ~149.5 PPI; 36 px corresponds to ~6.1 mm on the display.
+Potential issue: the visible graphic, actual touch hitbox and gloved fingertip
+contact area may be different. A pixel count alone cannot establish usability.
+Recommendation: Verify effective hitbox geometry and test realistic gloves/tasks.
+Boundary: No compliance certification or observed mis-touch rate is implied.
+```
+
+</details>
+
+**Want a visual report?** If your host allows local file writing, you may additionally ask: `After the review, offer an HTML/H5 summary. Create it only after I approve the format.` This is an optional presentation workflow, not a guaranteed built-in GUI. Short real-session screenshots can be added later; the previews above deliberately avoid fabricated screenshots or success metrics.
 
 ## 📖 Documentation Index
 
@@ -141,7 +264,7 @@ UXDA will guide the agent to:
 
 **UXDA Public Core is currently available as a public beta.**
 
-We welcome individuals, researchers, and eligible organizations to explore UXDA's potential in human factors, user experience research, and interaction design review, and to share their experiences, issues, and suggestions through [GitHub Issues](https://github.com/your-org/uxda/issues).
+We welcome individuals, researchers, and eligible organizations to explore UXDA's potential in human factors, user experience research, and interaction design review, and to share their experiences, issues, and suggestions through [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Assistant/issues).
 
 As the project is still under active development and validation, some methodological rules, analytical capabilities, and cross-platform integrations have not yet been sufficiently validated in real-world use. **At this stage, UXDA is best suited for learning, research, evaluation, and experimentation. Direct production deployment is not recommended, nor should its outputs serve as the sole basis for critical business, safety, or compliance decisions.**
 

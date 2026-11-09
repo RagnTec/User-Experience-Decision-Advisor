@@ -8,7 +8,7 @@ UXDA is currently in a **Source-Available Public Beta** under the [PolyForm Stri
 
 ## 1. Primary Contribution Channels (Feedback & Issues)
 
-We actively welcome community feedback via [GitHub Issues](https://github.com/your-org/uxda/issues):
+We actively welcome community feedback via [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Assistant/issues):
 
 1. **Bug Reports**:
    - Report script runtime failures, argument parsing errors, formatting anomalies, or compatibility problems across supported agent harnesses using the **Bug Report** template.

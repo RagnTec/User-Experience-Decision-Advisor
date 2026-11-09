@@ -17,13 +17,13 @@ This guide covers installing and verifying the UXDA Public Core (`v0.1.0-beta.1`
 
 ---
 
-## Method 1: Global Installation (Recommended)
+**Access note:** While the repository is Private, GitHub access is required to clone it. When it becomes Public, the same URL will work without repository membership.\n\n## Method 1: Global Installation (Recommended)
 
 Following the standard multi-agent convention, reusable skills should be installed globally under `~/.agents/skills/`.
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/<org>/uxda.git /tmp/uxda-source
+git clone https://github.com/RagnTec/User-Experience-Decision-Assistant.git /tmp/uxda-source
 
 # 2. Copy the two public skills to the canonical shared directory
 mkdir -p ~/.agents/skills

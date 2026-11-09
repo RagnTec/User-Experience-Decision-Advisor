@@ -6,9 +6,9 @@
 [![状态：源码公开测试版](https://img.shields.io/badge/Release-v0.1.0--beta.1_(源码公开测试版)-orange.svg)](#版本映射与发布标识)
 [![架构：公共核心](https://img.shields.io/badge/Architecture-Public_Core-green.svg)](#架构设计与物理隔离)
 
-**UXDA (User Experience Decision Assistant，用户体验决策助手)** 是一套源码公开（Source-Available）、循证的人因工程 (Human Factors, HF) 与交互设计推理 Agent 技能库（Skill Suite），专为 AI 结对编程及具备工具调用能力的智能体环境设计（包括 Google Antigravity、Gemini CLI、Claude Code、Cursor 及各类自定义 Agent 框架）。
+UXDA（User Experience Decision Assistant）是一套面向用户研究、交互体验与人因工程的 AI Agent 技能工具。它通过专业知识交流、研究方法引导和情境化实践，帮助使用者理解研究问题、探索不同解释、选择适当的方法，并逐步提升独立分析与开展研究的能力。
 
-它提供结构化的决策推演框架、认知失误审计机制（如 Norman 动作执行失误/Action Slips、操作自动化组块效应/Motor Chunking、操作习惯化/Habituation）、人因工效学物理尺寸换算以及研究方法论准入把关（Methodology Gating），协助 AI 编程助手输出可论证、可验证且兼顾真实情境的用户体验建议。
+UXDA 可以辅助提出研究假设、梳理证据、设计研究方案和讨论初步建议，但不替代真实用户研究或专业研究人员的判断。模型输出属于可供交流、学习与进一步验证的参考内容，不能直接视为已经确认的用户洞察或正式研究结论。
 
 ---
 
@@ -138,110 +138,72 @@ UXDA Beta **没有统一的专用斜杠命令或云端 API**。在可以加载�
 
 如果 Agent 未自动识别，可以在它支持本地文件读取的前提下，明确要求读取安装目录下的相应 `SKILL.md`。没有企业项目扩展或私有数据，也可以根据当前对话提供的通用场景材料执行 Public Core 分析。
 
-### 3. 四个不同能力的通用案例
+### 3. 通用案例演示 (Demonstrations)
 
-以下均为**合成情境下的输出结构示例，不是真实 Agent 运行截图，也不是用户研究实测结果**。片段只展示 UXDA 预期支持的分析方式，实际回复取决于宿主模型、输入材料与确认的任务范围。
+以下截图来自 UXDA 在 Antigravity 中的实际调用，使用的是模拟业务场景，仅展示部分输出。当前版本仍处于 Beta 测试阶段，功能表现和专业判断尚未经过充分验证，建议用于体验、学习与辅助分析，重要结论需人工复核。
 
 <details>
-<summary><strong>案例 A｜教学引导：研究方法如何选择（Router · guided）</strong></summary>
+<summary><strong>案例 1｜研究问题引导 (Router)</strong></summary>
 
-**直接复制这段提示词：**
-
-```text
-请使用 ux-decision-assistant-router 的 guided（教学引导）模式。
-某通用购物 App 的团队怀疑用户难以找到筛选功能。
-请解释访谈、任务型可用性测试和问卷分别能回答什么问题，
-并设计一个最小 Pilot，说明每种方法不能支持的结论。
-目前没有任何真实受访者数据。
-```
-
-**效果片段（示意）：**
+**用户原始提示词：**
 
 ```text
-研究问题：用户能否在商品查找任务中发现并使用筛选功能？
-建议路径：先做小规模任务型 Pilot，再决定是否量化问题分布。
-观察内容：任务完成、绕行路径、犹豫节点、参与者解释。
-证据边界：“筛选难找”仍是待验证假设，不能报告问题发生率。
-后续决策：依据观察结果细化问题，再判断是否需要问卷。
+我们发现购物 App 的商品筛选功能好像不太容易被用户找到，想做点用户研究确认一下。应该从哪里开始？
 ```
+
+<a href="docs/media/demos/demo1.png"><img src="docs/media/demos/demo1.png" alt="Demo 01: 研究问题引导" width="760"></a>
+
+**能力与边界说明**：将模糊的体验问题拆解为不同解释假设，提供初步研究方向与后续协作选择。
 
 </details>
 
 <details>
-<summary><strong>案例 B｜设计决策：操作效率与容错权衡（Router · decision）</strong></summary>
+<summary><strong>案例 2｜设计决策支持 (Router)</strong></summary>
 
-**直接复制这段提示词：**
-
-```text
-请使用 ux-decision-assistant-router 的 decision（决策支持）模式。
-某素材管理工具准备取消批量删除前的确认弹窗。
-比较保留弹窗、可撤销删除两种方案，考虑误操作、习惯化、
-不可逆后果与任务效率；给出有条件的推荐，不要编造效率提升幅度。
-```
-
-**效果片段（示意）：**
+**用户原始提示词：**
 
 ```text
-当前建议：若删除可可靠恢复，可比较“删除后撤销”与确认弹窗；
-          若不可逆，应保留更强的执行前保护。
-最强反例：无法保证撤销成功时，Undo 不等同于可靠恢复。
-关键未知：恢复机制、操作频次和真实误删证据。
-决策边界：条件未确认前，不应宣称某方案全面优于另一方案。
+我们想取消批量删除文件前的确认弹窗，让操作快一点。这样设计合适吗？
 ```
+
+<a href="docs/media/demos/demo2.png"><img src="docs/media/demos/demo2.png" alt="Demo 02: 设计决策支持" width="760"></a>
+
+**能力与边界说明**：识别影响方案取舍的关键条件，分析潜在交互风险，并提出初步替代思路。
 
 </details>
 
 <details>
-<summary><strong>案例 C｜项目推进：低成本可用性 Pilot（Router · project）</strong></summary>
+<summary><strong>案例 3｜研究方案辅助 (Router)</strong></summary>
 
-**直接复制这段提示词：**
-
-```text
-请使用 ux-decision-assistant-router 的 project（方案推进）模式。
-为一款通用任务管理工具的两版导航布局设计小规模可用性 Pilot。
-明确任务、观察指标、顺序效应控制、记录字段及结果可支持的决策。
-现在仅设计方案，尚未实施研究，请勿生成虚构结果。
-```
-
-**效果片段（示意）：**
+**用户原始提示词：**
 
 ```text
-Pilot 目标：识别显著的任务查找障碍，而非推断总体差异。
-执行控制：尽可能平衡方案呈现顺序，保持两版任务目标一致。
-记录字段：方案、顺序、任务是否完成、求助、绕行和观察备注。
-下一步：试跑并检查相互矛盾的案例，再决定是否扩大样本。
-未评估：任何优势比例、显著性检验或用户偏好率。
+我们准备比较两种导航布局哪个好用，想先做一轮小规模测试，应该怎么设计？
 ```
+
+<a href="docs/media/demos/demo3.png"><img src="docs/media/demos/demo3.png" alt="Demo 03: 研究方案辅助" width="760"></a>
+
+**能力与边界说明**：根据研究目标提出测试设计方向，并提醒关注学习效应、任务安排等实验控制问题。
 
 </details>
 
 <details>
-<summary><strong>案例 D｜专项评审：触控尺寸与真实操作情境（Specialist）</strong></summary>
+<summary><strong>案例 4｜触控尺寸专项评审 (Specialist · ⚠️ Known Beta Limitation)</strong></summary>
 
-**直接复制这段提示词：**
-
-```text
-请独立使用 evidence-based-design-review Skill，不进入 Router 模式选择。
-某工业设备采用 10.1 英寸、1280×800 分辨率的触摸屏，
-控件可视尺寸为 36×36 px，操作员可能佩戴保温手套。
-请估算物理显示尺寸，区分可视图形与实际触控热区，
-分析可能的人因风险和需要补充的测量或测试。
-不要自行编造 ISO 强制尺寸阈值。
-```
-
-**效果片段（示意）：**
+**用户原始提示词：**
 
 ```text
-参数换算：约 149.5 PPI；36 px 对应约 6.1 mm（基于所给屏幕参数）。
-体验风险：可视图形、有效触控热区、戴手套时的接触范围未必一致；
-          仅靠像素尺寸无法判断实际可用性。
-建议行动：补充有效热区尺寸，使用真实手套和任务验证触控表现。
-结论边界：这不是合规认证，也不是已观察到的误触率。
+用 evidence-based-design-review 帮我看看：10.1 英寸、1280×800 的工业触摸屏，36×36 像素的按钮给戴厚手套的操作员用，合适吗？
 ```
+
+**局限与边界说明**：
+`Known Beta Limitation`：部分专业标准引用和设计阈值可能存在偏差，重要人因、安全及合规判断需要人工核验。
+
+<a href="docs/media/demos/demo4.png"><img src="docs/media/demos/demo4.png" alt="Demo 04: Specialist 专项评审（Known Beta Limitation）" width="760"></a>
 
 </details>
 
-**想看可视化报告？** 如果宿主 Agent 具备本地文件写入能力，可以在分析后补充：“请先建议适合的 H5/HTML 摘要结构，等我确认后再生成文件。”这是按需的交付形式，不是保证存在的独立图形界面。后续可将真实测试会话的局部截图补入仓库；这里不使用伪造的工具运行截图或量化效果。
+**想看可视化报告？** 如果宿主 Agent 具备本地文件写入能力，可以在分析后补充：“请先建议适合的 H5/HTML 摘要结构，等我确认后再生成文件。”这是按需的交付形式，不是保证存在的独立图形界面。这里不使用伪造的工具运行截图或量化效果。
 
 ## 📖 文档导航
 

@@ -6,9 +6,9 @@ English | [简体中文](README.zh-CN.md)
 [![Status: Source-Available Public Beta](https://img.shields.io/badge/Release-v0.1.0--beta.1_(Source--Available_Beta)-orange.svg)](#version-mapping--release-identity)
 [![Architecture: Public Core](https://img.shields.io/badge/Architecture-Public_Core-green.svg)](#architecture--clean-separation)
 
-**UXDA (User Experience Decision Assistant)** is a source-available, evidence-based Human Factors (HF) and interaction design reasoning skill suite designed for AI pair-programming and tool-calling agent environments (including Google Antigravity, Gemini CLI, Claude Code, Cursor, and custom agent harnesses).
+UXDA (User Experience Decision Assistant) is an AI agent skill suite for UX research, interaction design, and human factors. Through professional knowledge exchange, methodological guidance, and scenario-based practice, it helps users frame research questions, explore alternative explanations, choose appropriate methods, and progressively develop independent research capabilities.
 
-It provides structured decision frameworks, cognitive failure mode audits (e.g., Norman action slips, motor chunking, habituation), ergonomic dimensional conversions, and methodology gating to help AI coding assistants produce defensible, verifiable, and context-aware UX recommendations.
+UXDA can help users formulate hypotheses, examine evidence, plan studies, and discuss preliminary recommendations. It does not replace empirical user research or professional judgment. Its outputs are intended for learning, discussion, and further validation, not as established user insights or validated research findings.
 
 ---
 
@@ -140,112 +140,80 @@ If you cannot access the skill, report that limitation.
 
 If your host cannot auto-discover a skill, point it to the corresponding `SKILL.md` in the installed folder **only if the host supports reading local files**. You can also paste a sanitized design description directly; no private extension or company project data is required.
 
-### 3. What can I try? Four short, generic demonstrations
+### 3. Generic Demonstrations
 
-These are **synthetic, illustrative walkthroughs, not captured model sessions or measured UX outcomes**. The excerpts show the *type* of result UXDA is intended to support, not a guaranteed verbatim response. Outputs will differ with the host model, input evidence, and requested scope.
+The following screenshots show actual UXDA outputs in Antigravity across simulated business scenarios, displaying selected excerpts. UXDA is currently in Beta; its analytical performance and professional judgments have not been fully validated. It is recommended for exploration, learning, and decision support—critical conclusions still require manual human review.
 
 <details>
-<summary><strong>A · Guided learning (Router): choose an appropriate UX research method</strong></summary>
+<summary><strong>Case 1 · Research Question Framing (Router)</strong></summary>
 
-**Try this prompt:**
-
-```text
-Use ux-decision-assistant-router in guided mode.
-In a generic shopping app, we suspect people have trouble locating filters.
-Teach me how to decide between interviews, task-based usability testing,
-and a survey. Give a minimal pilot plan and explain what each method cannot prove.
-No real participant data is available yet.
-```
-
-**Illustrative result excerpt:**
+**Original user prompt (Chinese):**
 
 ```text
-Research question: Can people find and use the filter during a product task?
-Suggested first step: Observe a small task-based pilot before measuring prevalence.
-What to record: task success, navigation detours, hesitation, and participant comments.
-Evidence boundary: The difficulty is a hypothesis; no failure rate can be reported yet.
-Next decision: Use pilot observations to refine the problem and the later survey.
+我们发现购物 App 的商品筛选功能好像不太容易被用户找到，想做点用户研究确认一下。应该从哪里开始？
 ```
+
+*English translation: "We noticed shoppers seem to have trouble finding the product filter in our shopping app and want to run some user research to check. Where should we start?"*
+
+<a href="docs/media/demos/demo1.png"><img src="docs/media/demos/demo1.png" alt="Demo 01: Research Question Framing" width="760"></a>
+
+**Capabilities & boundaries**: Breaks down ambiguous experience problems into competing explanatory hypotheses, offering initial research directions and follow-up collaboration choices.
 
 </details>
 
 <details>
-<summary><strong>B · Decision support (Router): speed versus error recovery</strong></summary>
+<summary><strong>Case 2 · Design Decision Support (Router)</strong></summary>
 
-**Try this prompt:**
-
-```text
-Use ux-decision-assistant-router in decision mode.
-A media manager proposes removing the confirmation dialog before deleting
-several files. Compare keeping the dialog with a reversible delete + Undo.
-Consider accidental actions, habituation, irreversibility and effort.
-Recommend a conditional choice; do not invent completion-time improvements.
-```
-
-**Illustrative result excerpt:**
+**Original user prompt (Chinese):**
 
 ```text
-Current recommendation: Compare Undo + recoverable deletion when recovery is
-reliable; retain stronger confirmation before irreversible deletion.
-Counterexample: If the platform cannot guarantee recovery, Undo is not equivalent.
-Still unknown: actual deletion reversibility, usage frequency, and error reports.
-Decision gate: Do not approve a final design without confirming those conditions.
+我们想取消批量删除文件前的确认弹窗，让操作快一点。这样设计合适吗？
 ```
+
+*English translation: "We want to remove the confirmation dialog before bulk-deleting files to make operations faster. Is this design appropriate?"*
+
+<a href="docs/media/demos/demo2.png"><img src="docs/media/demos/demo2.png" alt="Demo 02: Design Decision Support" width="760"></a>
+
+**Capabilities & boundaries**: Identifies critical conditions governing design trade-offs, analyzes potential interaction risks, and proposes preliminary alternative approaches.
 
 </details>
 
 <details>
-<summary><strong>C · Project work (Router): plan a low-cost pilot, not fictional results</strong></summary>
+<summary><strong>Case 3 · Research Planning Support (Router)</strong></summary>
 
-**Try this prompt:**
-
-```text
-Use ux-decision-assistant-router in project mode.
-Help plan a small usability pilot for two navigation layouts in a generic
-task manager. Define tasks, observations, possible order effects, a simple
-recording table and the decision this pilot can inform.
-This is a plan only; no sessions have been run.
-```
-
-**Illustrative result excerpt:**
+**Original user prompt (Chinese):**
 
 ```text
-Pilot goal: Identify major findability problems, not estimate population effects.
-Design: Counterbalance layout order where feasible; use the same goal-driven tasks.
-Record: layout, sequence, task completion, assistance, detours, qualitative notes.
-Next step: Run the pilot, inspect conflicting cases, then decide whether to scale.
-Not evaluated: Any observed advantage, significance test, or user preference rate.
+我们准备比较两种导航布局哪个好用，想先做一轮小规模测试，应该怎么设计？
 ```
+
+*English translation: "We want to compare which of two navigation layouts is easier to use and plan to run a small pilot test first. How should we design it?"*
+
+<a href="docs/media/demos/demo3.png"><img src="docs/media/demos/demo3.png" alt="Demo 03: Research Planning Support" width="760"></a>
+
+**Capabilities & boundaries**: Outlines test design directions aligned with research goals and highlights experimental controls like learning effects and task sequencing.
 
 </details>
 
 <details>
-<summary><strong>D · Direct Specialist: physical touch target and context review</strong></summary>
+<summary><strong>Case 4 · Touch Target Review (Specialist · ⚠️ Known Beta Limitation)</strong></summary>
 
-**Try this prompt:**
-
-```text
-Use evidence-based-design-review directly, without Router mode selection.
-A 10.1-inch 1280×800 industrial touch display uses 36×36 px controls.
-Operators may wear insulated gloves. Estimate the displayed control size
-from the supplied screen dimensions, identify interaction risks, and propose
-what physical measurements or user trials are still needed.
-Do not invent a mandatory ISO minimum.
-```
-
-**Illustrative result excerpt:**
+**Original user prompt (Chinese):**
 
 ```text
-Calculated estimate: ~149.5 PPI; 36 px corresponds to ~6.1 mm on the display.
-Potential issue: the visible graphic, actual touch hitbox and gloved fingertip
-contact area may be different. A pixel count alone cannot establish usability.
-Recommendation: Verify effective hitbox geometry and test realistic gloves/tasks.
-Boundary: No compliance certification or observed mis-touch rate is implied.
+用 evidence-based-design-review 帮我看看：10.1 英寸、1280×800 的工业触摸屏，36×36 像素的按钮给戴厚手套的操作员用，合适吗？
 ```
+
+*English translation: "Review this with evidence-based-design-review: for a 10.1-inch 1280×800 industrial touchscreen, are 36×36 px buttons suitable for operators wearing thick gloves?"*
+
+**Limitations & boundaries**:
+`Known Beta Limitation`: Professional standard citations and design thresholds may contain inaccuracies; critical human-factors, safety, and compliance judgments require manual expert verification.
+
+<a href="docs/media/demos/demo4.png"><img src="docs/media/demos/demo4.png" alt="Demo 04: Specialist Review (Known Beta Limitation)" width="760"></a>
 
 </details>
 
-**Want a visual report?** If your host allows local file writing, you may additionally ask: `After the review, offer an HTML/H5 summary. Create it only after I approve the format.` This is an optional presentation workflow, not a guaranteed built-in GUI. Short real-session screenshots can be added later; the previews above deliberately avoid fabricated screenshots or success metrics.
+**Want a visual report?** If your host allows local file writing, you may additionally ask: `After the review, offer an HTML/H5 summary. Create it only after I approve the format.` This is an optional presentation workflow, not a guaranteed built-in GUI. No fabricated tool screenshots or metrics are used.
 
 ## 📖 Documentation Index
 

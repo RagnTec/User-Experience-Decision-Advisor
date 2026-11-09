@@ -1,0 +1,388 @@
+{
+  "catalog_version": "0.5.4-beta.1",
+  "checked_at_packaging": "2026-11-01",
+  "notice": "本地原创教学摘要，不含书籍全文；预置URL不是本轮联网证据，不支持未经核实的产品/法律/量化事实",
+  "sources": {
+    "N01": {
+      "title": "10 Usability Heuristics for User Interface Design",
+      "author": "Jakob Nielsen",
+      "year": "1994; reviewed 2024-01-30",
+      "publisher": "Nielsen Norman Group",
+      "url": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+      "scope": "public_article_body",
+      "locator": "heuristics 1–10",
+      "supports": "广义启发式原则；并非任何产品实测或硬性法规"
+    },
+    "N02": {
+      "title": "When to Use Which User-Experience Research Methods",
+      "author": "Christian Rohrer",
+      "year": "2022; reviewed 2026-07-15",
+      "publisher": "Nielsen Norman Group",
+      "url": "https://www.nngroup.com/articles/which-ux-research-methods/",
+      "scope": "public_article_body",
+      "locator": "Three-Dimensional Framework",
+      "supports": "研究方法分类与任务匹配；不是特定市场效果"
+    },
+    "N03": {
+      "title": "The Design of Everyday Things, Revised and Expanded Edition",
+      "author": "Don Norman",
+      "year": "2013",
+      "publisher": "Author website; Basic Books edition",
+      "url": "https://jnd.org/books/the-design-of-everyday-things-revised-and-expanded-edition/",
+      "scope": "author_overview_only",
+      "locator": "Synopsis and table of contents, chapters 1–4",
+      "supports": "概念和章节主题；不是对全书原文的核验"
+    },
+    "N04": {
+      "title": "About Face: The Essentials of Interaction Design, 4th Edition",
+      "author": "Alan Cooper; Robert Reimann; David Cronin; Christopher Noessel",
+      "year": "2014",
+      "publisher": "Wiley; ISBN 9781118766583",
+      "url": "https://www.wiley.com/en-us/about-face-the-essentials-of-interaction-design-4th-edition-p-9781118766583",
+      "scope": "publisher_metadata_only",
+      "locator": "Book description: Goal-Directed Design",
+      "supports": "书目及目标导向设计方法存在；未审阅完整章节"
+    },
+    "N05": {
+      "title": "ISO 9241-11:2018 Usability: Definitions and concepts",
+      "author": "ISO/TC 159/SC 4",
+      "year": "2018",
+      "publisher": "ISO",
+      "url": "https://www.iso.org/standard/63500.html",
+      "scope": "official_abstract_only",
+      "locator": "Abstract and general information",
+      "supports": "可用性定义范畴；未审阅付费标准全文条款"
+    },
+    "N06": {
+      "title": "ISO 9241-210:2019 Human-centred design for interactive systems",
+      "author": "ISO/TC 159/SC 4",
+      "year": "2019",
+      "publisher": "ISO",
+      "url": "https://www.iso.org/standard/77520.html",
+      "scope": "official_abstract_only",
+      "locator": "Abstract and general information",
+      "supports": "人本设计过程范围；不能推出具体评估方法或强制义务"
+    },
+    "N07": {
+      "title": "Web Content Accessibility Guidelines (WCAG) 2.2",
+      "author": "W3C Accessibility Guidelines Working Group",
+      "year": "2024 update",
+      "publisher": "W3C",
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "scope": "official_recommendation_public_text",
+      "locator": "Abstract, success criteria, scope",
+      "supports": "Web 内容无障碍规范；适用范围须核对，非所有载体当然适用"
+    },
+    "N08": {
+      "title": "Psychology 2e, §2.2 Approaches to Research",
+      "author": "Rose M. Spielman; William Jenkins; Marilyn Lovett",
+      "year": "2020",
+      "publisher": "OpenStax",
+      "url": "https://openstax.org/books/psychology-2e/pages/2-2-approaches-to-research",
+      "scope": "public_article_body",
+      "locator": "§2.2 research methods, correlation and causation",
+      "supports": "常见研究设计和相关与因果的区分"
+    },
+    "N09": {
+      "title": "Introduction to Sociology 3e, §1.1 What Is Sociology?",
+      "author": "Tonja R. Conerly; Kathleen Holmes; Asha Lal Tamang",
+      "year": "2021",
+      "publisher": "OpenStax",
+      "url": "https://openstax.org/books/introduction-sociology-3e/pages/1-1-what-is-sociology",
+      "scope": "public_article_body",
+      "locator": "§1.1 What Are Society and Culture?",
+      "supports": "社会群体与社会情境概念；不证明任何人群偏好"
+    },
+    "N10": {
+      "title": "Principles of Marketing, §5.1 Market Segmentation and Consumer Markets",
+      "author": "Maria Gomez Albrecht; Mark Green; Linda Hoffman",
+      "year": "2023",
+      "publisher": "OpenStax",
+      "url": "https://openstax.org/books/principles-marketing/pages/5-1-market-segmentation-and-consumer-markets",
+      "scope": "public_article_body",
+      "locator": "§5.1 market segmentation types",
+      "supports": "消费者细分框架；不能推出某群体实际购买行为"
+    }
+  },
+  "cards": [
+    {
+      "id": "F01",
+      "title": "业务诉求与研究问题",
+      "discipline": "research_methods",
+      "keywords": [
+        "需求",
+        "研究问题",
+        "业务",
+        "problem",
+        "research"
+      ],
+      "plain_meaning": "业务提出的功能建议不是已经确定的用户问题。",
+      "research_move": "先把业务目标、候选方案、用户任务和待验证问题分别写出。",
+      "boundary": "明确事实/假设，不能凭功能名称推出需求规模。",
+      "source_ids": [
+        "N02",
+        "N08"
+      ]
+    },
+    {
+      "id": "F02",
+      "title": "系统状态与反馈",
+      "discipline": "interaction",
+      "keywords": [
+        "反馈",
+        "状态",
+        "启动",
+        "progress",
+        "feedback",
+        "status",
+        "车机"
+      ],
+      "plain_meaning": "反馈帮助用户理解系统正在做什么以及先前操作的结果。",
+      "research_move": "观察用户是否正确解释状态以及下一步动作，记录误解的具体位置。",
+      "boundary": "启发式提示潜在风险，不能证明某用户群必然误解；也不等于安全标准。",
+      "source_ids": [
+        "N01",
+        "N03"
+      ]
+    },
+    {
+      "id": "F03",
+      "title": "用户控制与错误恢复",
+      "discipline": "interaction",
+      "keywords": [
+        "控制",
+        "恢复",
+        "错误",
+        "撤销",
+        "undo",
+        "error",
+        "recovery"
+      ],
+      "plain_meaning": "系统的可控性包含执行前的预期、执行中的知情和错误后的恢复路径。",
+      "research_move": "分别设计发现、取消、撤销、恢复任务，观察能否完成。",
+      "boundary": "不代表每个自动操作都应有确认弹窗；要评价打扰成本。",
+      "source_ids": [
+        "N01"
+      ]
+    },
+    {
+      "id": "F04",
+      "title": "心理模型与可发现性",
+      "discipline": "psychology",
+      "keywords": [
+        "心理模型",
+        "可发现性",
+        "signifier",
+        "mental model",
+        "触控",
+        "数字钥匙"
+      ],
+      "plain_meaning": "用户会根据过往经验与界面线索推断功能和状态。",
+      "research_move": "先让参与者预测功能，再观察任务，比较预期与实际。",
+      "boundary": "心理模型需从任务行为或访谈验证，不能由专家直接宣布。",
+      "source_ids": [
+        "N03"
+      ]
+    },
+    {
+      "id": "F05",
+      "title": "目标导向设计",
+      "discipline": "interaction",
+      "keywords": [
+        "目标导向",
+        "persona",
+        "场景",
+        "about face",
+        "goal-directed"
+      ],
+      "plain_meaning": "先说明使用者的目标，再讨论哪些交互机制可能帮助实现目标。",
+      "research_move": "区分目标、任务、界面步骤和设计解法；由情境证据检验。",
+      "boundary": "出版社仅证实方法主题存在，不等于已审阅整书实施细节。",
+      "source_ids": [
+        "N04"
+      ]
+    },
+    {
+      "id": "F06",
+      "title": "可用性与使用情境",
+      "discipline": "human_factors",
+      "keywords": [
+        "可用性",
+        "效率",
+        "有效性",
+        "满意度",
+        "usability",
+        "ISO"
+      ],
+      "plain_meaning": "评价一个产品要结合具体用户、目标与使用情境，而不只看界面外观。",
+      "research_move": "明确任务成功、操作成本、主观评价及情境条件。",
+      "boundary": "ISO 网页公开摘要不是标准全文，不能引作具体强制条款。",
+      "source_ids": [
+        "N05"
+      ]
+    },
+    {
+      "id": "F07",
+      "title": "人本设计与迭代",
+      "discipline": "research_methods",
+      "keywords": [
+        "HCD",
+        "人本",
+        "迭代",
+        "过程",
+        "human-centred"
+      ],
+      "plain_meaning": "研究与评价应贯穿设计过程，并接受新证据修正。",
+      "research_move": "在项目地图上标记当前不确定、已验证事项与回退点。",
+      "boundary": "ISO 摘要只证实范围，未提供具体研究步骤或公司审批要求。",
+      "source_ids": [
+        "N06"
+      ]
+    },
+    {
+      "id": "F08",
+      "title": "态度与行为、定性与定量",
+      "discipline": "research_methods",
+      "keywords": [
+        "访谈",
+        "问卷",
+        "态度",
+        "行为",
+        "定性",
+        "定量",
+        "调查",
+        "survey",
+        "interview"
+      ],
+      "plain_meaning": "用户表达的偏好与实际完成任务的行为回答不同问题。",
+      "research_move": "将未知分成动机解释、行为表现、样本比例，分别匹配研究方法。",
+      "boundary": "访谈不估计总体比例；问卷不等于任务表现；日志不自动说明心理原因。",
+      "source_ids": [
+        "N02",
+        "N08"
+      ]
+    },
+    {
+      "id": "F09",
+      "title": "抽样、代表性与外推",
+      "discipline": "research_methods",
+      "keywords": [
+        "抽样",
+        "代表性",
+        "样本",
+        "sample",
+        "bias",
+        "总体"
+      ],
+      "plain_meaning": "样本的来源与覆盖范围决定结果能推广到谁。",
+      "research_move": "记录招募渠道、纳排标准、有效样本、非响应与分母。",
+      "boundary": "方便样本不能简单外推全体用户；声量不等于人数。",
+      "source_ids": [
+        "N08"
+      ]
+    },
+    {
+      "id": "F10",
+      "title": "相关关系与因果判断",
+      "discipline": "research_methods",
+      "keywords": [
+        "因果",
+        "相关",
+        "A/B",
+        "实验",
+        "效应",
+        "correlation",
+        "causation"
+      ],
+      "plain_meaning": "两个指标同时变化不自动证明一个导致另一个。",
+      "research_move": "明确混杂变量、对照条件、时间顺序及可复现计算。",
+      "boundary": "没有随机化也可能研究因果，但必须解释识别条件与局限。",
+      "source_ids": [
+        "N08"
+      ]
+    },
+    {
+      "id": "F11",
+      "title": "家庭与群体角色",
+      "discipline": "sociology",
+      "keywords": [
+        "家庭",
+        "多人",
+        "共享",
+        "借车",
+        "社会",
+        "角色",
+        "household",
+        "social"
+      ],
+      "plain_meaning": "同一产品的购买者、控制者、使用者与受影响者可能不同。",
+      "research_move": "做角色-任务-权限矩阵，找出多人冲突与不同视角。",
+      "boundary": "角色划分是分析工具，不应从身份刻板印象推断行为。",
+      "source_ids": [
+        "N09"
+      ]
+    },
+    {
+      "id": "F12",
+      "title": "C端消费者细分与替代选择",
+      "discipline": "marketing",
+      "keywords": [
+        "细分",
+        "价格",
+        "消费者",
+        "市场",
+        "竞品",
+        "渠道",
+        "segment",
+        "market"
+      ],
+      "plain_meaning": "不同目标情境、决策角色和替代选项会改变产品价值判断。",
+      "research_move": "明确目标客群定义、购买/使用情境、可比替代方案。",
+      "boundary": "不能借用通用营销框架伪造用户占比、购买意愿或商业收益。",
+      "source_ids": [
+        "N10"
+      ]
+    },
+    {
+      "id": "F13",
+      "title": "无障碍与包容性",
+      "discipline": "interaction",
+      "keywords": [
+        "无障碍",
+        "可访问",
+        "视力",
+        "对比度",
+        "WCAG",
+        "accessibility"
+      ],
+      "plain_meaning": "不同感知与操作能力需要可感知、可操作、可理解的交互。",
+      "research_move": "确认产品载体和适用准则；用相应任务与辅助技术测试。",
+      "boundary": "WCAG 面向 Web 内容，不能直接作为所有车机或实体设备的法律门槛。",
+      "source_ids": [
+        "N07"
+      ]
+    },
+    {
+      "id": "F14",
+      "title": "研究资料核查与缺口回流",
+      "discipline": "research_methods",
+      "keywords": [
+        "查阅",
+        "来源",
+        "资料",
+        "标准",
+        "法规",
+        "证据",
+        "offline",
+        "文献"
+      ],
+      "plain_meaning": "一条结论需要能复查到实际支持它的资料，而非仅有一个链接。",
+      "research_move": "记录来源、页码/条款、适用范围与反例，标注未核实状态。",
+      "boundary": "目录、书目或预置 URL 不代表本轮访问，也不证明具体条款。",
+      "source_ids": [
+        "N05",
+        "N08"
+      ]
+    }
+  ]
+}

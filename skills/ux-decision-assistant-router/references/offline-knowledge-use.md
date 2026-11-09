@@ -1,0 +1,11 @@
+# Offline UX/HCI Foundations | v0.5D
+
+`offline-ux-foundations.json` is an original, portable mini knowledge set. It is NOT full copies of the cited books or standards and does NOT establish the reliability of any product, market or legal claim. Knowledge cards are available offline; links are bibliographic pointers inspected at package construction, not proof a future offline session browsed anything.
+
+When a guided turn needs a concept, select only 1–2 directly relevant cards. `plain_meaning` is for teaching, `research_move` for translating the idea into an observable question, `boundary` for avoiding methodological overclaim. User may choose foundation / applied / advanced independently of their job title. Advanced depth should develop comparison or falsification, not pile on jargon.
+
+**Reference scopes**: `public_article_body` means a publicly accessible article section was examined at package authoring; `author_overview_only` is the author's book page, not the book content; `publisher_metadata_only` confirms a work and broad topics but not detailed chapters; `official_abstract_only` cannot justify invented operative provisions; `official_recommendation_public_text` describes publicly available W3C text. For all sources `checked_at_packaging` is not `verified_this_turn`.
+
+Knowledge use chain: user task → relevant concept → observed behavior or proposed research method → countercase → bounded impact on the business decision. A method/model may inspire research questions but does not itself verify that consumers have the described need. References should be cited accurately with source ID/URL where available; if requested content needs unavailable full text, give the topic and tell user which edition/chapter to consult, WITHOUT inventing page numbers, literal quotes, requirement thresholds or external facts.
+
+For data: always provide reproducible filters, denominator and calculations when actual data are available. For no data: show empty example/clearly synthetic practice, not empirical findings. For laws/standards: only official, actually reviewed clauses can support binding judgments. Skip not relevant steps; user controls research branches and later re-evaluation.

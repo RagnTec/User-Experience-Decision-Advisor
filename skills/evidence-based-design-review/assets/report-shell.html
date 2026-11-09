@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light"><title>UX Decision Assistant | Review</title>
+<style>
+:root{--canvas:#f2f5f7;--ink:#172b36;--muted:#637681;--hair:#dbe4e8;--white:#fff;--sea:#117d76;--seaSoft:#e7f4f1;--sand:#f6eee0;--sandInk:#8e6329;--blueSoft:#eaf0f8;--blue:#345b88;--navy:#142f3e;--shadow:0 8px 32px rgba(15,44,56,.065)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--canvas);color:var(--ink);font:15px/1.68 -apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif;letter-spacing:.008em}button,a{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #2f9e94;outline-offset:3px}a{color:#0b6d6b}.shell{max-width:1190px;margin:0 auto;padding:0 30px}.topbar{background:var(--navy);color:#f1faf9}.top{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:68px}.brand{display:flex;align-items:center;gap:11px;font-size:13px;font-weight:750;letter-spacing:.065em}.brandmark{width:26px;height:26px;display:inline-grid;place-items:center;border:1px solid #82c5bb;color:#95ddd1;border-radius:7px;font-weight:700}.meta{color:#c6d5d9;font-size:12px}.heading{background:linear-gradient(122deg,#143645 0%,#1e515a 85%);color:#fff;padding:43px 0 47px;border-bottom:4px solid #7cbbb0}.eyebrow{font-size:12px;color:#bbdfd7;font-weight:700;letter-spacing:.13em;text-transform:uppercase}.heading h1{font-size:clamp(24px,3vw,37px);line-height:1.35;font-weight:760;letter-spacing:-.025em;margin:10px 0 12px}.heading p{max-width:840px;line-height:1.6;margin:0;color:#d6e6e7;font-size:14px}.tagline{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.pill{display:inline-flex;align-items:center;padding:4px 11px;border-radius:99px;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.18);font-size:12px;color:#e3f5f2}.panel{border:1px solid var(--hair);background:#fff;border-radius:15px;box-shadow:var(--shadow)}.controls{position:sticky;top:0;z-index:5;background:rgba(242,245,247,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--hair);padding:12px 0}.tools{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}.seg{display:inline-flex;background:#e4ecee;border:1px solid #d4e0e4;border-radius:10px;padding:4px;gap:2px}.seg button{padding:8px 15px;border-radius:8px;border:0;color:#4c626c;background:transparent;font-weight:700;font-size:13px}.seg button[aria-pressed=true]{background:#fff;color:#164c4d;box-shadow:0 2px 9px rgba(28,50,60,.1)}.actions{display:flex;gap:7px;flex-wrap:wrap}.act{border:1px solid #cbdadd;background:white;border-radius:9px;padding:8px 12px;color:#38505b;font-size:13px;font-weight:650}.act:hover{background:#f8fcfb}.main{padding-top:27px;padding-bottom:70px}.summary{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(280px,1fr);gap:17px;margin-bottom:22px}.summaryMain{padding:25px 29px;border-left:5px solid var(--sea)}.labelcaps{font-size:11px;color:#52737a;font-weight:760;letter-spacing:.1em;text-transform:uppercase}.headline{font-size:clamp(19px,2vw,26px);line-height:1.5;margin:10px 0;font-weight:760;letter-spacing:-.025em}.shortnote{font-size:13px;color:var(--muted);margin:0}.summarySide{padding:24px 26px;background:#f7fbfa}.summarySide strong{display:block;font-size:16px;margin:11px 0 8px}.summarySide p{font-size:14px;color:#536b71;margin:0}.sectionHead{display:flex;justify-content:space-between;align-items:baseline;gap:15px;margin:28px 0 13px}.sectionHead h2{font-size:20px;margin:0;font-weight:750;letter-spacing:-.015em}.sectionHead span{color:var(--muted);font-size:12px}.matrix{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.option{padding:20px 21px}.optTop{display:flex;align-items:start;gap:10px;justify-content:space-between}.option h3{font-size:15px;line-height:1.5;margin:0}.mark{background:var(--blueSoft);color:var(--blue);padding:3px 8px;border-radius:6px;font-size:11px;white-space:nowrap}.mark.chosen{background:var(--seaSoft);color:var(--sea)}.option p{font-size:13px;margin:11px 0;color:#49606a}.tinyTitle{font-size:11px;color:#7f9098;font-weight:700}.thinRule{height:1px;background:#edf1f3;margin:14px 0}.next{background:#e8f3f1;border:1px solid #c5e3dd;padding:17px 20px;border-radius:12px;margin:16px 0;color:#1d5752}.next strong{margin-right:7px}.stepFlow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.step{position:relative;padding:17px 16px;min-height:132px}.stepNum{font-size:11px;color:#288f83;font-weight:750}.step h3{font-size:14px;margin:6px 0}.step p{font-size:12px;color:#657782;margin:0;line-height:1.6}.step:not(:last-child):after{content:'→';position:absolute;top:42px;right:-15px;color:#87a8ad;font-size:17px;z-index:1}.findings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.finding{padding:21px 23px}.findingTop{display:flex;gap:8px;justify-content:space-between;align-items:start}.finding h3{font-size:16px;margin:0 0 8px}.finding p{font-size:13px;color:#506974;margin:6px 0}.finding .actionline{margin-top:14px;background:#f2f8f7;border-radius:9px;padding:11px 13px;color:#165c55}.finding .actionline strong{color:#0e5b51}.note{color:var(--muted);font-size:12px}.evidenceWrap{margin-top:25px}.evidenceWrap summary{list-style:none;padding:17px 21px;font-weight:740;cursor:pointer;display:flex;justify-content:space-between;align-items:center}.evidenceWrap summary::-webkit-details-marker{display:none}.evidenceWrap summary:after{content:'展开 / 收起';font-size:12px;font-weight:500;color:#71868d}.evidenceList{padding:0 21px 19px}.evidenceItem{border-top:1px solid #eaf0f0;padding:13px 0;font-size:13px}.evidenceItem strong{display:block}.evidenceItem p{color:#526771;margin:4px 0}.footer{margin-top:27px;padding:14px 0;font-size:12px;color:#72858e;border-top:1px solid #dde7e9}.empty{padding:22px;color:#61747a}.hidden{display:none!important}small{color:#66828a}.viewLabel{font-size:12px;font-weight:750;color:var(--sea);margin:0 0 5px}.contextbar{margin-bottom:14px;color:var(--muted);font-size:12px}.reframe{padding:22px 26px;border-left:5px solid var(--blue);font-size:15px;line-height:1.7}.scenarioPath{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.pathItem{position:relative;padding:20px;min-height:125px}.pathItem:not(:last-child):after{content:'›';position:absolute;right:-15px;top:39%;z-index:2;font-size:25px;color:#558b88;font-weight:800}.pathTitle{font-weight:750;display:block;font-size:15px}.pathLabel{display:block;font-size:11px;letter-spacing:.08em;color:var(--sea);font-weight:750;margin-bottom:5px}.pathBody{font-size:12px;color:var(--muted);margin-top:8px}.opportunities{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.opp{padding:22px;display:flex;flex-direction:column;gap:8px}.opp h3{font-size:17px;line-height:1.4;margin:4px 0}.opp p{font-size:13px;margin:0;color:#425e68;line-height:1.65}.opp .oppAction{margin-top:auto;background:var(--seaSoft);padding:12px;border-radius:9px;color:#135c55}.opp .oppBoundary{border-top:1px solid var(--hair);padding-top:10px}.opp .oppLabel{font-size:11px;color:var(--muted);font-weight:700}.optEmpty{font-size:12px;color:#607982}
+@media(max-width:850px){.summary{grid-template-columns:1fr}.matrix,.opportunities,.scenarioPath{grid-template-columns:1fr 1fr}.pathItem:nth-child(2):after{display:none}.findings{grid-template-columns:1fr}.stepFlow{grid-template-columns:1fr 1fr}.step:nth-child(2):after{display:none}.shell{padding:0 18px}.heading{padding:32px 0}.heading h1{font-size:25px}}@media(max-width:560px){.matrix,.stepFlow,.opportunities,.scenarioPath{grid-template-columns:1fr}.pathItem:after{display:none!important}.step:after{display:none!important}.meta{display:none}.seg{width:100%;justify-content:space-between}.seg button{flex:1;padding:9px}.summaryMain{padding:19px}.tools{align-items:stretch}.actions{justify-content:flex-end}.heading h1{font-size:23px}.option,.finding{padding:17px}}
+@media print{body{background:#fff}.topbar,.controls,.actions{display:none!important}.heading{background:white;color:#172b36;border-color:#c5ded8;padding:10px 0}.heading p{color:#526974}.eyebrow{color:#527974}.pill{background:#eaf6f3;color:#275b53;border-color:#d3e4e2}.panel{box-shadow:none}.shell{max-width:none;padding:0 10px}.main{padding-top:14px}.evidenceWrap{break-inside:avoid}.hidden{display:block!important}.sectionHead{break-after:avoid}}
+
+/* Validation: comparative bars always data-grounded; never inferred from hypotheses. */
+.vGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.vCard{padding:22px}.vCard h3{margin:0 0 12px;font-size:16px}.barRow{margin:13px 0}.barMeta{display:flex;justify-content:space-between;font-size:13px;gap:8px}.barRail{background:#edf3f4;height:14px;border-radius:99px;overflow:hidden;margin-top:6px}.barFill{height:100%;border-radius:99px;background:var(--sea);min-width:0}.barFill.alt{background:var(--blue)}.vNotice{border:1px solid #d8e8e7;background:#f3faf8;color:#2b575b;border-radius:10px;padding:13px 16px;font-size:13px;margin-top:15px}.vStatus{font-weight:750;color:#255c58}.themeList{display:grid;grid-template-columns:1fr;gap:7px}.themeItem{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #e5eeee;padding:8px 0;font-size:13px}.themeItem span:last-child{color:#4c7276;white-space:nowrap}@media(max-width:650px){.vGrid{grid-template-columns:1fr}}
+
+.mapPanel{padding:20px 24px;margin-bottom:20px}.mapTop{display:flex;align-items:center;justify-content:space-between;gap:14px}.mapTop h2{font-size:19px;margin:5px 0 10px}.mapVersion{font-size:12px;color:var(--muted)}.mapFlow{display:flex;gap:8px;flex-wrap:wrap;align-items:stretch}.mapArrow{color:#718f92;font-weight:800;align-self:center;font-size:19px}.mapBranches{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px}.mapBranchLabel{font-size:12px;color:#536b78;font-weight:700}.mapStep{border:1px solid #d8e4e7;border-radius:9px;background:#f7f9fa;padding:10px 12px;flex:1 1 130px;min-width:110px}.mapStep strong{display:block;font-size:13px}.mapStep span{font-size:11px;color:#607580}.mapStep.current{border:2px solid #27877a;background:#e9f6f2}.mapStep.finished{background:#ecf4ed;border-color:#91b59e}.mapStep.optional{border-style:dashed}.mapStep.recheck{background:#fff3df;border-color:#c69d5e}.mapFoot{margin:12px 0 0;color:var(--muted);font-size:12px}@media(max-width:600px){.mapPanel{padding:16px}.mapStep{flex-basis:145px}}
+
+/* v0.4D.3: first-screen research synopsis; preserve full analysis behind user-controlled details */
+.mapMini{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:5px}
+.mapMiniItem{padding:7px 11px;background:#f3f7f8;border:1px solid #dce6e8;border-radius:8px;font-size:12px;color:#405962;max-width:330px}
+.mapMiniItem.current{border-color:#288879;background:#eaf6f1;font-weight:700}
+.mapMiniItem .small{font-size:10px;color:#66818a;display:block}
+.mapMiniArrow{color:#87a1a5;font-weight:700}
+.mapExpandable{margin-top:12px;border-top:1px solid var(--hair)}
+.mapExpandable summary{padding:10px 0;color:#1e6963;font-size:13px;font-weight:650;cursor:pointer}
+.mapExpandable[open] summary{margin-bottom:6px}
+.researchSnapshot{padding:22px 26px;margin:14px 0 22px;border-left:4px solid var(--sea)}
+.snapshotTop{display:flex;justify-content:space-between;gap:12px;align-items:start}
+.snapshotTop h2{font-size:20px;line-height:1.4;margin:5px 0 15px}
+.snapshotTag{font-size:11px;border-radius:99px;padding:4px 9px;color:#3b696b;background:#eaf4f2;white-space:nowrap}
+.snapshotGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 21px}
+.snapshotGrid>div{min-width:0;border-top:1px solid #e6edef;padding-top:9px}
+.snapshotGrid p{margin:5px 0;color:#2c4550;font-size:14px;line-height:1.7;overflow-wrap:anywhere}
+.snapshotStatus{font-size:11px;color:#537783}
+.snapshotHint{font-size:12px;color:#697e86;margin:15px 0 0}
+.deepDive{border:1px solid var(--hair);border-radius:13px;background:#fff;margin:13px 0;overflow:hidden}
+.deepDive>summary{cursor:pointer;padding:17px 21px;font-weight:760;display:flex;justify-content:space-between;align-items:center;gap:12px;color:#264650}
+.deepDive>summary small{font-weight:400;color:#667d85;text-align:right;font-size:12px}
+.deepDive[open]>summary{border-bottom:1px solid #e6edef;background:#f7fbfa}
+.deepDiveBody{padding:8px 18px 22px}
+.deepDiveBody .sectionHead{margin-top:19px}
+.deepDiveBody .summary{margin:12px 0 20px}
+@media(max-width:650px){.snapshotGrid{grid-template-columns:1fr}.researchSnapshot{padding:17px}.deepDive>summary{display:block}.deepDive>summary small{display:block;text-align:left;font-size:11px;margin-top:4px}.mapMiniArrow{display:none}.mapMiniItem{flex:1 1 140px}.deepDiveBody{padding:5px 13px 18px}}
+@media(max-width:560px){
+.top{min-height:46px}.brand{font-size:10px;letter-spacing:.03em}.brandmark{width:22px;height:22px}
+.heading{padding:17px 0 19px}.heading h1{font-size:21px;margin:7px 0}.heading p{font-size:12px;line-height:1.5}
+.tagline{margin-top:10px;gap:5px}.pill{font-size:10px;padding:2px 7px}#viewHint{display:none}
+.controls{padding:7px 0}.tools{gap:7px}.seg{padding:2px}.seg button{font-size:12px;padding:6px 5px;white-space:nowrap}
+.actions{width:100%;justify-content:space-between;gap:4px}.act{font-size:11px;padding:6px 7px}
+.main{padding-top:10px}.mapPanel{padding:12px 14px;margin-bottom:10px}
+.mapTop h2{font-size:15px;margin:3px 0 6px}.mapVersion{font-size:10px}.mapMini{gap:5px}
+.mapMiniItem{flex:1 1 90px;min-width:0;padding:6px 7px;font-size:11px}.mapMiniItem .small{font-size:9px}
+.mapExpandable{margin-top:6px}.mapExpandable summary{padding:7px 0;font-size:12px}
+.researchSnapshot{padding:15px;margin:10px 0 14px}.snapshotTop h2{font-size:17px;margin-bottom:9px}
+.snapshotGrid{gap:8px}.snapshotGrid>div{padding-top:7px}.snapshotGrid p{font-size:13px;line-height:1.6;margin:3px 0}
+.snapshotHint{margin-top:10px;font-size:11px}
+}
+@media print{.mapExpandable,.deepDive,.evidenceWrap{break-inside:auto}.researchSnapshot{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="shell top"><div class="brand"><span class="brandmark">UX</span> DECISION ASSISTANT <span style="color:#81aea9;font-weight:400">/ EXPERIENCE REVIEW</span></div><span class="meta">离线交互报告 · 不上传任何资料</span></div></div>
+<div class="heading"><div class="shell"><div class="eyebrow">Decision-led experience analysis</div><h1 id="title">体验评估报告</h1><p id="subtitle"></p><div class="tagline"><span class="pill" id="scope"></span><span class="pill">事实与推断分离</span><span class="pill" id="viewHint">按当前报告内容切换视图</span></div></div></div>
+<div class="controls"><div class="shell tools"><div class="seg" role="group" aria-label="切换报告视图"><button data-mode="all" aria-pressed="true">综合</button><button data-mode="D" aria-pressed="false">决策 D</button><button data-mode="E" aria-pressed="false">体验 E</button><button data-mode="O" aria-pressed="false">机会 O</button><button data-mode="V" aria-pressed="false">验证 V</button></div><div class="actions"><button class="act" id="expandAll" aria-expanded="false">展开全部详情</button><button class="act" id="toggleEvidence">查看证据 R</button><button class="act" id="copySummary">复制结论</button><button class="act" id="print">打印 / 存 PDF</button></div></div></div>
+<main class="shell main"><section class="panel mapPanel hidden" id="businessMap" aria-label="业务推进路线"><div class="mapTop"><div><div class="labelcaps">Business progress / 业务推进规划</div><h2 id="mapObjective"></h2></div><span class="mapVersion" id="mapVersion"></span></div><p class="note" id="mapScope" aria-label="当前分析方向"></p><div class="mapMini" id="mapMini" aria-label="已完成、当前和建议下一步"></div><details class="mapExpandable" id="mapDetails"><summary>查看完整流程、可选研究与准备事项</summary><div class="mapFlow" id="mapFlow"></div><div class="mapBranches" id="mapBranches"></div><p class="mapFoot">这是规划路线，不是自动确认的业务进度；研究完成不代表实施获批。可要求回退、修改或补充，历史按版本保留。</p></details></section>
+<section class="panel researchSnapshot" id="researchSnapshot" aria-label="本轮研究判断概览"><div class="snapshotTop"><div><div class="labelcaps">Research judgement / 用户体验研究摘要</div><h2>核心判断与依据边界</h2></div><span class="snapshotTag" id="snapshotTag">条件性判断</span></div><div class="snapshotGrid"><div><div class="tinyTitle">当前决策建议</div><p id="snapshotDecision"></p></div><div><div class="tinyTitle">关键用户体验机制</div><p id="snapshotMechanism"></p><span class="snapshotStatus" id="snapshotMechanismStatus"></span></div><div><div class="tinyTitle">证据范围与可信边界</div><p id="snapshotEvidence"></p></div><div><div class="tinyTitle">下一步及判断逆转条件</div><p id="snapshotCondition"></p></div></div><p class="snapshotHint">以下专业章节均可展开，查看具体研究问题、方法、样本与统计口径、原始依据、替代解释和方案权衡。摘要不能代替专业复核。</p></section><div class="contextbar" id="confidence"></div>
+<section id="discovery" class="hidden"><details class="deepDive" id="discoveryDetails"><summary><span>O · 场景与机会分析</span><small>用户目标、情境路径、机会假设与反例</small></summary><div class="deepDiveBody"><div class="summary" id="opportunitySummary"><article class="panel summaryMain"><div class="labelcaps">O / Opportunity brief · 当前判断</div><div class="headline" id="oRecommendation"></div><p class="shortnote">仅以本次材料与适用体验机制形成的候选机会预分析。</p></article><aside class="panel summarySide"><div class="labelcaps">Next step / 下一步</div><strong>建议推进方式</strong><p id="oNextStep"></p></aside></div><div class="sectionHead"><h2>O · 问题重构与场景机会</h2><span>区分用户目标、候选推断与已验证需求</span></div><div class="panel reframe" id="problemReframe"></div><div class="sectionHead"><h2>关键情境路径</h2><span>结构关系，非定量评分</span></div><div class="scenarioPath" id="scenarioPath"></div><div class="sectionHead"><h2>优先考虑的机会</h2><span>聚焦决策相关性，默认不超过三项</span></div><div class="opportunities" id="opportunities"></div></div></details></section>
+<section id="decision"><details class="deepDive" id="decisionDetails"><summary><span>D · 方案与决策取舍</span><small>备选行动、收益代价与适用条件</small></summary><div class="deepDiveBody">
+<div class="summary"><article class="panel summaryMain"><div class="labelcaps">D / Decision brief · 当前建议</div><div class="headline" id="recommendation"></div><p class="shortnote">这是一项面向当前条件的建议，不是产品效果的实测证明。</p></article><aside class="panel summarySide"><div class="labelcaps">Next step / 下一步</div><strong>最小推进动作</strong><p id="nextStep"></p></aside></div>
+<div class="sectionHead"><h2>方案取舍</h2><span>基于用户任务与现有条件，不进行虚构打分</span></div><div id="options" class="matrix"></div>
+</div></details></section>
+<section id="experience"><details class="deepDive" id="experienceDetails"><summary><span>E · 用户任务与体验评价</span><small>触点、认知机制、设计事实与改进动作</small></summary><div class="deepDiveBody"><div class="sectionHead"><h2>用户任务与体验链</h2><span>体验机制推论，不代替用户实测</span></div><div id="journey" class="stepFlow"></div><div class="sectionHead"><h2>关键体验发现</h2><span>原则 → 影响 → 行动</span></div><div id="findings" class="findings"></div></div></details></section>
+<section id="validation" class="hidden"><details class="deepDive" id="validationDetails"><summary><span>V · 验证设计及结果回流</span><small>样本、统计口径、编码、决策影响与限制</small></summary><div class="deepDiveBody"><div class="sectionHead"><h2>V · 研究与证据回流</h2><span>仅显示真实输入或明确标注的合成样例</span></div><div class="vGrid"><article class="panel vCard"><h3>任务结果：描述性对照</h3><div id="quantBars"></div><p class="note" id="quantNote"></p></article><article class="panel vCard"><h3>人工编码的反馈主题</h3><div class="themeList" id="themeList"></div><p class="note" id="qualNote"></p></article></div><div class="vNotice" id="validationBoundary"></div><div class="panel reframe" style="margin-top:15px"><div class="labelcaps">Decision update / 决策修正</div><p class="vStatus" id="vStatus"></p><p id="vImpact"></p></div></div></details></section>
+<details id="evidenceSection" class="panel evidenceWrap"><summary>R / 专业证据与判断边界</summary><div class="evidenceList" id="evidence"></div></details>
+<div class="footer">UX Decision Assistant · 本地单文件报告，仅作分析成果展示。未公开的产品信息不得未经授权对外分享。此文件不包含实时 AI 分析服务。</div></main>
+<script type="application/json" id="reportJSON">__JSON_DATA__</script>
+<script>
+(() => {
+'use strict';
+const data = JSON.parse(document.getElementById('reportJSON').textContent);
+const get=id=>document.getElementById(id),txt=(el,s)=>{el.textContent=String(s??'');return el;}, el=(tag,cls,text)=>{const a=document.createElement(tag);if(cls)a.className=cls;if(text!==undefined)txt(a,text);return a;};
+const field=(parent,label,value)=>{parent.append(el('div','tinyTitle',label));parent.append(el('p','',value||'未提供'));};
+txt(get('title'),data.title||'用户体验预评估');document.title=(data.title||'体验评估')+' · UX Decision Assistant';
+txt(get('subtitle'),data.subtitle);txt(get('scope'),data.scope||'设计材料预评估');txt(get('confidence'),data.confidence);txt(get('recommendation'),data.recommendation);txt(get('nextStep'),data.next_step);txt(get('oRecommendation'),data.recommendation);txt(get('oNextStep'),data.next_step);
+const rs=(data.research_summary&&typeof data.research_summary==='object')?data.research_summary:{};
+const firstFinding=Array.isArray(data.findings)?data.findings[0]:null;
+const firstOpportunity=Array.isArray(data.opportunities)?data.opportunities[0]:null;
+const vInput=(data.validation&&typeof data.validation==='object')?data.validation:null;
+const mechanism=rs.mechanism||firstFinding?.principle||firstOpportunity?.rationale||'当前材料不足以提炼具体心理机制；保持待核查状态。';
+const mechanismStatus=rs.mechanism_status||'unknown';
+const labels={observed:'已观察：仍需检查研究条件',supported:'现有依据支持：限当前适用范围',hypothesis:'机制假设：尚非实证需求',unknown:'尚未验证：不应据此作确定判断'};
+txt(get('snapshotDecision'),data.recommendation||'当前尚不能形成方向性结论');
+txt(get('snapshotMechanism'),mechanism);
+txt(get('snapshotMechanismStatus'),labels[mechanismStatus]||labels.unknown);
+txt(get('snapshotEvidence'),rs.evidence_status||((vInput?.evidence_origin==='synthetic')?'仅含合成演示资料，不能推断真实用户效果':vInput?.boundary||data.confidence||'当前仅为基于输入的预评估，缺少可复查的实证来源说明。'));
+txt(get('snapshotCondition'),rs.decision_condition||data.next_step||'待界定可能改变决策的条件');
+txt(get('snapshotTag'),vInput?.evidence_origin==='synthetic'?'合成数据 · 非实证':'条件性研究判断');
+const wm=(data.workflow_map&&typeof data.workflow_map==='object')?data.workflow_map:null;
+if(wm){
+ get('businessMap').classList.remove('hidden');txt(get('mapObjective'),wm.objective);txt(get('mapVersion'),'版本 r'+wm.revision);
+ const scopeState=wm.analysis_scope;
+ txt(get('mapScope'),scopeState?.confirmed?'分析范围｜用户已确认 '+scopeState.selected.join(' + '):scopeState?'分析范围｜已识别 '+(scopeState.detected?.join(' + ')||'待识别')+'；O/E/D/V 未获确认，不自动启动':'分析范围｜历史报告未提供选择确认记录');
+ const statuses={candidate:'建议步骤',ready:'待执行',active:'进行中',completed:'已完成',blocked:'受阻',paused:'暂缓',skipped:'已跳过'};
+ const core=wm.steps.filter(step=>!(step.role==='optional'&&!step.confirmed) && step.applicability!=='not_applicable');
+ const currentIndex=core.findIndex(step=>step.id===wm.current_step);
+ const active=wm.steps.find(step=>step.id===wm.current_step);
+ const previous=core.slice(0,Math.max(currentIndex,0)).filter(step=>step.state==='completed'||step.confirmed).slice(-1)[0];
+ const forward=core.slice(currentIndex+1).filter(step=>!['completed','skipped'].includes(step.state)).slice(0,2);
+ const miniItems=[...(previous?[{step:previous,label:'历史已完成/确认'}]:[]),...(active?[{step:active,label:'当前阶段'}]:[]),...forward.map(step=>({step,label:'建议后续（未必确认）'}))];
+ miniItems.forEach(({step,label},i)=>{if(i)get('mapMini').append(el('span','mapMiniArrow','→'));const item=el('div','mapMiniItem'+(step.id===wm.current_step?' current':''));item.append(el('span','small',label));item.append(el('span','',step.title));get('mapMini').append(item);});
+wm.steps.forEach((step,i)=>{
+  if(step.role==='optional'&&!step.confirmed)return;
+  const optional=false;
+  const style=step.id===wm.current_step?'current':step.state==='completed'?'finished':step.recheck?'recheck':step.role==='optional'?'optional':'';
+  const card=el('div','mapStep '+style);card.append(el('strong','',step.title));
+  let state=statuses[step.state]||'未确认';if(step.confirmed)state+=' / 路径已确认';if(step.role==='optional'&&!step.confirmed)state+=' / 可选';if(step.recheck)state+=' / 待复核';
+  card.append(el('span','',state));if(step.next_input)card.append(el('div','note','可准备：'+step.next_input));
+  if(optional){if(!get('mapBranches').children.length)get('mapBranches').append(el('span','mapBranchLabel','↳ 可选分支'));get('mapBranches').append(card);}
+  else {if(get('mapFlow').children.length)get('mapFlow').append(el('span','mapArrow','→'));get('mapFlow').append(card);}
+ });
+}
+const paths=Array.isArray(data.scenario_path)?data.scenario_path:[];
+const opps=Array.isArray(data.opportunities)?data.opportunities:[];
+if(opps.length||paths.length||data.problem_reframe){
+ txt(get('problemReframe'),data.problem_reframe||'当前材料支持以下条件性的场景机会，不能据此证明用户需求已存在。');
+ paths.forEach((s,i)=>{const card=el('article','panel pathItem');card.append(el('span','pathLabel',s.role||`情境 ${i+1}`));card.append(el('span','pathTitle',s.step||'任务节点'));card.append(el('div','pathBody',s.description||''));get('scenarioPath').append(card);});
+ if(!paths.length)get('scenarioPath').append(el('div','panel empty','本次未形成任务/情境路径图。'));
+ opps.forEach((o,i)=>{const card=el('article','panel opp');card.append(el('span','pathLabel',`${String(i+1).padStart(2,'0')} · ${o.evidence||'待验证机会'}`));card.append(el('h3','',o.title||'候选机会'));card.append(el('span','oppLabel','遗漏的任务/情境'));card.append(el('p','',o.gap||''));card.append(el('span','oppLabel','体验机制与决策意义'));card.append(el('p','',o.rationale||''));const action=el('p','oppAction','建议动作 · '+(o.action||'待确定'));card.append(action);if(o.boundary){card.append(el('p','oppBoundary','适用条件 / 反例 · '+o.boundary));}get('opportunities').append(card);});
+ if(!opps.length)get('opportunities').append(el('div','panel empty','当前没有足以支持的候选机会。'));
+}
+const options=Array.isArray(data.decision_options)?data.decision_options:[];
+options.forEach((o,i)=>{const card=el('article','panel option'),top=el('div','optTop');top.append(el('h3','',o.name||`方案 ${i+1}`));top.append(el('span','mark'+(/推荐/.test(o.status||'')?' chosen':''),o.status||'待比较'));card.append(top);field(card,'主要收益',o.benefit);card.append(el('div','thinRule'));field(card,'代价与适用条件',o.tradeoff);get('options').append(card);});if(!options.length)get('options').append(el('div','panel empty','当前任务没有可比较方案。'));
+const steps=Array.isArray(data.journey)?data.journey:[];steps.forEach((s,i)=>{const card=el('article','panel step');card.append(el('div','stepNum',String(i+1).padStart(2,'0')+' · '+(s.type||'任务步骤')));card.append(el('h3','',s.step));card.append(el('p','',s.experience));get('journey').append(card);});if(!steps.length)get('journey').append(el('div','panel empty','当前材料尚不能确认完整任务流程。'));
+const findings=Array.isArray(data.findings)?data.findings:[];findings.forEach((f,i)=>{const card=el('article','panel finding'),top=el('div','findingTop');top.append(el('h3','',`${String(i+1).padStart(2,'0')} ${f.title||'体验发现'}`));top.append(el('span','mark',f.evidence||'机制推断'));card.append(top);field(card,'设计事实',f.fact);field(card,'适用原则与体验影响',f.principle);const action=el('div','actionline');action.append(el('strong','', '设计动作 · '));action.append(document.createTextNode(f.action||'待确认'));card.append(action);get('findings').append(card);});if(!findings.length)get('findings').append(el('div','panel empty','当前没有可以依据输入核验的体验发现。'));
+const v=(data.validation&&typeof data.validation==='object')?data.validation:null;
+if(v){
+ const bars=get('quantBars');const task=Array.isArray(v.task_outcomes)?v.task_outcomes:[];
+ task.forEach((a,i)=>{const n=Number(a.n),pct=Number(a.success_pct);
+  if(!Number.isFinite(n)||n<=0||!Number.isFinite(pct)||pct<0||pct>100)return;
+  const wrapper=el('div','barRow'), head=el('div','barMeta');head.append(el('span','',String(a.label||'方案')));head.append(el('strong','',`${pct.toFixed(1)}% · n=${n}`));wrapper.append(head);
+  const rail=el('div','barRail');const fill=el('div','barFill'+(i%2?' alt':''));fill.style.width=pct+'%';rail.append(fill);wrapper.append(rail);bars.append(wrapper);
+ });
+ if(!bars.children.length)bars.append(el('p','note','当前未输入任务成功率数据。'));
+ txt(get('quantNote'),v.quant_note||'数字仅为输入样本描述；请核对分母、抽样和研究条件。');
+ const codes=Array.isArray(v.themes)?v.themes:[];
+ codes.forEach(t=>{const wrap=el('div','themeItem');wrap.append(el('span','',t.code||'主题'));
+ wrap.append(el('span','',`提及 ${t.mentions??'?'} 次 · ${t.respondents??'?'} 人`));get('themeList').append(wrap);});
+ if(!codes.length)get('themeList').append(el('p','note','当前未输入人工编码主题。'));
+ txt(get('qualNote'),v.qual_note||'主题数量不是需求普遍程度；编码可信度需额外判断。');
+ txt(get('validationBoundary'),v.boundary||'研究证据来源及其限制未说明，不能推出真实用户效果。');
+ txt(get('vStatus'),v.update_status||'尚未决定');txt(get('vImpact'),v.decision_impact||'请明确新证据对当前选择的影响。');
+}
+const evidence=Array.isArray(data.evidence)?data.evidence:[];evidence.forEach(e=>{const item=el('div','evidenceItem');item.append(el('strong','',e.title||'依据'));item.append(el('p','',e.note));if(typeof e.url==='string' && /^https:\/\//i.test(e.url)){const a=el('a','', '查看公开来源');a.href=e.url;a.target='_blank';a.rel='noopener noreferrer';item.append(a);}get('evidence').append(item);});if(!evidence.length)get('evidence').append(el('div','note','本案例未附可追溯研究资料。'));
+const hasD=options.length>0 || (!opps.length && !paths.length && !steps.length && !findings.length && !v && !!data.recommendation) || (data.analysis_mode==='D'||data.analysis_mode==='both'||data.analysis_mode==='all');
+const hasE=steps.length>0 || findings.length>0;
+const hasO=opps.length>0||paths.length>0||!!data.problem_reframe;
+const hasV=!!v;
+const available=['D','E','O','V'].filter(m=>m==='D'?hasD:m==='E'?hasE:m==='O'?hasO:hasV);
+function setMode(mode){if(mode==='all' && available.length<2)mode=available[0]||'D';
+ get('decision').classList.toggle('hidden',!(hasD&&(mode==='D'||mode==='all')));
+ get('experience').classList.toggle('hidden',!(hasE&&(mode==='E'||mode==='all')));
+ get('discovery').classList.toggle('hidden',!(hasO&&(mode==='O'||mode==='all')));
+ get('validation').classList.toggle('hidden',!(hasV&&(mode==='V'||mode==='all')));
+ get('opportunitySummary').classList.toggle('hidden',mode==='all' && hasD);
+ document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===mode)));
+}
+document.querySelectorAll('[data-mode]').forEach(b=>{if(b.dataset.mode==='all'){if(available.length<2)b.classList.add('hidden');else b.textContent='综合';}else if(!available.includes(b.dataset.mode))b.classList.add('hidden'); b.addEventListener('click',()=>setMode(b.dataset.mode));});
+setMode((['O','D','E','V'].includes(data.analysis_mode) && available.includes(data.analysis_mode))?data.analysis_mode:(available.length===1?available[0]:'all'));
+txt(get('viewHint'),hasV?'包含研究数据回流与决策更新':hasO?'包含场景与体验机会发现':'可切换 D / E / 综合视图');
+const allDetails=[...document.querySelectorAll('details.deepDive'),get('mapDetails'),get('evidenceSection')];
+function toggleAllDetails(open){allDetails.forEach(d=>{if(!d.closest('.hidden'))d.open=open});get('expandAll').setAttribute('aria-expanded',String(open));txt(get('expandAll'),open?'收起全部详情':'展开全部详情');}
+get('expandAll').addEventListener('click',()=>toggleAllDetails(get('expandAll').getAttribute('aria-expanded')!=='true'));
+get('toggleEvidence').addEventListener('click',()=>{get('evidenceSection').open=!get('evidenceSection').open;if(get('evidenceSection').open)get('evidenceSection').scrollIntoView({behavior:'smooth',block:'start'});});
+get('copySummary').addEventListener('click',async()=>{const summary=`${data.title||'体验报告'}\n建议：${data.recommendation||''}\n下一步：${data.next_step||''}`;try{await navigator.clipboard.writeText(summary);txt(get('copySummary'),'已复制');}catch(e){const ta=document.createElement('textarea');ta.value=summary;document.body.append(ta);ta.select();document.execCommand('copy');ta.remove();txt(get('copySummary'),'已复制');}});
+let beforePrintState=null;
+window.addEventListener('beforeprint',()=>{beforePrintState=allDetails.map(d=>d.open);allDetails.forEach(d=>d.open=true)});
+window.addEventListener('afterprint',()=>{if(beforePrintState){allDetails.forEach((d,i)=>d.open=beforePrintState[i]);beforePrintState=null;}});
+get('print').addEventListener('click',()=>window.print());
+})();
+</script>
+</body></html>

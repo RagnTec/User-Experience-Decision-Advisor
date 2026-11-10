@@ -34,8 +34,8 @@ Security and boundary updates are provided for active beta versions:
 
 | Version | Supported | Notes |
 | :--- | :--- | :--- |
-| `0.5.4-beta.1` | :white_check_mark: | Current Public Beta Candidate |
-| `< 0.5.0` | :x: | Deprecated developmental prototypes |
+| `v0.1.0-beta.1` | :white_check_mark: | Current Public Beta Candidate |
+| Historical components | :x: | Deprecated developmental prototypes (e.g., dual-skill router/specialist iterations) |
 
 ---
 
@@ -44,10 +44,10 @@ Security and boundary updates are provided for active beta versions:
 If you observe an instruction bypass, an unintended information leak, or a security issue in UXDA's scripts or prompt structures:
 
 1. **Do not open a public GitHub Issue.**
-2. Submit a confidential advisory through GitHub's Private Vulnerability Reporting feature or email the maintainers directly.
+2. A private vulnerability disclosure channel is currently being prepared for the public repository. Once the repository is public and configured, submit advisories through GitHub's Private Vulnerability Reporting or via maintainer contact channels specified on the repository profile.
 3. Please provide:
    - Host platform and environment versions;
    - Full prompt and tool-invocation sequence;
    - The observed behavior and the expected isolation boundary.
 
-We acknowledge receipt within 48 hours and coordinate a public release fix.
+Reports will be reviewed and addressed as maintainer availability permits.

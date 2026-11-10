@@ -28,34 +28,21 @@ UXDA can help users formulate hypotheses, examine evidence, plan studies, and di
 UXDA is built on the **Standalone-First, Interoperable-by-Design** principle, maintaining a strict physical and conceptual separation between its **Public Core** and optional enterprise extension mechanisms:
 
 ```
-+-------------------------------------------------------------------------+
-|                        UXDA PUBLIC CORE (This Repo)                     |
-|                                                                         |
-|  [Router Skill: ux-decision-assistant-router (v0.5.4-beta.1)]             |
-|   - Task classification (Guided Learning / Decision / Project Review)   |
-|   - Single-Gate pre-flight verification & Business Progress Mapping     |
-|   - Evidence taxonomy & methodology boundary enforcement                |
-|                                                                         |
-|  [Specialist Skill: evidence-based-design-review (v0.7.0-beta.1)]          |
-|   - Independent direct-invocation design review                         |
-|   - Human factors failure modes (Norman Action Slips, Fitts's Law)      |
-|   - Trade-off analysis, competing hypotheses, & Poka-Yoke alternatives  |
-|                                                                         |
-|  [Public Methodology References & Generic Knowledge Models]             |
-|   - ISO 9241, KLM/GOMS calibration rules, cognitive heuristics          |
-+-------------------------------------------------------------------------+
-                                    │
-                                    │ (Optional Context Bundle v0.2 Contract)
-                                    ▼
-+-------------------------------------------------------------------------+
-|                    PRIVATE EXTENSIONS (User-Maintained)                 |
-|                                                                         |
-|  - Proprietary company rules & internal design systems                  |
-|  - Private project registries, document storage, & bindings             |
-|  - Confidential telemetry, internal user research records, & approvals  |
-|                                                                         |
-|  *Note: Public Core operates standalone on user-provided context.       |
-+-------------------------------------------------------------------------+
+UXDA Public Core
+    │
+    ├── skills/uxda/SKILL.md (Unified Core Skill Entrypoint)
+    │       │
+    │       ├── Guided     (Guided learning, task decomposition & problem framing)
+    │       ├── Decision   (Design trade-off evaluation & risk identification)
+    │       ├── Project    (Small-scale test planning & experimental controls)
+    │       └── Specialist (Evidence-based human-factors & touch target review)
+    │
+    ├── Shared References (On-demand methodology, ergonomics & standards)
+    ├── Scripts & Assets  (Offline verification & evidence locator utilities)
+    │
+    └── Optional External Context Bundle Contract (v0.2 Interface Specification)
+            │
+            └── User-Maintained Private Extensions (Proprietary rules & data)
 ```
 
 ---
@@ -142,7 +129,7 @@ Beyond its built-in generic methods, UXDA supports contextual analysis using doc
 - **On-Demand Local Knowledge**: Provide context directly in chat or authorize your agent to inspect specific local guideline files. The offline evidence locator `local_evidence.py` (`skills/uxda/scripts/local_evidence.py`, see [Local Knowledge & Evidence Layer](skills/uxda/references/local-knowledge-evidence.md)) can search across an explicit manifest of authorized materials and track file SHA deltas without network access.
 - **Authority Boundaries**: User-supplied guidelines, team design rules, and project documents serve as task-specific contextual inputs; they **do not automatically inherit the authority of general industry standards**. When local rules conflict with established ergonomics or methodology principles, the agent will flag the discrepancy and applicability limits.
 - **Current Capabilities & Extension Interface**: The current Beta **does not** include a GUI, automated rule repository, dynamic toggle, or rule versioning system. The Context Bundle specification is an optional external extension interface, not an implemented one-click import tool.
-- **Privacy & Isolation**: Any local documents or custom rules you provide remain strictly within your active session. They **never automatically sync to GitHub, write back to the Public Core repository, or leak into other users' packages**. Network access and host-level privacy permissions are governed independently by your agent host (see [SECURITY.md](SECURITY.md)).
+- **Privacy & Boundary Distinction**: UXDA's local files and scripts do not initiate network transmission, do not actively upload user data, and never automatically sync custom rules to GitHub or the Public Core repository. Separately, model inference, context caching, local logs, and conversational session persistence are governed entirely by your host AI agent platform; UXDA cannot independently guarantee that data is retained only within the current session (see [SECURITY.md](SECURITY.md)).
 
 ```text
 Use UXDA to evaluate this research proposal, taking into account the local research guidelines I provided. If there is any applicability conflict with general standards, please flag it separately.

@@ -165,6 +165,12 @@ The following screenshots show actual UXDA outputs in Antigravity across simulat
 
 <a href="docs/media/demos/demo1.png"><img src="docs/media/demos/demo1.png" alt="Demo 01: Research Question Framing" width="760"></a>
 
+> **English note (excerpt of the screenshot):**
+>
+> UXDA reframes an ambiguous usability concern into researchable hypotheses, distinguishing feature discoverability from user intent and interaction friction.
+>
+> It outlines a practical starting path: analyze available behavioral logs and funnels, followed by an expert walkthrough of visual hierarchy and cognitive load.
+
 **Capabilities & boundaries**: Breaks down ambiguous experience problems into competing explanatory hypotheses, offering initial research directions and follow-up collaboration choices.
 
 </details>
@@ -182,6 +188,12 @@ The following screenshots show actual UXDA outputs in Antigravity across simulat
 
 <a href="docs/media/demos/demo2.png"><img src="docs/media/demos/demo2.png" alt="Demo 02: Design Decision Support" width="760"></a>
 
+> **English note (excerpt of the screenshot):**
+>
+> UXDA evaluates removing a delete-confirmation dialog as a trade-off between interaction efficiency and error prevention.
+>
+> It distinguishes reversible actions from irreversible deletion and considers alternatives such as undo or recovery mechanisms, subject to implementation constraints.
+
 **Capabilities & boundaries**: Identifies critical conditions governing design trade-offs, analyzes potential interaction risks, and proposes preliminary alternative approaches.
 
 </details>
@@ -198,6 +210,12 @@ The following screenshots show actual UXDA outputs in Antigravity across simulat
 *English translation: "We want to compare which of two navigation layouts is easier to use and plan to run a small pilot test first. How should we design it?"*
 
 <a href="docs/media/demos/demo3.png"><img src="docs/media/demos/demo3.png" alt="Demo 03: Research Planning Support" width="760"></a>
+
+> **English note (excerpt of the screenshot):**
+>
+> UXDA outlines a small-scale usability study for comparing two navigation designs, focusing on task performance and observable interaction difficulties.
+>
+> It highlights research-design considerations such as participant allocation, testing order, potential learning effects, and measures appropriate to the study's purpose.
 
 **Capabilities & boundaries**: Outlines test design directions aligned with research goals and highlights experimental controls like learning effects and task sequencing.
 
@@ -218,6 +236,14 @@ The following screenshots show actual UXDA outputs in Antigravity across simulat
 `Known Beta Limitation`: Professional standard citations and design thresholds may contain inaccuracies; critical human-factors, safety, and compliance judgments require manual expert verification.
 
 <a href="docs/media/demos/demo4.png"><img src="docs/media/demos/demo4.png" alt="Demo 04: Specialist Review (Known Beta Limitation)" width="760"></a>
+
+> **English note (excerpt of the screenshot):**
+>
+> UXDA examines a 36 × 36 px interface target on a 10.1-inch, 1280 × 800 industrial touchscreen intended for gloved operation.
+>
+> The example illustrates a physical-size calculation and potential touch-interaction risks. Visual target dimensions, effective touch areas, glove characteristics, and applicable standards require separate verification.
+>
+> This historical Beta example is illustrative, not a validated ergonomic or safety-compliance assessment.
 
 </details>
 

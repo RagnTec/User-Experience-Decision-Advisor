@@ -8,12 +8,12 @@
 
 ## 引用核验与证据定位（全部输出必遵守）
 
-关键文献、网页、法规/标准、研究数据及外部产品事实必须提供能复查的来源（完整书目信息或官方页面 URL、具体条款/章节/页码、实际核查状态、适用范围）；内部资料用授权文件的版本/行页/哈希私有定位。无法访问、只有搜索摘要、空白网页或无法核对原文时写 `未核实`，不杜撰 DOI、条款、链接、样本、效果量或结论。推论与假设不伪装成引文；详情可折叠但绝不可不存在。正式报告执行 [Citation Integrity Gate](../../ux-decision-assistant-router/references/citation-integrity-gate.md)。
+关键文献、网页、法规/标准、研究数据及外部产品事实必须提供能复查的来源（完整书目信息或官方页面 URL、具体条款/章节/页码、实际核查状态、适用范围）；内部资料用授权文件的版本/行页/哈希私有定位。无法访问、只有搜索摘要、空白网页或无法核对原文时写 `未核实`，不杜撰 DOI、条款、链接、样本、效果量或结论。推论与假设不伪装成引文；详情可折叠但绝不可不存在。正式报告执行 [Citation Integrity Gate](../references/citation-integrity-gate.md)。
 
 
 # E｜体验评价（清晰结论 + 关键体验）
 
-> **E / O+E 专项边界（必须执行）**：遵守 [O/E Research Scope Integrity](../../ux-decision-assistant-router/references/oe-research-scope-integrity.md)。人因风险不等于安全工程要求；系统状态机、传感器/互锁参数与认证由相应专业责任人核实。用户未批准的历史 D 简报不能显示为“顶层决策已完成”。当仅获授权 O+E 时，不得升级为 P0/P1/P2 产品排期。
+> **E / O+E 专项边界（必须执行）**：遵守 [O/E Research Scope Integrity](../references/oe-research-scope-integrity.md)。人因风险不等于安全工程要求；系统状态机、传感器/互锁参数与认证由相应专业责任人核实。用户未批准的历史 D 简报不能显示为“顶层决策已完成”。当仅获授权 O+E 时，不得升级为 P0/P1/P2 产品排期。
 
 
 有实际用户证据且可核实范围时可用「用户体验研究总结」；仅有界面、流程或较明确的概念机制时使用「基于设计与情境的体验预评估」。**无需先收集真实用户数据**。若仅是产品概念，可以评价任务与机制并给出有条件建议，不得写出未提供的具体界面行为；只有连目标与核心机制也不清晰时才请求最少补充资料。
@@ -39,7 +39,7 @@
 
 - 在 E 评价后指出哪一项方案选择会受这些体验机制影响，哪些是未经用户观察证实的假设；不能仅以软件实现/研发排期收尾。
 - 给出一个最有价值且仍在本次用户授权范围内的补证/澄清动作，按需说明 VOC、版本日志、产品架构或可用性观察的可选输入；并说明反例和逆转条件。
-- 对市场/行业合规引用执行 [Source Provenance Gate](../../ux-decision-assistant-router/references/source-provenance-gate.md)，对方案取舍执行 [Decision-Centred Research Closure](../../ux-decision-assistant-router/references/decision-closure-gate.md)。
+- 对市场/行业合规引用执行 [Source Provenance Gate](../references/source-provenance-gate.md)，对方案取舍执行 [Decision-Centred Research Closure](../references/decision-closure-gate.md)。
 
 
 ## O+E 组合输出收尾（不可被研发建议替代）

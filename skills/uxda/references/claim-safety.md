@@ -7,5 +7,5 @@
 - 如果专家建议某个试验通过界限，除非有明确来源及验证理由，应写成待团队约定的内部探索阈值，不能冒充标准。
 - 尤其不要提出没有明确操作定义的测试名词。需要实验时说明任务、比较条件、观察指标、记录方式、判读依据。
 
-- Specific statute or standard numbers and claimed operative obligations require recorded provenance (user's actual document section or official source actually opened). A valid title does not prove applicability, and a draft does not equal final binding text. See shared [source-provenance-gate](../../ux-decision-assistant-router/references/source-provenance-gate.md).
-- A D/E report must finish with UX-grounded decision state, next evidence invitation, ownership and a reversal trigger, not solely engineering tasks; see [decision-closure-gate](../../ux-decision-assistant-router/references/decision-closure-gate.md).
+- Specific statute or standard numbers and claimed operative obligations require recorded provenance (user's actual document section or official source actually opened). A valid title does not prove applicability, and a draft does not equal final binding text. See shared [source-provenance-gate](source-provenance-gate.md).
+- A D/E report must finish with UX-grounded decision state, next evidence invitation, ownership and a reversal trigger, not solely engineering tasks; see [decision-closure-gate](decision-closure-gate.md).

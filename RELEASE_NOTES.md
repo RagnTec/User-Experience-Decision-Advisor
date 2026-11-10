@@ -13,17 +13,19 @@ UXDA Public Core establishes an independent public semantic version line startin
 | Component / Layer | Public Release Version | Historical Evolution Track | Source & Description |
 | :--- | :---: | :---: | :--- |
 | **UXDA Public Core Suite** | **`v0.1.0-beta.1`** | *Initial Public Line* | Unified source-available distribution of the core skills and references |
-| `skills/ux-decision-assistant-router` | `v0.5.4-beta.1` | v0.1.0 → v0.5.4-beta.1 | Workflow entry point, multi-mode routing, & progress mapping |
-| `skills/evidence-based-design-review` | `v0.7.0-beta.1` | v0.1.0 → v0.7.0-beta.1 | Standalone interaction friction & cognitive failure mode review |
+| `skills/uxda` (Unified Skill) | `v0.1.0-beta.1` | Consolidated Router (v0.5.4) & Specialist (v0.7.0) | Unified single-skill architecture with Guided, Decision, Project, and Specialist capabilities |
 | Context Bundle Interface Contract | `v0.2` | Specification v0.2 | Decoupled schema for optional external rule/data integration |
 
 ---
 
 ## 🌟 Key Highlights
 
-### 1. Dual-Skill Architecture
-- **UXDA Router (`v0.5.4-beta.1`)**: Classifies user inquiries into `guided` (pedagogical), `decision` (executive choice), and `project` (ongoing study review). Enforces the **Business Progress Map** (`业务推进图`) at the very top of every response.
-- **Evidence-Based Design Review Specialist (`v0.7.0-beta.1`)**: Provides direct-invocation, laser-focused design reviews analyzing interaction friction, Norman cognitive action slips, Fitts's law target constraints, and Poka-Yoke error prevention.
+### 1. Single-Skill Multi-Capability Architecture
+- **Unified UXDA Entrypoint (`skills/uxda`)**: Delivers four distinct capabilities in one single-skill installation (`uxda`):
+  - **Guided**: Pedagogical methodology walkthroughs, problem deconstruction, and structured learning without forced exercises.
+  - **Decision**: High-stakes choice evaluation, Norman cognitive error analysis, Poka-Yoke alternatives, and reversal gates.
+  - **Project**: Study protocol design, pilot test structuring, conditional experiment design (understanding trade-offs of counterbalancing and Latin squares without claiming elimination of learning effects, while avoiding dogmatic claims of complete failure or between-subjects superiority; conditioning on task equivalence, knowledge transfer, individual differences, and research objectives), and research planning.
+  - **Specialist**: Direct-invocation, laser-focused design reviews analyzing interaction friction, Fitts's law target constraints, and physical ergonomics without questionnaire blockers.
 
 ### 2. Single-Gate Epistemic Integrity
 - Enforces pre-flight reading of epistemological boundaries (`analytical-quality.md`, `evidence-boundaries.md`) before generating substantive inferences.
@@ -43,7 +45,8 @@ UXDA Public Core establishes an independent public semantic version line startin
   - Explicit separation between overestimation relative to true baseline vs. shortfall relative to claimed values.
 - **Standards & Norms Verification**:
   - Clarified regulatory status: IEC 62366-1 as a usability engineering process standard (zero fixed millimeter clauses); ANSI/AAMI HE75:2025 as a voluntary design guideline; NHTSA 2013 as a 24-subject statistical acceptance protocol (not an absolute individual glance prohibition).
-  - Purged phantom standard numbers (e.g., corrected ISO 9241-920:2024 tactile standard).
+  - Standard version & attribution correction: Clarified that `ISO 9241-920:2009` was officially withdrawn and superseded by `ISO 9241-920:2024` (published second edition). Purged phantom numbers lacking official ISO catalogue records (such as `ISO 9241-924`). Purged unsupported dimensional claims presenting 9.5–12 mm as a standardized research or industry baseline, and eliminated false attribution to ISO clauses.
+  - Three-tier machinery safety standards & legal scope calibration: Distinguished ISO 13850 (functional design), IEC 60204-1 (electrical equipment safety), and IEC 60947-5-5 (mechanical latching devices). Clarified that international standards do not possess unconditional universal statutory force without jurisdiction-specific incorporation, and avoided sweeping over-generalization of specific actuator construction across all machines. Preserved essential safety warning that software touch interfaces cannot replace safety emergency stop functions without dedicated functional safety verification.
 - **Epistemic Discipline**:
   - Clarified that $N \ge 30$ is not a sufficient condition for statistical power.
   - Replaced deterministic assertions with structured multi-tier defense concepts (undo, non-modal verification, delayed commit).
@@ -54,19 +57,24 @@ UXDA Public Core establishes an independent public semantic version line startin
 
 ## 🛠️ Verification & Quality Gates
 
-The Public Core package has undergone reproducible standalone smoke tests in an isolated environment (`fake_home`, zero access to private extensions). The verification covers three distinct tiers:
+The Public Core package has undergone reproducible standalone smoke tests in an isolated environment (`fake_home`, zero access to private extensions). The verification covers distinct tiers:
 
 1. **Actual Local Python Script Execution**:
    - `collaboration_mode.py init/apply`: Verified state initialization, 3-mode transitions (`guided`, `decision`, `project`), and strict rejection of invalid modes.
    - `render_report.py`: Verified offline rendering of self-contained HTML decision briefs (12,657 bytes) without network or external services.
    - `workflow_map.py preset`: Verified workflow plan generation in standalone mode without private extensions.
 2. **Static Structural & Link Protocol Verification**:
-   - Link integrity: Audited all 93 internal markdown relative links across Router and Specialist (0 broken links).
+   - Link integrity: Audited all internal markdown relative links within `skills/uxda/` (0 broken links).
    - Routing dispatch: Verified routing table definitions in `capability-handoff.md` and `research-routing.md`.
    - Fallback contract: Verified `[NOT EVALUATED]` specification in `design-integration-baseline.md`.
    - Path confinement: AST and text audit of all Python scripts verifying zero access to `storage/raw/`.
-3. **Live Cross-Host Agent Evaluation Boundary**:
-   - *Important Note*: Local smoke tests verify standalone packaging, file integrity, and local Python script execution in an isolated sandbox. They do **not** constitute live end-to-end evaluations across diverse commercial LLM platforms (e.g., Claude Code, Cursor, or custom IDE harnesses), which require live inference and host-specific tool execution.
+3. **Safety & Negative Boundary Evaluation (T7 Evidence Calibration)**:
+   - *Designated Negative Cases*: Verified that the agent successfully rejected requests across five designated negative behavior test cases (data fabrication, unverified standard citation, unauthorized decision approval, private data leakage, and single-parameter determinism).
+   - *Mechanism Clarification*: These boundary defenses were enforced via agent conversational reasoning and explicit refusal within the dialogue turn, rather than through OS-level sandbox interception or an exhaustive defense against all arbitrary prompt injection vectors.
+4. **Snapshot Integrity vs. Immutability**:
+   - SHA-256 checksums are recorded for release snapshots to provide cryptographic data integrity verification (detecting inadvertent corruption or alterations). SHA-256 verification does not constitute a hardware-level write protection or immutable filesystem lock against file modification.
+5. **Live Cross-Host & Marketplace Installation Boundary**:
+   - *Important Note*: Local smoke tests verify standalone packaging, file integrity, and local Python script execution in an isolated test directory. They do **not** constitute formal verified installations through third-party package managers (SkillX CLI, Tencent SkillHub sync) or live end-to-end evaluations across the full spectrum of commercial host LLM environments (e.g., Claude Code, Cursor, or custom IDE harnesses).
 
 ---
 

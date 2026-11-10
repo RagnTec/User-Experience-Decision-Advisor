@@ -69,8 +69,7 @@ UXDA Public Core begins its public semantic versioning lifecycle at `v0.1.0-beta
 | Component / Distribution Layer | Public Release Version | Component Evolution Track | Role & Purpose |
 | :--- | :---: | :---: | :--- |
 | **UXDA Public Core Suite** | **`v0.1.0-beta.1`** | *Source-Available Public Beta* | Unified source-available distribution of the UXDA agent skills |
-| `skills/ux-decision-assistant-router` | `v0.5.4-beta.1` | v0.1.0 → v0.5.4-beta.1 | Workflow entry point, task routing, & progress visualization |
-| `skills/evidence-based-design-review` | `v0.7.0-beta.1` | v0.1.0 → v0.7.0-beta.1 | Standalone interaction & ergonomic design review specialist |
+| `skills/uxda` (Unified Core Skill) | `v0.1.0-beta.1` | Unified integration of Router (v0.5.4) & Specialist (v0.7.0) | Single entrypoint skill delivering Guided, Decision, Project, and Specialist capabilities |
 | External Context Bundle Contract | `v0.2` | Specification v0.2 | Decoupled JSON data exchange schema for optional extensions |
 
 ---
@@ -79,70 +78,79 @@ UXDA Public Core begins its public semantic versioning lifecycle at `v0.1.0-beta
 
 | Component | Path | Description |
 | :--- | :--- | :--- |
-| **Router Skill** | `skills/ux-decision-assistant-router` | Main conversational entrypoint. Gathers problem framing, maps business stages, enforces evidence boundaries, and guides O/E/D/V research routes. |
-| **Specialist Skill** | `skills/evidence-based-design-review` | Focused design reviewer. Evaluates wireframes, UI changes, hardware panels, and workflows against cognitive and physical ergonomics. |
-| **Single-Gate References** | `skills/*/references/` | Core epistemological guides: `analytical-quality.md`, `evidence-boundaries.md`, `design-integration-baseline.md`. |
+| **UXDA Unified Skill** | `skills/uxda` | Single entrypoint skill (`uxda`). Delivers four core capabilities: Guided (learning & discovery), Decision (trade-off analysis), Project (study protocol coproduction), and Specialist (ergonomics & design review). |
+| **References & Methodology** | `skills/uxda/references/` | Core epistemological guides & protocols: `analytical-quality.md`, `evidence-boundaries.md`, `design-integration-baseline.md`, etc. |
+| **Offline Tools & Assets** | `skills/uxda/scripts/`, `assets/` | Offline evidence locator (`local_evidence.py`), H5 brief generator (`render_report.py`), and offline foundations catalog. |
 | **Documentation & Guides** | Root (`*.md`) | Standalone setup guides, synthetic walk-throughs, and methodology boundary definitions. |
 
 ---
 
 ## 🚀 Install, Invoke, and Explore
 
-### 1. Install the two skills (macOS / Linux)
+### 1. Install the UXDA skill (macOS / Linux)
 
-UXDA is an **agent skill package, not a standalone app**. You need an AI agent that can read local skill files. The commands below install both public skills; they do not install an LLM, run a service, or guarantee that every host will discover the skills automatically.
+UXDA is an **agent skill package, not a standalone app**. You need an AI agent that can read local skill files. The commands below install the unified UXDA skill; they do not install an LLM, run a service, or guarantee that every host will discover the skills automatically.
 
 ```bash
 git clone https://github.com/RagnTec/User-Experience-Decision-Assistant.git
 cd User-Experience-Decision-Assistant
 mkdir -p ~/.agents/skills
-cp -R skills/ux-decision-assistant-router ~/.agents/skills/
-cp -R skills/evidence-based-design-review ~/.agents/skills/
+cp -R skills/uxda ~/.agents/skills/
 
-# Verify the two entry files exist
-test -f ~/.agents/skills/ux-decision-assistant-router/SKILL.md
-test -f ~/.agents/skills/evidence-based-design-review/SKILL.md
+# Verify the entry file exists
+test -f ~/.agents/skills/uxda/SKILL.md
 ```
 
 **Google Antigravity (optional discovery links, if required by your setup):**
 
 ```bash
 mkdir -p ~/.gemini/config/skills
-ln -s ~/.agents/skills/ux-decision-assistant-router ~/.gemini/config/skills/ux-decision-assistant-router
-ln -s ~/.agents/skills/evidence-based-design-review ~/.gemini/config/skills/evidence-based-design-review
+ln -s ~/.agents/skills/uxda ~/.gemini/config/skills/uxda
 ```
 
 Check for an existing link or folder before running `ln -s` again. This is a setup example from the tested environment, **not a universal installation path** for Gemini CLI, Claude Code, Cursor, or every agent host. Consult [INSTALLATION.md](INSTALLATION.md) and your host's skill-discovery settings. **While this repository is Private, cloning requires GitHub access to it.**
 
-### 2. Invoke a skill in your agent chat
+### 2. Invoke UXDA in your agent chat
 
-There is **no UXDA-specific slash command or hosted API** in this beta. In a compatible agent session, use an explicit natural-language prompt. Skill discovery and actual tool/file access depend on your host.
+There is **no need to install separate skills, nor is there a proprietary slash command or hosted API**. In a compatible agent session, simply describe your research or design task in natural language, and UXDA automatically dispatches the appropriate internal capability:
 
-**Router (guided learning / decision support / project work)**
-
+**Capability 1: Methodology Learning & Discovery (Guided)**
 ```text
-Use the installed ux-decision-assistant-router skill for this task.
-Choose decision mode. Compare two ways of handling an accidental bulk-delete:
-(a) a confirmation dialog; (b) reversible deletion with Undo.
-Explain the trade-offs, assumptions, and what evidence would change the recommendation.
-If the skill is not accessible, tell me instead of pretending it was loaded.
+Use the installed uxda skill: We noticed shoppers seem to have trouble finding the product filter in our shopping app and want to run some user research to check. Where should we start?
 ```
 
-**Direct Specialist (focused design review, without starting the Router workflow)**
-
+**Capability 2: Design Decision & Trade-off Analysis (Decision)**
 ```text
-Use the installed evidence-based-design-review skill directly.
-Evaluate the interaction risks of these two interface variants for the
-specified task. Separate observable design facts, human-factors inference,
-and unknown conditions. Recommend only actionable next steps.
-If you cannot access the skill, report that limitation.
+Use the installed uxda skill: We want to remove the confirmation dialog before bulk-deleting files to make operations faster. Compare a confirmation dialog vs. reversible deletion with Undo, and explain the trade-offs and risks.
+```
+
+**Capability 3: Study Protocol & Project Coproduction (Project)**
+```text
+Use the installed uxda skill: We want to compare which of two navigation layouts is easier to use and plan to run a small pilot test first. How should we design it?
+```
+
+**Capability 4: Ergonomics & Direct Specialist Review (Specialist, direct invocation without questionnaires)**
+```text
+Use the installed uxda skill: For a 10.1-inch 1280×800 industrial touchscreen, are 36×36 px buttons suitable for operators wearing thick gloves?
 ```
 
 If your host cannot auto-discover a skill, point it to the corresponding `SKILL.md` in the installed folder **only if the host supports reading local files**. You can also paste a sanitized design description directly; no private extension or company project data is required.
 
+**Using Local Documents and Custom Research Rules**
+
+Beyond its built-in generic methods, UXDA supports contextual analysis using documents, project constraints, and custom research rules provided by the user:
+- **On-Demand Local Knowledge**: Provide context directly in chat or authorize your agent to inspect specific local guideline files. The offline evidence locator `local_evidence.py` (`skills/uxda/scripts/local_evidence.py`, see [Local Knowledge & Evidence Layer](skills/uxda/references/local-knowledge-evidence.md)) can search across an explicit manifest of authorized materials and track file SHA deltas without network access.
+- **Authority Boundaries**: User-supplied guidelines, team design rules, and project documents serve as task-specific contextual inputs; they **do not automatically inherit the authority of general industry standards**. When local rules conflict with established ergonomics or methodology principles, the agent will flag the discrepancy and applicability limits.
+- **Current Capabilities & Extension Interface**: The current Beta **does not** include a GUI, automated rule repository, dynamic toggle, or rule versioning system. The Context Bundle specification is an optional external extension interface, not an implemented one-click import tool.
+- **Privacy & Isolation**: Any local documents or custom rules you provide remain strictly within your active session. They **never automatically sync to GitHub, write back to the Public Core repository, or leak into other users' packages**. Network access and host-level privacy permissions are governed independently by your agent host (see [SECURITY.md](SECURITY.md)).
+
+```text
+Use UXDA to evaluate this research proposal, taking into account the local research guidelines I provided. If there is any applicability conflict with general standards, please flag it separately.
+```
+
 ### 3. Generic Demonstrations
 
-The following screenshots show actual UXDA outputs in Antigravity across simulated business scenarios, displaying selected excerpts. UXDA is currently in Beta; its analytical performance and professional judgments have not been fully validated. It is recommended for exploration, learning, and decision support—critical conclusions still require manual human review.
+The following screenshots show actual UXDA outputs in Antigravity across simulated business scenarios, displaying selected excerpts. These screenshots were captured during the dual-skill architecture validation phase and are preserved as historical verification milestones; in the current single-skill architecture, all capabilities are seamlessly consolidated within the unified `uxda` skill package. UXDA is currently in Beta; its analytical performance and professional judgments have not been fully validated. It is recommended for exploration, learning, and decision support—critical conclusions still require manual human review.
 
 <details>
 <summary><strong>Case 1 · Research Question Framing (Router)</strong></summary>

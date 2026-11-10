@@ -27,10 +27,9 @@ Following the standard multi-agent convention, reusable skills should be install
 # 1. Clone repository
 git clone https://github.com/RagnTec/User-Experience-Decision-Assistant.git /tmp/uxda-source
 
-# 2. Copy the two public skills to the canonical shared directory
+# 2. Copy the unified UXDA skill to the canonical shared directory
 mkdir -p ~/.agents/skills
-cp -R /tmp/uxda-source/skills/ux-decision-assistant-router ~/.agents/skills/
-cp -R /tmp/uxda-source/skills/evidence-based-design-review ~/.agents/skills/
+cp -R /tmp/uxda-source/skills/uxda ~/.agents/skills/
 
 # 3. Clean up source checkout
 rm -rf /tmp/uxda-source
@@ -41,8 +40,7 @@ If you use Google Antigravity, link the canonical directory to your Antigravity 
 
 ```bash
 mkdir -p ~/.gemini/config/skills
-ln -sf ~/.agents/skills/ux-decision-assistant-router ~/.gemini/config/skills/ux-decision-assistant-router
-ln -sf ~/.agents/skills/evidence-based-design-review ~/.gemini/config/skills/evidence-based-design-review
+ln -sf ~/.agents/skills/uxda ~/.gemini/config/skills/uxda
 ```
 
 ---
@@ -54,7 +52,7 @@ If your team requires pinning skills within a specific repository root:
 ```bash
 cd /path/to/your/project
 mkdir -p .agents/skills
-cp -R /path/to/uxda/skills/* .agents/skills/
+cp -R /path/to/uxda/skills/uxda .agents/skills/
 ```
 Ensure your agent harness is configured to inspect `.agents/skills/` within the active workspace.
 
@@ -68,8 +66,8 @@ UXDA is designed to work in **Public Core mode** on user-provided in-context mat
 1. **Self-check Script**:
    Test that the internal python validation scripts run without errors:
    ```bash
-   python3 ~/.agents/skills/ux-decision-assistant-router/scripts/response_preface_check.py --help
-   python3 ~/.agents/skills/evidence-based-design-review/scripts/render_report.py --help
+   python3 ~/.agents/skills/uxda/scripts/response_preface_check.py --help
+   python3 ~/.agents/skills/uxda/scripts/render_report.py --help
    ```
 2. **Interactive Sanity Test**:
    Open a new session with your AI assistant and prompt:
@@ -79,3 +77,13 @@ UXDA is designed to work in **Public Core mode** on user-provided in-context mat
    - The agent reads `analytical-quality.md` and `evidence-boundaries.md` before substantive analysis;
    - The first output block presents a `业务推进图` (Business Progress Map);
    - The agent operates directly on the stated problem without attempting unauthorized background directory scans.
+
+---
+
+## Verification Boundaries & Known Unverified Scope
+
+- **Isolated Sandbox Verification**: The Public Core package structure, internal relative links, and standalone offline Python scripts have passed smoke tests in an isolated local directory.
+- **Unverified Scope (Pre-Release Beta)**:
+  - Automated formal installation through external marketplace package registries (e.g. `skillx install`, Tencent SkillHub repository synchronization) has **not yet been verified** and is pending marketplace developer authorization and onboarding.
+  - End-to-end runtime behavior across all third-party commercial host LLM environments (Claude Code, Cursor, Codex, Gemini CLI, etc.) has not been universally certified.
+  - Snapshot SHA-256 checksums provide cryptographic data integrity verification (detecting inadvertent file corruption or tampering); they do not constitute an immutable hardware lock preventing files on disk from being modified.

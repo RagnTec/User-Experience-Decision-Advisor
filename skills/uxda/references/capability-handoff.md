@@ -1,14 +1,14 @@
-# 交接协议：Router → 体验评审 Skill
+# 能力交接协议：UXDA 核心与扩展能力协同
 
 ## 当前已启用的能力
 
-| id | Skill | 可做的输出 | 状态 |
+| id | 能力 / 扩展组件 | 可做的输出 | 状态 |
 |---|---|---|---|
-| EB-01 | `evidence-based-design-review` | D / E / D+E（包含输入充分性检查） | v0.7.0-beta.1，配套试用 |
-| CT-01 | `contextual-task-opportunity-discovery` | O / 机会发现、需求重构、遗漏情境、候选方案 | v0.2.2-rc1，配套试用 |
-| FV-01 | `focused-experience-validation` | 可选 V / 定向研究方案、研究资料回流、复现分析与决策更新 | v0.1.0-rc1，配套试用 |
+| EB-01 | `Specialist` (人因专项评审) | D / E / D+E（包含输入充分性检查、工效学计算与界面走查） | UXDA 内置核心能力 |
+| CT-01 | `contextual-task-opportunity-discovery` | O / 机会发现、需求重构、遗漏情境、候选方案 | v0.2.2-rc1，可选配套扩展 |
+| FV-01 | `focused-experience-validation` | 可选 V / 定向研究方案、研究资料回流、复现分析与决策更新 | v0.1.0-rc1，可选配套扩展 |
 
-上述四项以外的候选能力尚未安装，不要虚构 Skill 存在。Router 不能覆盖 EB-01 的专业规则。
+上述三项以外的候选能力尚未安装，不要虚构组件存在。UXDA 内部保持各模块专业规则。
 
 ## 传入的逻辑上下文（不是强制 JSON 表单）
 

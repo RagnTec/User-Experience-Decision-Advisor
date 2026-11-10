@@ -17,4 +17,4 @@ A JSON structure for a traceability *preflight*. It is **not** an AI confidence 
 
 `nps` can be null. If present, record `instrument`, `unit`, `market_scope`, `survey_window`, `sample_size`, `promoters`, `passives`, `detractors`, `reported_nps`, `sampling_limitations`, `claim_scope`, `causal_claim` (must be false). Additional stage, source and segment information is encouraged. Do not input raw respondent PII into a portable trace; do not store private traces in the public GitHub source.
 
-`python ux-decision-assistant-router/scripts/fusion_trace_check.py --input /private/fusion_trace.json` checks only schema and some numeric consistency; it does **not** validate an analogy or a source's truth.
+`python skills/uxda/scripts/fusion_trace_check.py --input /private/fusion_trace.json` checks only schema and some numeric consistency; it does **not** validate an analogy or a source's truth.

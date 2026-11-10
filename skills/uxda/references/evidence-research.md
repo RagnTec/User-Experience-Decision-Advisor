@@ -13,4 +13,4 @@
 
 ## Specific rule/standard citations
 
-When an official standard or local law materially changes the decision, use the shared [Claim Provenance Gate](../../ux-decision-assistant-router/references/source-provenance-gate.md). If official lookup is unavailable or not executed, do not give remembered standard numbers as verified law, or invent thresholds and regulatory consequences. State the verification status explicitly. A static reference link is not proof of retrieval.
+When an official standard or local law materially changes the decision, use the shared [Claim Provenance Gate](source-provenance-gate.md). If official lookup is unavailable or not executed, do not give remembered standard numbers as verified law, or invent thresholds and regulatory consequences. State the verification status explicitly. A static reference link is not proof of retrieval.

@@ -4,15 +4,16 @@ Get up and running with UXDA in 5 minutes using simple, synthetic scenarios.
 
 ---
 
-## 1. Core Operating Modes
+## 1. Four Core Capabilities
 
-UXDA Router supports three main operational modes, selectable directly in conversation:
+The unified UXDA skill supports four core capabilities, selectable directly through natural language in conversation:
 
-| Mode | Trigger Phrasing | Primary Purpose | Key Output Component |
+| Capability | Trigger Phrasing | Primary Purpose | Key Output Component |
 | :--- | :--- | :--- | :--- |
-| **`decision`** *(Default)* | "Help us decide...", "Review the trade-offs of..." | High-stakes choice evaluation and error-mode analysis | Executive decision brief, competing hypotheses, & reversal gates |
-| **`guided`** | "Explain the human factors principles of...", "Teach me how to..." | Pedagogical walkthrough & structured learning | Foundational concepts, methodology trade-offs, & practice exercises |
-| **`project`** | "We have an ongoing study on...", "Help us audit this test data..." | Research design, logging sanity checks, and review | Milestone review, data verification, & task decomposition |
+| **`guided`** | "Teach me how to...", "Where should we start research on..." | Pedagogical walkthrough & structured methodology learning | Foundational concepts, methodology trade-offs, & practice exercises |
+| **`decision`** | "Help us decide...", "Review the trade-offs of..." | High-stakes choice evaluation and error-mode analysis | Executive decision brief, competing hypotheses, & reversal gates |
+| **`project`** | "We have an ongoing study on...", "Help us audit this test data..." | Research study design, logging sanity checks, and review | Milestone review, data verification, & task decomposition |
+| **`specialist`** | "Evaluate touch button size for...", "Review UI friction on..." | Laser-focused physical ergonomics and interface review | Quantitative physical math, touch hitbox bounds, & heuristic audit |
 
 ---
 
@@ -45,9 +46,9 @@ and what alternatives balance speed with safety?
 
 ---
 
-## 3. Working Directly with the Specialist
+## 3. Working Directly with the Specialist Capability
 
-You can invoke the **Evidence-Based Design Review Specialist** directly for detailed technical reviews:
+You can invoke the **Specialist (Ergonomics & Design Review)** capability directly for detailed technical reviews without answering preliminary questionnaires:
 
 ### Prompt:
 ```text
@@ -59,8 +60,13 @@ Identify the physical ergonomics risks and propose a compliant layout baseline.
 ```
 
 ### Expected Specialist Response:
-- Derives physical millimeter dimension: $149\text{ PPI} \implies 0.170\text{ mm/px} \implies 36\text{px} \approx 6.1\text{mm}$.
-- Contrasts 6.1mm with adult glove contact dimensions (15–20mm contact footprint).
-- Cites ISO 9241 physical input baselines (noting specific clauses are guidelines, not statutory laws).
-- Separates visual graphic bounds from touch hitboxes ($\ge 48\text{px}$ or $\ge 12\text{mm}$ hitbox padding).
-- Clarifies that final operating sign-off belongs to industrial safety engineers.
+- **Reproducible Physical Math (under 100% display scaling and 1:1 physical pixel mapping)**:
+  - 10.1-inch diagonal at 16:10 aspect ratio ($1280 \times 800$) yields $\approx 149.45\text{ PPI}$ and a pixel pitch of $\approx 0.170\text{ mm/px}$.
+  - $36 \times 36\text{ px}$ corresponds to $\approx 6.12 \times 6.12\text{ mm}$ physical rendered footprint on this panel.
+- **Five Critical Distinctions & Unknowns**:
+  1. *Known Screen Parameters*: $149.45\text{ PPI}$ and $\approx 6.12\text{ mm}$ are reproducible physical calculations under 1:1 unscaled pixel assumptions.
+  2. *Unknown Touch Hitbox*: $36\text{px}$ describes the rendered icon/visual graphic; whether software provides invisible touch padding (hitbox expansion) remains an unverified implementation detail.
+  3. *Unknown Glove & Task Conditions*: Gloved contact area, seam thickness, padding deformation, and tactile feedback depend on specific glove models and cold-storage working postures; avoid citing unverified 15–20mm contact estimates as established facts.
+  4. *Advisory Ergonomics vs. Machinery Emergency Safety Standards*: Specific millimeter button proposals require explicit task context, experimental measurement, and citation provenance; they must not be presented as standardized baselines or attributed to ISO 9241 clauses. ISO 9241 standards (e.g. current second edition `ISO 9241-920:2024` on tactile/haptic interactions, replacing the withdrawn 2009 edition) offer voluntary ergonomic guidance without prescribing fixed millimeter button dimensions; phantom numbers like `ISO 9241-924` lack official ISO records and must not be cited. Furthermore, ordinary touch screen buttons must be distinguished from machinery emergency stop standards across three tiers: ISO 13850 (emergency stop function principles), IEC 60204-1 (electrical equipment safety), and IEC 60947-5-5 (mechanical latching switchgear). ISO/IEC standards do not possess universal unconditional legal force unless incorporated by specific legislation; however, an ordinary touch screen interface cannot be treated as an emergency stop device without dedicated functional safety verification under applicable machinery risk assessments.
+  5. *Empirical Verification Requirement*: Whether target expansion or spacing adjustments prevent adjacent miss-taps requires real in-situ usability testing with representative operators.
+- **Beta Boundary Reminder**: Specific standard clauses and numerical thresholds are advisory; critical industrial safety judgments require human engineering review.

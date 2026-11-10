@@ -69,8 +69,7 @@ UXDA Public Core 从 `v0.1.0-beta.1`（源码公开受限测试版）起开启�
 | 分发层级 / 交付组件 | 公开发布版本 | 组件历史演进线 | 角色与用途定位 |
 | :--- | :---: | :---: | :--- |
 | **UXDA Public Core 整体套件** | **`v0.1.0-beta.1`** | *源码公开受限测试版 (Source-Available Beta)* | UXDA Agent 技能套件的统一源码公开分发版本 |
-| `skills/ux-decision-assistant-router` | `v0.5.4-beta.1` | v0.1.0 → v0.5.4-beta.1 | 工作流总入口、多模式路由分发、业务推进图渲染 |
-| `skills/evidence-based-design-review` | `v0.7.0-beta.1` | v0.1.0 → v0.7.0-beta.1 | 独立调用的交互摩擦与人因认知失误评审专家 |
+| `skills/uxda` (统一核心技能) | `v0.1.0-beta.1` | 原 Router (v0.5.4) + Specialist (v0.7.0) 一体化重组 | 对外唯一发布的技能包，内置 Guided / Decision / Project / Specialist 四类能力 |
 | 外部 Context Bundle 接口契约 | `v0.2` | 规范草案 v0.2 | 供外部解耦规则/数据源对接的标准 JSON 交换契约 |
 
 ---
@@ -79,68 +78,79 @@ UXDA Public Core 从 `v0.1.0-beta.1`（源码公开受限测试版）起开启�
 
 | 组件名称 | 目录路径 | 描述说明 |
 | :--- | :--- | :--- |
-| **路由技能 (Router)** | `skills/ux-decision-assistant-router` | 主会话入口。负责问题界定、绘制业务推进图、执行证据边界门禁，并引导 O/E/D/V 研究流转。 |
-| **评审专家技能 (Specialist)** | `skills/evidence-based-design-review` | 专项交互评审器。依据认知心理学与物理人机工效学，评估线框图、界面变动、硬件面板与业务流程。 |
-| **单门禁规范资产 (Single-Gate)** | `skills/*/references/` | 核心认识论指引：`analytical-quality.md`、`evidence-boundaries.md`、`design-integration-baseline.md` 等。 |
-| **公共文档与指南 (Guides)** | 仓库根目录 (`*.md`) | 单机部署指南、合成推演示例、安全隐私政策及方法边界定义。 |
+| **UXDA 统一技能 (Unified Skill)** | `skills/uxda` | 核心单一技能入口（技术标识 `uxda`）。内置四类核心能力：Guided（用研方法学习）、Decision（体验取舍决策）、Project（方案设计推进）与 Specialist（人因工效专项评审）。 |
+| **规约与方法库 (References)** | `skills/uxda/references/` | 核心认识论指引与专业方法规约：`analytical-quality.md`、`evidence-boundaries.md`、`design-integration-baseline.md` 等。 |
+| **离线工具与资产 (Scripts & Assets)** | `skills/uxda/scripts/`, `assets/` | 离线证据定位器 (`local_evidence.py`)、H5 报告渲染器 (`render_report.py`) 及脱网原创知识库。 |
+| **公共文档与指南 (Guides)** | 仓库根目录 (`*.md`) | 单机部署指南、安全隐私政策及方法边界定义。 |
 
 ---
 
 ## 🚀 安装、调用与案例演示
 
-### 1. 安装两套 Skill（macOS / Linux）
+### 1. 安装 UXDA 技能（macOS / Linux）
 
-UXDA 是一组 **Agent Skill，并不是独立运行的 App**。需要宿主 AI Agent 具备读取本地技能文件的能力。下面的命令只安装公共技能，不会安装大模型或自动启动服务；不同 Agent 的自动识别机制也可能不同。
+UXDA 是一组 **Agent Skill，并不是独立运行的 App**。需要宿主 AI Agent 具备读取本地技能文件的能力。下面的命令安装统一的 UXDA 技能，不会安装大模型或自动启动服务；不同 Agent 的自动识别机制也可能不同。
 
 ```bash
 git clone https://github.com/RagnTec/User-Experience-Decision-Assistant.git
 cd User-Experience-Decision-Assistant
 mkdir -p ~/.agents/skills
-cp -R skills/ux-decision-assistant-router ~/.agents/skills/
-cp -R skills/evidence-based-design-review ~/.agents/skills/
+cp -R skills/uxda ~/.agents/skills/
 
-# 确认两个技能入口文件存在
-test -f ~/.agents/skills/ux-decision-assistant-router/SKILL.md
-test -f ~/.agents/skills/evidence-based-design-review/SKILL.md
+# 确认技能入口文件存在
+test -f ~/.agents/skills/uxda/SKILL.md
 ```
 
 **Google Antigravity（如当前环境需要额外的发现目录链接）：**
 
 ```bash
 mkdir -p ~/.gemini/config/skills
-ln -s ~/.agents/skills/ux-decision-assistant-router ~/.gemini/config/skills/ux-decision-assistant-router
-ln -s ~/.agents/skills/evidence-based-design-review ~/.gemini/config/skills/evidence-based-design-review
+ln -s ~/.agents/skills/uxda ~/.gemini/config/skills/uxda
 ```
 
 重复执行前，请检查同名链接或文件夹是否已经存在。上述路径仅为已使用环境的安装示例，**不代表 Gemini CLI、Claude Code、Cursor 等平台都采用同一路径**。其他宿主应结合 [INSTALLATION.md](INSTALLATION.md) 和对应平台的 Skill 发现规则配置。**目前仓库仍为 Private，克隆时需要具备仓库访问权限。**
 
 ### 2. 如何在对话中调用？
 
-UXDA Beta **没有统一的专用斜杠命令或云端 API**。在可以加载本地 Skill 的 Agent 对话中，直接明确指定技能和任务范围即可。
+UXDA **无需分别安装多个技能，也没有统一的专用斜杠命令或云端 API**。在可以加载本地 Skill 的 Agent 对话中，直接使用自然语言描述你的任务，UXDA 内部会自动匹配并调度对应的能力：
 
-**Router：适合教学引导、方案决策与研究项目推进**
-
+**能力 1：用研方法学习与探索 (Guided)**
 ```text
-请使用已安装的 ux-decision-assistant-router Skill，以 decision（决策支持）
-模式分析一个文件批量删除流程。比较“删除前二次确认”和“可撤销删除”
-两种方案，说明认知失误风险、适用条件、关键反例及仍需验证的事项。
-如果无法读取 Skill，请明确告知，不要假装已经调用。
+请使用已安装的 uxda 技能：我们发现购物 App 的商品筛选功能好像不太容易被用户找到，想做点用户研究确认一下。应该从哪里开始？
 ```
 
-**Specialist：适合直接进行设计与人因专项评审**
-
+**能力 2：设计取舍与决策推演 (Decision)**
 ```text
-请直接使用 evidence-based-design-review Skill，不进入 Router 的模式选择。
-基于我提供的界面和任务，评价关键交互机制、潜在体验风险和可执行的
-修改建议；区分设计已知事实、人因推论与尚未验证的信息。
-若无法读取 Skill，请说明限制。
+请使用 uxda 技能：我们想取消批量删除文件前的确认弹窗，让操作快一点。比较“删除前二次确认”和“可撤销删除”两种方案，说明认知失误风险、适用条件、关键反例及仍需验证的事项。
+```
+
+**能力 3：研究方案设计与推进 (Project)**
+```text
+请使用 uxda 技能：我们准备比较两种导航布局哪个好用，想先做一轮小规模测试，应该怎么设计？
+```
+
+**能力 4：人因工效与专项评审 (Specialist，直接调用无问卷阻塞)**
+```text
+请使用 uxda 技能：10.1 英寸、1280×800 的工业触摸屏，36×36 像素的按钮给戴厚手套的操作员用，合适吗？
 ```
 
 如果 Agent 未自动识别，可以在它支持本地文件读取的前提下，明确要求读取安装目录下的相应 `SKILL.md`。没有企业项目扩展或私有数据，也可以根据当前对话提供的通用场景材料执行 Public Core 分析。
 
+**结合本地文档与自定义规则调用 (Local Knowledge & Rules)**
+
+UXDA 不仅能依赖内置通用方法，也支持结合使用者主动提供的本地资料与项目约束进行分析：
+- **按需加载本地资料**：在对话中直接提供说明，或授权 Agent 读取指定的本地规范文件。Public Core 内置的离线证据定位工具 `local_evidence.py`（位于 `skills/uxda/scripts/local_evidence.py`，详见 [本地知识与证据层说明](skills/uxda/references/local-knowledge-evidence.md)），可通过显式来源清单在本地检索多份授权材料，并记录引用出处与文件变更（SHA 校验）。
+- **规则权属与权威性边界**：使用者自己的研究规范、团队设计守则或内部业务文档属于特定任务的上下文输入，**不自动继承通用公认标准的权威性**。当本地规则与通用人因原则冲突时，Agent 会单独提示适用性边界与潜在风险。
+- **当前能力与扩展接口**：当前 Beta **尚未提供**图形界面、规则库自动导入、注册启停或版本管理系统；Context Bundle 协议仅作为可选的外部扩展接口规范，并非已内建的一键导入工具。
+- **数据隐私与隔离**：使用者提供的任何本地文档与规则仅在当前本地会话中生效，**绝不会自动同步至 GitHub、写入 Public Core 仓库或进入其他使用者的安装包**。宿主 Agent 自身的文件读取权限与网络隐私规则需由使用者单独遵守与管理（参见 [SECURITY.md](SECURITY.md)）。
+
+```text
+请使用 UXDA 帮我评估这个研究方案，同时参考我提供的本地研究规范；如存在适用性冲突，请单独提示。
+```
+
 ### 3. 通用案例演示 (Demonstrations)
 
-以下截图来自 UXDA 在 Antigravity 中的实际调用，使用的是模拟业务场景，仅展示部分输出。当前版本仍处于 Beta 测试阶段，功能表现和专业判断尚未经过充分验证，建议用于体验、学习与辅助分析，重要结论需人工复核。
+以下截图来自 UXDA 在 Antigravity 中的实际调用，使用的是模拟业务场景，仅展示部分输出。这些截图产生于双 Skill 架构演进期，此处如实保留其原始提示词与 Antigravity 实际调用画面作为历史能力验证记录；在当前单 Skill 架构下，四类能力已完整汇聚于统一的 `uxda` 技能中。当前版本仍处于 Beta 测试阶段，功能表现和专业判断尚未经过充分验证，建议用于体验、学习与辅助分析，重要结论需人工复核。
 
 <details>
 <summary><strong>案例 1｜研究问题引导 (Router)</strong></summary>

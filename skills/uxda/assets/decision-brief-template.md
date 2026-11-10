@@ -8,7 +8,7 @@
 
 ## 引用核验与证据定位（全部输出必遵守）
 
-关键文献、网页、法规/标准、研究数据及外部产品事实必须提供能复查的来源（完整书目信息或官方页面 URL、具体条款/章节/页码、实际核查状态、适用范围）；内部资料用授权文件的版本/行页/哈希私有定位。无法访问、只有搜索摘要、空白网页或无法核对原文时写 `未核实`，不杜撰 DOI、条款、链接、样本、效果量或结论。推论与假设不伪装成引文；详情可折叠但绝不可不存在。正式报告执行 [Citation Integrity Gate](../../ux-decision-assistant-router/references/citation-integrity-gate.md)。
+关键文献、网页、法规/标准、研究数据及外部产品事实必须提供能复查的来源（完整书目信息或官方页面 URL、具体条款/章节/页码、实际核查状态、适用范围）；内部资料用授权文件的版本/行页/哈希私有定位。无法访问、只有搜索摘要、空白网页或无法核对原文时写 `未核实`，不杜撰 DOI、条款、链接、样本、效果量或结论。推论与假设不伪装成引文；详情可折叠但绝不可不存在。正式报告执行 [Citation Integrity Gate](../references/citation-integrity-gate.md)。
 
 
 # D｜决策简报（默认紧凑版）
@@ -33,7 +33,7 @@
 
 **决策交接与路线更新**：分别标明 UX、研发、法务/合规及产品负责什么，列明建议生效条件与逆转条件；更新业务推进图的当前/待核实/候选节点，不将研究建议写成批准上线。研究无继续价值则及时结束本轮。
 
-> 简短 D 报告可以用两个自然段完成上述事项，不必填满固定表格。完整约束见 [Decision-Centred Research Closure](../../ux-decision-assistant-router/references/decision-closure-gate.md)，特定标准来源须遵守 [Claim Provenance Gate](../../ux-decision-assistant-router/references/source-provenance-gate.md)。
+> 简短 D 报告可以用两个自然段完成上述事项，不必填满固定表格。完整约束见 [Decision-Centred Research Closure](../references/decision-closure-gate.md)，特定标准来源须遵守 [Claim Provenance Gate](../references/source-provenance-gate.md)。
 
 ## 法规 / 标准 / 惯例前置边界（仅当本次行动受其影响）
 给出 `目标地域/品类`、`已核实的约束与来源版本`、`未核实的实施风险`。法律与强制性标准相关的疑义须由适当专业人员核验；不能因为 UX 方案有吸引力就直接允许上线。推荐突破行业惯例时明确“**仅供人工审议，尚未授权实施**”、权衡理由与审批责任人；不制造无依据的法律断言。普通低风险任务可用一句话呈现，无需增加完整法规表格。

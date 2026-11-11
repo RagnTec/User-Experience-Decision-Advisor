@@ -1,9 +1,9 @@
-# UXDA — 用户体验决策助手 (Public Core v0.1.0-beta.1)
+# UXDA — 用户体验决策助手 (Public Core v0.1.0-beta.2)
 
 [English](README.md) | 简体中文
 
 [![许可证：PolyForm Strict 1.0.0](https://img.shields.io/badge/License-PolyForm_Strict_1.0.0-blue.svg)](#许可证与使用说明)
-[![状态：源码公开测试版](https://img.shields.io/badge/Release-v0.1.0--beta.1_(源码公开测试版)-orange.svg)](#版本映射与发布标识)
+[![状态：源码公开测试版](https://img.shields.io/badge/Release-v0.1.0--beta.2_(源码公开测试版)-orange.svg)](#版本映射与发布标识)
 [![架构：公共核心](https://img.shields.io/badge/Architecture-Public_Core-green.svg)](#架构设计与物理隔离)
 
 UXDA（User Experience Decision Assistant）是一套面向用户研究、交互体验与人因工程的 AI Agent 技能工具。它通过专业知识交流、研究方法引导和情境化实践，帮助使用者理解研究问题、探索不同解释、选择适当的方法，并逐步提升独立分析与开展研究的能力。
@@ -51,12 +51,12 @@ UXDA 公共核心 (Public Core)
 <a id="versioning"></a>
 ## 🏷️ 版本映射与发布标识
 
-UXDA Public Core 从 `v0.1.0-beta.1`（源码公开受限测试版）起开启面向公开社区的独立语义化版本线，各模块技能则保留各自组件内部演进版本历史：
+UXDA Public Core 从 `v0.1.0-beta.1`（源码公开受限测试版）起开启面向公开社区的独立语义化版本线，当前候选版本为 `v0.1.0-beta.2`，各模块技能则保留各自组件内部演进版本历史：
 
 | 分发层级 / 交付组件 | 公开发布版本 | 组件历史演进线 | 角色与用途定位 |
 | :--- | :---: | :---: | :--- |
-| **UXDA Public Core 整体套件** | **`v0.1.0-beta.1`** | *源码公开受限测试版 (Source-Available Beta)* | UXDA Agent 技能套件的统一源码公开分发版本 |
-| `skills/uxda` (统一核心技能) | `v0.1.0-beta.1` | 原 Router (v0.5.4) + Specialist (v0.7.0) 一体化重组 | 对外唯一发布的技能包，内置 Guided / Decision / Project / Specialist 四类能力 |
+| **UXDA Public Core 整体套件** | **`v0.1.0-beta.2`** | *源码公开受限测试版 (Source-Available Beta)* | UXDA Agent 技能套件的统一源码公开分发版本 |
+| `skills/uxda` (统一核心技能) | `v0.1.0-beta.2` | 原 Router (v0.5.4) + Specialist (v0.7.0) 一体化重组 | 对外唯一发布的技能包，内置 Guided / Decision / Project / Specialist 四类能力 |
 | 外部 Context Bundle 接口契约 | `v0.2` | 规范草案 v0.2 | 供外部解耦规则/数据源对接的标准 JSON 交换契约 |
 
 ---
@@ -66,7 +66,7 @@ UXDA Public Core 从 `v0.1.0-beta.1`（源码公开受限测试版）起开启�
 | 组件名称 | 目录路径 | 描述说明 |
 | :--- | :--- | :--- |
 | **UXDA 统一技能 (Unified Skill)** | `skills/uxda` | 核心单一技能入口（技术标识 `uxda`）。内置四类核心能力：Guided（用研方法学习）、Decision（体验取舍决策）、Project（方案设计推进）与 Specialist（人因工效专项评审）。 |
-| **规约与方法库 (References)** | `skills/uxda/references/` | 核心认识论指引与专业方法规约：`analytical-quality.md`、`evidence-boundaries.md`、`design-integration-baseline.md` 等。 |
+| **规约与方法库 (References)** | `skills/uxda/references/` | 核心认识论指引、研究执行模板与专业方法规约：`analytical-quality.md`、`evidence-boundaries.md`、`research-execution-templates.md`、`design-integration-baseline.md` 等。 |
 | **离线工具与资产 (Scripts & Assets)** | `skills/uxda/scripts/`, `assets/` | 离线证据定位器 (`local_evidence.py`)、H5 报告渲染器 (`render_report.py`) 及脱网原创知识库。 |
 | **公共文档与指南 (Guides)** | 仓库根目录 (`*.md`) | 单机部署指南、安全隐私政策及方法边界定义。 |
 
@@ -209,7 +209,7 @@ UXDA 不仅能依赖内置通用方法，也支持结合使用者主动提供的
 - [方法边界与系统局限 (Methodology & Limitations)](LIMITATIONS.md) — 认识论边界、样本量规则与非目标范围。
 - [贡献指南 (Contributing Guidelines)](CONTRIBUTING.md) — 如何提交改进与补充通用人因卡片。
 - [安全与隐私政策 (Security & Privacy)](SECURITY.md) — 数据隔离边界、宿主平台差异说明及漏洞反馈渠道。
-- [版本发布说明 (Initial Release Notes)](RELEASE_NOTES.md) — `v0.1.0-beta.1` 变更日志与基线特性。
+- [版本发布说明 (Release Notes)](RELEASE_NOTES.md) — `v0.1.0-beta.2` 与 `v0.1.0-beta.1` 变更日志及基线特性。
 
 > *注：上述下级技术文档目前提供英文版原文。*
 

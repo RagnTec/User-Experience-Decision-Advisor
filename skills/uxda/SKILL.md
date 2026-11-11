@@ -2,7 +2,7 @@
 name: uxda
 description: 用户体验决策助手 (UXDA)。一套面向用户研究、交互体验与人因工程的统一 AI Agent 技能工具。一次安装即可通过自然语言按需使用四类核心能力：Guided（用研方法学习与问题探索）、Decision（体验问题分析与方案决策辅助）、Project（研究方案设计与项目推进）、Specialist（交互体验、人因工效与专项设计评审）。支持直接专项评审与离线本地资料辅助分析。
 metadata:
-  version: "0.1.0-beta.1"
+  version: "0.1.0-beta.2"
   historical_components:
     - ux-decision-assistant-router
     - evidence-based-design-review
@@ -43,7 +43,7 @@ flowchart TD
 
 3. **Project（研究方案设计与项目推进）**
    - **典型场景**：“准备比较两种导航布局，想先做一轮小测试，怎么设计？”、“帮我细化可用性测试大纲”。
-   - **执行路径**：尊重用户已有方案，协作完善研究设计、任务大纲与数据分析框架；按需读取 [research-project-coproduction](references/research-project-coproduction.md) 与 [business-progress-map](references/business-progress-map.md)，使用 [project-research-plan-and-report](assets/project-research-plan-and-report.md) 模板。在实验设计方法学上：
+   - **执行路径**：尊重用户已有方案，协作完善研究设计、任务大纲与数据分析框架；按需读取 [research-project-coproduction](references/research-project-coproduction.md)、[business-progress-map](references/business-progress-map.md) 与 [research-execution-templates](references/research-execution-templates.md)，使用 [project-research-plan-and-report](assets/project-research-plan-and-report.md) 模板。在实验设计方法学上：
      1. 保留“顺序平衡（如拉丁方、AB/BA 轮转）不能保证消除学习效应与残留迁移”的科学原则；
      2. 严禁武断推断拉丁方在语义导航中必然完全失效、严禁断言后置方案（如 B 方案）表现必然显著变化、严禁宣称组间设计在所有此类任务中都是唯一或最佳选择；
      3. 要求根据任务等价性（能否构造信息架构不同但认知负荷与复杂度相当的等价任务）、知识迁移程度、被试个体差异（组间方差对样本量的需求）和研究目标（快速定位可用性摩擦 vs 严谨验证耗时）进行条件性权衡与审慎选择。
@@ -91,6 +91,7 @@ flowchart TD
 - **实质性分析与推断任务**（涉及因果推断、定量评估、方案对比、指标计算或决策门禁）：**必须首先调用 read_file 读取** [analytical-quality](references/analytical-quality.md) 与 [evidence-boundaries](references/evidence-boundaries.md)。
 - **界面交互、设计系统与无障碍 (a11y)**：按需读取 [design-integration-baseline](references/design-integration-baseline.md)。
 - **多轮协作推进与长篇交付**：按需读取 [project-collaboration](references/project-collaboration.md) 与 [output-artifacts](references/output-artifacts.md)。
+- **研究执行方案与问卷/访谈/测试/行为数据落地**：按需读取 [research-execution-templates](references/research-execution-templates.md)，遵循渐进披露与前提分离原则（默认仅输出最小可执行单元，不将推测产品能力或未确认埋点写成既定事实），维持 Guided（方法解释）、Decision（决策缺口）、Project（执行方案）、Specialist（专项评审）的职责边界。
 - **日常轻量查询或概念解释**：仅读取与当前问题直接相关的参考文件，不默认灌入全部规约。
 
 ---

@@ -1,9 +1,9 @@
-# UXDA — User Experience Decision Assistant (Public Core v0.1.0-beta.1)
+# UXDA — User Experience Decision Assistant (Public Core v0.1.0-beta.2)
 
 English | [简体中文](README.zh-CN.md)
 
 [![License: PolyForm Strict 1.0.0](https://img.shields.io/badge/License-PolyForm_Strict_1.0.0-blue.svg)](#license)
-[![Status: Source-Available Public Beta](https://img.shields.io/badge/Release-v0.1.0--beta.1_(Source--Available_Beta)-orange.svg)](#version-mapping--release-identity)
+[![Status: Source-Available Public Beta](https://img.shields.io/badge/Release-v0.1.0--beta.2_(Source--Available_Beta)-orange.svg)](#version-mapping--release-identity)
 [![Architecture: Public Core](https://img.shields.io/badge/Architecture-Public_Core-green.svg)](#architecture--clean-separation)
 
 UXDA (User Experience Decision Assistant) is an AI agent skill suite for UX research, interaction design, and human factors. Through professional knowledge exchange, methodological guidance, and scenario-based practice, it helps users frame research questions, explore alternative explanations, choose appropriate methods, and progressively develop independent research capabilities.
@@ -51,12 +51,12 @@ UXDA Public Core
 <a id="versioning"></a>
 ## 🏷️ Version Mapping & Release Identity
 
-UXDA Public Core begins its public semantic versioning lifecycle at `v0.1.0-beta.1` (Source-Available Public Beta), while individual modular skills preserve their internal component development version histories:
+UXDA Public Core begins its public semantic versioning lifecycle at `v0.1.0-beta.1` and currently stands at `v0.1.0-beta.2` (Source-Available Public Beta), while individual modular skills preserve their internal component development version histories:
 
 | Component / Distribution Layer | Public Release Version | Component Evolution Track | Role & Purpose |
 | :--- | :---: | :---: | :--- |
-| **UXDA Public Core Suite** | **`v0.1.0-beta.1`** | *Source-Available Public Beta* | Unified source-available distribution of the UXDA agent skills |
-| `skills/uxda` (Unified Core Skill) | `v0.1.0-beta.1` | Unified integration of Router (v0.5.4) & Specialist (v0.7.0) | Single entrypoint skill delivering Guided, Decision, Project, and Specialist capabilities |
+| **UXDA Public Core Suite** | **`v0.1.0-beta.2`** | *Source-Available Public Beta* | Unified source-available distribution of the UXDA agent skills |
+| `skills/uxda` (Unified Core Skill) | `v0.1.0-beta.2` | Unified integration of Router (v0.5.4) & Specialist (v0.7.0) | Single entrypoint skill delivering Guided, Decision, Project, and Specialist capabilities |
 | External Context Bundle Contract | `v0.2` | Specification v0.2 | Decoupled JSON data exchange schema for optional extensions |
 
 ---
@@ -66,7 +66,7 @@ UXDA Public Core begins its public semantic versioning lifecycle at `v0.1.0-beta
 | Component | Path | Description |
 | :--- | :--- | :--- |
 | **UXDA Unified Skill** | `skills/uxda` | Single entrypoint skill (`uxda`). Delivers four core capabilities: Guided (learning & discovery), Decision (trade-off analysis), Project (study protocol coproduction), and Specialist (ergonomics & design review). |
-| **References & Methodology** | `skills/uxda/references/` | Core epistemological guides & protocols: `analytical-quality.md`, `evidence-boundaries.md`, `design-integration-baseline.md`, etc. |
+| **References & Methodology** | `skills/uxda/references/` | Core epistemological guides, execution templates & protocols: `analytical-quality.md`, `evidence-boundaries.md`, `research-execution-templates.md`, `design-integration-baseline.md`, etc. |
 | **Offline Tools & Assets** | `skills/uxda/scripts/`, `assets/` | Offline evidence locator (`local_evidence.py`), H5 brief generator (`render_report.py`), and offline foundations catalog. |
 | **Documentation & Guides** | Root (`*.md`) | Standalone setup guides, synthetic walk-throughs, and methodology boundary definitions. |
 
@@ -217,7 +217,7 @@ The following screenshots show actual UXDA outputs in Antigravity across simulat
 - [Methodology & Limitations](LIMITATIONS.md) — Epistemic boundaries, sample size rules, and non-goals.
 - [Contributing Guidelines](CONTRIBUTING.md) — How to propose enhancements and add generic knowledge cards.
 - [Security & Privacy](SECURITY.md) — Data boundary definitions, host platform distinctions, and vulnerability reporting.
-- [Initial Release Notes](RELEASE_NOTES.md) — Changelog and baseline features of `v0.1.0-beta.1`.
+- [Release Notes](RELEASE_NOTES.md) — Changelog and baseline features of `v0.1.0-beta.2` (and `v0.1.0-beta.1`).
 
 ---
 

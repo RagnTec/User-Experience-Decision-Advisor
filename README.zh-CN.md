@@ -78,42 +78,38 @@ UXDA 公共核心 (Public Core)
 
 ---
 
-## 4. 代表性工作流示例（`TC-01` 连续推演主案例）
+## 4. 代表性工作流示例（`DEMO-01` 连续推演主案例）
 
-为完整展示 `v0.1.0-beta.2` 的连续推理链路（而非旧版零散跨场景片段），下文 4 张中文局部截图为 **同一轮 UXDA `v0.1.0-beta.2` `TC-01` 英文连续输出的中文本地化展示**：严格保留原轮运行的研究结构、假设矩阵、执行模板、统计边界与决策条件，未增删研究判断；不冒充未经修改的 Antigravity 原生中文会话截图。英文原图见 [README.md](README.md)。
+> **案例来源与合成数据说明：** `DEMO-01` 中的业务背景、6 名访谈对象及相关行为数量均为**合成测试输入**，不代表真实用户研究结果；以下 Agent 输出来自 UXDA `v0.1.0-beta.2` 的实际运行，中文展示面板为对同一轮英文输出的忠实翻译与重新排版（保留已有图片文件原命名与角标文本），英文原图见 [README.md](README.md)。
 
-> **测试提示词（`TC-01` · 主动推荐日程卡片研究方案评审）：**
+> **场景提示词（`DEMO-01` · 主动推荐日程卡片研究方案评审）：**
 > 团队在效率应用内上线了“主动推荐日程卡片”（每天可能向同一批活跃用户弹窗或展示多次）。前期对 6 名用户做了探索性访谈（5 人顺带提到“忙时经常顺手关掉”，4 人提到“偶尔也采纳过一两条”）。团队原计划发一份极简两题问卷：`Q1` 单选“过去 7 天你对卡片的操作（A. 看到并采纳 / B. 忽略没看 / C. 直接关闭）”，加 1 题让用户从两套新视觉方案中二选一，并企图用该结果证明访谈里的“第一主导原因”以及证明“新视觉方案效果更好”。
 
 ### 同一轮输出的 4 张连续局部裁切
 
 #### 图 1 · 问题理解与业务推进图
 
-<a href="docs/media/demos/tc01-1-progress.zh-CN.png"><img src="docs/media/demos/tc01-1-progress.zh-CN.png" alt="TC-01 图 1：问题理解、事实与假设分离及业务推进图（中文本地化展示）" width="760"></a>
+<a href="docs/media/demos/tc01-1-progress.zh-CN.png"><img src="docs/media/demos/tc01-1-progress.zh-CN.png" alt="DEMO-01 图 1：问题理解、事实与假设分离及业务推进图（中文本地化展示）" width="760"></a>
 
-- *中文图注：* **图 1 — 问题理解与业务推进图（`Business Progress Map r0` · 中文本地化展示）：** 展示当前研究评审所处节点（`[当前阶段 Active]`）、后续条件性路径，以及“已确认 / 用户提供事实（6 人访谈中的行为共存线索）”“`To Confirm` 缺失前提”“`[Pending Hypothesis]` 条件性假设”的三层 `Fact vs. Assumption` 分离。
-- *English Caption:* **Panel 1 — Problem Framing & Business Progress Map (`r0`, Localized Chinese):** Faithful localization of the active review stage, conditional next milestones, and strict separation across confirmed user inputs, missing product premises (`To Confirm`), and `[Pending Hypothesis]` assumptions.
+*图注：* 展示 `Business Progress Map r0` 状态追踪，并在启动研究前严格分离已确认输入、`To Confirm` 缺失前提与 `[Pending Hypothesis]` 假设。
 
 #### 图 2 · 竞争性假设与研究策略
 
-<a href="docs/media/demos/tc01-2-hypotheses.zh-CN.png"><img src="docs/media/demos/tc01-2-hypotheses.zh-CN.png" alt="TC-01 图 2：竞争性假设矩阵与方法互补策略（中文本地化展示）" width="760"></a>
+<a href="docs/media/demos/tc01-2-hypotheses.zh-CN.png"><img src="docs/media/demos/tc01-2-hypotheses.zh-CN.png" alt="DEMO-01 图 2：竞争性假设矩阵与方法互补策略（中文本地化展示）" width="760"></a>
 
-- *中文图注：* **图 2 — 竞争性假设（`H1–H4`）与研究策略（中文本地化展示）：** 直接判定原定问卷不可行并指出关键方法学缺陷；围绕“触发时机/打断摩擦、相关性不匹配、视觉可读性摩擦、曝光/抽样伪影”列出预期观察、证伪观察与低成本排查，并明确行为埋点、修订问卷与轻量理解测试的方法互补关系及共享偏差限制。
-- *English Caption:* **Panel 2 — Competing Hypotheses (`H1–H4`) & Method Complementarity (Localized Chinese):** Faithful localization of the four draft flaws, rival-hypotheses falsification table, and complementary telemetry/survey/comprehension strategy with shared-bias warnings.
+*图注：* 否定无效的单选归因与偏好推断，构建四条可证伪竞争性假设（`H1–H4`），并结合方法互补原则提示同源偏差限制。
 
 #### 图 3 · 可修改研究执行模板（问卷 + 行为埋点）
 
-<a href="docs/media/demos/tc01-3-template.zh-CN.png"><img src="docs/media/demos/tc01-3-template.zh-CN.png" alt="TC-01 图 3：问卷前后对照修改模板与行为数据建议事件链（中文本地化展示）" width="760"></a>
+<a href="docs/media/demos/tc01-3-template.zh-CN.png"><img src="docs/media/demos/tc01-3-template.zh-CN.png" alt="DEMO-01 图 3：问卷前后对照修改模板与行为数据建议事件链（中文本地化展示）" width="760"></a>
 
-- *中文图注：* **图 3 — 可修改研究执行模板（`Template 1` 问卷重构 + `Template 4` 行为埋点互补 · 中文本地化展示）：** 将 `Q1` 拆分为可并存多选 + 互斥未曝光/遗忘出口（`E–G`），以 `Q2/Q3` 锚定最近一次未采纳情境并实现 100% 闭合跳题，将 `Q4` 降级为仅测清晰度偏好的随机顺序选项；同时定义共享 `impression_id` 与按 `event_id` 去重的 `[Suggested Event]` 事件链（严禁 1–3 秒粗暴删重与误命名代理点击率）。
-- *English Caption:* **Panel 3 — Execution Templates (Before/After Survey & `[Suggested Event]` Telemetry, Localized Chinese):** Faithful localization of multi-select `Q1` with exhaustive exits (`E–G`), event-anchored `Q2/Q3`, preference-only `Q4`, and `impression_id`/`event_id` telemetry rules prohibiting arbitrary 1–3s timer stripping.
+*图注：* 将缺陷草案改写为拆分可并存行为的 `Q1–Q4` 全闭合问卷，并配套关联 `impression_id` 与禁用 1–3 秒粗暴删重的 `[Suggested Event]` 埋点护栏。
 
 #### 图 4 · 证据边界与决策建议
 
-<a href="docs/media/demos/tc01-4-boundaries.zh-CN.png"><img src="docs/media/demos/tc01-4-boundaries.zh-CN.png" alt="TC-01 图 4：证据边界、禁用结论与分级决策建议（中文本地化展示）" width="760"></a>
+<a href="docs/media/demos/tc01-4-boundaries.zh-CN.png"><img src="docs/media/demos/tc01-4-boundaries.zh-CN.png" alt="DEMO-01 图 4：证据边界、禁用结论与分级决策建议（中文本地化展示）" width="760"></a>
 
-- *中文图注：* **图 4 — 证据边界与决策建议（中文本地化展示）：** 明确当前处于 `HOLD_FOR_CRITICAL_FACT / COMPARE_AND_INSTRUMENT_FIRST` 状态、全分母汇报与统计检验前提要求、禁用结论（小样本外推第一主导原因、静态偏好充当上线效果、自报替代客观曝光、同问卷充当独立交叉验证），以及按风险与可逆性分级的推进和逆转触发条件。
-- *English Caption:* **Panel 4 — Evidence Boundaries & Decision Recommendation (Localized Chinese):** Faithful localization of full-denominator reporting rules, prohibited claims, proportional actions for reversible polish vs. trigger/model overhauls, and reversal triggers.
+*图注：* 明确全分母与抽样前提边界，禁用小样本外推或静态偏好充当效果验证，并给出按改版风险和可逆性分级的下一步动作与逆转触发条件。
 
 ### 截图与能力映射表
 

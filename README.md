@@ -78,42 +78,38 @@ No separate skills, custom slash commands, or hosted APIs are required. UXDA rou
 
 ---
 
-## 4. Representative Workflow Example (`Case TC-01`)
+## 4. Representative Workflow Example (`DEMO-01`)
 
-To demonstrate an end-to-end UXDA `v0.1.0-beta.2` reasoning chain rather than disconnected snippets, the four cropped panels below come from **a single continuous `TC-01` run** (faithfully localized Chinese versions of the same four panels are used in [README.zh-CN.md](README.zh-CN.md)):
+> **Case Provenance & Synthetic Data Note:** The business context, 6 interview participants, and associated behavior counts in `DEMO-01` are **synthetic test inputs**, not real user research results. The Agent outputs below come from an actual UXDA `v0.1.0-beta.2` execution; the Chinese panels in [README.zh-CN.md](README.zh-CN.md) are faithful translations and re-typeset localizations of this same run (existing image files keep their original filename prefixes).
 
-> **Scenario Prompt (`TC-01`):**
+> **Scenario Prompt (`DEMO-01`):**
 > *"We built a 'Proactive Schedule Recommendation Card' inside our productivity app (it can pop up or appear multiple times a day for the same active users). Earlier we ran exploratory interviews with 6 users (5 casually mentioned 'often closing it right away when busy,' and 4 mentioned 'occasionally adopting one or two suggestions'). I want to send a minimal survey: Q1 (single choice) 'Over the past 7 days, what did you do with the proactive recommendation card? A. Saw and adopted / B. Ignored without looking / C. Closed immediately,' plus one question showing users two new visual mockups to pick which one they like better—and use the results to prove the #1 dominant cause from our interviews and prove the new mockup works better. Does this work? Please give revision recommendations and a minimal execution framework."*
 
-### Step-by-Step Excerpts from One Continuous `TC-01` Output
+### Step-by-Step Excerpts from One Continuous `DEMO-01` Output
 
 #### Panel 1 · Problem Understanding & Business Progress Map
 
-<a href="docs/media/demos/tc01-1-progress.png"><img src="docs/media/demos/tc01-1-progress.png" alt="TC-01 Panel 1: Problem Understanding, Fact-vs-Assumption Separation and Business Progress Map" width="760"></a>
+<a href="docs/media/demos/tc01-1-progress.png"><img src="docs/media/demos/tc01-1-progress.png" alt="DEMO-01 Panel 1: Problem Understanding, Fact-vs-Assumption Separation and Business Progress Map" width="760"></a>
 
-- *English Caption:* **Panel 1 — Problem Framing & Business Progress Map (`r0`):** Captures the current workflow stage (`[Active] Research Plan Review`), next conditional milestones, and explicit separation of confirmed inputs (`n=6` co-occurring interview clues), `To Confirm` product premises, and `[Pending Hypothesis]` assumptions.
-- *中文图注：* **图 1 — 问题理解、事实与假设分离及业务推进图（`r0`）：** 呈现当前所处研究评审阶段、条件性推进节点，以及将“已知事实（6 人访谈中的行为共存线索）”“缺失前提（`To Confirm`）”与“`[Pending Hypothesis]`”严格隔离的前置校验。
+*Caption:* Tracks workflow state (`Business Progress Map r0`) and strictly separates confirmed inputs, `To Confirm` premises, and `[Pending Hypothesis]` assumptions before designing research.
 
 #### Panel 2 · Competing Hypotheses & Research Strategy
 
-<a href="docs/media/demos/tc01-2-hypotheses.png"><img src="docs/media/demos/tc01-2-hypotheses.png" alt="TC-01 Panel 2: Competing Hypotheses Matrix and Method Complementarity Strategy" width="760"></a>
+<a href="docs/media/demos/tc01-2-hypotheses.png"><img src="docs/media/demos/tc01-2-hypotheses.png" alt="DEMO-01 Panel 2: Competing Hypotheses Matrix and Method Complementarity Strategy" width="760"></a>
 
-- *English Caption:* **Panel 2 — Competing Hypotheses (`H1–H4`) & Method Complementarity:** Explains why the original single-choice Q1 + static mockup vote fails, maps four rival explanations (Timing/Interruption, Relevance Mismatch, Visual Scannability, Exposure/Measurement Artifact) with disconfirming observations, and pairs telemetry with survey/comprehension checks while flagging shared-bias limits.
-- *中文图注：* **图 2 — 竞争性假设矩阵（`H1–H4`）与方法互补策略：** 指出原互斥单选与静态图偏好无法成立的四处方法学缺陷，给出 4 条竞争性解释（打断时机、相关性偏差、可读性摩擦、曝光/抽样伪影）及各自证伪条件，并明确行为日志、修订问卷与轻量理解测试的互补边界。
+*Caption:* Rejects invalid causal/single-choice leaps, structures four falsifiable competing hypotheses (`H1–H4`), and pairs telemetry, survey, and probes while guarding against shared bias.
 
 #### Panel 3 · Modifiable Execution Templates (Survey & Telemetry)
 
-<a href="docs/media/demos/tc01-3-template.png"><img src="docs/media/demos/tc01-3-template.png" alt="TC-01 Panel 3: Modifiable Survey Before/After Template and Suggested Event Telemetry Anchor" width="760"></a>
+<a href="docs/media/demos/tc01-3-template.png"><img src="docs/media/demos/tc01-3-template.png" alt="DEMO-01 Panel 3: Modifiable Survey Before/After Template and Suggested Event Telemetry Anchor" width="760"></a>
 
-- *English Caption:* **Panel 3 — Execution Templates (Before/After Survey + `[Suggested Event]` Telemetry):** Rebuilds Q1 into a multi-select item separating co-occurring behaviors with exclusive non-exposure exits (`E–G`), anchors Q2/Q3 to the most recent non-adoption event, downgrades Q4 to a randomized preference-only clarity cue, and defines linked `impression_id` telemetry avoiding arbitrary 1–3s dedup.
-- *中文图注：* **图 3 — 可修改研究执行模板（问卷前后对比 + `[Suggested Event]` 埋点方案）：** 将 Q1 改写为可并存多选加互斥未曝光出口（`E–G`），将 Q2/Q3 锚定至最近一次未采纳情境，将 Q4 降级为仅测清晰度偏好的随机化选项，并补充基于 `impression_id` 与 `event_id` 去重的最小事件链（禁用 1–3 秒粗暴删重）。
+*Caption:* Converts the flawed draft into closed skip-logic `Q1–Q4` survey items (separating co-occurring behaviors) and linked `[Suggested Event]` telemetry without blind 1–3s deduplication.
 
 #### Panel 4 · Evidence Boundaries & Decision Recommendation
 
-<a href="docs/media/demos/tc01-4-boundaries.png"><img src="docs/media/demos/tc01-4-boundaries.png" alt="TC-01 Panel 4: Evidence Boundaries, Prohibited Claims and Decision Recommendation" width="760"></a>
+<a href="docs/media/demos/tc01-4-boundaries.png"><img src="docs/media/demos/tc01-4-boundaries.png" alt="DEMO-01 Panel 4: Evidence Boundaries, Prohibited Claims and Decision Recommendation" width="760"></a>
 
-- *English Caption:* **Panel 4 — Evidence Boundaries & Decision Recommendation:** Sets `HOLD_FOR_CRITICAL_FACT / COMPARE_AND_INSTRUMENT_FIRST`, lists prohibited claims (small-sample prevalence extrapolation, preference as efficacy, recall as exposure, two survey items as independent validation), and defines proportional next actions and reversal triggers.
-- *中文图注：* **图 4 — 证据边界与决策建议：** 明确当前状态为待确认关键前提后再部署实验，列明禁用结论（小样本外推总体排名、主观偏好替代上线效果、自报替代客观曝光、同源问卷充当独立交叉验证），并给出按风险与可逆性分级的下一步动作及逆转条件。
+*Caption:* Defines full-denominator and sampling limits, blocks small-sample extrapolation or preference-as-efficacy claims, and specifies proportional next steps and reversal triggers.
 
 ### Screenshot-to-Capability Mapping
 

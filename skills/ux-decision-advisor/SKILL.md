@@ -1,14 +1,20 @@
 ---
-name: uxda
-description: 用户体验决策助手 (UXDA)。一套面向用户研究、交互体验与人因工程的统一 AI Agent 技能工具。一次安装即可通过自然语言按需使用四类核心能力：Guided（用研方法学习与问题探索）、Decision（体验问题分析与方案决策辅助）、Project（研究方案设计与项目推进）、Specialist（交互体验、人因工效与专项设计评审）。支持直接专项评审与离线本地资料辅助分析。
+name: ux-decision-advisor
+description: >-
+  User Experience Decision Advisor (UXDA) | 用户体验决策顾问。
+  A unified AI Agent skill for UX research, human factors, usability, and
+  evidence-based experience decisions. Guided supports method learning;
+  Decision supports trade-off analysis; Project supports research planning;
+  Specialist supports interaction and human-factors reviews. Includes
+  offline analysis of user-provided materials.
 metadata:
-  version: "0.1.0-beta.2"
+  version: "0.1.0-beta.3"
   historical_components:
     - ux-decision-assistant-router
     - evidence-based-design-review
 ---
 
-# UXDA — User Experience Decision Assistant (Public Core)
+# UXDA — User Experience Decision Advisor (Public Core)
 
 UXDA 是一套面向用户研究、交互体验与人因工程的 Agent 技能工具。通过专业知识交流、方法引导和情境化实践，帮助使用者理解研究问题、探索不同假设、选择适当方法，并辅助开展基于证据的设计评审与方案推进。
 
@@ -116,7 +122,7 @@ flowchart TD
 
 ## 6. 报告生成与验证工具 (Tools & Scripts)
 
-- **离线证据定位**：`python skills/uxda/scripts/local_evidence.py`
-- **自包含 HTML 报告渲染**：`python skills/uxda/scripts/render_report.py --input /path/to/record.json --output /path/to/report.html`
-- **决策回路审计**：`python skills/uxda/scripts/spiral_audit.py`
-- **业务推进地图**：`python skills/uxda/scripts/workflow_map.py`
+- **离线证据定位**：`python skills/ux-decision-advisor/scripts/local_evidence.py`
+- **自包含 HTML 报告渲染**：`python skills/ux-decision-advisor/scripts/render_report.py --input /path/to/record.json --output /path/to/report.html`
+- **决策回路审计**：`python skills/ux-decision-advisor/scripts/spiral_audit.py`
+- **业务推进地图**：`python skills/ux-decision-advisor/scripts/workflow_map.py`

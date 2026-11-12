@@ -31,6 +31,6 @@ Required shared fields: `project_id` (nonblank string); `mode` (`guided`, `decis
 
 Shared: no mode selection implies user approval of a study, deployment, legal exemption or extra research track. The user can switch modes without deleting existing records.
 
-CLI: `python skills/uxda/scripts/mode_output_audit.py --input /private/record.json`. For actual UX data validation, additionally use V analyzer and citation checks. This checker cannot certify legality, empirical validity, statistical accuracy, or that a claim was actually checked online.
+CLI: `python skills/ux-decision-advisor/scripts/mode_output_audit.py --input /private/record.json`. For actual UX data validation, additionally use V analyzer and citation checks. This checker cannot certify legality, empirical validity, statistical accuracy, or that a claim was actually checked online.
 
 For an existing report without row-level data, set `data_status: supplied_summary`, add `source_report_locator` and `analysis_claims_recomputed: false`. You may critique the supplied author claims but must not present them as independently recomputed or empirically verified.

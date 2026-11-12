@@ -1,8 +1,20 @@
 # UXDA Installation Guide
 
-This guide covers installing and verifying the UXDA Public Core (`v0.1.0-beta.2`) skills across common AI coding assistant environments.
+This guide covers installing and verifying the UXDA Public Core (`v0.1.0-beta.3`) skills across common AI coding assistant environments.
 
 ---
+
+## Recommended CLI Installation (Project-Local)
+
+Install the public Skill by its stable identifier (requires Node.js 22.20+ and a compatible agent host):
+
+```bash
+npx skills add RagnTec/User-Experience-Decision-Assistant --skill ux-decision-advisor --agent codex
+```
+
+This is a project-local install unless you explicitly add `--global`. Check the CLI result and inspect the installed `SKILL.md` before use. Use the GitHub Release Tag to pin a historical version if needed.
+
+**Migration from `uxda`:** the renamed Skill has a different install identifier. Existing `uxda` installations will not be silently replaced or removed. Review the old installation before removing it; users on `v0.1.0-beta.2` can keep that version.
 
 ## Prerequisites
 
@@ -17,7 +29,7 @@ This guide covers installing and verifying the UXDA Public Core (`v0.1.0-beta.2`
 
 ---
 
-**Access note:** While the repository is Private, GitHub access is required to clone it. When it becomes Public, the same URL will work without repository membership.
+**Access note:** This GitHub repository is public and can be cloned over HTTPS without repository membership.
 
 ## Method 1: Global Installation (Recommended)
 
@@ -29,7 +41,7 @@ git clone https://github.com/RagnTec/User-Experience-Decision-Assistant.git /tmp
 
 # 2. Copy the unified UXDA skill to the canonical shared directory
 mkdir -p ~/.agents/skills
-cp -R /tmp/uxda-source/skills/uxda ~/.agents/skills/
+cp -R /tmp/uxda-source/skills/ux-decision-advisor ~/.agents/skills/
 
 # 3. Clean up source checkout
 rm -rf /tmp/uxda-source
@@ -40,7 +52,7 @@ If you use Google Antigravity, link the canonical directory to your Antigravity 
 
 ```bash
 mkdir -p ~/.gemini/config/skills
-ln -sf ~/.agents/skills/uxda ~/.gemini/config/skills/uxda
+ln -sf ~/.agents/skills/ux-decision-advisor ~/.gemini/config/skills/ux-decision-advisor
 ```
 
 ---
@@ -52,7 +64,7 @@ If your team requires pinning skills within a specific repository root:
 ```bash
 cd /path/to/your/project
 mkdir -p .agents/skills
-cp -R /path/to/uxda/skills/uxda .agents/skills/
+cp -R /path/to/uxda/skills/ux-decision-advisor .agents/skills/
 ```
 Ensure your agent harness is configured to inspect `.agents/skills/` within the active workspace.
 
@@ -66,8 +78,8 @@ UXDA is designed to work in **Public Core mode** on user-provided in-context mat
 1. **Self-check Script**:
    Test that the internal python validation scripts run without errors:
    ```bash
-   python3 ~/.agents/skills/uxda/scripts/response_preface_check.py --help
-   python3 ~/.agents/skills/uxda/scripts/render_report.py --help
+   python3 ~/.agents/skills/ux-decision-advisor/scripts/response_preface_check.py --help
+   python3 ~/.agents/skills/ux-decision-advisor/scripts/render_report.py --help
    ```
 2. **Interactive Sanity Test**:
    Open a new session with your AI assistant and prompt:

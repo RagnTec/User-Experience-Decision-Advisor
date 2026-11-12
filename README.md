@@ -1,16 +1,16 @@
-# UXDA — User Experience Decision Assistant (Public Core v0.1.0-beta.2)
+# UXDA — User Experience Decision Advisor (Public Core v0.1.0-beta.3)
 
 English | [简体中文](README.zh-CN.md)
 
 [![License: PolyForm Strict 1.0.0](https://img.shields.io/badge/License-PolyForm_Strict_1.0.0-blue.svg)](#license)
-[![Status: Source-Available Public Beta](https://img.shields.io/badge/Release-v0.1.0--beta.2_(Source--Available_Beta)-orange.svg)](#version-mapping--release-identity)
+[![Status: Source-Available Public Beta](https://img.shields.io/badge/Release-v0.1.0--beta.3_(Source--Available_Beta)-orange.svg)](#version-mapping--release-identity)
 [![Architecture: Public Core](https://img.shields.io/badge/Architecture-Public_Core-green.svg)](#architecture--clean-separation)
 
 ---
 
 ## 1. What UXDA Is
 
-UXDA (**User Experience Decision Assistant**) is a unified AI agent skill package (`skills/uxda`) for UX research, interaction design review, and human factors reasoning. Through structured methodological framing, evidence boundary checks, and modifiable study instruments, UXDA helps practitioners formulate research questions, examine competing explanations, design low-resource research pilots, and evaluate design trade-offs.
+UXDA (**User Experience Decision Advisor**) is a unified AI agent skill package (`skills/ux-decision-advisor`) for UX research, interaction design review, and human factors reasoning. Through structured methodological framing, evidence boundary checks, and modifiable study instruments, UXDA helps practitioners formulate research questions, examine competing explanations, design low-resource research pilots, and evaluate design trade-offs.
 
 UXDA is a **structured reasoning and decision-support tool**, not an empirical research substitute or automated certification authority.
 
@@ -28,14 +28,14 @@ UXDA follows a **Standalone-First, Interoperable-by-Design** layout separating t
 ```text
 UXDA Public Core
     │
-    ├── skills/uxda/SKILL.md (Unified Single-Skill Entrypoint)
+    ├── skills/ux-decision-advisor/SKILL.md (Unified Single-Skill Entrypoint)
     │       ├── Guided     (Methodology learning, construct & bias explanation)
     │       ├── Decision   (Design trade-offs, competing hypotheses & reversal triggers)
     │       ├── Project    (Study protocols, modifiable execution templates & telemetry audits)
     │       └── Specialist (Direct ergonomic geometry, hitbox bounds & friction review)
     │
-    ├── skills/uxda/references/ (On-demand methodology, execution templates & standards)
-    ├── skills/uxda/scripts/    (Offline Python verification, audit & evidence tools)
+    ├── skills/ux-decision-advisor/references/ (On-demand methodology, execution templates & standards)
+    ├── skills/ux-decision-advisor/scripts/    (Offline Python verification, audit & evidence tools)
     │
     └── Optional External Context Bundle Contract (v0.2 Generic Specification)
             └── User-Maintained Private Extensions (Proprietary rules & data, kept outside repo)
@@ -47,15 +47,15 @@ UXDA Public Core
 
 | Component / Layer | Public Version | Evolution Track | Role & Scope |
 | :--- | :---: | :---: | :--- |
-| **UXDA Public Core Suite** | **`v0.1.0-beta.2`** | *Source-Available Public Beta* | Unified distribution of skill, methodology references, scripts, and guides |
-| `skills/uxda` (Unified Skill) | `v0.1.0-beta.2` | Consolidated Router (v0.5.4) + Specialist (v0.7.0) | Single entrypoint delivering Guided, Decision, Project, and Specialist workflows |
+| **UXDA Public Core Suite** | **`v0.1.0-beta.3`** | *Source-Available Public Beta* | Unified distribution of skill, methodology references, scripts, and guides |
+| `skills/ux-decision-advisor` (Unified Skill) | `v0.1.0-beta.3` | Consolidated Router (v0.5.4) + Specialist (v0.7.0) | Single entrypoint delivering Guided, Decision, Project, and Specialist workflows |
 | Context Bundle Contract | `v0.2` | Generic Specification v0.2 | Optional JSON interchange specification (no bundled enterprise backend) |
 
 ---
 
 ## 2. Core Capabilities
 
-No separate skills, custom slash commands, or hosted APIs are required. UXDA routes natural-language requests across four internal capabilities within `skills/uxda/SKILL.md`:
+No separate skills, custom slash commands, or hosted APIs are required. UXDA routes natural-language requests across four internal capabilities within `skills/ux-decision-advisor/SKILL.md`:
 
 | Capability | Intended Use | Representative Output |
 | :--- | :--- | :--- |
@@ -66,11 +66,23 @@ No separate skills, custom slash commands, or hosted APIs are required. UXDA rou
 
 ---
 
-## 3. What's New in `v0.1.0-beta.2`
+## 3. What's New in `v0.1.0-beta.3`
+
+This release renames the product to **User Experience Decision Advisor (UXDA)** and the installable Skill to **`ux-decision-advisor`**, without changing the four-capability workflow. The GitHub repository URL and historical Beta tags remain unchanged. New users can run:
+
+```bash
+npx skills add RagnTec/User-Experience-Decision-Assistant --skill ux-decision-advisor
+```
+
+Existing `uxda` installations do not automatically migrate; use [INSTALLATION.md](INSTALLATION.md) for a controlled transition.
+
+### Previously: `v0.1.0-beta.2`
+
+
 
 `v0.1.0-beta.2` transitions UXDA from pure methodology recommendations to **execution enablement** with hardened epistemic and measurement guardrails:
 
-- **Added Modifiable Research Execution Templates** ([research-execution-templates.md](skills/uxda/references/research-execution-templates.md), Templates 1–5): Structured survey, qualitative interview, usability testing, behavioral telemetry event chains, and **low-resource / constrained research pilot** strategies—with explicit research rationale, customizable parameters, evidence limits, and decision links.
+- **Added Modifiable Research Execution Templates** ([research-execution-templates.md](skills/ux-decision-advisor/references/research-execution-templates.md), Templates 1–5): Structured survey, qualitative interview, usability testing, behavioral telemetry event chains, and **low-resource / constrained research pilot** strategies—with explicit research rationale, customizable parameters, evidence limits, and decision links.
 - **Fact vs. Assumption Gate**: Strictly separates `(a) confirmed user-provided facts`, `(b) missing premises (To Confirm)`, and `(c) [Pending Hypothesis]` before locking study objects or metrics—preventing inferred product capabilities from being presented as established facts.
 - **Survey & Qualitative Rigor**: Prohibits stuffing co-occurring behaviors (e.g., adopt, ignore, dismiss over 7 days) into mutually exclusive single-choice items; requires closed skip logic; forbids elevating exploratory small-sample interview counts into population "dominant cause" rankings or treating static mockup preference as validated live effectiveness.
 - **Behavioral Telemetry Integrity**: Separates entry CTR, result CTR, task success rate, and subjective satisfaction; prohibits renaming proxy click ratios as "task success" or "satisfaction"; prohibits mechanical 1–3s interval deduplication (prioritizes unique `event_id`, `impression_id`/`session_id`, and interaction semantics).
@@ -135,7 +147,7 @@ No separate skills, custom slash commands, or hosted APIs are required. UXDA rou
 
 ## 6. Quick Start
 
-### 1. Install `skills/uxda` (macOS / Linux)
+### 1. Install `skills/ux-decision-advisor` (macOS / Linux)
 
 UXDA is an **agent skill package, not a standalone application**. Your AI host must support reading local `SKILL.md` files.
 
@@ -143,17 +155,17 @@ UXDA is an **agent skill package, not a standalone application**. Your AI host m
 git clone https://github.com/RagnTec/User-Experience-Decision-Assistant.git
 cd User-Experience-Decision-Assistant
 mkdir -p ~/.agents/skills
-cp -R skills/uxda ~/.agents/skills/
+cp -R skills/ux-decision-advisor ~/.agents/skills/
 
 # Verify entry file
-test -f ~/.agents/skills/uxda/SKILL.md
+test -f ~/.agents/skills/ux-decision-advisor/SKILL.md
 ```
 
 **Optional Google Antigravity discovery link (verified environment example):**
 
 ```bash
 mkdir -p ~/.gemini/config/skills
-ln -s ~/.agents/skills/uxda ~/.gemini/config/skills/uxda
+ln -s ~/.agents/skills/ux-decision-advisor ~/.gemini/config/skills/ux-decision-advisor
 ```
 
 > **Note:** Check for an existing directory or symlink before running `ln -s`. This path is an example from the tested environment, **not a universal path guaranteed for Claude Code, Cursor, Codex, or Gemini CLI**. **While the repository remains Private, cloning requires GitHub access.**
@@ -169,7 +181,7 @@ ln -s ~/.agents/skills/uxda ~/.gemini/config/skills/uxda
 - **Specialist (Direct Ergonomic Review — No Questionnaire Blocker):**
   `Use the installed uxda skill: On a 10.1-inch 1280×800 industrial touchscreen, evaluate 36×36 px buttons for operators wearing thin gloves.`
 - **With Local Documents (Offline Manifest Search):**
-  See [Local Knowledge & Evidence Layer](skills/uxda/references/local-knowledge-evidence.md) for using `python3 skills/uxda/scripts/local_evidence.py` with an explicit local manifest—kept strictly outside the Public Core repository.
+  See [Local Knowledge & Evidence Layer](skills/ux-decision-advisor/references/local-knowledge-evidence.md) for using `python3 skills/ux-decision-advisor/scripts/local_evidence.py` with an explicit local manifest—kept strictly outside the Public Core repository.
 
 ---
 
@@ -180,7 +192,7 @@ ln -s ~/.agents/skills/uxda ~/.gemini/config/skills/uxda
   - Qualitative samples and convenience/opt-in surveys cannot establish population-level incidence or "#1 root causes."
   - Stated preference for static mockups does not validate real-world behavioral efficacy.
   - Proxy click-through ratios (such as `result clicks / home impressions`) must never be mislabeled as "task success rate" or "user satisfaction," and missing `session_id`/`impression_id` prevents per-exposure funnel reconstruction.
-- **Host Platform Compatibility Scope:** Installation, discovery symlinks, and live skill runs have been verified only in the local `~/.agents/skills/uxda` + Antigravity setup. Cross-host discovery and behavior on **Claude Code, Cursor, Codex, Gemini CLI**, and external skill hubs (**SkillX, Tencent SkillHub**) have **not** been verified in live end-to-end tests; follow [INSTALLATION.md](INSTALLATION.md) for host-specific path binding.
+- **Host Platform Compatibility Scope:** Installation, discovery symlinks, and live skill runs have been verified only in the local `~/.agents/skills/ux-decision-advisor` + Antigravity setup. Cross-host discovery and behavior on **Claude Code, Cursor, Codex, Gemini CLI**, and external skill hubs (**SkillX, Tencent SkillHub**) have **not** been verified in live end-to-end tests; follow [INSTALLATION.md](INSTALLATION.md) for host-specific path binding.
 
 ---
 

@@ -9,7 +9,7 @@ This guide covers installing and verifying the UXDA Public Core (`v0.1.0-beta.3`
 Install the public Skill by its stable identifier (requires Node.js 22.20+ and a compatible agent host):
 
 ```bash
-npx skills add RagnTec/User-Experience-Decision-Assistant --skill ux-decision-advisor --agent codex
+npx skills add RagnTec/User-Experience-Decision-Advisor --skill ux-decision-advisor --agent codex
 ```
 
 This is a project-local install unless you explicitly add `--global`. Check the CLI result and inspect the installed `SKILL.md` before use. Use the GitHub Release Tag to pin a historical version if needed.
@@ -37,7 +37,7 @@ Following the standard multi-agent convention, reusable skills should be install
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/RagnTec/User-Experience-Decision-Assistant.git /tmp/uxda-source
+git clone https://github.com/RagnTec/User-Experience-Decision-Advisor.git /tmp/uxda-source
 
 # 2. Copy the unified UXDA skill to the canonical shared directory
 mkdir -p ~/.agents/skills

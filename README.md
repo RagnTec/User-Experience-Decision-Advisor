@@ -68,10 +68,10 @@ No separate skills, custom slash commands, or hosted APIs are required. UXDA rou
 
 ## 3. What's New in `v0.1.0-beta.3`
 
-This release renames the product to **User Experience Decision Advisor (UXDA)** and the installable Skill to **`ux-decision-advisor`**, without changing the four-capability workflow. The GitHub repository URL and historical Beta tags remain unchanged. New users can run:
+This release renames the product to **User Experience Decision Advisor (UXDA)** and the installable Skill to **`ux-decision-advisor`**, without changing the four-capability workflow. The repository was renamed from `RagnTec/User-Experience-Decision-Assistant` to `RagnTec/User-Experience-Decision-Advisor`; historical Beta tags remain unchanged. New users can run:
 
 ```bash
-npx skills add RagnTec/User-Experience-Decision-Assistant --skill ux-decision-advisor
+npx skills add RagnTec/User-Experience-Decision-Advisor --skill ux-decision-advisor
 ```
 
 Existing `uxda` installations do not automatically migrate; use [INSTALLATION.md](INSTALLATION.md) for a controlled transition.
@@ -152,8 +152,8 @@ Existing `uxda` installations do not automatically migrate; use [INSTALLATION.md
 UXDA is an **agent skill package, not a standalone application**. Your AI host must support reading local `SKILL.md` files.
 
 ```bash
-git clone https://github.com/RagnTec/User-Experience-Decision-Assistant.git
-cd User-Experience-Decision-Assistant
+git clone https://github.com/RagnTec/User-Experience-Decision-Advisor.git
+cd User-Experience-Decision-Advisor
 mkdir -p ~/.agents/skills
 cp -R skills/ux-decision-advisor ~/.agents/skills/
 
@@ -213,4 +213,4 @@ ln -s ~/.agents/skills/ux-decision-advisor ~/.gemini/config/skills/ux-decision-a
 
 UXDA Public Core is distributed as **source-available software under the [PolyForm Strict License 1.0.0](LICENSE)** ([polyformproject.org](https://polyformproject.org/licenses/strict/1.0.0)).
 
-Use is permitted within the non-commercial / permitted bounds specified by the license; commercial use, modification, and redistribution require separate authorization from the maintainer. At this Beta stage, UXDA is intended for learning, research, evaluation, and experimental use—not unreviewed production deployment or sole reliance for high-consequence decisions. Feedback and bug reports are welcome via [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Assistant/issues).
+Use is permitted within the non-commercial / permitted bounds specified by the license; commercial use, modification, and redistribution require separate authorization from the maintainer. At this Beta stage, UXDA is intended for learning, research, evaluation, and experimental use—not unreviewed production deployment or sole reliance for high-consequence decisions. Feedback and bug reports are welcome via [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Advisor/issues).

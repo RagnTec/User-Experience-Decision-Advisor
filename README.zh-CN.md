@@ -6,77 +6,142 @@
 [![状态：源码公开测试版](https://img.shields.io/badge/Release-v0.1.0--beta.2_(源码公开测试版)-orange.svg)](#版本映射与发布标识)
 [![架构：公共核心](https://img.shields.io/badge/Architecture-Public_Core-green.svg)](#架构设计与物理隔离)
 
-UXDA（User Experience Decision Assistant）是一套面向用户研究、交互体验与人因工程的 AI Agent 技能工具。它通过专业知识交流、研究方法引导和情境化实践，帮助使用者理解研究问题、探索不同解释、选择适当的方法，并逐步提升独立分析与开展研究的能力。
-
-UXDA 可以辅助提出研究假设、梳理证据、设计研究方案和讨论初步建议，但不替代真实用户研究或专业研究人员的判断。模型输出属于可供交流、学习与进一步验证的参考内容，不能直接视为已经确认的用户洞察或正式研究结论。
-
 ---
+
+## 1. UXDA 是什么
+
+UXDA（**User Experience Decision Assistant**）是一套面向用户研究、交互体验与人因工程的统一 AI Agent 技能包（`skills/uxda`）。它通过结构化方法推演、证据边界校验与可修改的研究执行模板，辅助使用者拆解体验问题、构建竞争性假设、设计低资源研究试点（Research Pilot）并评估设计方案取舍。
+
+UXDA 是**结构化推理与决策辅助工具**，不能替代真实用户研究或人类专业评审。
 
 > ### ⚠️ 关键专业职责与安全免责声明
-> **UXDA 是结构化推理与决策支持工具，而非自动化合规认证机构。**
-> - UXDA 的所有输出均为**拟议审议建议（Conditional proposals for discussion）**，绝不构成企业最终业务决议、法定合规结论或工程变更批准。
-> - UXDA **不能替代合格专业人类专家的判断**，不能替代政府监管机构审批（如美国 FDA、FAA）、法定技术法规审查（如欧盟 MDR）、技术标准合规认证（如 ISO 国际标准、中国 GB 国家标准），亦不能替代专用的物理、热学、电气或车载碰撞安全测试。
-> - 涉及高风险安全决策领域（医疗设备、车载座舱、工业仪器等），必须始终由具备资质的人类领域专家进行最终复核与批准。
-> - **宿主平台范围说明**：UXDA 本身仅由 Agent 提示词指令规范、结构化参考卡片及本地 Python 校验脚本组成。底层模型的网络传输、推理机制与多轮会话持久化完全由您所使用的宿主 AI 智能体平台决定。
-
----
+> - UXDA 的所有输出均为**拟议审议建议（Conditional proposals for discussion）**，绝不构成企业最终业务决议、法定合规结论或工程放行批准。
+> - UXDA **不能替代合格人类专家的判断**、真实用户实证研究、监管机构审批（如 FDA、FAA、EU MDR）、技术标准合规认证（如 ISO、国家 GB 标准）或专用物理/安全实验测试。
+> - **宿主平台范围说明**：UXDA 仅包含本地 Markdown 技能指令、方法参考卡片与 Python 标准库离线脚本（`local_evidence.py` 支持用户自备 `.docx`/`.xlsx`/`.pdf` 可选解析库）。底层网络传输、模型推理与会话留存均由您所使用的宿主 AI Agent 平台控制（详见 [SECURITY.md](SECURITY.md)）。
 
 <a id="架构设计与物理隔离"></a>
 <a id="architecture"></a>
-## 🏛️ 架构设计与物理隔离
+### 架构设计与物理隔离
 
-UXDA 遵循“**独立优先、设计即互通** (Standalone-First, Interoperable-by-Design)”原则构建，在**公共核心 (Public Core)**与可选的企业私有扩展机制之间维持严格的物理与概念隔离：
+UXDA 遵循“**独立优先、设计即互通**”原则，将**公共核心（Public Core）**与可选私有扩展严格分离：
 
-```
+```text
 UXDA 公共核心 (Public Core)
     │
-    ├── skills/uxda/SKILL.md (统一核心技能入口)
-    │       │
-    │       ├── Guided     (教学引导：概念认知、任务拆解与问题重构)
-    │       ├── Decision   (决策支持：设计取舍权衡与潜在风险识别)
-    │       ├── Project    (方案推进：小规模测试规划与实验控制提示)
-    │       └── Specialist (专家评审：基于证据的人因工程与触控尺寸审查)
+    ├── skills/uxda/SKILL.md (统一单技能入口)
+    │       ├── Guided     (用研方法学习、构念效度与偏差控制引导)
+    │       ├── Decision   (设计方案取舍、竞争性假设与逆转条件)
+    │       ├── Project    (调研设计、可修改执行模板与埋点口径审计)
+    │       └── Specialist (直达人因工效、触控热区与界面摩擦专项评审)
     │
-    ├── 共享参考规范 (Shared References：按需加载方法论、人因与标准规范)
-    ├── 本地工具与素材 (Scripts & Assets：离线校验与证据检索工具)
+    ├── skills/uxda/references/ (按需渐进加载的方法规约、执行模板与标准边界)
+    ├── skills/uxda/scripts/    (离线 Python 校验、质量审计与本地证据定位工具)
     │
-    └── 可选 Context Bundle 契约规范 (v0.2 外部接口约定)
-            │
-            └── 用户自建私有扩展 (Private Extensions：企业专有规范与数据)
+    └── 可选外部 Context Bundle 契约 (v0.2 通用接口规范)
+            └── 用户自建私有扩展 (企业专属规则与研究资料，严禁写入本仓库)
 ```
-
----
 
 <a id="版本映射与发布标识"></a>
 <a id="versioning"></a>
-## 🏷️ 版本映射与发布标识
+### 版本映射与发布标识
 
-UXDA Public Core 从 `v0.1.0-beta.1`（源码公开受限测试版）起开启面向公开社区的独立语义化版本线，当前候选版本为 `v0.1.0-beta.2`，各模块技能则保留各自组件内部演进版本历史：
-
-| 分发层级 / 交付组件 | 公开发布版本 | 组件历史演进线 | 角色与用途定位 |
+| 组件 / 分发层级 | 公开版本号 | 组件演进追踪 | 角色与范围说明 |
 | :--- | :---: | :---: | :--- |
-| **UXDA Public Core 整体套件** | **`v0.1.0-beta.2`** | *源码公开受限测试版 (Source-Available Beta)* | UXDA Agent 技能套件的统一源码公开分发版本 |
-| `skills/uxda` (统一核心技能) | `v0.1.0-beta.2` | 原 Router (v0.5.4) + Specialist (v0.7.0) 一体化重组 | 对外唯一发布的技能包，内置 Guided / Decision / Project / Specialist 四类能力 |
-| 外部 Context Bundle 接口契约 | `v0.2` | 规范草案 v0.2 | 供外部解耦规则/数据源对接的标准 JSON 交换契约 |
+| **UXDA Public Core 套件** | **`v0.1.0-beta.2`** | *源码公开受限测试版 (Source-Available Beta)* | 技能包、方法参考库、离线脚本与文档的统一分发版本 |
+| `skills/uxda`（统一核心技能） | `v0.1.0-beta.2` | 原 Router (v0.5.4) + Specialist (v0.7.0) 一体化整合 | 对外唯一入口，集成 Guided / Decision / Project / Specialist 四类能力 |
+| Context Bundle 接口契约 | `v0.2` | 通用接口规范 v0.2 | 可选 JSON 数据交换约定（仓库内不含企业私有后端实现） |
 
 ---
 
-## 📦 公开测试版包含内容
+## 2. 核心能力（Guided / Decision / Project / Specialist）
 
-| 组件名称 | 目录路径 | 描述说明 |
+无需安装多个独立技能，也无专用斜杠命令或托管 API。在支持加载本地 Skill 的 Agent 会话中，UXDA 会按自然语言意图自动调度 `skills/uxda/SKILL.md` 内部四类能力：
+
+| 核心能力 | 适用任务场景 | 典型输出物 |
 | :--- | :--- | :--- |
-| **UXDA 统一技能 (Unified Skill)** | `skills/uxda` | 核心单一技能入口（技术标识 `uxda`）。内置四类核心能力：Guided（用研方法学习）、Decision（体验取舍决策）、Project（方案设计推进）与 Specialist（人因工效专项评审）。 |
-| **规约与方法库 (References)** | `skills/uxda/references/` | 核心认识论指引、研究执行模板与专业方法规约：`analytical-quality.md`、`evidence-boundaries.md`、`research-execution-templates.md`、`design-integration-baseline.md` 等。 |
-| **离线工具与资产 (Scripts & Assets)** | `skills/uxda/scripts/`, `assets/` | 离线证据定位器 (`local_evidence.py`)、H5 报告渲染器 (`render_report.py`) 及脱网原创知识库。 |
-| **公共文档与指南 (Guides)** | 仓库根目录 (`*.md`) | 单机部署指南、安全隐私政策及方法边界定义。 |
+| **`Guided`** | 学习用研方法、梳理研究起点、理解构念效度与测量偏差控制 | 问题拆解路径、方法原理说明、适用条件取舍与引导练习 |
+| **`Decision`** | 关键体验改版取舍、交互防错风险评估、是否需要投入研究的判断 | 竞争性假设推演、条件性方案结论（保留 / 最小改动 / 试跑 / 暂缓）与逆转触发条件 |
+| **`Project`** | 调研方案设计、**低资源 Research Pilot**、问卷/访谈提纲改写、行为日志口径核查 | 可修改研究执行模板（`research-execution-templates.md`）、指标五要素口径与断链审计 |
+| **`Specialist`** | 人因工效、屏幕点距与触控热区评估、界面交互摩擦走查（**直接评审，无前置问卷阻塞**） | 可复算几何尺寸推演（明示缩放前提）、视觉边框与触控热区区分、可恢复性建议 |
 
 ---
 
-## 🚀 安装、调用与案例演示
+## 3. `v0.1.0-beta.2` 新增内容
 
-### 1. 安装 UXDA 技能（macOS / Linux）
+`v0.1.0-beta.2` 在保持单一 Skill 架构不变的基础上，将能力从“推荐研究方法”延伸至“**可直接修改落地的执行方案与方法学边界防护**”：
 
-UXDA 是一组 **Agent Skill，并不是独立运行的 App**。需要宿主 AI Agent 具备读取本地技能文件的能力。下面的命令安装统一的 UXDA 技能，不会安装大模型或自动启动服务；不同 Agent 的自动识别机制也可能不同。
+- **新增研究执行模板库**（[research-execution-templates.md](skills/uxda/references/research-execution-templates.md)，涵盖 `Template 1–5`）：提供结构化问卷、半结构化访谈、可用性测试、行为埋点事件链及**低资源 / 受限 Research Pilot** 策略，每项模板均附带研究依据、可修改参数、证据边界与决策关联。
+- **事实与假设严格分离（Fact vs. Assumption Gate）**：在实例化模板或分析结论前，明确拆分 `(a) 用户已提供事实`、`(b) 缺失前提（待确认）` 与 `(c) [待确认假设]`，防止把推测的产品触发逻辑写成既定事实。
+- **问卷与定性研究方法学加固**：禁止将同一用户可并存的行为（如 7 天内既采纳又关闭主动推荐）硬塞入互斥单选；要求全选项跳题闭合；严禁以小样本探索访谈（如 `n=6`）直接判定总体“第一主导原因”，亦不允许将静态设计图偏好直接视为上线效果验证。
+- **行为埋点口径防错护栏**：严格区分入口点击率、结果点击率、任务成功率与主观满意度，严禁将代理点击比率直接命名为“搜索成功率”或“用户满意度”；禁止仅以固定 1–3 秒时间窗粗暴删重（优先依据唯一 `event_id`、`impression_id`/`session_id` 及交互重试语义排查）。
+- **方法互补与按风险分级放行**：明确区分方法互补、共享偏差（同一问卷内两题或同源便利样本）与独立重复验证；依据证据强度、决策风险、改动成本与可逆性决定验证门槛，避免对低风险可回退微调机械卡死流程。
+
+---
+
+## 4. 代表性工作流示例（`TC-01` 连续推演主案例）
+
+为完整展示 `v0.1.0-beta.2` 的连续推理链路（而非旧版零散跨场景片段），下文 4 张中文局部截图为 **同一轮 UXDA `v0.1.0-beta.2` `TC-01` 英文连续输出的中文本地化展示**：严格保留原轮运行的研究结构、假设矩阵、执行模板、统计边界与决策条件，未增删研究判断；不冒充未经修改的 Antigravity 原生中文会话截图。英文原图见 [README.md](README.md)。
+
+> **测试提示词（`TC-01` · 主动推荐日程卡片研究方案评审）：**
+> 团队在效率应用内上线了“主动推荐日程卡片”（每天可能向同一批活跃用户弹窗或展示多次）。前期对 6 名用户做了探索性访谈（5 人顺带提到“忙时经常顺手关掉”，4 人提到“偶尔也采纳过一两条”）。团队原计划发一份极简两题问卷：`Q1` 单选“过去 7 天你对卡片的操作（A. 看到并采纳 / B. 忽略没看 / C. 直接关闭）”，加 1 题让用户从两套新视觉方案中二选一，并企图用该结果证明访谈里的“第一主导原因”以及证明“新视觉方案效果更好”。
+
+### 同一轮输出的 4 张连续局部裁切
+
+#### 图 1 · 问题理解与业务推进图
+
+<a href="docs/media/demos/tc01-1-progress.zh-CN.png"><img src="docs/media/demos/tc01-1-progress.zh-CN.png" alt="TC-01 图 1：问题理解、事实与假设分离及业务推进图（中文本地化展示）" width="760"></a>
+
+- *中文图注：* **图 1 — 问题理解与业务推进图（`Business Progress Map r0` · 中文本地化展示）：** 展示当前研究评审所处节点（`[当前阶段 Active]`）、后续条件性路径，以及“已确认 / 用户提供事实（6 人访谈中的行为共存线索）”“`To Confirm` 缺失前提”“`[Pending Hypothesis]` 条件性假设”的三层 `Fact vs. Assumption` 分离。
+- *English Caption:* **Panel 1 — Problem Framing & Business Progress Map (`r0`, Localized Chinese):** Faithful localization of the active review stage, conditional next milestones, and strict separation across confirmed user inputs, missing product premises (`To Confirm`), and `[Pending Hypothesis]` assumptions.
+
+#### 图 2 · 竞争性假设与研究策略
+
+<a href="docs/media/demos/tc01-2-hypotheses.zh-CN.png"><img src="docs/media/demos/tc01-2-hypotheses.zh-CN.png" alt="TC-01 图 2：竞争性假设矩阵与方法互补策略（中文本地化展示）" width="760"></a>
+
+- *中文图注：* **图 2 — 竞争性假设（`H1–H4`）与研究策略（中文本地化展示）：** 直接判定原定问卷不可行并指出关键方法学缺陷；围绕“触发时机/打断摩擦、相关性不匹配、视觉可读性摩擦、曝光/抽样伪影”列出预期观察、证伪观察与低成本排查，并明确行为埋点、修订问卷与轻量理解测试的方法互补关系及共享偏差限制。
+- *English Caption:* **Panel 2 — Competing Hypotheses (`H1–H4`) & Method Complementarity (Localized Chinese):** Faithful localization of the four draft flaws, rival-hypotheses falsification table, and complementary telemetry/survey/comprehension strategy with shared-bias warnings.
+
+#### 图 3 · 可修改研究执行模板（问卷 + 行为埋点）
+
+<a href="docs/media/demos/tc01-3-template.zh-CN.png"><img src="docs/media/demos/tc01-3-template.zh-CN.png" alt="TC-01 图 3：问卷前后对照修改模板与行为数据建议事件链（中文本地化展示）" width="760"></a>
+
+- *中文图注：* **图 3 — 可修改研究执行模板（`Template 1` 问卷重构 + `Template 4` 行为埋点互补 · 中文本地化展示）：** 将 `Q1` 拆分为可并存多选 + 互斥未曝光/遗忘出口（`E–G`），以 `Q2/Q3` 锚定最近一次未采纳情境并实现 100% 闭合跳题，将 `Q4` 降级为仅测清晰度偏好的随机顺序选项；同时定义共享 `impression_id` 与按 `event_id` 去重的 `[Suggested Event]` 事件链（严禁 1–3 秒粗暴删重与误命名代理点击率）。
+- *English Caption:* **Panel 3 — Execution Templates (Before/After Survey & `[Suggested Event]` Telemetry, Localized Chinese):** Faithful localization of multi-select `Q1` with exhaustive exits (`E–G`), event-anchored `Q2/Q3`, preference-only `Q4`, and `impression_id`/`event_id` telemetry rules prohibiting arbitrary 1–3s timer stripping.
+
+#### 图 4 · 证据边界与决策建议
+
+<a href="docs/media/demos/tc01-4-boundaries.zh-CN.png"><img src="docs/media/demos/tc01-4-boundaries.zh-CN.png" alt="TC-01 图 4：证据边界、禁用结论与分级决策建议（中文本地化展示）" width="760"></a>
+
+- *中文图注：* **图 4 — 证据边界与决策建议（中文本地化展示）：** 明确当前处于 `HOLD_FOR_CRITICAL_FACT / COMPARE_AND_INSTRUMENT_FIRST` 状态、全分母汇报与统计检验前提要求、禁用结论（小样本外推第一主导原因、静态偏好充当上线效果、自报替代客观曝光、同问卷充当独立交叉验证），以及按风险与可逆性分级的推进和逆转触发条件。
+- *English Caption:* **Panel 4 — Evidence Boundaries & Decision Recommendation (Localized Chinese):** Faithful localization of full-denominator reporting rules, prohibited claims, proportional actions for reversible polish vs. trigger/model overhauls, and reversal triggers.
+
+### 截图与能力映射表
+
+| 局部截图 | 重点展示区域 | 对应的 UXDA 核心能力 |
+| :--- | :--- | :--- |
+| [图 1](docs/media/demos/tc01-1-progress.zh-CN.png) | 问题理解与业务推进图 | **任务推进追踪与事实/假设分离门禁**：防止把未确认的弹窗频控或埋点存在性脑补为既定产品事实。 |
+| [图 2](docs/media/demos/tc01-2-hypotheses.zh-CN.png) | 竞争性假设与研究策略 | **Decision 竞争性推演与方法互补**：阻断错误归因，给出可证伪矩阵，区分方法互补与共享偏差。 |
+| [图 3](docs/media/demos/tc01-3-template.zh-CN.png) | 执行模板（问卷 + 行为数据） | **Project 执行模板生成（`Template 1` + `Template 4`）**：输出可直接改写的 `Q1–Q4` 闭环题组与 `[Suggested Event]` 五要素护栏。 |
+| [图 4](docs/media/demos/tc01-4-boundaries.zh-CN.png) | 证据边界与决策建议 | **证据边界约束与比例式决策放行**：明示禁用结论、团队决策权属及试跑/全量逆转条件。 |
+
+---
+
+## 5. 适用场景与不适用场景
+
+| 适用场景（当前版本支持） | 不适用场景（非目标边界） |
+| :--- | :--- |
+| 经验问题拆解、竞争性假设梳理与研究方法学习（`Guided` / `Decision`） | 替代真实用户研究、线上日志观测或具备资质的人因领域专家 |
+| 设计与审查**低资源 Research Pilot**、问卷措辞、访谈提纲及埋点事件链（`Project`） | 将小样本访谈（`n=3–6`）或便利抽样问卷直接外推为总体占比、显著差异或排名定论 |
+| 无需前置问卷的屏幕像素几何换算与触控交互摩擦快速走查（`Specialist`） | 法定安全认证、医疗/车载合规审批、物理/热学/碰撞实验室实测替代品 |
+| 结合用户显式授权的本地文档检索（`local_evidence.py`）与按需离线 H5 摘要渲染 | 独立图形控制台、自动同步企业规则库、主动网络抓取或未实测宿主的通用安装保证 |
+
+---
+
+## 6. 快速上手
+
+### 1. 安装 `skills/uxda`（macOS / Linux）
+
+UXDA 是**本地 Agent Skill 技能包，而非独立运行的软件**。您的宿主 AI 智能体需具备读取本地 `SKILL.md` 文件的能力。
 
 ```bash
 git clone https://github.com/RagnTec/User-Experience-Decision-Assistant.git
@@ -84,150 +149,65 @@ cd User-Experience-Decision-Assistant
 mkdir -p ~/.agents/skills
 cp -R skills/uxda ~/.agents/skills/
 
-# 确认技能入口文件存在
+# 确认核心入口文件存在
 test -f ~/.agents/skills/uxda/SKILL.md
 ```
 
-**Google Antigravity（如当前环境需要额外的发现目录链接）：**
+**可选 Google Antigravity 发现目录软链接（已实测环境示例）：**
 
 ```bash
 mkdir -p ~/.gemini/config/skills
 ln -s ~/.agents/skills/uxda ~/.gemini/config/skills/uxda
 ```
 
-重复执行前，请检查同名链接或文件夹是否已经存在。上述路径仅为已使用环境的安装示例，**不代表 Gemini CLI、Claude Code、Cursor 等平台都采用同一路径**。其他宿主应结合 [INSTALLATION.md](INSTALLATION.md) 和对应平台的 Skill 发现规则配置。**目前仓库仍为 Private，克隆时需要具备仓库访问权限。**
+> **提示：** 重复执行 `ln -s` 前请先检查目标路径是否已存在。以上路径仅对应已实测环境，**不承诺适用于 Claude Code、Cursor、Codex 或 Gemini CLI 等所有宿主平台**。**在仓库保持 Private 期间，克隆需具备对应 GitHub 访问权限。**
 
-### 2. 如何在对话中调用？
+### 2. 对话调用示例
 
-UXDA **无需分别安装多个技能，也没有统一的专用斜杠命令或云端 API**。在可以加载本地 Skill 的 Agent 对话中，直接使用自然语言描述你的任务，UXDA 内部会自动匹配并调度对应的能力：
-
-**能力 1：用研方法学习与探索 (Guided)**
-```text
-请使用已安装的 uxda 技能：我们发现购物 App 的商品筛选功能好像不太容易被用户找到，想做点用户研究确认一下。应该从哪里开始？
-```
-
-**能力 2：设计取舍与决策推演 (Decision)**
-```text
-请使用 uxda 技能：我们想取消批量删除文件前的确认弹窗，让操作快一点。比较“删除前二次确认”和“可撤销删除”两种方案，说明认知失误风险、适用条件、关键反例及仍需验证的事项。
-```
-
-**能力 3：研究方案设计与推进 (Project)**
-```text
-请使用 uxda 技能：我们准备比较两种导航布局哪个好用，想先做一轮小规模测试，应该怎么设计？
-```
-
-**能力 4：人因工效与专项评审 (Specialist，直接调用无问卷阻塞)**
-```text
-请使用 uxda 技能：10.1 英寸、1280×800 的工业触摸屏，36×36 像素的按钮给戴厚手套的操作员用，合适吗？
-```
-
-如果 Agent 未自动识别，可以在它支持本地文件读取的前提下，明确要求读取安装目录下的相应 `SKILL.md`。没有企业项目扩展或私有数据，也可以根据当前对话提供的通用场景材料执行 Public Core 分析。
-
-**结合本地文档与自定义规则调用 (Local Knowledge & Rules)**
-
-UXDA 不仅能依赖内置通用方法，也支持结合使用者主动提供的本地资料与项目约束进行分析：
-- **按需加载本地资料**：在对话中直接提供说明，或授权 Agent 读取指定的本地规范文件。Public Core 内置的离线证据定位工具 `local_evidence.py`（位于 `skills/uxda/scripts/local_evidence.py`，详见 [本地知识与证据层说明](skills/uxda/references/local-knowledge-evidence.md)），可通过显式来源清单在本地检索多份授权材料，并记录引用出处与文件变更（SHA 校验）。
-- **规则权属与权威性边界**：使用者自己的研究规范、团队设计守则或内部业务文档属于特定任务的上下文输入，**不自动继承通用公认标准的权威性**。当本地规则与通用人因原则冲突时，Agent 会单独提示适用性边界与潜在风险。
-- **当前能力与扩展接口**：当前 Beta **尚未提供**图形界面、规则库自动导入、注册启停或版本管理系统；Context Bundle 协议仅作为可选的外部扩展接口规范，并非已内建的一键导入工具。
-- **数据隐私与边界区分**：UXDA 自带的本地文件与脚本不发起网络传输、不主动上传用户资料，绝不会自动将用户自定义规则同步至 GitHub 或写入 Public Core 仓库。另一方面，底层模型调用、上下文缓存、本地日志与会话持久化完全由宿主 Agent 平台控制，无法由 UXDA 独立保证仅在当前会话中保留（参见 [SECURITY.md](SECURITY.md)）。
-
-```text
-请使用 UXDA 帮我评估这个研究方案，同时参考我提供的本地研究规范；如存在适用性冲突，请单独提示。
-```
-
-### 3. 通用案例演示 (Demonstrations)
-
-以下截图来自 UXDA 在 Antigravity 中的实际调用，使用的是模拟业务场景，仅展示部分输出。这些截图产生于双 Skill 架构演进期，此处如实保留其原始提示词与 Antigravity 实际调用画面作为历史能力验证记录；在当前单 Skill 架构下，四类能力已完整汇聚于统一的 `uxda` 技能中。当前版本仍处于 Beta 测试阶段，功能表现和专业判断尚未经过充分验证，建议用于体验、学习与辅助分析，重要结论需人工复核。
-
-<details>
-<summary><strong>案例 1｜研究问题引导 (Router)</strong></summary>
-
-**用户原始提示词：**
-
-```text
-我们发现购物 App 的商品筛选功能好像不太容易被用户找到，想做点用户研究确认一下。应该从哪里开始？
-```
-
-<a href="docs/media/demos/demo1.png"><img src="docs/media/demos/demo1.png" alt="Demo 01: 研究问题引导" width="760"></a>
-
-**能力与边界说明**：将模糊的体验问题拆解为不同解释假设，提供初步研究方向与后续协作选择。
-
-</details>
-
-<details>
-<summary><strong>案例 2｜设计决策支持 (Router)</strong></summary>
-
-**用户原始提示词：**
-
-```text
-我们想取消批量删除文件前的确认弹窗，让操作快一点。这样设计合适吗？
-```
-
-<a href="docs/media/demos/demo2.png"><img src="docs/media/demos/demo2.png" alt="Demo 02: 设计决策支持" width="760"></a>
-
-**能力与边界说明**：识别影响方案取舍的关键条件，分析潜在交互风险，并提出初步替代思路。
-
-</details>
-
-<details>
-<summary><strong>案例 3｜研究方案辅助 (Router)</strong></summary>
-
-**用户原始提示词：**
-
-```text
-我们准备比较两种导航布局哪个好用，想先做一轮小规模测试，应该怎么设计？
-```
-
-<a href="docs/media/demos/demo3.png"><img src="docs/media/demos/demo3.png" alt="Demo 03: 研究方案辅助" width="760"></a>
-
-**能力与边界说明**：根据研究目标提出测试设计方向，并提醒关注学习效应、任务安排等实验控制问题。
-
-</details>
-
-<details>
-<summary><strong>案例 4｜触控尺寸专项评审 (Specialist · ⚠️ Known Beta Limitation)</strong></summary>
-
-**用户原始提示词：**
-
-```text
-用 evidence-based-design-review 帮我看看：10.1 英寸、1280×800 的工业触摸屏，36×36 像素的按钮给戴厚手套的操作员用，合适吗？
-```
-
-**局限与边界说明**：
-`Known Beta Limitation`：部分专业标准引用和设计阈值可能存在偏差，重要人因、安全及合规判断需要人工核验。
-
-<a href="docs/media/demos/demo4.png"><img src="docs/media/demos/demo4.png" alt="Demo 04: Specialist 专项评审（Known Beta Limitation）" width="760"></a>
-
-</details>
-
-**想看可视化报告？** 如果宿主 Agent 具备本地文件写入能力，可以在分析后补充：“请先建议适合的 H5/HTML 摘要结构，等我确认后再生成文件。”这是按需的交付形式，不是保证存在的独立图形界面。这里不使用伪造的工具运行截图或量化效果。
-
-## 📖 文档导航
-
-- [安装指南 (Installation Guide)](INSTALLATION.md) — 支持的 Agent 平台配置与单机验证步骤。
-- [快速入门 (Quick Start Guide)](QUICK_START.md) — 5 分钟上手教程与合成推演案例。
-- [方法边界与系统局限 (Methodology & Limitations)](LIMITATIONS.md) — 认识论边界、样本量规则与非目标范围。
-- [贡献指南 (Contributing Guidelines)](CONTRIBUTING.md) — 如何提交改进与补充通用人因卡片。
-- [安全与隐私政策 (Security & Privacy)](SECURITY.md) — 数据隔离边界、宿主平台差异说明及漏洞反馈渠道。
-- [版本发布说明 (Release Notes)](RELEASE_NOTES.md) — `v0.1.0-beta.2` 与 `v0.1.0-beta.1` 变更日志及基线特性。
-
-> *注：上述下级技术文档目前提供英文版原文。*
+- **Guided（方法学习与问题拆解）：**
+  `请使用已安装的 uxda 技能：购物 App 商品筛选似乎难被发现，在发问卷前应如何拆解“没找到”与“不需要”的竞争性假设？`
+- **Decision（设计取舍与逆转门禁）：**
+  `请使用已安装的 uxda 技能：比较“取消批量删除确认弹窗”与“提供可撤销删除”两种方案的误操作风险、适用条件与逆转触发规则。`
+- **Project（执行模板与低成本试点）：**
+  `请使用已安装的 uxda 技能：预算和时间仅够一周内做轻量研究 pilot，请给出可修改的 4 题访谈提纲和 [建议事件] 埋点排查方案。`
+- **Specialist（直达人因评审，无问卷阻塞）：**
+  `请使用已安装的 uxda 技能：10.1 英寸 1280×800 工业触摸屏，36×36 像素按钮给戴薄手套的操作员使用，合适吗？`
+- **结合本地私有文档（离线清单检索）：**
+  参见 [本地知识与证据层说明](skills/uxda/references/local-knowledge-evidence.md)，使用 `python3 skills/uxda/scripts/local_evidence.py` 对显式授权清单执行离线检索，所有私有清单与输出均保留在 Public Core 仓库之外。
 
 ---
+
+## 7. 局限与边界
+
+- **Known Beta Limitation（标准与定量阈值局限）：** 外部专业标准条款细节与未校准的定量基准值仍可能存在偏差；关键人因、安全与合规决策必须对照原版权威标准及真机实测结果复核。
+- **认知与测量边界：**
+  - 小样本定性访谈和便利抽样问卷不能得出总体发生率或“第一主导原因”。
+  - 静态方案的主观偏好选择不能代替上线后的真实行为效果验证。
+  - 代理点击率（如 `搜索结果点击 ÷ 首页曝光`）严禁直接命名为“搜索成功率”或“用户满意度”；缺少 `session_id` / `impression_id` 时无法可靠还原单次曝光漏斗。
+- **宿主平台兼容性边界：** 当前仅在实际使用的 `~/.agents/skills/uxda` 与 Google Antigravity 环境下完成了安装、发现链接与功能加载验证；**Claude Code、Cursor、Codex、Gemini CLI** 以及外部平台（**SkillX、腾讯 SkillHub**）尚未完成真实环境实测，不得推断为开箱通用兼容（详情参见 [INSTALLATION.md](INSTALLATION.md)）。
+
+---
+
+## 8. 安装、进一步文档入口与许可证
+
+### 文档导航
+
+- [安装指南 (Installation Guide)](INSTALLATION.md) — 安装验证命令、离线脚本检查与宿主兼容性边界。
+- [快速入门 (Quick Start Guide)](QUICK_START.md) — 四类核心能力的 5 分钟上手示例。
+- [方法边界与系统局限 (Methodology & Limitations)](LIMITATIONS.md) — 认识论约束、样本原则与非目标边界。
+- [版本发布说明 (Release Notes)](RELEASE_NOTES.md) — `v0.1.0-beta.2` 更新内容、`v0.1.0-beta.1` 基线与验证范围。
+- [安全与隐私政策 (Security & Privacy)](SECURITY.md) — 公共核心与宿主平台数据边界及反馈渠道。
+- [贡献指南 (Contributing Guidelines)](CONTRIBUTING.md) — 社区问题反馈规范与公共核心隔离要求。
+
+> *注：上述下级技术文档目前提供英文版原文。*
 
 <a id="许可证与使用说明"></a>
 <a id="许可证与代码使用条件"></a>
 <a id="许可证评估"></a>
 <a id="license-review"></a>
 <a id="license"></a>
-## ⚖️ 许可证与使用说明
+### 许可证与使用说明
 
-**UXDA Public Core 目前处于公开 Beta 测试阶段。**
+UXDA Public Core 采用 **[PolyForm Strict License 1.0.0](LICENSE)**（[官方条款说明](https://polyformproject.org/licenses/strict/1.0.0)），以**源码公开、使用受限（Source-Available）**方式发布。
 
-我们欢迎个人用户、研究者及符合许可条件的组织使用 UXDA，探索其在人因工程、用户体验研究和交互设计评审中的实际价值，并通过 [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Assistant/issues) 分享使用体验、发现的问题和改进建议。
-
-由于项目仍处于持续开发与验证阶段，部分专业规则、分析能力及跨平台适配尚未完成充分的实际应用验证。因此，**现阶段更建议将 UXDA 用于学习、研究、功能体验和方法评估，不建议直接部署至正式生产环境，或将其输出作为关键业务、安全与合规决策的唯一依据。**
-
-本项目采用 **[PolyForm Strict License 1.0.0](LICENSE)**（[官方条款说明](https://polyformproject.org/licenses/strict/1.0.0)），以源码公开、使用受限（Source-Available）的方式发布。用户可在许可证允许的非商业范围内使用；商业使用、软件修改或再分发需要获得维护者的另行授权。具体权利与限制以仓库中的 `LICENSE` 为准。
-
-随着测试反馈的积累和产品成熟度提升，我们将持续改进 UXDA，并适时评估后续版本的使用与授权方式。
+非商业学习、研究与许可范围内的评估使用受该协议保护；商业使用、代码修改或再分发须另行取得维护者授权。鉴于当前仍处于 Beta 测试阶段，建议将其用于研究学习、方案推演与辅助评审，切勿未经人工核验直接投入正式生产或高风险决策。欢迎通过 [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Assistant/issues) 提交体验反馈与缺陷报告。

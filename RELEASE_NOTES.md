@@ -8,14 +8,14 @@
 
 - Rename the public-facing product from **User Experience Decision Assistant** to **User Experience Decision Advisor**; keep the UXDA abbreviation.
 - Replace the Skill identifier `uxda` with `ux-decision-advisor` and move all core files to the matching skill directory.
-- Refresh bilingual documentation, installation paths, and Skill discovery metadata; keep historical component IDs and the original repository URL unchanged.
+- Refresh bilingual documentation, installation paths, and Skill discovery metadata; preserve historical component IDs and Beta tags. The GitHub repository was renamed from `RagnTec/User-Experience-Decision-Assistant` to `RagnTec/User-Experience-Decision-Advisor`.
 - Include the unchanged PolyForm Strict 1.0.0 LICENSE inside the Skill directory so direct Skill installations carry their license notice.
 - No planned changes to the four capability contracts, offline research assets, Python script logic, or evaluation methodology.
 - Correct a pre-existing documentation example that called an unbundled `fusion_trace_check.py` script; no validator is added or claimed.
 
 ## Installation and migration
 
-New installations should use `npx skills add RagnTec/User-Experience-Decision-Assistant --skill ux-decision-advisor` once this version is on the default branch. Earlier `uxda` installations are not automatically migrated or removed. Keep `v0.1.0-beta.2` as the immutable historical release. The GitHub repository name intentionally remains unchanged.
+New installations should use `npx skills add RagnTec/User-Experience-Decision-Advisor --skill ux-decision-advisor` once this version is on the default branch. Earlier `uxda` installations are not automatically migrated or removed. Keep `v0.1.0-beta.2` as the immutable historical release. The GitHub repository is now `RagnTec/User-Experience-Decision-Advisor` (renamed from `RagnTec/User-Experience-Decision-Assistant`). GitHub preserves historical tags; update local Git remotes and installation commands to the canonical URL.
 
 ## Verification status
 

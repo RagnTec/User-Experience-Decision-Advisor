@@ -68,10 +68,10 @@ UXDA 公共核心 (Public Core)
 
 ## 3. `v0.1.0-beta.3` 命名与分发更新
 
-本版本将正式英文名称统一为 **User Experience Decision Advisor（UXDA）**，中文名称为**用户体验决策顾问**，Skill ID 改为 **`ux-decision-advisor`**。保留原 GitHub 仓库地址与既有 Beta Tag，Guided / Decision / Project / Specialist 四类能力逻辑不因本次改名而改变。
+本版本将正式英文名称统一为 **User Experience Decision Advisor（UXDA）**，中文名称为**用户体验决策顾问**，Skill ID 改为 **`ux-decision-advisor`**。GitHub 仓库已由 `RagnTec/User-Experience-Decision-Assistant` 改名为 `RagnTec/User-Experience-Decision-Advisor`，既有 Beta Tag 保留，Guided / Decision / Project / Specialist 四类能力逻辑不因本次改名而改变。
 
 ```bash
-npx skills add RagnTec/User-Experience-Decision-Assistant --skill ux-decision-advisor
+npx skills add RagnTec/User-Experience-Decision-Advisor --skill ux-decision-advisor
 ```
 
 原 `uxda` 安装不会自动迁移，升级操作请参考 [INSTALLATION.md](INSTALLATION.md)。
@@ -152,8 +152,8 @@ npx skills add RagnTec/User-Experience-Decision-Assistant --skill ux-decision-ad
 UXDA 是**本地 Agent Skill 技能包，而非独立运行的软件**。您的宿主 AI 智能体需具备读取本地 `SKILL.md` 文件的能力。
 
 ```bash
-git clone https://github.com/RagnTec/User-Experience-Decision-Assistant.git
-cd User-Experience-Decision-Assistant
+git clone https://github.com/RagnTec/User-Experience-Decision-Advisor.git
+cd User-Experience-Decision-Advisor
 mkdir -p ~/.agents/skills
 cp -R skills/ux-decision-advisor ~/.agents/skills/
 
@@ -218,4 +218,4 @@ ln -s ~/.agents/skills/ux-decision-advisor ~/.gemini/config/skills/ux-decision-a
 
 UXDA Public Core 采用 **[PolyForm Strict License 1.0.0](LICENSE)**（[官方条款说明](https://polyformproject.org/licenses/strict/1.0.0)），以**源码公开、使用受限（Source-Available）**方式发布。
 
-非商业学习、研究与许可范围内的评估使用受该协议保护；商业使用、代码修改或再分发须另行取得维护者授权。鉴于当前仍处于 Beta 测试阶段，建议将其用于研究学习、方案推演与辅助评审，切勿未经人工核验直接投入正式生产或高风险决策。欢迎通过 [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Assistant/issues) 提交体验反馈与缺陷报告。
+非商业学习、研究与许可范围内的评估使用受该协议保护；商业使用、代码修改或再分发须另行取得维护者授权。鉴于当前仍处于 Beta 测试阶段，建议将其用于研究学习、方案推演与辅助评审，切勿未经人工核验直接投入正式生产或高风险决策。欢迎通过 [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Advisor/issues) 提交体验反馈与缺陷报告。

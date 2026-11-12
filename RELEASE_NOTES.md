@@ -1,3 +1,29 @@
+# Release Notes — UXDA Public Core (`v0.1.0-beta.3`)
+
+**Product:** User Experience Decision Advisor (UXDA) / 用户体验决策顾问  
+**Skill ID:** `ux-decision-advisor`  
+**Canonical path:** `skills/ux-decision-advisor/`
+
+## Changes in v0.1.0-beta.3
+
+- Rename the public-facing product from **User Experience Decision Assistant** to **User Experience Decision Advisor**; keep the UXDA abbreviation.
+- Replace the Skill identifier `uxda` with `ux-decision-advisor` and move all core files to the matching skill directory.
+- Refresh bilingual documentation, installation paths, and Skill discovery metadata; keep historical component IDs and the original repository URL unchanged.
+- Include the unchanged PolyForm Strict 1.0.0 LICENSE inside the Skill directory so direct Skill installations carry their license notice.
+- No planned changes to the four capability contracts, offline research assets, Python script logic, or evaluation methodology.
+
+## Installation and migration
+
+New installations should use `npx skills add RagnTec/User-Experience-Decision-Assistant --skill ux-decision-advisor` once this version is on the default branch. Earlier `uxda` installations are not automatically migrated or removed. Keep `v0.1.0-beta.2` as the immutable historical release. The GitHub repository name intentionally remains unchanged.
+
+## Verification status
+
+This document records the intended release delta, not a claim of independent cross-agent or marketplace validation. Verify post-merge file inventory, GitHub Tag release, project-local installation, and channel indexing separately.
+
+---
+
+## Historical Release Notes — v0.1.0-beta.2
+
 # Release Notes — UXDA Public Core (`v0.1.0-beta.2`)
 
 UXDA (User Experience Decision Assistant) Public Core (`v0.1.0-beta.2`) extends the unified single-skill Beta architecture (`skills/uxda`) with ready-to-adapt research execution templates and methodological safeguards hardened through local pilot evaluations.

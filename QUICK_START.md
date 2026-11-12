@@ -1,4 +1,4 @@
-# UXDA Quick Start Guide
+# User Experience Decision Advisor (UXDA) — Quick Start Guide
 
 Get up and running with UXDA in 5 minutes using simple, synthetic scenarios.
 

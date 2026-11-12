@@ -1,16 +1,16 @@
-# UXDA — 用户体验决策助手 (Public Core v0.1.0-beta.2)
+# UXDA — 用户体验决策顾问 (Public Core v0.1.0-beta.3)
 
 [English](README.md) | 简体中文
 
 [![许可证：PolyForm Strict 1.0.0](https://img.shields.io/badge/License-PolyForm_Strict_1.0.0-blue.svg)](#许可证与使用说明)
-[![状态：源码公开测试版](https://img.shields.io/badge/Release-v0.1.0--beta.2_(源码公开测试版)-orange.svg)](#版本映射与发布标识)
+[![状态：源码公开测试版](https://img.shields.io/badge/Release-v0.1.0--beta.3_(源码公开测试版)-orange.svg)](#版本映射与发布标识)
 [![架构：公共核心](https://img.shields.io/badge/Architecture-Public_Core-green.svg)](#架构设计与物理隔离)
 
 ---
 
 ## 1. UXDA 是什么
 
-UXDA（**User Experience Decision Assistant**）是一套面向用户研究、交互体验与人因工程的统一 AI Agent 技能包（`skills/uxda`）。它通过结构化方法推演、证据边界校验与可修改的研究执行模板，辅助使用者拆解体验问题、构建竞争性假设、设计低资源研究试点（Research Pilot）并评估设计方案取舍。
+UXDA（**User Experience Decision Advisor**）是一套面向用户研究、交互体验与人因工程的统一 AI Agent 技能包（`skills/ux-decision-advisor`）。它通过结构化方法推演、证据边界校验与可修改的研究执行模板，辅助使用者拆解体验问题、构建竞争性假设、设计低资源研究试点（Research Pilot）并评估设计方案取舍。
 
 UXDA 是**结构化推理与决策辅助工具**，不能替代真实用户研究或人类专业评审。
 
@@ -28,14 +28,14 @@ UXDA 遵循“**独立优先、设计即互通**”原则，将**公共核心（
 ```text
 UXDA 公共核心 (Public Core)
     │
-    ├── skills/uxda/SKILL.md (统一单技能入口)
+    ├── skills/ux-decision-advisor/SKILL.md (统一单技能入口)
     │       ├── Guided     (用研方法学习、构念效度与偏差控制引导)
     │       ├── Decision   (设计方案取舍、竞争性假设与逆转条件)
     │       ├── Project    (调研设计、可修改执行模板与埋点口径审计)
     │       └── Specialist (直达人因工效、触控热区与界面摩擦专项评审)
     │
-    ├── skills/uxda/references/ (按需渐进加载的方法规约、执行模板与标准边界)
-    ├── skills/uxda/scripts/    (离线 Python 校验、质量审计与本地证据定位工具)
+    ├── skills/ux-decision-advisor/references/ (按需渐进加载的方法规约、执行模板与标准边界)
+    ├── skills/ux-decision-advisor/scripts/    (离线 Python 校验、质量审计与本地证据定位工具)
     │
     └── 可选外部 Context Bundle 契约 (v0.2 通用接口规范)
             └── 用户自建私有扩展 (企业专属规则与研究资料，严禁写入本仓库)
@@ -47,15 +47,15 @@ UXDA 公共核心 (Public Core)
 
 | 组件 / 分发层级 | 公开版本号 | 组件演进追踪 | 角色与范围说明 |
 | :--- | :---: | :---: | :--- |
-| **UXDA Public Core 套件** | **`v0.1.0-beta.2`** | *源码公开受限测试版 (Source-Available Beta)* | 技能包、方法参考库、离线脚本与文档的统一分发版本 |
-| `skills/uxda`（统一核心技能） | `v0.1.0-beta.2` | 原 Router (v0.5.4) + Specialist (v0.7.0) 一体化整合 | 对外唯一入口，集成 Guided / Decision / Project / Specialist 四类能力 |
+| **UXDA Public Core 套件** | **`v0.1.0-beta.3`** | *源码公开受限测试版 (Source-Available Beta)* | 技能包、方法参考库、离线脚本与文档的统一分发版本 |
+| `skills/ux-decision-advisor`（统一核心技能） | `v0.1.0-beta.3` | 原 Router (v0.5.4) + Specialist (v0.7.0) 一体化整合 | 对外唯一入口，集成 Guided / Decision / Project / Specialist 四类能力 |
 | Context Bundle 接口契约 | `v0.2` | 通用接口规范 v0.2 | 可选 JSON 数据交换约定（仓库内不含企业私有后端实现） |
 
 ---
 
 ## 2. 核心能力（Guided / Decision / Project / Specialist）
 
-无需安装多个独立技能，也无专用斜杠命令或托管 API。在支持加载本地 Skill 的 Agent 会话中，UXDA 会按自然语言意图自动调度 `skills/uxda/SKILL.md` 内部四类能力：
+无需安装多个独立技能，也无专用斜杠命令或托管 API。在支持加载本地 Skill 的 Agent 会话中，UXDA 会按自然语言意图自动调度 `skills/ux-decision-advisor/SKILL.md` 内部四类能力：
 
 | 核心能力 | 适用任务场景 | 典型输出物 |
 | :--- | :--- | :--- |
@@ -66,11 +66,23 @@ UXDA 公共核心 (Public Core)
 
 ---
 
-## 3. `v0.1.0-beta.2` 新增内容
+## 3. `v0.1.0-beta.3` 命名与分发更新
+
+本版本将正式英文名称统一为 **User Experience Decision Advisor（UXDA）**，中文名称为**用户体验决策顾问**，Skill ID 改为 **`ux-decision-advisor`**。保留原 GitHub 仓库地址与既有 Beta Tag，Guided / Decision / Project / Specialist 四类能力逻辑不因本次改名而改变。
+
+```bash
+npx skills add RagnTec/User-Experience-Decision-Assistant --skill ux-decision-advisor
+```
+
+原 `uxda` 安装不会自动迁移，升级操作请参考 [INSTALLATION.md](INSTALLATION.md)。
+
+### 历史版本：`v0.1.0-beta.2`
+
+
 
 `v0.1.0-beta.2` 在保持单一 Skill 架构不变的基础上，将能力从“推荐研究方法”延伸至“**可直接修改落地的执行方案与方法学边界防护**”：
 
-- **新增研究执行模板库**（[research-execution-templates.md](skills/uxda/references/research-execution-templates.md)，涵盖 `Template 1–5`）：提供结构化问卷、半结构化访谈、可用性测试、行为埋点事件链及**低资源 / 受限 Research Pilot** 策略，每项模板均附带研究依据、可修改参数、证据边界与决策关联。
+- **新增研究执行模板库**（[research-execution-templates.md](skills/ux-decision-advisor/references/research-execution-templates.md)，涵盖 `Template 1–5`）：提供结构化问卷、半结构化访谈、可用性测试、行为埋点事件链及**低资源 / 受限 Research Pilot** 策略，每项模板均附带研究依据、可修改参数、证据边界与决策关联。
 - **事实与假设严格分离（Fact vs. Assumption Gate）**：在实例化模板或分析结论前，明确拆分 `(a) 用户已提供事实`、`(b) 缺失前提（待确认）` 与 `(c) [待确认假设]`，防止把推测的产品触发逻辑写成既定事实。
 - **问卷与定性研究方法学加固**：禁止将同一用户可并存的行为（如 7 天内既采纳又关闭主动推荐）硬塞入互斥单选；要求全选项跳题闭合；严禁以小样本探索访谈（如 `n=6`）直接判定总体“第一主导原因”，亦不允许将静态设计图偏好直接视为上线效果验证。
 - **行为埋点口径防错护栏**：严格区分入口点击率、结果点击率、任务成功率与主观满意度，严禁将代理点击比率直接命名为“搜索成功率”或“用户满意度”；禁止仅以固定 1–3 秒时间窗粗暴删重（优先依据唯一 `event_id`、`impression_id`/`session_id` 及交互重试语义排查）。
@@ -135,7 +147,7 @@ UXDA 公共核心 (Public Core)
 
 ## 6. 快速上手
 
-### 1. 安装 `skills/uxda`（macOS / Linux）
+### 1. 安装 `skills/ux-decision-advisor`（macOS / Linux）
 
 UXDA 是**本地 Agent Skill 技能包，而非独立运行的软件**。您的宿主 AI 智能体需具备读取本地 `SKILL.md` 文件的能力。
 
@@ -143,17 +155,17 @@ UXDA 是**本地 Agent Skill 技能包，而非独立运行的软件**。您的�
 git clone https://github.com/RagnTec/User-Experience-Decision-Assistant.git
 cd User-Experience-Decision-Assistant
 mkdir -p ~/.agents/skills
-cp -R skills/uxda ~/.agents/skills/
+cp -R skills/ux-decision-advisor ~/.agents/skills/
 
 # 确认核心入口文件存在
-test -f ~/.agents/skills/uxda/SKILL.md
+test -f ~/.agents/skills/ux-decision-advisor/SKILL.md
 ```
 
 **可选 Google Antigravity 发现目录软链接（已实测环境示例）：**
 
 ```bash
 mkdir -p ~/.gemini/config/skills
-ln -s ~/.agents/skills/uxda ~/.gemini/config/skills/uxda
+ln -s ~/.agents/skills/ux-decision-advisor ~/.gemini/config/skills/ux-decision-advisor
 ```
 
 > **提示：** 重复执行 `ln -s` 前请先检查目标路径是否已存在。以上路径仅对应已实测环境，**不承诺适用于 Claude Code、Cursor、Codex 或 Gemini CLI 等所有宿主平台**。**在仓库保持 Private 期间，克隆需具备对应 GitHub 访问权限。**
@@ -169,7 +181,7 @@ ln -s ~/.agents/skills/uxda ~/.gemini/config/skills/uxda
 - **Specialist（直达人因评审，无问卷阻塞）：**
   `请使用已安装的 uxda 技能：10.1 英寸 1280×800 工业触摸屏，36×36 像素按钮给戴薄手套的操作员使用，合适吗？`
 - **结合本地私有文档（离线清单检索）：**
-  参见 [本地知识与证据层说明](skills/uxda/references/local-knowledge-evidence.md)，使用 `python3 skills/uxda/scripts/local_evidence.py` 对显式授权清单执行离线检索，所有私有清单与输出均保留在 Public Core 仓库之外。
+  参见 [本地知识与证据层说明](skills/ux-decision-advisor/references/local-knowledge-evidence.md)，使用 `python3 skills/ux-decision-advisor/scripts/local_evidence.py` 对显式授权清单执行离线检索，所有私有清单与输出均保留在 Public Core 仓库之外。
 
 ---
 
@@ -180,7 +192,7 @@ ln -s ~/.agents/skills/uxda ~/.gemini/config/skills/uxda
   - 小样本定性访谈和便利抽样问卷不能得出总体发生率或“第一主导原因”。
   - 静态方案的主观偏好选择不能代替上线后的真实行为效果验证。
   - 代理点击率（如 `搜索结果点击 ÷ 首页曝光`）严禁直接命名为“搜索成功率”或“用户满意度”；缺少 `session_id` / `impression_id` 时无法可靠还原单次曝光漏斗。
-- **宿主平台兼容性边界：** 当前仅在实际使用的 `~/.agents/skills/uxda` 与 Google Antigravity 环境下完成了安装、发现链接与功能加载验证；**Claude Code、Cursor、Codex、Gemini CLI** 以及外部平台（**SkillX、腾讯 SkillHub**）尚未完成真实环境实测，不得推断为开箱通用兼容（详情参见 [INSTALLATION.md](INSTALLATION.md)）。
+- **宿主平台兼容性边界：** 当前仅在实际使用的 `~/.agents/skills/ux-decision-advisor` 与 Google Antigravity 环境下完成了安装、发现链接与功能加载验证；**Claude Code、Cursor、Codex、Gemini CLI** 以及外部平台（**SkillX、腾讯 SkillHub**）尚未完成真实环境实测，不得推断为开箱通用兼容（详情参见 [INSTALLATION.md](INSTALLATION.md)）。
 
 ---
 

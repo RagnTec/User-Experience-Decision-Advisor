@@ -11,6 +11,7 @@
 - Refresh bilingual documentation, installation paths, and Skill discovery metadata; keep historical component IDs and the original repository URL unchanged.
 - Include the unchanged PolyForm Strict 1.0.0 LICENSE inside the Skill directory so direct Skill installations carry their license notice.
 - No planned changes to the four capability contracts, offline research assets, Python script logic, or evaluation methodology.
+- Correct a pre-existing documentation example that called an unbundled `fusion_trace_check.py` script; no validator is added or claimed.
 
 ## Installation and migration
 

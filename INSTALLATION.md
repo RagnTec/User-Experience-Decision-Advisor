@@ -1,6 +1,6 @@
 # UXDA Installation Guide
 
-This guide covers installing and verifying the UXDA Public Core (`v0.1.0-beta.1`) skills across common AI coding assistant environments.
+This guide covers installing and verifying the UXDA Public Core (`v0.1.0-beta.2`) skills across common AI coding assistant environments.
 
 ---
 

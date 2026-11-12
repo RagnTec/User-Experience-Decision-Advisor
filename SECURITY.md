@@ -34,7 +34,8 @@ Security and boundary updates are provided for active beta versions:
 
 | Version | Supported | Notes |
 | :--- | :--- | :--- |
-| `v0.1.0-beta.1` | :white_check_mark: | Current Public Beta Candidate |
+| `v0.1.0-beta.2` | :white_check_mark: | Current Public Beta Candidate |
+| `v0.1.0-beta.1` | :white_check_mark: | Prior Consolidated Single-Skill Beta Baseline |
 | Historical components | :x: | Deprecated developmental prototypes (e.g., dual-skill router/specialist iterations) |
 
 ---

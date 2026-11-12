@@ -12,7 +12,7 @@ The unified UXDA skill supports four core capabilities, selectable directly thro
 | :--- | :--- | :--- | :--- |
 | **`guided`** | "Teach me how to...", "Where should we start research on..." | Pedagogical walkthrough & structured methodology learning | Foundational concepts, methodology trade-offs, & practice exercises |
 | **`decision`** | "Help us decide...", "Review the trade-offs of..." | High-stakes choice evaluation and error-mode analysis | Executive decision brief, competing hypotheses, & reversal gates |
-| **`project`** | "We have an ongoing study on...", "Help us audit this test data..." | Research study design, logging sanity checks, and review | Milestone review, data verification, & task decomposition |
+| **`project`** | "We have an ongoing study on...", "Help us audit this test data..." | Research execution templates, study design, logging sanity checks, and review | Survey/interview/usability/telemetry templates (`research-execution-templates.md`), milestone review, & data verification |
 | **`specialist`** | "Evaluate touch button size for...", "Review UI friction on..." | Laser-focused physical ergonomics and interface review | Quantitative physical math, touch hitbox bounds, & heuristic audit |
 
 ---

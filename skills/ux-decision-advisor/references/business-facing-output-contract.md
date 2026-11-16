@@ -15,7 +15,7 @@ This is an **organizing principle of logical flow**, NOT a rigid four-box templa
 ## Non-negotiable scientific & statistical reporting discipline
 
 A business-first style must never compromise empirical truth or statistical validity:
-- **Never claim $p > 0.05$ proves no difference or equality**: state "no statistically significant difference detected under this sample size ($N=\dots$), with insufficient power to rule out meaningful effects."
+- **Never claim $p > 0.05$ proves no difference or equality**: Failure to reject the null hypothesis does not establish equivalence. Whether practically meaningful effects can be ruled out depends on the effect estimate, uncertainty interval, and a justified threshold for practical importance. Do not assert insufficient statistical power without supporting analysis.
 - **Statistical tail discipline**: directional (one-tailed) test outcomes must match directional hypotheses ($p=0.285$ is not $>0.50$; do not cite opposite-tail or misaligned probabilities).
 - **Survivor bias & selection bias**: treat as methodological risks/competing explanations, not proven empirical facts unless demonstrated with dropout data.
 - **Metric discipline**: specify denominators, units of analysis, and behavioral meaning (e.g. CTR reflects click incidence under specific exposure, not visual attention, task comprehension, or satisfaction; relative $+15\%$ differs from $+15$ percentage points).

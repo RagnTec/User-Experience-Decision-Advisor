@@ -5,7 +5,7 @@ Keep professional user research and human-factors quality **visible and verifiab
 
 ## In chat: a decision-linked whole-to-part narrative
 
-1. **Compact business progress route first** for every substantive project response, including the first turn: actual confirmed/completed → current question → 1–3 provisional next steps; optional research as branches. Routine updates may use a single line. This must appear before any `# D`/`# E`/`# O` heading and before current recommendations. Do not fabricate milestones, approvals or precise schedules.
+1. **Useful research judgement first**: in ordinary conversation, lead with what can be responsibly said, why it matters to the user task, and what will change the decision. A business-progress route is optional for requested planning, milestones or multi-stage handoff; distinguish candidate and confirmed work. Do not fabricate progress, approvals or precise schedules.
 2. **Research judgement summary** in a natural, concise paragraph: which decision is being considered, what the UX evidence currently supports, strongest cognition/task mechanism, evidence boundary and tentative action. Clearly distinguish facts, expert inference, user evidence and unresolved uncertainty.
 3. **2–4 selected professional sections** (only those materially relevant): user/task/context and hidden goals; design/HF mechanism and alternative explanation; evidence/methodology and sample/statistical boundaries; regulation/industry conventions and authorization; candidate actions, decision reversals and next useful inputs. Within each section, give a clear point and a readable explanation, not fragmented one-sentence bullet stacks.
 4. **Detailed layer on demand**: user can request full original data, survey/in-depth interview methodology, sampling, coding/denominators, sources/quotes, competing hypotheses, geometry/calculations, full cross-market comparability, audit/provenance and every phase change. Never claim detail exists if it was not produced; never silently drop a safety/legal block from summary.
@@ -15,7 +15,7 @@ Do not mechanically repeat all O/E/D/V headings in every reply. Research depth d
 
 ## In offline H5: layered disclosure
 
-- Above the fold: compact route, research judgement snapshot, evidence boundaries and next/stop/reversal condition. Never use unsupported percentages, confidence scores, or assurance badges.
+- Above the fold: research judgement snapshot, evidence boundaries and next/stop/reversal condition; compact route only when useful or explicitly requested. Never use unsupported percentages, confidence scores, or assurance badges.
 - Default: O/E/D/V professional modules are separately collapsible; evidence trace is separately expandable. Provide a visible "expand all" control and ensure printing includes details. Use native keyboard-accessible `<details>` controls when available.
 - All deeper information stays in the exported HTML (only with user authorization), rather than hidden in separate network-dependent assets. Synthetic data must stay labeled synthetic in synopsis as well as details.
 - Additional `research_summary` fields are optional for backward compatibility: `mechanism`, `mechanism_status` (`observed|supported|hypothesis|unknown`), `evidence_status`, `decision_condition`, optional `focus`. The synopsis falls back conservatively when missing, without inventing sources. An `observed` label cannot be inferred from mere design principle or agent hypothesis.

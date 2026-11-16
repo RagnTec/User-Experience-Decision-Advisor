@@ -1,9 +1,9 @@
-# UXDA — 用户体验决策顾问 (Public Core v0.1.0-beta.3)
+# UXDA — 用户体验决策顾问 (Public Core v0.1.0-beta.4-rc.1)
 
 [English](README.md) | 简体中文
 
 [![许可证：PolyForm Strict 1.0.0](https://img.shields.io/badge/License-PolyForm_Strict_1.0.0-blue.svg)](#许可证与使用说明)
-[![状态：源码公开测试版](https://img.shields.io/badge/Release-v0.1.0--beta.3_(源码公开测试版)-orange.svg)](#版本映射与发布标识)
+[![状态：同行评审候选版](https://img.shields.io/badge/Release-v0.1.0--beta.4--rc.1_(同行评审候选版)-orange.svg)](#版本映射与发布标识)
 [![架构：公共核心](https://img.shields.io/badge/Architecture-Public_Core-green.svg)](#架构设计与物理隔离)
 
 ---
@@ -196,14 +196,55 @@ ln -s ~/.agents/skills/ux-decision-advisor ~/.gemini/config/skills/ux-decision-a
 
 ---
 
-## 8. 安装、进一步文档入口与许可证
+## 8. 同行试用说明与反馈计划 (Beta.4 RC.1)
+
+UXDA 是一套面向用户研究、交互体验与人因工程的实验性 AI Agent 技能工具。一次安装即可按需使用四类核心能力：
+- **Guided**：用研方法学习、构念辨析与调研起点探索。
+- **Decision**：设计取舍分析、反例假说与决策风险支持。
+- **Project**：研究方案设计、轻量工具执行与数据口径审计。
+- **Specialist**：触控尺寸计算、人因工程复核与界面摩擦走查。
+
+### 本次 v0.1.0-beta.4-rc.1 重点优化内容
+1. **默认业务优先表达**：默认首轮回答直击业务与研究核心（*当前判断 → 关键依据与体验机制 → 业务影响与最小下一步*），杜绝机械堆砌内部状态码或强制输出流程图。
+2. **立足真实用户遭遇**：从真实用户任务、操作中断与控制感损害切入，解耦“用户自述体验抱怨”与“底层真实技术机理”，避免过早陷入纯工程架构推论。
+3. **方法学与统计推断严谨性**：严格契合 ISO 9241-11:2018 概念定义（消除虚构比率公式）；严禁将 $p > 0.05$ 误读为“证明无差异”；单侧检验严格对齐假设尾向；幸存者偏差作为机制风险严谨推演；准确区分 CTR（点击数 ÷ 曝光数）与注意力、理解度或满意度，明确相对增幅与百分点差异。
+4. **专业深度按需展开**：理论依据、测量构念口径表、竞争性假说排除与反向推翻条件在追问时充分展开，杜绝空洞概念堆砌。
+5. **真实资源预算意识**：契合“两人五工作日”等现实资源约束，提供轻量候选护栏指标与决策条件，不越权给出固定放量比例或硬性技术承诺。
+
+### Beta 已知局限说明
+- **跨宿主 Agent 表现差异**：不同模型（如 Claude 3.5 Sonnet、Gemini 2.5 Pro、GPT-4o）与宿主客户端（Cursor、Claude Code、Antigravity）对 Skill 指令的遵循程度存在一定离散。
+- **大模型输出稳定性**：尽管设置了边界门禁，大模型仍可能存在偶发推断偏差。
+- **必须经过人类专家复核**：UXDA 输出均为拟议审议建议，关键业务、合规、人因及安全决策必须由具备资质的人类专家最终把关。
+
+### 同行安装试用方式
+1. 从 GitHub Pre-release 下载 `ux-decision-advisor-v0.1.0-beta.4-rc.1.zip`；
+2. 解压到您本地 Agent 技能目录（如 `~/.agents/skills/ux-decision-advisor`）；
+3. 确认解压目录包含 `SKILL.md`、`references/`、`assets/`、`scripts/` 与 `LICENSE`；
+4. 在支持 Agent Skill 的工具中通过自然语言触发：`调用已安装的 ux-decision-advisor 技能，评估……`。
+
+### 同行评审反馈模板
+诚邀具有用户研究、HCI、人因或产品协作经验的同行在 [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Advisor/issues) 中提交反馈。可选用以下极简格式：
+
+```markdown
+### UXDA 同行评审反馈
+- **测试模型与宿主**：[例如：Antigravity (Gemini 2.5 Pro) / Cursor (Claude 3.5 Sonnet)]
+- **实际测试的问题**：[您输入的原始 Prompt]
+- **回答中有价值的部分**：[洞察准确、可实操建议等]
+- **存在的问题与对应原文**：[指出错误、误导或不当表述]
+- **问题分类**：[ ] 科学/方法学正确性  [ ] 用户体验分析  [ ] 业务可用性  [ ] 表达/风格偏好
+- **期待的改善**：[您期望 UXDA 如何处理该问题]
+```
+
+---
+
+## 9. 安装、进一步文档入口与许可证
 
 ### 文档导航
 
 - [安装指南 (Installation Guide)](INSTALLATION.md) — 安装验证命令、离线脚本检查与宿主兼容性边界。
 - [快速入门 (Quick Start Guide)](QUICK_START.md) — 四类核心能力的 5 分钟上手示例。
 - [方法边界与系统局限 (Methodology & Limitations)](LIMITATIONS.md) — 认识论约束、样本原则与非目标边界。
-- [版本发布说明 (Release Notes)](RELEASE_NOTES.md) — `v0.1.0-beta.2` 更新内容、`v0.1.0-beta.1` 基线与验证范围。
+- [版本发布说明 (Release Notes)](RELEASE_NOTES.md) — `v0.1.0-beta.4-rc.1` 更新内容、历史基线与验证范围。
 - [安全与隐私政策 (Security & Privacy)](SECURITY.md) — 公共核心与宿主平台数据边界及反馈渠道。
 - [贡献指南 (Contributing Guidelines)](CONTRIBUTING.md) — 社区问题反馈规范与公共核心隔离要求。
 
@@ -218,4 +259,6 @@ ln -s ~/.agents/skills/ux-decision-advisor ~/.gemini/config/skills/ux-decision-a
 
 UXDA Public Core 采用 **[PolyForm Strict License 1.0.0](LICENSE)**（[官方条款说明](https://polyformproject.org/licenses/strict/1.0.0)），以**源码公开、使用受限（Source-Available）**方式发布。
 
-非商业学习、研究与许可范围内的评估使用受该协议保护；商业使用、代码修改或再分发须另行取得维护者授权。鉴于当前仍处于 Beta 测试阶段，建议将其用于研究学习、方案推演与辅助评审，切勿未经人工核验直接投入正式生产或高风险决策。欢迎通过 [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Advisor/issues) 提交体验反馈与缺陷报告。
+> **重要声明**：PolyForm Strict License 1.0.0 是**源码可用许可证，并非经 OSI 批准的开源许可证（Not an OSI-approved open source license）**。其许可范围严格限定于非商业学习、研究与评估。商业使用、代码修改或商业再分发须另行取得维护者书面授权。
+
+欢迎通过 [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Advisor/issues) 提交体验反馈与缺陷报告。

@@ -4,7 +4,7 @@
 
 **待决策项与决策责任人**：明确 A/B/维持现状/试点或等待的选择，适用目标市场、产品机制与任务。没有资料就标注未知。
 
-**当前建议状态**：`GO / CONDITIONAL_GO / HOLD_FOR_CRITICAL_INFO / BLOCK_PENDING_SPECIALIST_REVIEW / NO_DECISION_NEEDED`。这是研究建议而非法务/工程批准。说明今天可决定和不可决定的部分。
+**当前用研判断**：先用自然语言说明可以支持的判断、条件和不能决定的部分。`GO / CONDITIONAL_GO / HOLD_FOR_CRITICAL_INFO / BLOCK_PENDING_SPECIALIST_REVIEW / NO_DECISION_NEEDED` 仅用于按需审计或正式交接；研究建议不等于法务/工程批准。
 
 ## 最可能遗漏的关键事项（精选 1–3 项）
 

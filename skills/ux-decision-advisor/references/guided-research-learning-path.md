@@ -22,14 +22,16 @@ Optionally reference [Teaching Knowledge Orchestration](teaching-knowledge-orche
 
 For every stage choose the **smallest meaningful learning unit** for the user's project. Do NOT automatically start surveys, real interviews, external VOC collection, or tests merely because S4/S5 appears in the map. When the user has no data, S5 can teach hypothetical analysis rules using **explicitly synthetic practice data**, never call it an actual research finding. Load [analytical-quality](analytical-quality.md) and [evidence-boundaries](evidence-boundaries.md) to ensure uncalibrated formulas, arbitrary thresholds, or fabricated metrics are not output as findings. Non-applicability and user skip remain visible in the full record with reasons.
 
-## Required teaching-stage microstructure (always visible, concise)
+## Required teaching-stage reasoning (internally complete; visible depth follows user needs)
 
-1. **当前位置与要解决的问题**: compact business map and one sentence linking this learning stage to a decision; clearly separate stage status from business approval.
+1. **当前位置与要解决的问题**: one sentence linking the current research learning question to a real business choice; show stage status/map only for explicit learning plan/progress requests, never imply business approval.
 2. **为什么这样分析**: explain the research/UX mechanism in everyday language. State whether the basis is supplied fact, source-verified knowledge, general method principle, or conditional inference; list one plausible alternative/counterexample.
 3. **方法取舍**: method selected vs at least one reasonable alternative, inputs, what each supports and cannot support. A method is a candidate until the user approves actual research.
 4. **关键概念与知识桥接**: define 1–3 relevant terms in context; explain one applicable foundation / disciplinary concept, why it applies to the specific product, a possible competing explanation, and what to observe or ask. Do not include unrelated disciplines as decoration.
 5. **学习者下一步/项目推进**: In a live project, provide the concrete project increment and next executable step now (method rationale included); in a pure learning or practice scenario where the user asks to be tested, provide ONE task to reason, evaluate or classify with verification criteria.
 6. **复查来源**: point to *actual accessible* local sections or truly accessed web documents where needed; identify version/line/page/DOI and examined scope; explicitly tag missing/unverified sources. Never invent citations; absence of a public source does not prevent correct bounded conceptual instruction.
+
+The six checks above guide private reasoning; a typical chat turn shows the directly useful answer, a brief method rationale and the next practical step. Show detailed concepts, sources and learning exercises on demand rather than turning every answer into a complete curriculum.
 
 ## Optional expanded detail when asked
 

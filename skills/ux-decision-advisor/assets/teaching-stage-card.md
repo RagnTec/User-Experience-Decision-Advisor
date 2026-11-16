@@ -1,4 +1,4 @@
-# Teaching Stage Card | v0.5A (optional private H5 detail; in chat visible minimum)
+# Teaching Stage Card | optional private H5/study-detail template (not a default chat output)
 
 ## 业务推进图 [project ID / stage / revision]
 

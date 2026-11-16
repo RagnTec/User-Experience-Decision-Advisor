@@ -1,9 +1,9 @@
-# UXDA — User Experience Decision Advisor (Public Core v0.1.0-beta.3)
+# UXDA — User Experience Decision Advisor (Public Core v0.1.0-beta.4-rc.1)
 
 English | [简体中文](README.zh-CN.md)
 
 [![License: PolyForm Strict 1.0.0](https://img.shields.io/badge/License-PolyForm_Strict_1.0.0-blue.svg)](#license)
-[![Status: Source-Available Public Beta](https://img.shields.io/badge/Release-v0.1.0--beta.3_(Source--Available_Beta)-orange.svg)](#version-mapping--release-identity)
+[![Status: Peer Review Candidate](https://img.shields.io/badge/Release-v0.1.0--beta.4--rc.1_(Peer_Review_Candidate)-orange.svg)](#version-mapping--release-identity)
 [![Architecture: Public Core](https://img.shields.io/badge/Architecture-Public_Core-green.svg)](#architecture--clean-separation)
 
 ---
@@ -196,21 +196,64 @@ ln -s ~/.agents/skills/ux-decision-advisor ~/.gemini/config/skills/ux-decision-a
 
 ---
 
-## 8. Installation, Documentation & License
+## 8. Peer Review Trial Guide & Feedback Program (Beta.4 RC.1)
+
+UXDA is an experimental AI Agent Skill designed for user research, interaction design decision-making, and human-factors tasks. It delivers four core capabilities:
+- **Guided**: Research knowledge and methodology explanation.
+- **Decision**: UX trade-offs and decision risk support.
+- **Project**: Study planning, lightweight instrument execution, and telemetry audit.
+- **Specialist**: Direct ergonomic evaluation, hitbox boundary check, and friction review.
+
+### What is Enhanced in v0.1.0-beta.4-rc.1
+1. **Business-Facing Presentation**: Default responses answer the core business question directly (*Judgment → Evidence & UX Mechanism → Business Impact & Next Step*), without forcing internal status maps or robotic formatting.
+2. **Evidence-Based UX Reasoning**: Anchors problem framing in authentic user encounters, task interruption, and feeling of control, rather than premature engineering architecture.
+3. **Methodological & Statistical Discipline**: Faithfully aligns with ISO 9241-11:2018 conceptual usability definitions; strictly prohibits claiming $p > 0.05$ proves equivalence; accurately operationalizes CTR (clicks ÷ exposures) and relative vs. percentage point changes.
+4. **Progressive Depth on Demand**: In-depth theoretical models, measurement construct operationalization, and statistical calculations unfold upon follow-up request.
+5. **Actionable Recommendations within Realistic Bounds**: Calibrated to real-world team resource budgets (e.g., 2 researchers in 5 days), providing candidate guardrails and decision criteria rather than arbitrary fixed rollout percentages.
+
+### Beta Limitations
+- **Cross-Host Agent Variance**: Performance may vary across LLM models and host agent platforms (e.g. Claude Code, Cursor, Antigravity).
+- **Model Stability**: While rules enforce boundary checks, LLM hallucination cannot be fully eliminated.
+- **Human Review Required**: All outputs are conditional proposals for discussion; critical business, legal, and safety decisions require qualified human expert review.
+
+### How to Install for Trial
+1. Download `ux-decision-advisor-v0.1.0-beta.4-rc.1.zip` from the GitHub Pre-release.
+2. Unzip into your local agent skills directory (e.g., `~/.agents/skills/ux-decision-advisor`).
+3. Verify directory structure matches `skills/ux-decision-advisor/` containing `SKILL.md`, `references/`, `assets/`, `scripts/`, and `LICENSE`.
+4. In your AI agent, invoke naturally: `Use the installed ux-decision-advisor skill to evaluate ...`.
+
+### Peer Review Feedback Template
+Peers with UX research, HCI, ergonomics, or product management experience are invited to share feedback via [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Advisor/issues). You may use this lightweight template:
+
+```markdown
+### UXDA Peer Review Feedback
+- **Host Agent & LLM Model**: [e.g., Antigravity (Gemini 2.5 Pro) / Cursor (Claude 3.5 Sonnet)]
+- **Actual Query / Prompt Tested**: [The user prompt you submitted]
+- **Valuable Aspects**: [What worked well, accurate insights, actionable advice]
+- **Identified Issues & Quoted Text**: [What was incorrect, misleading, or poorly phrased]
+- **Issue Classification**: [ ] Scientific/Methodological Correctness  [ ] UX Reasoning  [ ] Business Usability  [ ] Expression/Tone Preference
+- **Desired Improvement**: [What you expected UXDA to do instead]
+```
+
+---
+
+## 9. Documentation & License
 
 ### Documentation Index
 
 - [Installation Guide](INSTALLATION.md) — Setup steps, offline script verification, and host compatibility scope.
 - [Quick Start Guide](QUICK_START.md) — 5-minute hands-on walkthrough across all four capabilities.
 - [Methodology & Limitations](LIMITATIONS.md) — Detailed epistemological rules, sample limits, and non-goals.
-- [Release Notes](RELEASE_NOTES.md) — `v0.1.0-beta.2` changelog, `v0.1.0-beta.1` baseline, and verification scope.
+- [Release Notes](RELEASE_NOTES.md) — `v0.1.0-beta.4-rc.1` changelog, historical baselines, and verification scope.
 - [Security & Privacy](SECURITY.md) — Data isolation boundaries, local-script confinement, and reporting guidance.
 - [Contributing Guidelines](CONTRIBUTING.md) — Feedback workflow and Public Core boundary rules.
 
 <a id="license"></a>
 <a id="license-review"></a>
-### License & Beta Usage Guidance
+### License & Usage Guidance
 
-UXDA Public Core is distributed as **source-available software under the [PolyForm Strict License 1.0.0](LICENSE)** ([polyformproject.org](https://polyformproject.org/licenses/strict/1.0.0)).
+UXDA Public Core is distributed under the **[PolyForm Strict License 1.0.0](LICENSE)** ([polyformproject.org](https://polyformproject.org/licenses/strict/1.0.0)).
 
-Use is permitted within the non-commercial / permitted bounds specified by the license; commercial use, modification, and redistribution require separate authorization from the maintainer. At this Beta stage, UXDA is intended for learning, research, evaluation, and experimental use—not unreviewed production deployment or sole reliance for high-consequence decisions. Feedback and bug reports are welcome via [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Advisor/issues).
+> **Notice**: PolyForm Strict 1.0.0 is a **source-available license**, **NOT an OSI-approved open source license**. It permits non-commercial evaluation, research, and educational use. Commercial use, commercial modification, or commercial distribution is strictly prohibited without explicit written authorization from the maintainer.
+
+Feedback and bug reports are welcome via [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Advisor/issues).

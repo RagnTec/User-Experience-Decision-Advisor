@@ -1,3 +1,36 @@
+# Release Notes — UXDA Public Core (`v0.1.0-beta.4-rc.1`)
+
+**Product:** User Experience Decision Advisor (UXDA) / 用户体验决策顾问  
+**Skill ID:** `ux-decision-advisor`  
+**Canonical path:** `skills/ux-decision-advisor/`  
+**Release Phase:** Release Candidate 1 for Peer Review (线上同行评审候选版本)
+
+## Changes in v0.1.0-beta.4-rc.1
+
+### 1. Scientific Core & Inference Rigor
+- **ISO 9241-11:2018 Conceptual Alignment**: Faithfully represent ISO 9241-11:2018 as a conceptual usability framework (effectiveness, efficiency, satisfaction in context of use). Eliminate ad-hoc composite ratios and false universal prerequisite claims. Strictly distinguish conceptual definitions, operational metrics, custom analyst constructs, and context-dependent task costs.
+- **Statistical Inference Discipline**: Prohibit equating $p > 0.05$ with "proven equality" or "no difference"; enforce directional hypothesis tail alignment in exact tests; treat survivor bias / censoring as methodological risks rather than verified empirical facts; explicitly bound small-sample formative tests ($N \le 8$) against population effect-size claims.
+- **Metric Operationalization**: Accurately define CTR (clicks ÷ impressions) as a behavioral traffic routing ratio under specific exposure, rather than visual attention, comprehension, or satisfaction. Explicitly distinguish relative change (+15%) from percentage point change (+15pp).
+
+### 2. UX Reasoning & User Encounter Focus
+- **Grounding in User Encounters**: Start problem analysis from real user tasks, observable interaction friction, and disruption of user control, rather than premature engineering architecture.
+- **Authentic Feedback & Competing Hypotheses**: Respect user descriptions (e.g. "网卡/卡顿") as authentic subjective experience cues rather than patronizingly dismissing them as "self-serving bias" or "fake issues". Systematically formulate and discriminate competing hypotheses (real network jitter, rendering frame hitching, streaming IO contention, HUD display desync) with evidence.
+- **Realistic Resource Calibration**: Explicitly structure research plans within stated resource boundaries (e.g. 2 researchers in 5 days) using high-discrimination triage rather than bloated multi-month discovery suites.
+
+### 3. Business-Facing Presentation Contract (`references/business-facing-output-contract.md`)
+- **Actionable Conclusion First**: Default chat outputs follow the natural logical flow: *Current judgment → Key evidence & UX mechanism → Business impact & smallest next step*.
+- **Internal Machinery Kept Internal**: Keep internal planning identifiers (O/E/D/V, S1–S7, status enums, compulsory menus) internal by default, avoiding robotic software acceptance tone.
+- **Collaborative Implementation Boundaries**: UX research proposes candidate decision conditions, guardrail metric frameworks, and risk factors; research does not arbitrarily dictate fixed rollout percentages (e.g. 20%→50%→100%), fixed monitoring durations (e.g. 48-72h), or unverified engineering fixes without stakeholder agreement.
+- **Progressive Depth on Demand**: Provide deep professional explanations of theoretical models, measurement constructs, and statistical details when explicitly requested.
+
+### 4. Peer Review Readiness
+- Added bilingual Peer Review Trial Guide and concise feedback template.
+- License remains PolyForm Strict 1.0.0 (Non-commercial source-available, not OSI-approved open source).
+
+---
+
+## Historical Release Notes — v0.1.0-beta.3
+
 # Release Notes — UXDA Public Core (`v0.1.0-beta.3`)
 
 **Product:** User Experience Decision Advisor (UXDA) / 用户体验决策顾问  

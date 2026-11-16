@@ -33,7 +33,7 @@
 - **S6 Synthesis & trade-off**: connect valid findings with consumer segments, market conditions, communication consequences, accessibility and safety; compare maintain/change/experiment/stop without made-up ROI.
 - **S7 Reflection & transfer**: learner independently explains why the study did or didn't change the decision, identifies one error and tests transfer to a **different product** with explicit similarity and boundary.
 
-## Response micro-loop for every *meaningful* guided turn
+## Internal teaching micro-loop (visible elements selected by the task)
 
 `stage + user's current attempt → one useful concept (plain language) → why it is relevant / competing view → method and evidence path (including what cannot be established) → specific product/consumer context → actionable micro-practice or annotated example → targeted feedback or next learner choice → business/market decision linkage`.
 
@@ -45,7 +45,7 @@ The knowledge map is a **curriculum/index**, not a database of asserted empirica
 
 ## Pedagogical quality gate (human + structural)
 
-For each teaching stage the answer should let a reader explain **what problem we are researching, why this lens helps, how to test or observe it, what a result can/cannot mean, and how it changes a product decision**. Do not teach unneeded domains as decoration. Formal structure check in `mode_output_audit.py` enforces a relevant knowledge bridge + a product-domain applicability record, not factual truth or educational effectiveness. Independent novice transfer exercises remain necessary.
+For each teaching stage the answer should let a reader explain **what problem we are researching, why this lens helps, how to test or observe it, what a result can/cannot mean, and how it changes a product decision**. Do not teach unneeded domains as decoration. The optional `mode_output_audit.py` checks a **formal internal JSON teaching record** only. It is not a required validation for a brief natural-language answer, and does not establish factual truth or educational effectiveness. Independent novice transfer exercises remain necessary.
 
 ## v0.5D 可复用的离线 HCI 概念卡
 

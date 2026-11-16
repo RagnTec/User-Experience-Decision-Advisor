@@ -34,7 +34,9 @@ Security and boundary updates are provided for active beta versions:
 
 | Version | Supported | Notes |
 | :--- | :--- | :--- |
-| `v0.1.0-beta.3` | :white_check_mark: | Current Public Beta Candidate (renamed Skill) |
+| `v0.1.0-beta.4-rc.2` | :white_check_mark: | Active Peer Review Candidate (branch `release/beta4-rc1`, PR #5) |
+| `v0.1.0-beta.4-rc.1` | :white_check_mark: | Historical Peer Review Candidate 1 |
+| `v0.1.0-beta.3` | :white_check_mark: | Official Stable Baseline on GitHub `main` |
 | `v0.1.0-beta.2` | :white_check_mark: | Historical Public Beta |
 | `v0.1.0-beta.1` | :white_check_mark: | Prior Consolidated Single-Skill Beta Baseline |
 | Historical components | :x: | Deprecated developmental prototypes (e.g., dual-skill router/specialist iterations) |

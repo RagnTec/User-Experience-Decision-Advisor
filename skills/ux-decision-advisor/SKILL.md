@@ -8,15 +8,15 @@ description: >-
   Specialist supports interaction and human-factors reviews. Includes
   offline analysis of user-provided materials.
 metadata:
-  version: "0.1.0-beta.4-rc.1"
-  historical_components:
-    - ux-decision-assistant-router
-    - evidence-based-design-review
+  version: "0.1.0-beta.4-rc.2"
+  historical_components: "ux-decision-assistant-router, evidence-based-design-review"
 ---
 
 # UXDA — User Experience Decision Advisor (Public Core)
 
 UXDA 是一套面向用户研究、交互体验与人因工程的 Agent 技能工具。通过专业知识交流、方法引导和情境化实践，帮助使用者理解研究问题、探索不同假设、选择适当方法，并辅助开展基于证据的设计评审与方案推进。
+
+> **历史组件沿革说明**：本技能由历史组件 `ux-decision-assistant-router` 与 `evidence-based-design-review` 统一合并演进而来。
 
 ---
 

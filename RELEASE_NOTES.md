@@ -1,3 +1,42 @@
+# Release Notes — UXDA Public Core (`v0.1.0-beta.4-rc.2`)
+
+**Product:** User Experience Decision Advisor (UXDA) / 用户体验决策顾问  
+**Skill ID:** `ux-decision-advisor`  
+**Canonical path:** `skills/ux-decision-advisor/`  
+**Release Phase:** Release Candidate 2 for Peer Review (线上同行评审候选版本 2)
+
+## Changes in v0.1.0-beta.4-rc.2
+
+### 1. Agent Skills Frontmatter Specification Compatibility
+- **String-to-String Metadata Mapping**: Replaced the YAML list in `metadata.historical_components` with a specification-compliant string (`"ux-decision-assistant-router, evidence-based-design-review"`), adhering strictly to the [Agent Skills Specification](https://agentskills.io/specification).
+- **Body Lineage Documentation**: Documented historical component evolution explicitly in the markdown body of `SKILL.md`.
+
+### 2. Multi-Track Versioning & Documentation Synchronization
+- **Unambiguous Version Delineation**: Synchronized version mappings across `README.md`, `README.zh-CN.md`, `INSTALLATION.md`, `RELEASE_NOTES.md`, and `SECURITY.md`.
+  - Main Branch Stable Baseline: `v0.1.0-beta.3`
+  - Historical RC 1: `v0.1.0-beta.4-rc.1`
+  - Active Peer Review Candidate: `v0.1.0-beta.4-rc.2` (PR #5 unmerged, branch `release/beta4-rc1`)
+- **Installation Method Clarification**: Delineated the three distinct installation pathways: Release ZIP extraction, Git branch/tag clone, and CLI package managers. Explicitly noted that default installations from `main` fetch `v0.1.0-beta.3`, preventing version mismatch during testing.
+
+### 3. Representative Workflow Showcase (`DEMO-02`)
+- **Real Business-First Workflow**: Added `DEMO-02` (Game Lag vs. Render Frame Hitching under 2-person, 5-day constraints) to demonstrate the refined business-first interaction protocol:
+  - Immediate identification of authentic user experience friction and disrupted control;
+  - Bounded multi-hypothesis framing (network jitter, frame hitching, streaming IO, HUD desync);
+  - High-leverage 2-person, 5-day triage plan with clear research vs. engineering boundaries;
+  - On-demand progressive expansion into deep theoretical, algorithmic, and telemetry details.
+- **Historical Baseline Preservation**: Preserved `DEMO-01` (Proactive Schedule Recommendation Card) as the historical `v0.1.0-beta.2` reference baseline.
+
+### 4. Statistical Data Consistency
+- **Contingency Parameter Clarification**: Re-verified Fisher exact test parameters in the formative usability test case:
+  - Baseline group (Group A): 7/8 completed (87.5%), 1/8 incomplete;
+  - Variant group (Group B): 5/8 completed (62.5%), 3/8 incomplete;
+  - Fisher exact two-sided $p \approx 0.5692$ (directional one-sided $p \approx 0.2846$);
+  - Clarified that `5/8 vs 3/8` describes successful vs. unsuccessful participants within the new variant group, distinct from group-to-group completion rate comparisons (`7/8 vs 5/8`).
+
+---
+
+## Historical Release Notes — v0.1.0-beta.4-rc.1
+
 # Release Notes — UXDA Public Core (`v0.1.0-beta.4-rc.1`)
 
 **Product:** User Experience Decision Advisor (UXDA) / 用户体验决策顾问  

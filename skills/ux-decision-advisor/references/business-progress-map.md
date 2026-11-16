@@ -4,16 +4,16 @@
 
 ## What the user sees first
 
-For **every substantive response in any decision project, including the FIRST evaluation turn**, start with one **small, project-specific business-progress flowchart** before detailed analysis, evidence, or recommendations. The map must answer: *current business objective; which stages are confirmed or completed; where we are now; what next 1–3 steps are recommended, optional, or blocked; what the user can prepare/choose*. This is a user-visible **planning and navigation aid**, not the UX journey map, not the Decision Ledger, not a compliance certificate, and not a project management commitment.
+When the user asks for a project roadmap, research progress, a milestone or formal handoff, provide one **small, project-specific business-progress map**; otherwise start with a concise professional UX research conclusion. The map must answer: *current business objective; which stages are confirmed or completed; where we are now; what next 1–3 steps are recommended, optional, or blocked; what the user can prepare/choose*. This is a user-visible **planning and navigation aid**, not the UX journey map, not the Decision Ledger, not a compliance certificate, and not a project management commitment.
 
 - New project: propose a **3–9 step** route, adapting names and length to the problem. Explicitly cover jurisdiction/platform and cognitive-HF/industry-norm applicability when relevant; never label them completed or irrelevant without a verified basis. Do not use a fixed O→E→V→D waterfall. Risk-proportionate jurisdiction/industry-rule preflight belongs before implementation recommendations. Respect dependencies, parallel work and user-confirmed optional branches. Default: `需求/决策界定 → 法规与平台规则适用性 → 人因/行业惯例适用性 → 用户任务与体验评估 → 证据检查 → [待用户确认 O/E/D/V] → 方案选择及业务交接`; remove or combine irrelevant stages.
-- Intermediate turn: show a **compact single-line flowchart** plus user-confirmed/identified O/E/D/V scope (or Mermaid when rendering reliably supported) with the current node emphasized, completed/confirmed stages visibly distinct from candidate stages, plus one line for optional/blocked paths and next preparation. Avoid making the user scroll past a giant chart every turn.
+- Intermediate turn **when a map is genuinely useful**: show a **compact single-line flowchart** plus user-confirmed/identified O/E/D/V scope (or Mermaid when rendering reliably supported) with the current node emphasized, completed/confirmed stages visibly distinct from candidate stages, plus one line for optional/blocked paths and next preparation. Avoid making the user scroll past a giant chart every turn.
 - Major stage milestone, plan modification, workflow request or H5 report: render the **expanded flowchart** with dependencies and user-confirmed optional branches. Use a text fallback if Mermaid/diagramming is not available. Do not insist on generating a separate H5 without user acceptance.
 - Each stage must identify a *decision-related deliverable*, not just a research activity. After a new source or change, state what was updated and keep unaffected historical steps intact. Show 1–3 next recommended steps rather than confidently inventing the entire downstream execution plan. Mark forecasts and estimated requirements as provisional. No fabricated duration, owners, cost or completion percentage.
 
 ## Binding output-template rule
 
-The flowchart is the **first visible response block**, not a footer after a `# D` or `# E` report. All D/E/O/V templates must keep a prefatory business map. Substantive analytical or decision steps within the map must be strictly governed by loading [analytical-quality](analytical-quality.md) and [evidence-boundaries](evidence-boundaries.md). If a short D template calls for a first-screen conclusion, that instruction means the **first analytic content AFTER the map**. See [First-screen Output Gate](first-screen-output-gate.md).
+The user-facing UX finding and evidence boundary come first by default. A business map, when requested or needed for multi-stage navigation, follows the core finding or appears as part of a user-requested workflow deliverable; do not impose a prefatory map on all D/E/O/V reports. Substantive analytical or decision steps within the map must be strictly governed by loading [analytical-quality](analytical-quality.md) and [evidence-boundaries](evidence-boundaries.md). For ordinary UX replies the research conclusion is the first visible content; add a map only when planning or handoff is useful. See [First-screen Output Gate](first-screen-output-gate.md).
 
 ## Status and authority rules
 
@@ -59,7 +59,7 @@ Both are **plans**, not claims that actual research has been done. Use current e
 
 ## v0.4D.3 compact visual route
 
-The initial H5 view shows last grounded confirmed/completed, current focus and up to two provisional next steps; complete dependencies, optional research and preparation are expandable. In chat, use a compact route before a coherent research judgement. See [Progressive Research Presentation](progressive-research-presentation.md). Never conceal decisive blockers.
+The initial H5 view shows last grounded confirmed/completed, current focus and up to two provisional next steps; complete dependencies, optional research and preparation are expandable. In chat, prioritize the coherent research judgement; a compact route is optional for explicit workflow or milestone requests. See [Progressive Research Presentation](progressive-research-presentation.md). Never conceal decisive blockers.
 
 
 ## Re-entering O/E after an earlier D report (v0.4D.8)
@@ -67,4 +67,4 @@ A D *report delivered* is not a *product decision approved*. In the next O/E map
 
 ## v0.5A first mode checkpoint
 
-For a NEW project, the compact map begins with `需求 → [当前] 协作模式（教学/决策/评审，待确认） → 目标/法规/用户证据预检 → 范围 O/E/D/V 确认 → 授权范围内分析 → 阶段复盘` rather than presenting a definitive quick-decision plan. Explicit user mode+scope selections may complete both checkpoints immediately. In `guided`, optionally expand S1–S7 learning map; these are learnable milestones, not mandatory new studies. Never silently label D choice or business approval completed.
+For an EXPLICIT project-planning request, show the proposed mode/scope and research steps in a compact map, distinguishing confirmed from candidate work. For ordinary requests do not force a map or mode checkpoint before an actionable UX analysis. Explicit user mode+scope selections may complete both checkpoints immediately. In `guided`, optionally expand S1–S7 learning map; these are learnable milestones, not mandatory new studies. Never silently label D choice or business approval completed.

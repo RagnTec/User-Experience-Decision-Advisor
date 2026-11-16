@@ -1,4 +1,4 @@
-> v0.4D.5 routing override: new Router projects **always** show the four available O/E/D/V directions, identify likely scope, and ask whether the user confirms that scope before starting independent specialist paths. Existing clear wording is intent evidence, **not** scope-only consent. Once confirmed, retain the choice without repeated questioning. See [Router Scope Contract](router-scope-contract.md).
+> Local business-first pilot precedence: clear bounded advisory requests are answered directly with evidence limits; O/E/D/V selection is a private routing aid, not a compulsory first-turn menu. Additional real-world research/action remains separately authorized. See [Business-Facing Output Contract](business-facing-output-contract.md).
 
 # Progressive Decision Collaboration | v0.3.3
 

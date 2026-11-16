@@ -1,3 +1,111 @@
+# Release Notes — UXDA Public Core (`v0.1.0-beta.4-rc.3`)
+
+**Product:** User Experience Decision Advisor (UXDA) / 用户体验决策顾问  
+**Skill ID:** `ux-decision-advisor`  
+**Canonical path:** `skills/ux-decision-advisor/`  
+**Release Phase:** Release Candidate 3 for Bilingual Peer Review (双语同行评审候选版本 3)
+
+## Changes in v0.1.0-beta.4-rc.3
+
+### 1. Native Bilingual Core Architecture (`SKILL.md`)
+- **English-First Presentation with Chinese Parity**: Re-architected the main `SKILL.md` entrypoint to prioritize international English display (compatible with LobeHub Marketplace and global agent environments) while retaining full professional and semantic Chinese equivalence.
+- **Language Adaptation Policy**: Explicitly defined rules for input language matching: English input yields English output; Chinese input yields Chinese output; user overrides are respected; never provides unprompted dual-language responses; language choice never alters evidence thresholds, risk tiers, or research conclusions.
+- **16 Key Scientific Terminology Equivalences**: Aligned core constructs (Usability/可用性, Effectiveness/有效性, Efficiency/效率, Satisfaction/满意度, Human Factors/人因工程, Construct Validity/构念效度, Evidence/证据, Hypothesis/假设, Association/关联, Causation/因果关系, Statistical Significance/统计显著性, Practical Significance/实际意义, User-perceived Problem/用户感知问题, Technical Root Cause/技术根因, Design Recommendation/设计建议, Compliance Requirement/合规要求).
+
+### 2. Strict Installation Overwrite Safety
+- **Defensive Extraction Script**: Updated `INSTALLATION.md` and documentation with a non-destructive installation sequence that halts immediately (`exit 1`) if the target destination folder or symlink (including broken symlinks) already exists.
+- **Isolated Staging Validation**: Enforced extracting to an isolated temporary directory first, validating archive structure (`SKILL.md` and `LICENSE`), and performing an atomic directory move to prevent corrupt or partial installations.
+- **CLI Risk Disclosure**: Noted that Vercel Skills CLI may update in-place without prompting, recommending project-local installations or guarded ZIP extraction where strict non-destructive isolation is required.
+
+### 3. Marketplace Synchronization Delineation
+- **Index Origin Clarification**: Documented that community marketplaces (including LobeHub) bind to the repository default branch (`main`, currently locked at `v0.1.0-beta.3`). Candidate releases (`v0.1.0-beta.4-rc.3`) are installed directly via GitHub Release ZIP or Vercel Skills CLI with `@v0.1.0-beta.4-rc.3`.
+
+---
+
+## Historical Release Notes — v0.1.0-beta.4-rc.2
+
+# Release Notes — UXDA Public Core (`v0.1.0-beta.4-rc.2`)
+
+**Product:** User Experience Decision Advisor (UXDA) / 用户体验决策顾问  
+**Skill ID:** `ux-decision-advisor`  
+**Canonical path:** `skills/ux-decision-advisor/`  
+**Release Phase:** Release Candidate 2 for Peer Review (线上同行评审候选版本 2)
+
+## Changes in v0.1.0-beta.4-rc.2
+
+### 1. Agent Skills Frontmatter Specification Compatibility
+- **String-to-String Metadata Mapping**: Replaced the YAML list in `metadata.historical_components` with a specification-compliant string (`"ux-decision-assistant-router, evidence-based-design-review"`), adhering strictly to the [Agent Skills Specification](https://agentskills.io/specification).
+- **Body Lineage Documentation**: Documented historical component evolution explicitly in the markdown body of `SKILL.md`.
+
+### 2. Multi-Track Versioning & Documentation Synchronization
+- **Unambiguous Version Delineation**: Synchronized version mappings across `README.md`, `README.zh-CN.md`, `INSTALLATION.md`, `RELEASE_NOTES.md`, and `SECURITY.md`.
+  - Main Branch Stable Baseline: `v0.1.0-beta.3`
+  - Historical RC 1: `v0.1.0-beta.4-rc.1`
+  - Active Peer Review Candidate: `v0.1.0-beta.4-rc.2` (PR #5 unmerged, branch `release/beta4-rc1`)
+- **Installation Method Clarification**: Delineated the three distinct installation pathways: Release ZIP extraction, Git branch/tag clone, and CLI package managers. Explicitly noted that default installations from `main` fetch `v0.1.0-beta.3`. For Vercel Skills CLI, verified the official tag syntax:
+  ```bash
+  npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4-rc.2 --skill ux-decision-advisor
+  ```
+- **Verified Package Composition (92 Files Total)**: Verified through Git tree inspection at tag `v0.1.0-beta.4-rc.2`:
+  - `references/`: 59 files
+  - `assets/`: 16 files
+  - `scripts/`: 15 files
+  - `SKILL.md`: 1 file
+  - `LICENSE`: 1 file
+  Total: 92 files (packaged in `ux-decision-advisor-v0.1.0-beta.4-rc.2.zip`, SHA-256: `c2aa7a0c5b0c0122d94064957b1cc88c589baf50d2bd0c971ed73dc417bb7cff`).
+
+### 3. Representative Workflow Showcase (`DEMO-02`)
+- **Real Business-First Workflow**: Added `DEMO-02` (Game Lag vs. Render Frame Hitching under 2-person, 5-day constraints) to demonstrate the refined business-first interaction protocol:
+  - Immediate identification of authentic user experience friction and disrupted control;
+  - Bounded multi-hypothesis framing (network jitter, frame hitching, streaming IO, HUD desync);
+  - High-leverage 2-person, 5-day triage plan with clear research vs. engineering boundaries;
+  - On-demand progressive expansion into deep theoretical, algorithmic, and telemetry details.
+- **Historical Baseline Preservation**: Preserved `DEMO-01` (Proactive Schedule Recommendation Card) as the historical `v0.1.0-beta.2` reference baseline.
+
+### 4. Statistical Data Consistency
+- **Contingency Parameter Clarification**: Re-verified Fisher exact test parameters in the formative usability test case:
+  - Baseline group (Group A): 7/8 completed (87.5%), 1/8 incomplete;
+  - Variant group (Group B): 5/8 completed (62.5%), 3/8 incomplete;
+  - Fisher exact two-sided $p \approx 0.5692$ (directional one-sided $p \approx 0.2846$);
+  - Clarified that `5/8 vs 3/8` describes successful vs. unsuccessful participants within the new variant group, distinct from group-to-group completion rate comparisons (`7/8 vs 5/8`).
+
+---
+
+## Historical Release Notes — v0.1.0-beta.4-rc.1
+
+# Release Notes — UXDA Public Core (`v0.1.0-beta.4-rc.1`)
+
+**Product:** User Experience Decision Advisor (UXDA) / 用户体验决策顾问  
+**Skill ID:** `ux-decision-advisor`  
+**Canonical path:** `skills/ux-decision-advisor/`  
+**Release Phase:** Release Candidate 1 for Peer Review (线上同行评审候选版本)
+
+## Changes in v0.1.0-beta.4-rc.1
+
+### 1. Scientific Core & Inference Rigor
+- **ISO 9241-11:2018 Conceptual Alignment**: Faithfully represent ISO 9241-11:2018 as a conceptual usability framework (effectiveness, efficiency, satisfaction in context of use). Eliminate ad-hoc composite ratios and false universal prerequisite claims. Strictly distinguish conceptual definitions, operational metrics, custom analyst constructs, and context-dependent task costs.
+- **Statistical Inference Discipline**: Prohibit equating $p > 0.05$ with "proven equality" or "no difference"; enforce directional hypothesis tail alignment in exact tests; treat survivor bias / censoring as methodological risks rather than verified empirical facts; explicitly bound small-sample formative tests ($N \le 8$) against population effect-size claims.
+- **Metric Operationalization**: Accurately define CTR (clicks ÷ impressions) as a behavioral traffic routing ratio under specific exposure, rather than visual attention, comprehension, or satisfaction. Explicitly distinguish relative change (+15%) from percentage point change (+15pp).
+
+### 2. UX Reasoning & User Encounter Focus
+- **Grounding in User Encounters**: Start problem analysis from real user tasks, observable interaction friction, and disruption of user control, rather than premature engineering architecture.
+- **Authentic Feedback & Competing Hypotheses**: Respect user descriptions (e.g. "网卡/卡顿") as authentic subjective experience cues rather than patronizingly dismissing them as "self-serving bias" or "fake issues". Systematically formulate and discriminate competing hypotheses (real network jitter, rendering frame hitching, streaming IO contention, HUD display desync) with evidence.
+- **Realistic Resource Calibration**: Explicitly structure research plans within stated resource boundaries (e.g. 2 researchers in 5 days) using high-discrimination triage rather than bloated multi-month discovery suites.
+
+### 3. Business-Facing Presentation Contract (`references/business-facing-output-contract.md`)
+- **Actionable Conclusion First**: Default chat outputs follow the natural logical flow: *Current judgment → Key evidence & UX mechanism → Business impact & smallest next step*.
+- **Internal Machinery Kept Internal**: Keep internal planning identifiers (O/E/D/V, S1–S7, status enums, compulsory menus) internal by default, avoiding robotic software acceptance tone.
+- **Collaborative Implementation Boundaries**: UX research proposes candidate decision conditions, guardrail metric frameworks, and risk factors; research does not arbitrarily dictate fixed rollout percentages (e.g. 20%→50%→100%), fixed monitoring durations (e.g. 48-72h), or unverified engineering fixes without stakeholder agreement.
+- **Progressive Depth on Demand**: Provide deep professional explanations of theoretical models, measurement constructs, and statistical details when explicitly requested.
+
+### 4. Peer Review Readiness
+- Added bilingual Peer Review Trial Guide and concise feedback template.
+- License remains PolyForm Strict 1.0.0 (Non-commercial source-available, not OSI-approved open source).
+
+---
+
+## Historical Release Notes — v0.1.0-beta.3
+
 # Release Notes — UXDA Public Core (`v0.1.0-beta.3`)
 
 **Product:** User Experience Decision Advisor (UXDA) / 用户体验决策顾问  

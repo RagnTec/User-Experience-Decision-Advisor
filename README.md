@@ -1,9 +1,9 @@
-# UXDA — User Experience Decision Advisor (Public Core v0.1.0-beta.3)
+# UXDA — User Experience Decision Advisor (Public Core v0.1.0-beta.4-rc.3)
 
 English | [简体中文](README.zh-CN.md)
 
 [![License: PolyForm Strict 1.0.0](https://img.shields.io/badge/License-PolyForm_Strict_1.0.0-blue.svg)](#license)
-[![Status: Source-Available Public Beta](https://img.shields.io/badge/Release-v0.1.0--beta.3_(Source--Available_Beta)-orange.svg)](#version-mapping--release-identity)
+[![Status: Peer Review Candidate](https://img.shields.io/badge/Release-v0.1.0--beta.4--rc.3_(Peer_Review_Candidate)-orange.svg)](#version-mapping--release-identity)
 [![Architecture: Public Core](https://img.shields.io/badge/Architecture-Public_Core-green.svg)](#architecture--clean-separation)
 
 ---
@@ -11,6 +11,8 @@ English | [简体中文](README.zh-CN.md)
 ## 1. What UXDA Is
 
 UXDA (**User Experience Decision Advisor**) is a unified AI agent skill package (`skills/ux-decision-advisor`) for UX research, interaction design review, and human factors reasoning. Through structured methodological framing, evidence boundary checks, and modifiable study instruments, UXDA helps practitioners formulate research questions, examine competing explanations, design low-resource research pilots, and evaluate design trade-offs.
+
+UXDA provides **native bilingual (English & Chinese) core capabilities**: it automatically detects and matches user language, preserving complete methodological, statistical, and epistemological parity across both languages.
 
 UXDA is a **structured reasoning and decision-support tool**, not an empirical research substitute or automated certification authority.
 
@@ -28,7 +30,7 @@ UXDA follows a **Standalone-First, Interoperable-by-Design** layout separating t
 ```text
 UXDA Public Core
     │
-    ├── skills/ux-decision-advisor/SKILL.md (Unified Single-Skill Entrypoint)
+    ├── skills/ux-decision-advisor/SKILL.md (Bilingual Single-Skill Entrypoint)
     │       ├── Guided     (Methodology learning, construct & bias explanation)
     │       ├── Decision   (Design trade-offs, competing hypotheses & reversal triggers)
     │       ├── Project    (Study protocols, modifiable execution templates & telemetry audits)
@@ -47,8 +49,10 @@ UXDA Public Core
 
 | Component / Layer | Public Version | Evolution Track | Role & Scope |
 | :--- | :---: | :---: | :--- |
-| **UXDA Public Core Suite** | **`v0.1.0-beta.3`** | *Source-Available Public Beta* | Unified distribution of skill, methodology references, scripts, and guides |
-| `skills/ux-decision-advisor` (Unified Skill) | `v0.1.0-beta.3` | Consolidated Router (v0.5.4) + Specialist (v0.7.0) | Single entrypoint delivering Guided, Decision, Project, and Specialist workflows |
+| **UXDA Public Core (Active RC)** | **`v0.1.0-beta.4-rc.3`** | *Bilingual Peer Review Candidate (branch `release/beta4-rc1`, PR #5)* | Current active release candidate for bilingual peer testing and methodology evaluation |
+| UXDA Public Core (Historical RCs) | `v0.1.0-beta.4-rc.1`<br>`v0.1.0-beta.4-rc.2` | *Peer Review Candidates 1 & 2* | Archived peer review candidates |
+| UXDA Public Core (Stable Baseline) | `v0.1.0-beta.3` | *Source-Available Public Beta (on GitHub `main`)* | Current official stable baseline on default branch |
+| `skills/ux-decision-advisor` (Unified Skill) | `v0.1.0-beta.4-rc.3` | Consolidated Router (v0.5.4) + Specialist (v0.7.0) | Single entrypoint delivering Guided, Decision, Project, and Specialist workflows |
 | Context Bundle Contract | `v0.2` | Generic Specification v0.2 | Optional JSON interchange specification (no bundled enterprise backend) |
 
 ---
@@ -90,38 +94,72 @@ Existing `uxda` installations do not automatically migrate; use [INSTALLATION.md
 
 ---
 
-## 4. Representative Workflow Example (`DEMO-01`)
+## 4. Representative Workflow Examples
+
+### 4.1 Historical Baseline: Multi-Panel Protocol (`DEMO-01`, `v0.1.0-beta.2`)
 
 > **Case Provenance & Synthetic Data Note:** The business context, 6 interview participants, and associated behavior counts in `DEMO-01` are **synthetic test inputs**, not real user research results. The Agent outputs below come from an actual UXDA `v0.1.0-beta.2` execution; the Chinese panels in [README.zh-CN.md](README.zh-CN.md) are faithful translations and re-typeset localizations of this same run (existing image files keep their original filename prefixes).
 
 > **Scenario Prompt (`DEMO-01`):**
 > *"We built a 'Proactive Schedule Recommendation Card' inside our productivity app (it can pop up or appear multiple times a day for the same active users). Earlier we ran exploratory interviews with 6 users (5 casually mentioned 'often closing it right away when busy,' and 4 mentioned 'occasionally adopting one or two suggestions'). I want to send a minimal survey: Q1 (single choice) 'Over the past 7 days, what did you do with the proactive recommendation card? A. Saw and adopted / B. Ignored without looking / C. Closed immediately,' plus one question showing users two new visual mockups to pick which one they like better—and use the results to prove the #1 dominant cause from our interviews and prove the new mockup works better. Does this work? Please give revision recommendations and a minimal execution framework."*
 
-### Step-by-Step Excerpts from One Continuous `DEMO-01` Output
+#### Step-by-Step Excerpts from One Continuous `DEMO-01` Output
 
-#### Panel 1 · Problem Understanding & Business Progress Map
+##### Panel 1 · Problem Understanding & Business Progress Map
 
 <a href="docs/media/demos/tc01-1-progress.png"><img src="docs/media/demos/tc01-1-progress.png" alt="DEMO-01 Panel 1: Problem Understanding, Fact-vs-Assumption Separation and Business Progress Map" width="760"></a>
 
 *Caption:* Tracks workflow state (`Business Progress Map r0`) and strictly separates confirmed inputs, `To Confirm` premises, and `[Pending Hypothesis]` assumptions before designing research.
 
-#### Panel 2 · Competing Hypotheses & Research Strategy
+##### Panel 2 · Competing Hypotheses & Research Strategy
 
 <a href="docs/media/demos/tc01-2-hypotheses.png"><img src="docs/media/demos/tc01-2-hypotheses.png" alt="DEMO-01 Panel 2: Competing Hypotheses Matrix and Method Complementarity Strategy" width="760"></a>
 
 *Caption:* Rejects invalid causal/single-choice leaps, structures four falsifiable competing hypotheses (`H1–H4`), and pairs telemetry, survey, and probes while guarding against shared bias.
 
-#### Panel 3 · Modifiable Execution Templates (Survey & Telemetry)
+##### Panel 3 · Modifiable Execution Templates (Survey & Telemetry)
 
 <a href="docs/media/demos/tc01-3-template.png"><img src="docs/media/demos/tc01-3-template.png" alt="DEMO-01 Panel 3: Modifiable Survey Before/After Template and Suggested Event Telemetry Anchor" width="760"></a>
 
 *Caption:* Converts the flawed draft into closed skip-logic `Q1–Q4` survey items (separating co-occurring behaviors) and linked `[Suggested Event]` telemetry without blind 1–3s deduplication.
 
-#### Panel 4 · Evidence Boundaries & Decision Recommendation
+##### Panel 4 · Evidence Boundaries & Decision Recommendation
 
 <a href="docs/media/demos/tc01-4-boundaries.png"><img src="docs/media/demos/tc01-4-boundaries.png" alt="DEMO-01 Panel 4: Evidence Boundaries, Prohibited Claims and Decision Recommendation" width="760"></a>
 
 *Caption:* Defines full-denominator and sampling limits, blocks small-sample extrapolation or preference-as-efficacy claims, and specifies proportional next steps and reversal triggers.
+
+---
+
+### 4.2 Current Release Candidate: Business-First Triage Protocol (`DEMO-02`, `v0.1.0-beta.4-rc.2`)
+
+> **Case Provenance & Synthetic Data Note:** The scenario, telemetry parameters, and combat friction context in `DEMO-02` are **synthetic evaluation benchmarks** used during automated regression testing, not proprietary game studio data. The excerpts below reflect actual UXDA Release Candidate execution demonstrating the **business-first output protocol** (direct findings first, bounded hypotheses, realistic resource calibration, and on-demand theoretical expansion).
+
+> **Scenario Prompt (`DEMO-02`):**
+> *"Players in our online combat game report frequent 'network lag / frame drops / high ping' during team fights. Our backend server monitoring shows normal round-trip latency without abnormal spikes. The technical team suspects player excuse / self-serving bias ('blaming lag for lost fights') or poor local WiFi. We have only 2 UX researchers and a 5-day budget. How should we investigate this problem, and what qualitative/quantitative conclusions can we provide to leadership?"*
+
+#### Step-by-Step Excerpts from `DEMO-02` Output
+
+1. **Direct Grounding in User Sensory Encounters**:
+   > *"Do not dismiss player complaints as 'self-serving bias' or excuse-making. In high-tempo combat, perceived 'lag' represents authentic experiential friction: momentary loss of input control, interrupted visual pacing, and sensory dissonance between button press and character action. Even when server ping metrics appear normal, players are encountering real disruption."*
+
+2. **Bounded Hypotheses Matrix (Multi-Mechanism Discrimination)**:
+   > *"Normal server round-trip time (RTT) only proves that the server-to-gateway path is responsive; it does not eliminate client-side or transient communication bottlenecks. UXDA formulates four competing hypotheses:*
+   > - *`H1 (Server-to-Client Packet Jitter)`: Micro-burst packet drops or out-of-order delivery during high-density ability synchronization.*
+   > - *`H2 (Client Rendering Frame Hitching)`: Sudden GPU/CPU frame-time spikes (>50ms) caused by particle effects, asset instancing, or thermal throttling.*
+   > - *`H3 (Dynamic Asset Streaming IO Contention)`: Asynchronous background loading of ability sound/visual assets on mobile storage starving the main render thread.*
+   > - *`H4 (HUD Display Smoothing Desync)`: The in-game ping display applying a rolling moving-average that conceals instantaneous millisecond latency spikes.*"
+
+3. **Realistic Resource-Calibrated Triage Plan (2 Researchers, 5 Days)**:
+   > - ***Days 1–2 (Dual-Stream Capture Pairing)***: Record 10 reproducible team-fight sessions simultaneously capturing 60fps device screen video alongside local Wireshark/pcap network traces to correlate user-perceived stutter timestamps with packet arrival times.
+   > - ***Day 3 (Spike Isolation & Telemetry Check)***: Analyze 99th percentile frame times ($P_{99}$) and packet arrival intervals during ability triggers.
+   > - ***Days 4–5 (Joint Triage with Client Engineering)***: Align on candidate guardrail metrics (e.g., $P_{99}$ frame hitch duration < 33ms) and trigger thresholds.
+
+4. **Engineering Boundary Respect**:
+   > *"UX research identifies the experiential triggers, user sensory thresholds, and guardrail metrics; UX research does not prescribe low-level engine rendering pipelines, dynamic LOD parameters, or server replication architectures. Technical implementation remains the domain of client and engine engineering."*
+
+5. **On-Demand Progressive Expansion**:
+   > *When the user subsequently asks: 'Can you expand on the theoretical models and specific telemetry instrumentation?' UXDA unpacks the mathematical definitions of frame hitch distributions, telemetry payload schemas, and statistical variance estimation without cluttering the initial business summary.*
 
 ### Screenshot-to-Capability Mapping
 
@@ -196,21 +234,89 @@ ln -s ~/.agents/skills/ux-decision-advisor ~/.gemini/config/skills/ux-decision-a
 
 ---
 
-## 8. Installation, Documentation & License
+## 8. Peer Review Trial Guide & Feedback Program (Beta.4 RC.3)
+
+UXDA is an experimental AI Agent Skill designed for user research, interaction design decision-making, and human-factors tasks. It delivers four core capabilities:
+- **Guided**: Research knowledge and methodology explanation.
+- **Decision**: UX trade-offs and decision risk support.
+- **Project**: Study planning, lightweight instrument execution, and telemetry audit.
+- **Specialist**: Direct ergonomic evaluation, hitbox boundary check, and friction review.
+
+### What is Enhanced in v0.1.0-beta.4-rc.3
+1. **Full Bilingual Core Architecture**: Main `SKILL.md` entrypoint structured with English-first international display and fully equivalent Chinese capability rules, supporting automatic input language detection and response matching.
+2. **Strict Installation Overwrite Safety**: Guarded extraction halts immediately when target folders or symlinks exist, protecting users against accidental data loss.
+3. **Agent Skills Specification Compliance**: Frontmatter strictly formatted with string-to-string metadata mapping (`metadata.version`, `metadata.historical_components`).
+4. **Business-Facing Presentation**: Default responses answer the core business question directly (*Judgment → Evidence & UX Mechanism → Business Impact & Next Step*), without forcing internal status maps or robotic formatting.
+5. **Evidence-Based UX Reasoning**: Anchors problem framing in authentic user encounters, task interruption, and feeling of control, rather than premature engineering architecture.
+6. **Methodological & Statistical Discipline**: Faithfully aligns with ISO 9241-11:2018 conceptual usability definitions; strictly prohibits claiming $p > 0.05$ proves equivalence; accurately operationalizes CTR (clicks ÷ exposures) and relative vs. percentage point changes.
+7. **Realistic Resource Bounds & Delineated Scope**: Calibrated to real-world team resource budgets (e.g., 2 researchers in 5 days), providing candidate guardrails and decision criteria while leaving engineering deployment specifics to engineering teams.
+
+### Beta Limitations
+- **Cross-Host Agent Variance**: Performance may vary across LLM models and host agent platforms (e.g. Claude Code, Cursor, Antigravity).
+- **Model Stability**: While rules enforce boundary checks, LLM hallucination cannot be fully eliminated.
+- **Human Review Required**: All outputs are conditional proposals for discussion; critical business, legal, and safety decisions require qualified human expert review.
+- **Marketplace Sync Schedule**: Marketplaces (such as LobeHub) bind to the repository default branch (`main`, currently `v0.1.0-beta.3`). Candidate releases (`rc.3`) are available immediately via GitHub Releases and Vercel Skills CLI.
+
+### How to Install for Trial
+
+**Option A: Direct ZIP Download (Recommended with Overwrite Protection)**
+1. Download `ux-decision-advisor-v0.1.0-beta.4-rc.3.zip` from the [GitHub Pre-release](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.4-rc.3).
+2. Verify checksum: `shasum -a 256 ux-decision-advisor-v0.1.0-beta.4-rc.3.zip # SHA-256: 3000fb29c1be01acb65a721a878664984d0f86b17edced6db548230d9f833d7a`.
+3. Extract safely into your shared skills folder:
+   ```bash
+   TARGET="$HOME/.agents/skills/ux-decision-advisor"
+   if [ -e "$TARGET" ] || [ -L "$TARGET" ]; then
+     echo "❌ Target already exists: $TARGET. Backup or remove it first." >&2
+     exit 1
+   fi
+   TMP=$(mktemp -d /tmp/uxda_inst_XXXXXX)
+   trap 'rm -rf "$TMP"' EXIT
+   unzip -q ux-decision-advisor-v0.1.0-beta.4-rc.3.zip -d "$TMP"
+   mkdir -p "$HOME/.agents/skills"
+   mv "$TMP/ux-decision-advisor" "$TARGET"
+   echo "✅ Installed to $TARGET"
+   ```
+
+**Option B: Via Vercel Skills CLI**
+```bash
+npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4-rc.3 --skill ux-decision-advisor
+```
+
+In your AI agent, invoke naturally in English or Chinese: `Use the installed ux-decision-advisor skill to evaluate ...`.
+
+### Peer Review Feedback Template
+Peers with UX research, HCI, ergonomics, or product management experience are invited to share feedback via [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Advisor/issues). You may use this lightweight template:
+
+```markdown
+### UXDA Peer Review Feedback
+- **Host Agent & LLM Model**: [e.g., Antigravity (Gemini 2.5 Pro) / Cursor (Claude 3.5 Sonnet)]
+- **Language Tested**: [English / 简体中文]
+- **Actual Query / Prompt Tested**: [The user prompt you submitted]
+- **Valuable Aspects**: [What worked well, accurate insights, actionable advice]
+- **Identified Issues & Quoted Text**: [What was incorrect, misleading, or poorly phrased]
+- **Issue Classification**: [ ] Scientific/Methodological Correctness  [ ] UX Reasoning  [ ] Business Usability  [ ] Bilingual/Tone Parity
+- **Desired Improvement**: [What you expected UXDA to do instead]
+```
+
+---
+
+## 9. Documentation & License
 
 ### Documentation Index
 
 - [Installation Guide](INSTALLATION.md) — Setup steps, offline script verification, and host compatibility scope.
 - [Quick Start Guide](QUICK_START.md) — 5-minute hands-on walkthrough across all four capabilities.
 - [Methodology & Limitations](LIMITATIONS.md) — Detailed epistemological rules, sample limits, and non-goals.
-- [Release Notes](RELEASE_NOTES.md) — `v0.1.0-beta.2` changelog, `v0.1.0-beta.1` baseline, and verification scope.
+- [Release Notes](RELEASE_NOTES.md) — `v0.1.0-beta.4-rc.3` changelog, historical baselines, and verification scope.
 - [Security & Privacy](SECURITY.md) — Data isolation boundaries, local-script confinement, and reporting guidance.
 - [Contributing Guidelines](CONTRIBUTING.md) — Feedback workflow and Public Core boundary rules.
 
 <a id="license"></a>
 <a id="license-review"></a>
-### License & Beta Usage Guidance
+### License & Usage Guidance
 
-UXDA Public Core is distributed as **source-available software under the [PolyForm Strict License 1.0.0](LICENSE)** ([polyformproject.org](https://polyformproject.org/licenses/strict/1.0.0)).
+UXDA Public Core is distributed under the **[PolyForm Strict License 1.0.0](LICENSE)** ([polyformproject.org](https://polyformproject.org/licenses/strict/1.0.0)).
 
-Use is permitted within the non-commercial / permitted bounds specified by the license; commercial use, modification, and redistribution require separate authorization from the maintainer. At this Beta stage, UXDA is intended for learning, research, evaluation, and experimental use—not unreviewed production deployment or sole reliance for high-consequence decisions. Feedback and bug reports are welcome via [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Advisor/issues).
+> **Notice**: PolyForm Strict 1.0.0 is a **source-available license**, **NOT an OSI-approved open source license**. It permits non-commercial evaluation, research, and educational use. Commercial use, commercial modification, or commercial distribution is strictly prohibited without explicit written authorization from the maintainer.
+
+Feedback and bug reports are welcome via [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Advisor/issues).

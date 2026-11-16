@@ -1,9 +1,9 @@
-# UXDA — User Experience Decision Advisor (Public Core v0.1.0-beta.4-rc.2)
+# UXDA — User Experience Decision Advisor (Public Core v0.1.0-beta.4-rc.3)
 
 English | [简体中文](README.zh-CN.md)
 
 [![License: PolyForm Strict 1.0.0](https://img.shields.io/badge/License-PolyForm_Strict_1.0.0-blue.svg)](#license)
-[![Status: Peer Review Candidate](https://img.shields.io/badge/Release-v0.1.0--beta.4--rc.2_(Peer_Review_Candidate)-orange.svg)](#version-mapping--release-identity)
+[![Status: Peer Review Candidate](https://img.shields.io/badge/Release-v0.1.0--beta.4--rc.3_(Peer_Review_Candidate)-orange.svg)](#version-mapping--release-identity)
 [![Architecture: Public Core](https://img.shields.io/badge/Architecture-Public_Core-green.svg)](#architecture--clean-separation)
 
 ---
@@ -11,6 +11,8 @@ English | [简体中文](README.zh-CN.md)
 ## 1. What UXDA Is
 
 UXDA (**User Experience Decision Advisor**) is a unified AI agent skill package (`skills/ux-decision-advisor`) for UX research, interaction design review, and human factors reasoning. Through structured methodological framing, evidence boundary checks, and modifiable study instruments, UXDA helps practitioners formulate research questions, examine competing explanations, design low-resource research pilots, and evaluate design trade-offs.
+
+UXDA provides **native bilingual (English & Chinese) core capabilities**: it automatically detects and matches user language, preserving complete methodological, statistical, and epistemological parity across both languages.
 
 UXDA is a **structured reasoning and decision-support tool**, not an empirical research substitute or automated certification authority.
 
@@ -28,7 +30,7 @@ UXDA follows a **Standalone-First, Interoperable-by-Design** layout separating t
 ```text
 UXDA Public Core
     │
-    ├── skills/ux-decision-advisor/SKILL.md (Unified Single-Skill Entrypoint)
+    ├── skills/ux-decision-advisor/SKILL.md (Bilingual Single-Skill Entrypoint)
     │       ├── Guided     (Methodology learning, construct & bias explanation)
     │       ├── Decision   (Design trade-offs, competing hypotheses & reversal triggers)
     │       ├── Project    (Study protocols, modifiable execution templates & telemetry audits)
@@ -47,10 +49,10 @@ UXDA Public Core
 
 | Component / Layer | Public Version | Evolution Track | Role & Scope |
 | :--- | :---: | :---: | :--- |
-| **UXDA Public Core (Active RC)** | **`v0.1.0-beta.4-rc.2`** | *Peer Review Candidate (branch `release/beta4-rc1`, PR #5)* | Current active release candidate for external peer testing and methodology evaluation |
-| UXDA Public Core (Historical RC) | `v0.1.0-beta.4-rc.1` | *Peer Review Candidate 1* | First peer review candidate (archived) |
+| **UXDA Public Core (Active RC)** | **`v0.1.0-beta.4-rc.3`** | *Bilingual Peer Review Candidate (branch `release/beta4-rc1`, PR #5)* | Current active release candidate for bilingual peer testing and methodology evaluation |
+| UXDA Public Core (Historical RCs) | `v0.1.0-beta.4-rc.1`<br>`v0.1.0-beta.4-rc.2` | *Peer Review Candidates 1 & 2* | Archived peer review candidates |
 | UXDA Public Core (Stable Baseline) | `v0.1.0-beta.3` | *Source-Available Public Beta (on GitHub `main`)* | Current official stable baseline on default branch |
-| `skills/ux-decision-advisor` (Unified Skill) | `v0.1.0-beta.4-rc.2` | Consolidated Router (v0.5.4) + Specialist (v0.7.0) | Single entrypoint delivering Guided, Decision, Project, and Specialist workflows |
+| `skills/ux-decision-advisor` (Unified Skill) | `v0.1.0-beta.4-rc.3` | Consolidated Router (v0.5.4) + Specialist (v0.7.0) | Single entrypoint delivering Guided, Decision, Project, and Specialist workflows |
 | Context Bundle Contract | `v0.2` | Generic Specification v0.2 | Optional JSON interchange specification (no bundled enterprise backend) |
 
 ---
@@ -232,7 +234,7 @@ ln -s ~/.agents/skills/ux-decision-advisor ~/.gemini/config/skills/ux-decision-a
 
 ---
 
-## 8. Peer Review Trial Guide & Feedback Program (Beta.4 RC.2)
+## 8. Peer Review Trial Guide & Feedback Program (Beta.4 RC.3)
 
 UXDA is an experimental AI Agent Skill designed for user research, interaction design decision-making, and human-factors tasks. It delivers four core capabilities:
 - **Guided**: Research knowledge and methodology explanation.
@@ -240,39 +242,47 @@ UXDA is an experimental AI Agent Skill designed for user research, interaction d
 - **Project**: Study planning, lightweight instrument execution, and telemetry audit.
 - **Specialist**: Direct ergonomic evaluation, hitbox boundary check, and friction review.
 
-### What is Enhanced in v0.1.0-beta.4-rc.2
-1. **Agent Skills Specification Compliance**: Frontmatter strictly formatted with string-to-string metadata mapping, resolving compatibility issues with modern Agent Skill runners.
-2. **Business-Facing Presentation**: Default responses answer the core business question directly (*Judgment → Evidence & UX Mechanism → Business Impact & Next Step*), without forcing internal status maps or robotic formatting.
-3. **Evidence-Based UX Reasoning**: Anchors problem framing in authentic user encounters, task interruption, and feeling of control, rather than premature engineering architecture.
-4. **Methodological & Statistical Discipline**: Faithfully aligns with ISO 9241-11:2018 conceptual usability definitions; strictly prohibits claiming $p > 0.05$ proves equivalence; accurately operationalizes CTR (clicks ÷ exposures) and relative vs. percentage point changes.
-5. **Progressive Depth on Demand**: In-depth theoretical models, measurement construct operationalization, and statistical calculations unfold upon follow-up request.
-6. **Realistic Resource Bounds & Delineated Scope**: Calibrated to real-world team resource budgets (e.g., 2 researchers in 5 days), providing candidate guardrails and decision criteria while leaving engineering deployment specifics to engineering teams.
+### What is Enhanced in v0.1.0-beta.4-rc.3
+1. **Full Bilingual Core Architecture**: Main `SKILL.md` entrypoint structured with English-first international display and fully equivalent Chinese capability rules, supporting automatic input language detection and response matching.
+2. **Strict Installation Overwrite Safety**: Guarded extraction halts immediately when target folders or symlinks exist, protecting users against accidental data loss.
+3. **Agent Skills Specification Compliance**: Frontmatter strictly formatted with string-to-string metadata mapping (`metadata.version`, `metadata.historical_components`).
+4. **Business-Facing Presentation**: Default responses answer the core business question directly (*Judgment → Evidence & UX Mechanism → Business Impact & Next Step*), without forcing internal status maps or robotic formatting.
+5. **Evidence-Based UX Reasoning**: Anchors problem framing in authentic user encounters, task interruption, and feeling of control, rather than premature engineering architecture.
+6. **Methodological & Statistical Discipline**: Faithfully aligns with ISO 9241-11:2018 conceptual usability definitions; strictly prohibits claiming $p > 0.05$ proves equivalence; accurately operationalizes CTR (clicks ÷ exposures) and relative vs. percentage point changes.
+7. **Realistic Resource Bounds & Delineated Scope**: Calibrated to real-world team resource budgets (e.g., 2 researchers in 5 days), providing candidate guardrails and decision criteria while leaving engineering deployment specifics to engineering teams.
 
 ### Beta Limitations
 - **Cross-Host Agent Variance**: Performance may vary across LLM models and host agent platforms (e.g. Claude Code, Cursor, Antigravity).
 - **Model Stability**: While rules enforce boundary checks, LLM hallucination cannot be fully eliminated.
 - **Human Review Required**: All outputs are conditional proposals for discussion; critical business, legal, and safety decisions require qualified human expert review.
+- **Marketplace Sync Schedule**: Marketplaces (such as LobeHub) bind to the repository default branch (`main`, currently `v0.1.0-beta.3`). Candidate releases (`rc.3`) are available immediately via GitHub Releases and Vercel Skills CLI.
 
 ### How to Install for Trial
 
-**Option A: Direct ZIP Download (Recommended)**
-1. Download `ux-decision-advisor-v0.1.0-beta.4-rc.2.zip` from the [GitHub Pre-release](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.4-rc.2).
-2. Verify checksum: `shasum -a 256 ux-decision-advisor-v0.1.0-beta.4-rc.2.zip` (must match `c2aa7a0c5b0c0122d94064957b1cc88c589baf50d2bd0c971ed73dc417bb7cff`).
-3. Extract into your shared skills folder:
+**Option A: Direct ZIP Download (Recommended with Overwrite Protection)**
+1. Download `ux-decision-advisor-v0.1.0-beta.4-rc.3.zip` from the [GitHub Pre-release](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.4-rc.3).
+2. Verify checksum: `shasum -a 256 ux-decision-advisor-v0.1.0-beta.4-rc.3.zip # SHA-256: 3000fb29c1be01acb65a721a878664984d0f86b17edced6db548230d9f833d7a`.
+3. Extract safely into your shared skills folder:
    ```bash
-   # Check existing directory first to prevent accidental overwrite
-   ls -ld ~/.agents/skills/ux-decision-advisor 2>/dev/null && echo "Notice: Existing installation found. Back up or rename it before unzipping."
-   mkdir -p ~/.agents/skills
-   unzip -q ux-decision-advisor-v0.1.0-beta.4-rc.2.zip -d ~/.agents/skills/
+   TARGET="$HOME/.agents/skills/ux-decision-advisor"
+   if [ -e "$TARGET" ] || [ -L "$TARGET" ]; then
+     echo "❌ Target already exists: $TARGET. Backup or remove it first." >&2
+     exit 1
+   fi
+   TMP=$(mktemp -d /tmp/uxda_inst_XXXXXX)
+   trap 'rm -rf "$TMP"' EXIT
+   unzip -q ux-decision-advisor-v0.1.0-beta.4-rc.3.zip -d "$TMP"
+   mkdir -p "$HOME/.agents/skills"
+   mv "$TMP/ux-decision-advisor" "$TARGET"
+   echo "✅ Installed to $TARGET"
    ```
-4. Verify directory contains `SKILL.md`, `references/` (59 files), `assets/` (16 files), `scripts/` (15 files), and `LICENSE` (total 92 files).
 
 **Option B: Via Vercel Skills CLI**
 ```bash
-npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4-rc.2 --skill ux-decision-advisor
+npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4-rc.3 --skill ux-decision-advisor
 ```
 
-In your AI agent, invoke naturally: `Use the installed ux-decision-advisor skill to evaluate ...`.
+In your AI agent, invoke naturally in English or Chinese: `Use the installed ux-decision-advisor skill to evaluate ...`.
 
 ### Peer Review Feedback Template
 Peers with UX research, HCI, ergonomics, or product management experience are invited to share feedback via [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Advisor/issues). You may use this lightweight template:
@@ -280,10 +290,11 @@ Peers with UX research, HCI, ergonomics, or product management experience are in
 ```markdown
 ### UXDA Peer Review Feedback
 - **Host Agent & LLM Model**: [e.g., Antigravity (Gemini 2.5 Pro) / Cursor (Claude 3.5 Sonnet)]
+- **Language Tested**: [English / 简体中文]
 - **Actual Query / Prompt Tested**: [The user prompt you submitted]
 - **Valuable Aspects**: [What worked well, accurate insights, actionable advice]
 - **Identified Issues & Quoted Text**: [What was incorrect, misleading, or poorly phrased]
-- **Issue Classification**: [ ] Scientific/Methodological Correctness  [ ] UX Reasoning  [ ] Business Usability  [ ] Expression/Tone Preference
+- **Issue Classification**: [ ] Scientific/Methodological Correctness  [ ] UX Reasoning  [ ] Business Usability  [ ] Bilingual/Tone Parity
 - **Desired Improvement**: [What you expected UXDA to do instead]
 ```
 
@@ -296,7 +307,7 @@ Peers with UX research, HCI, ergonomics, or product management experience are in
 - [Installation Guide](INSTALLATION.md) — Setup steps, offline script verification, and host compatibility scope.
 - [Quick Start Guide](QUICK_START.md) — 5-minute hands-on walkthrough across all four capabilities.
 - [Methodology & Limitations](LIMITATIONS.md) — Detailed epistemological rules, sample limits, and non-goals.
-- [Release Notes](RELEASE_NOTES.md) — `v0.1.0-beta.4-rc.2` changelog, historical baselines, and verification scope.
+- [Release Notes](RELEASE_NOTES.md) — `v0.1.0-beta.4-rc.3` changelog, historical baselines, and verification scope.
 - [Security & Privacy](SECURITY.md) — Data isolation boundaries, local-script confinement, and reporting guidance.
 - [Contributing Guidelines](CONTRIBUTING.md) — Feedback workflow and Public Core boundary rules.
 

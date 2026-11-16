@@ -1,9 +1,9 @@
-# UXDA — 用户体验决策顾问 (Public Core v0.1.0-beta.4-rc.2)
+# UXDA — 用户体验决策顾问 (Public Core v0.1.0-beta.4-rc.3)
 
 [English](README.md) | 简体中文
 
 [![许可证：PolyForm Strict 1.0.0](https://img.shields.io/badge/License-PolyForm_Strict_1.0.0-blue.svg)](#许可证与使用说明)
-[![状态：同行评审候选版](https://img.shields.io/badge/Release-v0.1.0--beta.4--rc.2_(同行评审候选版)-orange.svg)](#版本映射与发布标识)
+[![状态：同行评审候选版](https://img.shields.io/badge/Release-v0.1.0--beta.4--rc.3_(同行评审候选版)-orange.svg)](#版本映射与发布标识)
 [![架构：公共核心](https://img.shields.io/badge/Architecture-Public_Core-green.svg)](#架构设计与物理隔离)
 
 ---
@@ -11,6 +11,8 @@
 ## 1. UXDA 是什么
 
 UXDA（**User Experience Decision Advisor**）是一套面向用户研究、交互体验与人因工程的统一 AI Agent 技能包（`skills/ux-decision-advisor`）。它通过结构化方法推演、证据边界校验与可修改的研究执行模板，辅助使用者拆解体验问题、构建竞争性假设、设计低资源研究试点（Research Pilot）并评估设计方案取舍。
+
+UXDA 提供**原生中英文双语核心能力**：自动识别用户输入语言并对齐回复（英文输入英文作答，中文输入中文作答），在中英文语境下保持完全等价的科学推断、统计门禁与方法学严谨性。
 
 UXDA 是**结构化推理与决策辅助工具**，不能替代真实用户研究或人类专业评审。
 
@@ -28,7 +30,7 @@ UXDA 遵循“**独立优先、设计即互通**”原则，将**公共核心（
 ```text
 UXDA 公共核心 (Public Core)
     │
-    ├── skills/ux-decision-advisor/SKILL.md (统一单技能入口)
+    ├── skills/ux-decision-advisor/SKILL.md (双语统一单技能入口)
     │       ├── Guided     (用研方法学习、构念效度与偏差控制引导)
     │       ├── Decision   (设计方案取舍、竞争性假设与逆转条件)
     │       ├── Project    (调研设计、可修改执行模板与埋点口径审计)
@@ -47,10 +49,10 @@ UXDA 公共核心 (Public Core)
 
 | 组件 / 分发层级 | 公开版本号 | 组件演进追踪 | 角色与范围说明 |
 | :--- | :---: | :---: | :--- |
-| **UXDA 公共核心（当前 RC）** | **`v0.1.0-beta.4-rc.2`** | *同行评审候选版（分支 `release/beta4-rc1`，PR #5）* | 供同行实测体验与方法学评估的最新候选发布包 |
-| UXDA 公共核心（历史 RC） | `v0.1.0-beta.4-rc.1` | *同行评审候选版 1* | 首个线上同行评审候选版本（已归档） |
+| **UXDA 公共核心（当前 RC）** | **`v0.1.0-beta.4-rc.3`** | *双语同行评审候选版（分支 `release/beta4-rc1`，PR #5）* | 供同行实测体验与中英文方法学评估的最新候选发布包 |
+| UXDA 公共核心（历史 RC） | `v0.1.0-beta.4-rc.1`<br>`v0.1.0-beta.4-rc.2` | *同行评审候选版 1 与 2* | 已归档的历史评审候选版本 |
 | UXDA 公共核心（正式稳定基线） | `v0.1.0-beta.3` | *源码公开受限测试版（GitHub `main` 主分支）* | 当前 GitHub `main` 主分支上的官方正式基线 |
-| `skills/ux-decision-advisor`（统一核心技能） | `v0.1.0-beta.4-rc.2` | 原 Router (v0.5.4) + Specialist (v0.7.0) 一体化整合 | 对外唯一入口，集成 Guided / Decision / Project / Specialist 四类能力 |
+| `skills/ux-decision-advisor`（统一核心技能） | `v0.1.0-beta.4-rc.3` | 原 Router (v0.5.4) + Specialist (v0.7.0) 一体化整合 | 对外唯一入口，集成 Guided / Decision / Project / Specialist 四类能力 |
 | Context Bundle 接口契约 | `v0.2` | 通用接口规范 v0.2 | 可选 JSON 数据交换约定（仓库内不含企业私有后端实现） |
 
 ---
@@ -232,7 +234,7 @@ ln -s ~/.agents/skills/ux-decision-advisor ~/.gemini/config/skills/ux-decision-a
 
 ---
 
-## 8. 同行试用说明与反馈计划 (Beta.4 RC.2)
+## 8. 同行试用说明与反馈计划 (Beta.4 RC.3)
 
 UXDA 是一套面向用户研究、交互体验与人因工程的实验性 AI Agent 技能工具。一次安装即可按需使用四类核心能力：
 - **Guided**：用研方法学习、构念辨析与调研起点探索。
@@ -240,39 +242,47 @@ UXDA 是一套面向用户研究、交互体验与人因工程的实验性 AI Ag
 - **Project**：研究方案设计、轻量工具执行与数据口径审计。
 - **Specialist**：触控尺寸计算、人因工程复核与界面摩擦走查。
 
-### 本次 v0.1.0-beta.4-rc.2 重点优化内容
-1. **Agent Skills 规范全面兼容**：Frontmatter 元数据采用规范要求的字符串键值映射，解决部分宿主环境下的解析阻断。
-2. **默认业务优先表达**：默认首轮回答直击业务与研究核心（*当前判断 → 关键依据与体验机制 → 业务影响与最小下一步*），杜绝机械堆砌内部状态码或强制输出流程图。
-3. **立足真实用户遭遇**：从真实用户任务、操作中断与控制感损害切入，解耦“用户自述体验抱怨”与“底层真实技术机理”，避免过早陷入纯工程架构推论。
-4. **方法学与统计推断严谨性**：严格契合 ISO 9241-11:2018 概念定义（消除虚构比率公式）；严禁将 $p > 0.05$ 误读为“证明无差异”；单侧检验严格对齐假设尾向；幸存者偏差作为机制风险严谨推演；准确区分 CTR（点击数 ÷ 曝光数）与注意力、理解度或满意度，明确相对增幅与百分点差异。
-5. **专业深度按需展开**：理论依据、测量构念口径表、竞争性假说排除与反向推翻条件在追问时充分展开，杜绝空洞概念堆砌。
-6. **真实资源预算意识**：契合“两人五工作日”等现实资源约束，提供轻量候选护栏指标与决策条件，不越权给出固定放量比例或硬性技术承诺。
+### 本次 v0.1.0-beta.4-rc.3 重点优化内容
+1. **全面原生中英文双语能力**：主入口 `SKILL.md` 采用英文国际化展示与完整中文能力对齐，建立 16 项核心科学术语对齐表，实现输入语言自动检测与回复自适应。
+2. **安装覆盖严格防损保护**：安装指令引入强制目录与符号链接预检，存在同名路径时阻断解压，并在独立临时目录校验文件完整性后再原子性安装。
+3. **Agent Skills 规范全面兼容**：Frontmatter 元数据采用规范要求的纯字符串键值映射（`metadata.version`、`metadata.historical_components`）。
+4. **默认业务优先表达**：默认首轮回答直击业务与研究核心（*当前判断 → 关键依据与体验机制 → 业务影响与最小下一步*），杜绝机械堆砌内部状态码或强制输出流程图。
+5. **立足真实用户遭遇**：从真实用户任务、操作中断与控制感损害切入，解耦“用户自述体验抱怨”与“底层真实技术机理”，避免过早陷入纯工程架构推论。
+6. **方法学与统计推断严谨性**：严格契合 ISO 9241-11:2018 概念定义（消除虚构比率公式）；严禁将 $p > 0.05$ 误读为“证明无差异”；单侧检验严格对齐假设尾向；幸存者偏差作为机制风险严谨推演；准确区分 CTR（点击数 ÷ 曝光数）与注意力、理解度或满意度，明确相对增幅与百分点差异。
+7. **真实资源预算意识**：契合“两人五工作日”等现实资源约束，提供轻量候选护栏指标与决策条件，不越权给出固定放量比例或硬性技术承诺。
 
 ### Beta 已知局限说明
 - **跨宿主 Agent 表现差异**：不同模型（如 Claude 3.5 Sonnet、Gemini 2.5 Pro、GPT-4o）与宿主客户端（Cursor、Claude Code、Antigravity）对 Skill 指令的遵循程度存在一定离散。
 - **大模型输出稳定性**：尽管设置了边界门禁，大模型仍可能存在偶发推断偏差。
 - **必须经过人类专家复核**：UXDA 输出均为拟议审议建议，关键业务、合规、人因及安全决策必须由具备资质的人类专家最终把关。
+- **应用市场同步周期**：LobeHub 等第三方市场默认绑定 GitHub `main` 主分支（当前为 `v0.1.0-beta.3`）。候选版本（`rc.3`）请优先通过 GitHub Release ZIP 或 Vercel Skills CLI 直接安装。
 
 ### 同行安装试用方式
 
-**方式 A：直接下载 Release ZIP 安装（推荐）**
-1. 从 [GitHub Pre-release](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.4-rc.2) 下载 `ux-decision-advisor-v0.1.0-beta.4-rc.2.zip`；
-2. 校验文件哈希：`shasum -a 256 ux-decision-advisor-v0.1.0-beta.4-rc.2.zip`（确认与官方发布的 `c2aa7a0c5b0c0122d94064957b1cc88c589baf50d2bd0c971ed73dc417bb7cff` 一致）；
-3. 解压至多 Agent 共享技能目录（先检查既有路径以防非预期覆盖）：
+**方式 A：直接下载 Release ZIP 安装（推荐，带防覆盖保护）**
+1. 从 [GitHub Pre-release](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.4-rc.3) 下载 `ux-decision-advisor-v0.1.0-beta.4-rc.3.zip`；
+2. 校验文件哈希：`shasum -a 256 ux-decision-advisor-v0.1.0-beta.4-rc.3.zip # SHA-256: 3000fb29c1be01acb65a721a878664984d0f86b17edced6db548230d9f833d7a`；
+3. 执行安全防覆盖解压指令：
    ```bash
-   # 检查是否存在历史版本，避免意外覆盖
-   ls -ld ~/.agents/skills/ux-decision-advisor 2>/dev/null && echo "提示：已存在同名目录，解压前请先备份或重命名旧版本。"
-   mkdir -p ~/.agents/skills
-   unzip -q ux-decision-advisor-v0.1.0-beta.4-rc.2.zip -d ~/.agents/skills/
+   TARGET="$HOME/.agents/skills/ux-decision-advisor"
+   if [ -e "$TARGET" ] || [ -L "$TARGET" ]; then
+     echo "❌ 目标路径已存在: $TARGET。为避免覆盖，请先手动备份或移除。" >&2
+     exit 1
+   fi
+   TMP=$(mktemp -d /tmp/uxda_inst_XXXXXX)
+   trap 'rm -rf "$TMP"' EXIT
+   unzip -q ux-decision-advisor-v0.1.0-beta.4-rc.3.zip -d "$TMP"
+   mkdir -p "$HOME/.agents/skills"
+   mv "$TMP/ux-decision-advisor" "$TARGET"
+   echo "✅ 成功安装至: $TARGET"
    ```
-4. 确认解压目录包含 `SKILL.md`、`references/`（59 篇）、`assets/`（16 个）、`scripts/`（15 个）与 `LICENSE`（共 92 个文件）。
 
 **方式 B：通过 Vercel Skills CLI 安装**
 ```bash
-npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4-rc.2 --skill ux-decision-advisor
+npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4-rc.3 --skill ux-decision-advisor
 ```
 
-在支持 Agent Skill 的工具中通过自然语言直接触发：`调用已安装的 ux-decision-advisor 技能，评估……`。
+在支持 Agent Skill 的工具中通过中文或英文自然语言直接触发：`调用已安装的 ux-decision-advisor 技能，评估……` 或 `Use ux-decision-advisor to evaluate ...`。
 
 ### 同行评审反馈模板
 诚邀具有用户研究、HCI、人因或产品协作经验的同行在 [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Advisor/issues) 中提交反馈。可选用以下极简格式：
@@ -280,10 +290,11 @@ npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4-rc.2 --ski
 ```markdown
 ### UXDA 同行评审反馈
 - **测试模型与宿主**：[例如：Antigravity (Gemini 2.5 Pro) / Cursor (Claude 3.5 Sonnet)]
+- **测试语言**：[中文 / English]
 - **实际测试的问题**：[您输入的原始 Prompt]
 - **回答中有价值的部分**：[洞察准确、可实操建议等]
 - **存在的问题与对应原文**：[指出错误、误导或不当表述]
-- **问题分类**：[ ] 科学/方法学正确性  [ ] 用户体验分析  [ ] 业务可用性  [ ] 表达/风格偏好
+- **问题分类**：[ ] 科学/方法学正确性  [ ] 用户体验分析  [ ] 业务可用性  [ ] 双语表达/风格
 - **期待的改善**：[您期望 UXDA 如何处理该问题]
 ```
 
@@ -296,7 +307,7 @@ npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4-rc.2 --ski
 - [安装指南 (Installation Guide)](INSTALLATION.md) — 安装验证命令、离线脚本检查与宿主兼容性边界。
 - [快速入门 (Quick Start Guide)](QUICK_START.md) — 四类核心能力的 5 分钟上手示例。
 - [方法边界与系统局限 (Methodology & Limitations)](LIMITATIONS.md) — 认识论约束、样本原则与非目标边界。
-- [版本发布说明 (Release Notes)](RELEASE_NOTES.md) — `v0.1.0-beta.4-rc.2` 更新内容、历史基线与验证范围。
+- [版本发布说明 (Release Notes)](RELEASE_NOTES.md) — `v0.1.0-beta.4-rc.3` 更新内容、历史基线与验证范围。
 - [安全与隐私政策 (Security & Privacy)](SECURITY.md) — 公共核心与宿主平台数据边界及反馈渠道。
 - [贡献指南 (Contributing Guidelines)](CONTRIBUTING.md) — 社区问题反馈规范与公共核心隔离要求。
 

@@ -1,3 +1,29 @@
+# Release Notes — UXDA Public Core (`v0.1.0-beta.4-rc.3`)
+
+**Product:** User Experience Decision Advisor (UXDA) / 用户体验决策顾问  
+**Skill ID:** `ux-decision-advisor`  
+**Canonical path:** `skills/ux-decision-advisor/`  
+**Release Phase:** Release Candidate 3 for Bilingual Peer Review (双语同行评审候选版本 3)
+
+## Changes in v0.1.0-beta.4-rc.3
+
+### 1. Native Bilingual Core Architecture (`SKILL.md`)
+- **English-First Presentation with Chinese Parity**: Re-architected the main `SKILL.md` entrypoint to prioritize international English display (compatible with LobeHub Marketplace and global agent environments) while retaining full professional and semantic Chinese equivalence.
+- **Language Adaptation Policy**: Explicitly defined rules for input language matching: English input yields English output; Chinese input yields Chinese output; user overrides are respected; never provides unprompted dual-language responses; language choice never alters evidence thresholds, risk tiers, or research conclusions.
+- **16 Key Scientific Terminology Equivalences**: Aligned core constructs (Usability/可用性, Effectiveness/有效性, Efficiency/效率, Satisfaction/满意度, Human Factors/人因工程, Construct Validity/构念效度, Evidence/证据, Hypothesis/假设, Association/关联, Causation/因果关系, Statistical Significance/统计显著性, Practical Significance/实际意义, User-perceived Problem/用户感知问题, Technical Root Cause/技术根因, Design Recommendation/设计建议, Compliance Requirement/合规要求).
+
+### 2. Strict Installation Overwrite Safety
+- **Defensive Extraction Script**: Updated `INSTALLATION.md` and documentation with a non-destructive installation sequence that halts immediately (`exit 1`) if the target destination folder or symlink (including broken symlinks) already exists.
+- **Isolated Staging Validation**: Enforced extracting to an isolated temporary directory first, validating archive structure (`SKILL.md` and `LICENSE`), and performing an atomic directory move to prevent corrupt or partial installations.
+- **CLI Risk Disclosure**: Noted that Vercel Skills CLI may update in-place without prompting, recommending project-local installations or guarded ZIP extraction where strict non-destructive isolation is required.
+
+### 3. Marketplace Synchronization Delineation
+- **Index Origin Clarification**: Documented that community marketplaces (including LobeHub) bind to the repository default branch (`main`, currently locked at `v0.1.0-beta.3`). Candidate releases (`v0.1.0-beta.4-rc.3`) are installed directly via GitHub Release ZIP or Vercel Skills CLI with `@v0.1.0-beta.4-rc.3`.
+
+---
+
+## Historical Release Notes — v0.1.0-beta.4-rc.2
+
 # Release Notes — UXDA Public Core (`v0.1.0-beta.4-rc.2`)
 
 **Product:** User Experience Decision Advisor (UXDA) / 用户体验决策顾问  

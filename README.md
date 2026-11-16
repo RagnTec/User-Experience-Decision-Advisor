@@ -254,10 +254,25 @@ UXDA is an experimental AI Agent Skill designed for user research, interaction d
 - **Human Review Required**: All outputs are conditional proposals for discussion; critical business, legal, and safety decisions require qualified human expert review.
 
 ### How to Install for Trial
+
+**Option A: Direct ZIP Download (Recommended)**
 1. Download `ux-decision-advisor-v0.1.0-beta.4-rc.2.zip` from the [GitHub Pre-release](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.4-rc.2).
-2. Unzip into your local agent skills directory (e.g., `~/.agents/skills/ux-decision-advisor`).
-3. Verify directory structure matches `skills/ux-decision-advisor/` containing `SKILL.md`, `references/`, `assets/`, `scripts/`, and `LICENSE`.
-4. In your AI agent, invoke naturally: `Use the installed ux-decision-advisor skill to evaluate ...`.
+2. Verify checksum: `shasum -a 256 ux-decision-advisor-v0.1.0-beta.4-rc.2.zip` (must match `c2aa7a0c5b0c0122d94064957b1cc88c589baf50d2bd0c971ed73dc417bb7cff`).
+3. Extract into your shared skills folder:
+   ```bash
+   # Check existing directory first to prevent accidental overwrite
+   ls -ld ~/.agents/skills/ux-decision-advisor 2>/dev/null && echo "Notice: Existing installation found. Back up or rename it before unzipping."
+   mkdir -p ~/.agents/skills
+   unzip -q ux-decision-advisor-v0.1.0-beta.4-rc.2.zip -d ~/.agents/skills/
+   ```
+4. Verify directory contains `SKILL.md`, `references/` (59 files), `assets/` (16 files), `scripts/` (15 files), and `LICENSE` (total 92 files).
+
+**Option B: Via Vercel Skills CLI**
+```bash
+npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4-rc.2 --skill ux-decision-advisor
+```
+
+In your AI agent, invoke naturally: `Use the installed ux-decision-advisor skill to evaluate ...`.
 
 ### Peer Review Feedback Template
 Peers with UX research, HCI, ergonomics, or product management experience are invited to share feedback via [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Advisor/issues). You may use this lightweight template:

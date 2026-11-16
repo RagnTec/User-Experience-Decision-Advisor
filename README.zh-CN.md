@@ -254,10 +254,25 @@ UXDA 是一套面向用户研究、交互体验与人因工程的实验性 AI Ag
 - **必须经过人类专家复核**：UXDA 输出均为拟议审议建议，关键业务、合规、人因及安全决策必须由具备资质的人类专家最终把关。
 
 ### 同行安装试用方式
+
+**方式 A：直接下载 Release ZIP 安装（推荐）**
 1. 从 [GitHub Pre-release](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.4-rc.2) 下载 `ux-decision-advisor-v0.1.0-beta.4-rc.2.zip`；
-2. 解压到您本地 Agent 技能目录（如 `~/.agents/skills/ux-decision-advisor`）；
-3. 确认解压目录包含 `SKILL.md`、`references/`、`assets/`、`scripts/` 与 `LICENSE`；
-4. 在支持 Agent Skill 的工具中通过自然语言触发：`调用已安装的 ux-decision-advisor 技能，评估……`。
+2. 校验文件哈希：`shasum -a 256 ux-decision-advisor-v0.1.0-beta.4-rc.2.zip`（确认与官方发布的 `c2aa7a0c5b0c0122d94064957b1cc88c589baf50d2bd0c971ed73dc417bb7cff` 一致）；
+3. 解压至多 Agent 共享技能目录（先检查既有路径以防非预期覆盖）：
+   ```bash
+   # 检查是否存在历史版本，避免意外覆盖
+   ls -ld ~/.agents/skills/ux-decision-advisor 2>/dev/null && echo "提示：已存在同名目录，解压前请先备份或重命名旧版本。"
+   mkdir -p ~/.agents/skills
+   unzip -q ux-decision-advisor-v0.1.0-beta.4-rc.2.zip -d ~/.agents/skills/
+   ```
+4. 确认解压目录包含 `SKILL.md`、`references/`（59 篇）、`assets/`（16 个）、`scripts/`（15 个）与 `LICENSE`（共 92 个文件）。
+
+**方式 B：通过 Vercel Skills CLI 安装**
+```bash
+npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4-rc.2 --skill ux-decision-advisor
+```
+
+在支持 Agent Skill 的工具中通过自然语言直接触发：`调用已安装的 ux-decision-advisor 技能，评估……`。
 
 ### 同行评审反馈模板
 诚邀具有用户研究、HCI、人因或产品协作经验的同行在 [GitHub Issues](https://github.com/RagnTec/User-Experience-Decision-Advisor/issues) 中提交反馈。可选用以下极简格式：

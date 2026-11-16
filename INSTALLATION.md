@@ -44,15 +44,22 @@ To evaluate the exact packaged candidate without cloning Git history:
 
 3. **Extract into the Canonical Skills Directory**:
    ```bash
+   # Check if a previous installation already exists to avoid accidental overwrite
+   if [ -d "$HOME/.agents/skills/ux-decision-advisor" ]; then
+     echo "Notice: An existing installation was found at ~/.agents/skills/ux-decision-advisor."
+     echo "Please back up or rename the existing directory before unzipping."
+   fi
+
    mkdir -p ~/.agents/skills
    unzip -q ux-decision-advisor-v0.1.0-beta.4-rc.2.zip -d ~/.agents/skills/
    ```
-   *The ZIP unpacks directly as `~/.agents/skills/ux-decision-advisor/` containing `SKILL.md`, `references/`, `assets/`, `scripts/`, and `LICENSE`.*
+   *The ZIP unpacks directly as `~/.agents/skills/ux-decision-advisor/` containing `SKILL.md`, `references/`, `assets/`, `scripts/`, and `LICENSE` (total 92 files).*
 
 4. **Discovery Link for Google Antigravity (Optional)**:
    ```bash
    mkdir -p ~/.gemini/config/skills
-   ln -sf ~/.agents/skills/ux-decision-advisor ~/.gemini/config/skills/ux-decision-advisor
+   # Review existing destination before creating symlink (use -s to prevent unintended overwrite)
+   ln -s ~/.agents/skills/ux-decision-advisor ~/.gemini/config/skills/ux-decision-advisor
    ```
 
 ---
@@ -80,14 +87,14 @@ rm -rf /tmp/uxda-source
 
 ## Method 3: Third-Party CLI / Skill Manager (Project-Local)
 
-When using CLI skill managers (requires Node.js 22.20+ and a compatible agent host):
+When using CLI skill managers (requires Node.js 22.20+ and a compatible agent host per [Vercel Skills CLI specification](https://github.com/vercel-labs/skills/blob/main/docs/commands.md)):
 
 ```bash
 # Install stable baseline from default branch (main):
 npx skills add RagnTec/User-Experience-Decision-Advisor --skill ux-decision-advisor
 
-# Or install the Release Candidate by specifying the tag:
-npx skills add RagnTec/User-Experience-Decision-Advisor --skill ux-decision-advisor --tag v0.1.0-beta.4-rc.2
+# Or install the Release Candidate by specifying the release tag in the repository URI:
+npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4-rc.2 --skill ux-decision-advisor
 ```
 
 > **Migration from legacy `uxda`**: The canonical skill directory and identifier is `ux-decision-advisor`. Legacy installations named `uxda` will not be overwritten automatically; review and migrate them according to your host environment.

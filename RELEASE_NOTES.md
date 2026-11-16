@@ -16,7 +16,17 @@
   - Main Branch Stable Baseline: `v0.1.0-beta.3`
   - Historical RC 1: `v0.1.0-beta.4-rc.1`
   - Active Peer Review Candidate: `v0.1.0-beta.4-rc.2` (PR #5 unmerged, branch `release/beta4-rc1`)
-- **Installation Method Clarification**: Delineated the three distinct installation pathways: Release ZIP extraction, Git branch/tag clone, and CLI package managers. Explicitly noted that default installations from `main` fetch `v0.1.0-beta.3`, preventing version mismatch during testing.
+- **Installation Method Clarification**: Delineated the three distinct installation pathways: Release ZIP extraction, Git branch/tag clone, and CLI package managers. Explicitly noted that default installations from `main` fetch `v0.1.0-beta.3`. For Vercel Skills CLI, verified the official tag syntax:
+  ```bash
+  npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4-rc.2 --skill ux-decision-advisor
+  ```
+- **Verified Package Composition (92 Files Total)**: Verified through Git tree inspection at tag `v0.1.0-beta.4-rc.2`:
+  - `references/`: 59 files
+  - `assets/`: 16 files
+  - `scripts/`: 15 files
+  - `SKILL.md`: 1 file
+  - `LICENSE`: 1 file
+  Total: 92 files (packaged in `ux-decision-advisor-v0.1.0-beta.4-rc.2.zip`, SHA-256: `c2aa7a0c5b0c0122d94064957b1cc88c589baf50d2bd0c971ed73dc417bb7cff`).
 
 ### 3. Representative Workflow Showcase (`DEMO-02`)
 - **Real Business-First Workflow**: Added `DEMO-02` (Game Lag vs. Render Frame Hitching under 2-person, 5-day constraints) to demonstrate the refined business-first interaction protocol:

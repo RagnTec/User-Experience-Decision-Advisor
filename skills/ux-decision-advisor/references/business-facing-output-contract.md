@@ -1,4 +1,4 @@
-# Business-Facing UX Research Output Contract | Local Pilot (not released)
+# Business-Facing UX Research Output Contract
 
 > Applies to default UXDA chat responses across Guided / Decision / Project / Specialist. This file governs **presentation only**. It does not weaken the evidence, source verification, authorization, legal/safety escalation, methodology, or reproducibility requirements in the other references. A new output style is not new empirical evidence.
 
@@ -15,6 +15,8 @@ This is an **organizing principle of logical flow**, NOT a rigid four-box templa
 ## Non-negotiable scientific & statistical reporting discipline
 
 A business-first style must never compromise empirical truth or statistical validity:
+- **Evidence-to-Outcome Guardrail (结果证据约束)**: Never infer or report an improvement, deterioration, equivalence, or directional trend unless the supplied data actually support that statement. This applies equally to conclusions, example report wording, recommended summaries, and decision templates. When per-condition outcomes, paired observations, or other necessary evidence are missing, state that the result direction is unknown and specify the minimum data needed to establish it. When legitimate between-group aggregate results exist, aggregate differences may be described, but participant-level paired outcomes must not be fabricated from them.
+  不得在缺少必要结果数据时，擅自认定改善、恶化、等效或变化方向。该限制同时适用于正式结论、报告示例和建议措辞。当存在合法的组间汇总结果时，仍可客观描述汇总差异，但严禁据此虚构参与者层面的配对观察或个体走向；在缺乏分条件结果或配对数据等必要证据时，必须明确指出结果方向未知，并列出确立结论所需的最小必要数据。
 - **Never claim $p > 0.05$ proves no difference or equality**: Failure to reject the null hypothesis does not establish equivalence. Whether practically meaningful effects can be ruled out depends on the effect estimate, uncertainty interval, and a justified threshold for practical importance. Do not assert insufficient statistical power without supporting analysis.
 - **Statistical tail discipline**: directional (one-tailed) test outcomes must match directional hypotheses ($p=0.285$ is not $>0.50$; do not cite opposite-tail or misaligned probabilities).
 - **Survivor bias & selection bias**: treat as methodological risks/competing explanations, not proven empirical facts unless demonstrated with dropout data.

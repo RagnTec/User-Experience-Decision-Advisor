@@ -8,7 +8,7 @@ description: >-
   Specialist supports interaction and human-factors reviews. Includes
   offline analysis of user-provided materials.
 metadata:
-  version: "0.1.0-beta.4-rc.3"
+  version: "0.1.0-beta.4"
   historical_components: "ux-decision-assistant-router, evidence-based-design-review"
 ---
 

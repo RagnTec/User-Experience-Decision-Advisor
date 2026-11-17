@@ -9,9 +9,10 @@
 
 ### 1. Official Public Beta Release Consolidation
 - **Full Main Branch Baseline**: Merged the bilingual core architecture and peer review improvements into `main` (merging PR #5).
-- **Package Integrity & Verification**: Finalized release package `ux-decision-advisor-v0.1.0-beta.4.zip` (92 files, SHA-256: `30e82bd01c27a26a71456efedac41371426e9687634dfcbd50e4b92d4d5ccb2e`), passing all structural, static, and runtime safety verifications.
+- **Package Integrity & Verification**: Finalized release package `ux-decision-advisor-v0.1.0-beta.4.zip` (92 files, SHA-256: `61804458991967686b36febfb35eeca6991b866322dbe3cdfedfbe91fc5ef917`), passing all structural, static, and runtime safety verifications.
 
 ### 2. Methodological & Statistical Precision Refinements
+- **Evidence-to-Outcome Guardrail (结果证据约束)**: Strictly prohibits asserting improvement, deterioration, equivalence, or change direction when necessary outcome data (such as per-condition or paired results) are missing. When between-group aggregate differences exist, aggregate differences may be reported, but participant-level paired outcomes must never be fabricated.
 - **Non-Significance Epistemic Guardrail**: Refined statistical reporting discipline in `business-facing-output-contract.md`: Failure to reject the null hypothesis ($p > 0.05$) does not establish equivalence. Ruling out practically meaningful effects requires examining effect estimates, uncertainty intervals, and a justified practical importance threshold. Prohibits asserting insufficient statistical power without supporting analysis.
 - **Directional Hypothesis & Tail Alignment**: Enforces that one-tailed test outcomes match directional hypotheses without probability misalignments.
 

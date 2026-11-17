@@ -261,7 +261,7 @@ UXDA is an experimental AI Agent Skill designed for user research, interaction d
 
 **Option A: Direct ZIP Download (Recommended with Overwrite Protection)**
 1. Download `ux-decision-advisor-v0.1.0-beta.4.zip` from the [GitHub Pre-release](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.4).
-2. Verify checksum: `shasum -a 256 ux-decision-advisor-v0.1.0-beta.4.zip # SHA-256: 01cf879f9d120005659a035090e4ea26af2c329e4ae4ab6dd9558b98991da948`.
+2. Verify checksum: `shasum -a 256 ux-decision-advisor-v0.1.0-beta.4.zip # SHA-256: 30e82bd01c27a26a71456efedac41371426e9687634dfcbd50e4b92d4d5ccb2e`.
 3. Extract safely into your shared skills folder:
    ```bash
    TARGET="$HOME/.agents/skills/ux-decision-advisor"

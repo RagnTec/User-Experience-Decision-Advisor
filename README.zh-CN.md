@@ -261,7 +261,7 @@ UXDA 是一套面向用户研究、交互体验与人因工程的实验性 AI Ag
 
 **方式 A：直接下载 Release ZIP 安装（推荐，带防覆盖保护）**
 1. 从 [GitHub Pre-release](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.4) 下载 `ux-decision-advisor-v0.1.0-beta.4.zip`；
-2. 校验文件哈希：`shasum -a 256 ux-decision-advisor-v0.1.0-beta.4.zip # SHA-256: 01cf879f9d120005659a035090e4ea26af2c329e4ae4ab6dd9558b98991da948`；
+2. 校验文件哈希：`shasum -a 256 ux-decision-advisor-v0.1.0-beta.4.zip # SHA-256: 30e82bd01c27a26a71456efedac41371426e9687634dfcbd50e4b92d4d5ccb2e`；
 3. 执行安全防覆盖解压指令：
    ```bash
    TARGET="$HOME/.agents/skills/ux-decision-advisor"

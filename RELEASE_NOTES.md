@@ -9,7 +9,7 @@
 
 ### 1. Official Public Beta Release Consolidation
 - **Full Main Branch Baseline**: Merged the bilingual core architecture and peer review improvements into `main` (merging PR #5).
-- **Package Integrity & Verification**: Finalized release package `ux-decision-advisor-v0.1.0-beta.4.zip` (92 files, SHA-256: `01cf879f9d120005659a035090e4ea26af2c329e4ae4ab6dd9558b98991da948`), passing all structural, static, and runtime safety verifications.
+- **Package Integrity & Verification**: Finalized release package `ux-decision-advisor-v0.1.0-beta.4.zip` (92 files, SHA-256: `30e82bd01c27a26a71456efedac41371426e9687634dfcbd50e4b92d4d5ccb2e`), passing all structural, static, and runtime safety verifications.
 
 ### 2. Methodological & Statistical Precision Refinements
 - **Non-Significance Epistemic Guardrail**: Refined statistical reporting discipline in `business-facing-output-contract.md`: Failure to reject the null hypothesis ($p > 0.05$) does not establish equivalence. Ruling out practically meaningful effects requires examining effect estimates, uncertainty intervals, and a justified practical importance threshold. Prohibits asserting insufficient statistical power without supporting analysis.

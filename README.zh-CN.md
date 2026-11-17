@@ -1,4 +1,4 @@
-# UXDA — 用户体验决策顾问 (Public Core v0.1.0-beta.4-rc.3)
+# UXDA — 用户体验决策顾问 (Public Core v0.1.0-beta.4)
 
 [English](README.md) | 简体中文
 
@@ -49,10 +49,10 @@ UXDA 公共核心 (Public Core)
 
 | 组件 / 分发层级 | 公开版本号 | 组件演进追踪 | 角色与范围说明 |
 | :--- | :---: | :---: | :--- |
-| **UXDA 公共核心（当前 RC）** | **`v0.1.0-beta.4-rc.3`** | *双语同行评审候选版（分支 `release/beta4-rc1`，PR #5）* | 供同行实测体验与中英文方法学评估的最新候选发布包 |
-| UXDA 公共核心（历史 RC） | `v0.1.0-beta.4-rc.1`<br>`v0.1.0-beta.4-rc.2` | *同行评审候选版 1 与 2* | 已归档的历史评审候选版本 |
-| UXDA 公共核心（正式稳定基线） | `v0.1.0-beta.3` | *源码公开受限测试版（GitHub `main` 主分支）* | 当前 GitHub `main` 主分支上的官方正式基线 |
-| `skills/ux-decision-advisor`（统一核心技能） | `v0.1.0-beta.4-rc.3` | 原 Router (v0.5.4) + Specialist (v0.7.0) 一体化整合 | 对外唯一入口，集成 Guided / Decision / Project / Specialist 四类能力 |
+| **UXDA 公共核心（正式公开 Beta）** | **`v0.1.0-beta.4`** | *源码公开受限测试版（GitHub `main` 主分支）* | 当前 GitHub `main` 主分支上的官方正式版本 |
+| UXDA 公共核心（历史 RC） | `v0.1.0-beta.4-rc.1`<br>`v0.1.0-beta.4-rc.2`<br>`v0.1.0-beta.4-rc.3` | *同行评审候选版 1–3* | 已归档的历史评审候选版本 |
+| UXDA 公共核心（历史基线） | `v0.1.0-beta.3` | *历史公开测试版* | PR #5 合并前的历史主分支基线 |
+| `skills/ux-decision-advisor`（统一核心技能） | `v0.1.0-beta.4` | 原 Router (v0.5.4) + Specialist (v0.7.0) 一体化整合 | 对外唯一入口，集成 Guided / Decision / Project / Specialist 四类能力 |
 | Context Bundle 接口契约 | `v0.2` | 通用接口规范 v0.2 | 可选 JSON 数据交换约定（仓库内不含企业私有后端实现） |
 
 ---
@@ -242,7 +242,7 @@ UXDA 是一套面向用户研究、交互体验与人因工程的实验性 AI Ag
 - **Project**：研究方案设计、轻量工具执行与数据口径审计。
 - **Specialist**：触控尺寸计算、人因工程复核与界面摩擦走查。
 
-### 本次 v0.1.0-beta.4-rc.3 重点优化内容
+### 本次 v0.1.0-beta.4 重点优化内容
 1. **全面原生中英文双语能力**：主入口 `SKILL.md` 采用英文国际化展示与完整中文能力对齐，建立 16 项核心科学术语对齐表，实现输入语言自动检测与回复自适应。
 2. **安装覆盖严格防损保护**：安装指令引入强制目录与符号链接预检，存在同名路径时阻断解压，并在独立临时目录校验文件完整性后再原子性安装。
 3. **Agent Skills 规范全面兼容**：Frontmatter 元数据采用规范要求的纯字符串键值映射（`metadata.version`、`metadata.historical_components`）。
@@ -255,13 +255,13 @@ UXDA 是一套面向用户研究、交互体验与人因工程的实验性 AI Ag
 - **跨宿主 Agent 表现差异**：不同模型（如 Claude 3.5 Sonnet、Gemini 2.5 Pro、GPT-4o）与宿主客户端（Cursor、Claude Code、Antigravity）对 Skill 指令的遵循程度存在一定离散。
 - **大模型输出稳定性**：尽管设置了边界门禁，大模型仍可能存在偶发推断偏差。
 - **必须经过人类专家复核**：UXDA 输出均为拟议审议建议，关键业务、合规、人因及安全决策必须由具备资质的人类专家最终把关。
-- **应用市场同步周期**：LobeHub 等第三方市场默认绑定 GitHub `main` 主分支（当前为 `v0.1.0-beta.3`）。候选版本（`rc.3`）请优先通过 GitHub Release ZIP 或 Vercel Skills CLI 直接安装。
+- **应用市场同步周期**：LobeHub 等第三方市场默认绑定 GitHub `main` 主分支。随着 PR #5 合并至主分支，市场索引服务将在下一定时刷新周期同步 `v0.1.0-beta.4`。
 
 ### 同行安装试用方式
 
 **方式 A：直接下载 Release ZIP 安装（推荐，带防覆盖保护）**
-1. 从 [GitHub Pre-release](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.4-rc.3) 下载 `ux-decision-advisor-v0.1.0-beta.4-rc.3.zip`；
-2. 校验文件哈希：`shasum -a 256 ux-decision-advisor-v0.1.0-beta.4-rc.3.zip # SHA-256: 3000fb29c1be01acb65a721a878664984d0f86b17edced6db548230d9f833d7a`；
+1. 从 [GitHub Pre-release](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.4) 下载 `ux-decision-advisor-v0.1.0-beta.4.zip`；
+2. 校验文件哈希：`shasum -a 256 ux-decision-advisor-v0.1.0-beta.4.zip # SHA-256: 61804458991967686b36febfb35eeca6991b866322dbe3cdfedfbe91fc5ef917`；
 3. 执行安全防覆盖解压指令：
    ```bash
    TARGET="$HOME/.agents/skills/ux-decision-advisor"
@@ -271,7 +271,7 @@ UXDA 是一套面向用户研究、交互体验与人因工程的实验性 AI Ag
    fi
    TMP=$(mktemp -d /tmp/uxda_inst_XXXXXX)
    trap 'rm -rf "$TMP"' EXIT
-   unzip -q ux-decision-advisor-v0.1.0-beta.4-rc.3.zip -d "$TMP"
+   unzip -q ux-decision-advisor-v0.1.0-beta.4.zip -d "$TMP"
    mkdir -p "$HOME/.agents/skills"
    mv "$TMP/ux-decision-advisor" "$TARGET"
    echo "✅ 成功安装至: $TARGET"
@@ -279,7 +279,7 @@ UXDA 是一套面向用户研究、交互体验与人因工程的实验性 AI Ag
 
 **方式 B：通过 Vercel Skills CLI 安装**
 ```bash
-npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4-rc.3 --skill ux-decision-advisor
+npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4 --skill ux-decision-advisor
 ```
 
 在支持 Agent Skill 的工具中通过中文或英文自然语言直接触发：`调用已安装的 ux-decision-advisor 技能，评估……` 或 `Use ux-decision-advisor to evaluate ...`。

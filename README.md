@@ -1,4 +1,4 @@
-# UXDA — User Experience Decision Advisor (Public Core v0.1.0-beta.4-rc.3)
+# UXDA — User Experience Decision Advisor (Public Core v0.1.0-beta.4)
 
 English | [简体中文](README.zh-CN.md)
 
@@ -49,10 +49,10 @@ UXDA Public Core
 
 | Component / Layer | Public Version | Evolution Track | Role & Scope |
 | :--- | :---: | :---: | :--- |
-| **UXDA Public Core (Active RC)** | **`v0.1.0-beta.4-rc.3`** | *Bilingual Peer Review Candidate (branch `release/beta4-rc1`, PR #5)* | Current active release candidate for bilingual peer testing and methodology evaluation |
-| UXDA Public Core (Historical RCs) | `v0.1.0-beta.4-rc.1`<br>`v0.1.0-beta.4-rc.2` | *Peer Review Candidates 1 & 2* | Archived peer review candidates |
-| UXDA Public Core (Stable Baseline) | `v0.1.0-beta.3` | *Source-Available Public Beta (on GitHub `main`)* | Current official stable baseline on default branch |
-| `skills/ux-decision-advisor` (Unified Skill) | `v0.1.0-beta.4-rc.3` | Consolidated Router (v0.5.4) + Specialist (v0.7.0) | Single entrypoint delivering Guided, Decision, Project, and Specialist workflows |
+| **UXDA Public Core (Official Beta)** | **`v0.1.0-beta.4`** | *Source-Available Public Beta (on GitHub `main`)* | Current official public beta release on default branch |
+| UXDA Public Core (Historical RCs) | `v0.1.0-beta.4-rc.1`<br>`v0.1.0-beta.4-rc.2`<br>`v0.1.0-beta.4-rc.3` | *Peer Review Candidates 1–3* | Archived peer review candidates |
+| UXDA Public Core (Prior Baseline) | `v0.1.0-beta.3` | *Historical Public Beta* | Previous public beta baseline on default branch |
+| `skills/ux-decision-advisor` (Unified Skill) | `v0.1.0-beta.4` | Consolidated Router (v0.5.4) + Specialist (v0.7.0) | Single entrypoint delivering Guided, Decision, Project, and Specialist workflows |
 | Context Bundle Contract | `v0.2` | Generic Specification v0.2 | Optional JSON interchange specification (no bundled enterprise backend) |
 
 ---
@@ -234,7 +234,7 @@ ln -s ~/.agents/skills/ux-decision-advisor ~/.gemini/config/skills/ux-decision-a
 
 ---
 
-## 8. Peer Review Trial Guide & Feedback Program (Beta.4 RC.3)
+## 8. Public Beta Guide & Feedback Program (v0.1.0-beta.4)
 
 UXDA is an experimental AI Agent Skill designed for user research, interaction design decision-making, and human-factors tasks. It delivers four core capabilities:
 - **Guided**: Research knowledge and methodology explanation.
@@ -242,7 +242,7 @@ UXDA is an experimental AI Agent Skill designed for user research, interaction d
 - **Project**: Study planning, lightweight instrument execution, and telemetry audit.
 - **Specialist**: Direct ergonomic evaluation, hitbox boundary check, and friction review.
 
-### What is Enhanced in v0.1.0-beta.4-rc.3
+### What is Enhanced in v0.1.0-beta.4
 1. **Full Bilingual Core Architecture**: Main `SKILL.md` entrypoint structured with English-first international display and fully equivalent Chinese capability rules, supporting automatic input language detection and response matching.
 2. **Strict Installation Overwrite Safety**: Guarded extraction halts immediately when target folders or symlinks exist, protecting users against accidental data loss.
 3. **Agent Skills Specification Compliance**: Frontmatter strictly formatted with string-to-string metadata mapping (`metadata.version`, `metadata.historical_components`).
@@ -255,13 +255,13 @@ UXDA is an experimental AI Agent Skill designed for user research, interaction d
 - **Cross-Host Agent Variance**: Performance may vary across LLM models and host agent platforms (e.g. Claude Code, Cursor, Antigravity).
 - **Model Stability**: While rules enforce boundary checks, LLM hallucination cannot be fully eliminated.
 - **Human Review Required**: All outputs are conditional proposals for discussion; critical business, legal, and safety decisions require qualified human expert review.
-- **Marketplace Sync Schedule**: Marketplaces (such as LobeHub) bind to the repository default branch (`main`, currently `v0.1.0-beta.3`). Candidate releases (`rc.3`) are available immediately via GitHub Releases and Vercel Skills CLI.
+- **Marketplace Sync Schedule**: Community marketplaces (such as LobeHub) bind to the repository default branch (`main`). With PR #5 merged into `main`, marketplace indexing reflects `v0.1.0-beta.4` upon their next scheduled sync.
 
 ### How to Install for Trial
 
 **Option A: Direct ZIP Download (Recommended with Overwrite Protection)**
-1. Download `ux-decision-advisor-v0.1.0-beta.4-rc.3.zip` from the [GitHub Pre-release](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.4-rc.3).
-2. Verify checksum: `shasum -a 256 ux-decision-advisor-v0.1.0-beta.4-rc.3.zip # SHA-256: 3000fb29c1be01acb65a721a878664984d0f86b17edced6db548230d9f833d7a`.
+1. Download `ux-decision-advisor-v0.1.0-beta.4.zip` from the [GitHub Pre-release](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.4).
+2. Verify checksum: `shasum -a 256 ux-decision-advisor-v0.1.0-beta.4.zip # SHA-256: 61804458991967686b36febfb35eeca6991b866322dbe3cdfedfbe91fc5ef917`.
 3. Extract safely into your shared skills folder:
    ```bash
    TARGET="$HOME/.agents/skills/ux-decision-advisor"
@@ -271,7 +271,7 @@ UXDA is an experimental AI Agent Skill designed for user research, interaction d
    fi
    TMP=$(mktemp -d /tmp/uxda_inst_XXXXXX)
    trap 'rm -rf "$TMP"' EXIT
-   unzip -q ux-decision-advisor-v0.1.0-beta.4-rc.3.zip -d "$TMP"
+   unzip -q ux-decision-advisor-v0.1.0-beta.4.zip -d "$TMP"
    mkdir -p "$HOME/.agents/skills"
    mv "$TMP/ux-decision-advisor" "$TARGET"
    echo "✅ Installed to $TARGET"
@@ -279,7 +279,7 @@ UXDA is an experimental AI Agent Skill designed for user research, interaction d
 
 **Option B: Via Vercel Skills CLI**
 ```bash
-npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4-rc.3 --skill ux-decision-advisor
+npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4 --skill ux-decision-advisor
 ```
 
 In your AI agent, invoke naturally in English or Chinese: `Use the installed ux-decision-advisor skill to evaluate ...`.
@@ -307,7 +307,7 @@ Peers with UX research, HCI, ergonomics, or product management experience are in
 - [Installation Guide](INSTALLATION.md) — Setup steps, offline script verification, and host compatibility scope.
 - [Quick Start Guide](QUICK_START.md) — 5-minute hands-on walkthrough across all four capabilities.
 - [Methodology & Limitations](LIMITATIONS.md) — Detailed epistemological rules, sample limits, and non-goals.
-- [Release Notes](RELEASE_NOTES.md) — `v0.1.0-beta.4-rc.3` changelog, historical baselines, and verification scope.
+- [Release Notes](RELEASE_NOTES.md) — `v0.1.0-beta.4` changelog, historical baselines, and verification scope.
 - [Security & Privacy](SECURITY.md) — Data isolation boundaries, local-script confinement, and reporting guidance.
 - [Contributing Guidelines](CONTRIBUTING.md) — Feedback workflow and Public Core boundary rules.
 

@@ -1,3 +1,34 @@
+# Release Notes — UXDA Public Core (`v0.1.0-beta.4`)
+
+**Product:** User Experience Decision Advisor (UXDA) / 用户体验决策顾问  
+**Skill ID:** `ux-decision-advisor`  
+**Canonical path:** `skills/ux-decision-advisor/`  
+**Release Phase:** Official Public Beta (`v0.1.0-beta.4`)
+
+## Changes in v0.1.0-beta.4
+
+### 1. Official Public Beta Release Consolidation
+- **Full Main Branch Baseline**: Merged the bilingual core architecture and peer review improvements into `main` (merging PR #5).
+- **Package Integrity & Verification**: Finalized release package `ux-decision-advisor-v0.1.0-beta.4.zip` (92 files, SHA-256: `01cf879f9d120005659a035090e4ea26af2c329e4ae4ab6dd9558b98991da948`), passing all structural, static, and runtime safety verifications.
+
+### 2. Methodological & Statistical Precision Refinements
+- **Non-Significance Epistemic Guardrail**: Refined statistical reporting discipline in `business-facing-output-contract.md`: Failure to reject the null hypothesis ($p > 0.05$) does not establish equivalence. Ruling out practically meaningful effects requires examining effect estimates, uncertainty intervals, and a justified practical importance threshold. Prohibits asserting insufficient statistical power without supporting analysis.
+- **Directional Hypothesis & Tail Alignment**: Enforces that one-tailed test outcomes match directional hypotheses without probability misalignments.
+
+### 3. Native Bilingual Core Architecture & Language Auto-Adaptation
+- **English-First Marketplace Presentation with Full Chinese Parity**: Re-architected `SKILL.md` to present clean English-first documentation for international skill registries while preserving complete, professional Chinese rules.
+- **Dynamic Language Adaptation**: Responds automatically in English when queried in English, and in Chinese when queried in Chinese, without unprompted dual-language mixing.
+- **16 Standard Scientific Constructs**: Systematically mapped foundational concepts across Usability, Epistemology, Inference Boundaries, and Problem Framing.
+
+### 4. Defensive Non-Destructive Installation
+- **Strict Overwrite Protection**: Provided automated install routines that halt (`exit 1`) if the destination directory or symlink exists.
+- **Pre-Extraction Hash Validation**: Guarantees archive integrity prior to unpacking.
+- **Standardized Vercel Skills CLI Syntax**: Verified `npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4 --skill ux-decision-advisor`.
+
+---
+
+## Historical Release Notes — v0.1.0-beta.4-rc.3
+
 # Release Notes — UXDA Public Core (`v0.1.0-beta.4-rc.3`)
 
 **Product:** User Experience Decision Advisor (UXDA) / 用户体验决策顾问  

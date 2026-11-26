@@ -2,7 +2,7 @@
 name: ux-decision-advisor
 description: User Experience Decision Advisor (UXDA) | 用户体验决策顾问。 A unified bilingual AI Agent skill for UX research thinking, method selection, study design, evidence review, human-factors assessment, business decisions, localized Markdown visualization, and offline H5 reports. Use for vague experience problems, plans, surveys, interviews, usability tests, experiments, analytics, conflicting evidence, design trade-offs, or industrial touch/ergonomic reviews. Responds in the user's language.
 metadata:
-  version: "0.1.0-beta.5-integration.1"
+  version: "0.1.0-beta.5"
   historical_components: "ux-decision-assistant-router, evidence-based-design-review"
 ---
 

@@ -1,22 +1,30 @@
-# Release Notes — UXDA Public Core (`v0.1.0-beta.5-integration.1`, Local Integration Candidate)
+# Release Notes — UXDA Public Core (`v0.1.0-beta.5`)
 
 **Product:** User Experience Decision Advisor (UXDA) / 用户体验决策顾问  
 **Skill ID:** `ux-decision-advisor`  
 **Canonical path:** `skills/ux-decision-advisor/`  
-**Release Phase:** Local Integration Candidate (not an official GitHub Release; `v0.1.0-beta.4` remains the published public beta)
+**Release Phase:** Official Public Beta (`v0.1.0-beta.5`)
 
-## Changes in v0.1.0-beta.5-integration.1
+## What's New in v0.1.0-beta.5
 
-### 1. Task-First Entry & Rule Precedence Reconciliation
-- **Task-First Default (`SKILL.md`, `core-reasoning.md`, `decision-and-business-output.md`)**: Adopted silent four-lens framing (Guided, Decision, Project, Specialist) and three-layer delivery (direct answer, optional explanation, requested artifact) without mandatory O/E/D/V or progress-map gates on ordinary chat.
-- **Explicit Precedence & UXRR Boundary**: Established clear precedence (safety/privacy/auth & scientific truth > task contract > domain refs > templates) and defined UXRR cards as upstream inputs without runtime coupling.
-- **Legacy Compatibility Preserved**: Added explicit compatibility notices to legacy O/E/D/V routing files while preserving Beta.4 domain depth (`consumer-context`, `cross-market-evidence`, `voc-source-routing`, `jurisdiction-and-norms-gate`, `offline-knowledge-use`) and the `Evidence-to-Outcome Guardrail`.
+1. **Research Workflow & Multi-Turn Collaboration**:
+   - Task-first entry with four silent analytical lenses (Guided, Decision, Project, Specialist) and three-layer delivery (direct answer, optional explanation, requested artifact), eliminating mandatory O/E/D/V or progress-map gates on ordinary chat.
+   - Incremental multi-turn co-creation (`continuity-and-collaboration.md`) that revises only affected questions, methods, and decision conditions when constraints change, while preserving explicit authorization, privacy, safety, and `Evidence-to-Outcome Guardrail` boundaries.
+2. **Qualitative Coding & Evidence Traceability**:
+   - Operational qualitative coding workflow and worksheet (`assets/qualitative-coding.md`) supporting versioned codebooks, unit/source IDs, negative/qualifying cases, and explicit single-reviewer limitation disclosure.
+   - Optional `uxda-evidence-v1` schema (`assets/uxda-evidence-v1.schema.json`) linking studies, evidence, claims, and decision follow-ups.
+3. **Reproducible Descriptive Analysis & Evidence Validation**:
+   - Bounded descriptive task-data tool (`scripts/analyze_synthetic.py`) reporting observed denominators, complete pairs, missing-outcome sensitivity bounds, and outlier sensitivity without claiming inferential power or causality.
+   - Structural evidence validator (`scripts/validate_evidence.py`) enforcing ID/reference integrity and consistency checks (rejecting `supported` + `contradicts`, `implemented` + `outcome.implemented=false`, and `restricted` without `consent_scope`). *Note: validation checks structure and within-study references only—it does not verify source truth, consent validity, or scientific conclusions.*
+4. **Markdown-to-H5 & Compatible Structured Reporting**:
+   - Self-contained Markdown→H5 renderer (`scripts/render_markdown_report.py`) supporting localized headings, tables, safe acyclic Mermaid SVG flowcharts with text fallbacks, CSP, and source view.
+   - Unified `scripts/render_report.py` supporting both structured v1 and legacy Beta.4 JSON report payloads, plus upgraded `scripts/local_evidence.py`.
 
-### 2. Research Execution, Evidence Contract & Report Rendering
-- **Unified Methodology & Instruments**: Integrated `method-selection.md`, `research-design.md`, `research-materials.md`, `analysis-and-statistics.md`, `human-factors-and-standards.md`, `guided-learning.md`, `continuity-and-collaboration.md`, `bilingual-parity.md`, and working outlines including `qualitative-coding.md`.
-- **Evidence Contract (`uxda-evidence-v1`)**: Integrated `validate_evidence.py` with three consistency guards (rejecting `supported` + `contradicts`, `implemented` + `outcome.implemented=false`, and `restricted` without `consent_scope`).
-- **Dual Report Dispatch & Markdown→H5**: Integrated `render_markdown_report.py` (`assets/markdown-report-shell.html`) and updated `render_report.py` to dispatch both structured v1 (`assets/structured-report-shell.html`) and legacy Beta.4 (`assets/report-shell.html`) payloads.
-- **Packaging**: 122 files, SHA-256: `93b5024f509ed118a05e425a5f67daab2aa3d1e5e8f6534bc3d4d2fac054bf9a`.
+### Package & Verification
+- **Universal ZIP (`ux-decision-advisor-v0.1.0-beta.5.zip`)**: 122 files, SHA-256 `33ed0cf2dac9f9e8109d12f8032980dfa75285e29ee0753b27aa494078cbb9ca`
+- **SkillHub Channel ZIP (`ux-decision-advisor-v0.1.0-beta.5-skillhub.zip`)**: 122 files, SHA-256 `5c5889ad82b68eb8fa558af5254d4713bfc85a6583917351b05dd1f967c16884`
+- **License**: PolyForm Strict License 1.0.0 (source-available, non-commercial evaluation and research; not an OSI-approved open source license).
+- **Scope Boundary**: This Public Beta does not include a cross-project evidence graph, omnibus statistical power engine, automated Research Ops platform, or external SaaS connectors.
 
 ---
 

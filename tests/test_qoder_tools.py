@@ -34,7 +34,7 @@ class SkillValidationTests(unittest.TestCase):
         self.assertGreaterEqual(result["references"], 70)
         self.assertLessEqual(result["skill_body_lines"], 500)
         self.assertGreaterEqual(result["scripts"], 20)
-        self.assertIn('version: "0.1.0-beta.5-integration.1"', (SKILL / "SKILL.md").read_text(encoding="utf-8"))
+        self.assertIn('version: "0.1.0-beta.5"', (SKILL / "SKILL.md").read_text(encoding="utf-8"))
 
     def test_layered_output_contract_is_present(self):
         entry = (SKILL / "SKILL.md").read_text(encoding="utf-8")

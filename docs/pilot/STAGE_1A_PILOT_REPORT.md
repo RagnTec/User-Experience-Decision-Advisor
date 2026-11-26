@@ -1,9 +1,9 @@
 # UXDA Stage 1A — Workflow Pilot & Beta.4 Comparison Record
 
 - **Branch & Commit:** `integration/uxda-research-workflow-v1` @ `c20896e952d0e7b1f0b3cdd771e413799939a3c4` (pre-report baseline)
-- **Integrated ZIP:** `/Users/liuyq/Downloads/UXDA_Local_Test/ux-decision-advisor-v0.1.0-beta.5-integration.1.zip` (SHA-256: `93b5024f509ed118a05e425a5f67daab2aa3d1e5e8f6534bc3d4d2fac054bf9a`)
-- **Baseline ZIP:** `/Users/liuyq/Downloads/UXDA_Local_Test/ux-decision-advisor-v0.1.0-beta.4.zip`
-- **Host / Model / Load Mode:** Antigravity `research` subagent (`Flash`), `EXPLICIT_LOAD` from isolated `/tmp/uxda_stage1a_integ/ux-decision-advisor/SKILL.md` and `/tmp/uxda_stage1a_beta4/ux-decision-advisor/SKILL.md` (`NATIVE_SKILL` = `NOT_RUN`).
+- **Integrated ZIP:** `~/Downloads/UXDA_Local_Test/ux-decision-advisor-v0.1.0-beta.5-integration.1.zip` (SHA-256: `93b5024f509ed118a05e425a5f67daab2aa3d1e5e8f6534bc3d4d2fac054bf9a`)
+- **Baseline ZIP:** `~/Downloads/UXDA_Local_Test/ux-decision-advisor-v0.1.0-beta.4.zip`
+- **Host / Model / Load Mode:** Antigravity `research` subagent (`Flash`), `EXPLICIT_LOAD` from isolated temporary directories (`NATIVE_SKILL` = `NOT_RUN`).
 - **Data Provenance:** All 3 tasks used **synthetic** scenarios (`SYNTHETIC`). Results are directional observations only, not statistical inference or proof of real-user efficacy.
 
 ## Pilot Results & Beta.4 Comparison

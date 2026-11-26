@@ -1,6 +1,6 @@
 # UXDA Installation & Peer Review Setup Guide
 
-This guide covers installing and verifying the UXDA Public Core across common AI coding assistant environments, for the official **`v0.1.0-beta.4`** public beta release.
+This guide covers installing and verifying the UXDA Public Core across common AI coding assistant environments, for the official **`v0.1.0-beta.5`** public beta release.
 
 ---
 
@@ -8,12 +8,12 @@ This guide covers installing and verifying the UXDA Public Core across common AI
 
 | Release Track | Version | Git Branch / Tag | Description |
 | :--- | :--- | :--- | :--- |
-| **Local Integration Candidate** | `0.1.0-beta.5-integration.1` | `branch: integration/uxda-research-workflow-v1` | Local Beta.4 × Qoder Pilot.3 integration candidate (not officially released). |
-| **Public Beta (Official)** | `v0.1.0-beta.4` | `main`<br>`tag: v0.1.0-beta.4` | Current official public release on GitHub `main`. |
-| **Historical RCs** | `v0.1.0-beta.4-rc.1`<br>`v0.1.0-beta.4-rc.2`<br>`v0.1.0-beta.4-rc.3` | `tag: v0.1.0-beta.4-rc.*` | Archived peer review candidates. |
+| **Public Beta (Official)** | `v0.1.0-beta.5` | `main`<br>`tag: v0.1.0-beta.5` | Current official public release on GitHub `main`. |
+| **Prior Public Beta** | `v0.1.0-beta.4` | `tag: v0.1.0-beta.4` | Historical public beta release prior to workflow integration. |
+| **Historical RCs** | `v0.1.0-beta.5-rc.1`<br>`v0.1.0-beta.5-rc.2`<br>`v0.1.0-beta.5-rc.3` | `tag: v0.1.0-beta.5-rc.*` | Archived peer review candidates. |
 | **Historical Baseline** | `v0.1.0-beta.3` | `tag: v0.1.0-beta.3` | Historical baseline on default branch prior to PR #5. |
 
-> **Note**: Commands targeting `main` (such as `git clone` without branch flags or `npx skills add` with `@v0.1.0-beta.4`) check out the official `v0.1.0-beta.4` release.
+> **Note**: Commands targeting `main` (such as `git clone` without branch flags or `npx skills add` with `@v0.1.0-beta.5`) check out the official `v0.1.0-beta.5` release.
 
 ---
 
@@ -35,11 +35,11 @@ This guide covers installing and verifying the UXDA Public Core across common AI
 To evaluate the exact packaged candidate with **strict overwrite protection**:
 
 1. **Download the Release Candidate ZIP**:
-   Download `ux-decision-advisor-v0.1.0-beta.4.zip` from the [GitHub Pre-release page](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.4).
+   Download `ux-decision-advisor-v0.1.0-beta.5.zip` from the [GitHub Pre-release page](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.5).
 
 2. **Verify SHA-256 Checksum**:
    ```bash
-   shasum -a 256 ux-decision-advisor-v0.1.0-beta.4.zip
+   shasum -a 256 ux-decision-advisor-v0.1.0-beta.5.zip
    # Verify that the output matches the published checksum in the Release Notes
    ```
 
@@ -47,7 +47,7 @@ To evaluate the exact packaged candidate with **strict overwrite protection**:
    Execute the following bash sequence, which guarantees existing installations or symlinks are never overwritten:
    ```bash
    TARGET_DIR="$HOME/.agents/skills/ux-decision-advisor"
-   ZIP_FILE="ux-decision-advisor-v0.1.0-beta.4.zip"
+   ZIP_FILE="ux-decision-advisor-v0.1.0-beta.5.zip"
 
    # 1. Strict guard: halt immediately if destination exists (folder or symlink)
    if [ -e "$TARGET_DIR" ] || [ -L "$TARGET_DIR" ]; then
@@ -97,7 +97,7 @@ cp -R /tmp/uxda-source/skills/ux-decision-advisor ~/.agents/skills/
 rm -rf /tmp/uxda-source
 ```
 
-### To install the Peer Review Candidate (`v0.1.0-beta.4-rc.3`):
+### To install the Peer Review Candidate (`v0.1.0-beta.5-rc.3`):
 ```bash
 # Clone specifying the release candidate branch or tag
 git clone --branch release/beta4-rc1 https://github.com/RagnTec/User-Experience-Decision-Advisor.git /tmp/uxda-source
@@ -117,7 +117,7 @@ When using CLI skill managers (requires Node.js 22.20+ and a compatible agent ho
 npx skills add RagnTec/User-Experience-Decision-Advisor --skill ux-decision-advisor
 
 # Or install the Release Candidate by specifying the release tag in the repository URI:
-npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4 --skill ux-decision-advisor
+npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.5 --skill ux-decision-advisor
 ```
 
 > **Notice on CLI Overwrite Behavior**: Unlike the safe shell script in Method 1, third-party CLI tools may update in-place or overwrite files without prompting. For production environments, recommend project-local installations or Method 1.
@@ -127,8 +127,8 @@ npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4 --skill ux
 ## 🌐 Marketplace Synchronization Note (LobeHub, SkillHub, etc.)
 
 - **Repository Binding**: Marketplaces like LobeHub index directly from the repository's **default branch (`main`)**.
-- **Version Propagation**: Following the merge of PR #5 into `main`, the default branch serves `v0.1.0-beta.4`. Third-party market catalogs indexing `main` reflect this version upon their next refresh cycle.
-- **Installing Beta.4**: Use Method 1 (Direct ZIP) or Method 3 (Vercel Skills CLI with `@v0.1.0-beta.4`).
+- **Version Propagation**: Following the release of `v0.1.0-beta.5` on `main`, the default branch serves `v0.1.0-beta.5`. Third-party market catalogs indexing `main` reflect this version upon their next refresh cycle.
+- **Installing Beta.5**: Use Method 1 (Direct ZIP) or Method 3 (Vercel Skills CLI with `@v0.1.0-beta.5`).
 
 ---
 

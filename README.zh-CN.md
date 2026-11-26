@@ -1,4 +1,4 @@
-# UXDA — 用户体验决策顾问 (Public Core v0.1.0-beta.4)
+# UXDA — 用户体验决策顾问 (Public Core v0.1.0-beta.5)
 
 [English](README.md) | 简体中文
 
@@ -49,11 +49,11 @@ UXDA 公共核心 (Public Core)
 
 | 组件 / 分发层级 | 公开版本号 | 组件演进追踪 | 角色与范围说明 |
 | :--- | :---: | :---: | :--- |
-| **UXDA 本地整合候选** | `0.1.0-beta.5-integration.1` | *本地整合分支（`integration/uxda-research-workflow-v1`）* | Beta.4 × Qoder Pilot.3 本地整合候选（122 个文件，仅限本地分发） |
-| **UXDA 公共核心（正式公开 Beta）** | **`v0.1.0-beta.4`** | *源码公开受限测试版（GitHub `main` 主分支）* | 当前 GitHub `main` 主分支上的官方正式版本 |
+| **UXDA 公共核心（正式公开 Beta）** | **`v0.1.0-beta.5`** | *源码公开受限测试版（GitHub `main` 主分支）* | 当前 GitHub `main` 主分支上的官方正式版本（122 个文件） |
+| UXDA 公共核心（历史 Beta） | `v0.1.0-beta.4` | *历史公开测试版* | 上一版双语公开测试基线 |
 | UXDA 公共核心（历史 RC） | `v0.1.0-beta.4-rc.1`<br>`v0.1.0-beta.4-rc.2`<br>`v0.1.0-beta.4-rc.3` | *同行评审候选版 1–3* | 已归档的历史评审候选版本 |
 | UXDA 公共核心（历史基线） | `v0.1.0-beta.3` | *历史公开测试版* | PR #5 合并前的历史主分支基线 |
-| `skills/ux-decision-advisor`（统一核心技能） | `v0.1.0-beta.4` | 原 Router (v0.5.4) + Specialist (v0.7.0) 一体化整合 | 对外唯一入口，集成 Guided / Decision / Project / Specialist 四类能力 |
+| `skills/ux-decision-advisor`（统一核心技能） | `v0.1.0-beta.5` | 原 Router (v0.5.4) + Specialist (v0.7.0) 一体化整合 | 对外唯一入口，集成 Guided / Decision / Project / Specialist 四类能力 |
 | Context Bundle 接口契约 | `v0.2` | 通用接口规范 v0.2 | 可选 JSON 数据交换约定（仓库内不含企业私有后端实现） |
 
 ---
@@ -243,7 +243,14 @@ UXDA 是一套面向用户研究、交互体验与人因工程的实验性 AI Ag
 - **Project**：研究方案设计、轻量工具执行与数据口径审计。
 - **Specialist**：触控尺寸计算、人因工程复核与界面摩擦走查。
 
-### 本次 v0.1.0-beta.4 重点优化内容
+### 本次 v0.1.0-beta.5 重点新增与整合内容
+
+- **研究工作流与多轮协同**：任务优先静默四视角与增量多轮修订。
+- **定性编码与证据可追溯**：版本化编码工作表（`assets/qualitative-coding.md`）与可选 `uxda-evidence-v1` 契约。
+- **可复现描述性分析与证据校验**：`analyze_synthetic.py` 与 `validate_evidence.py`（仅校验结构与研究内引用，不认证来源真实性或科学结论）。
+- **Markdown 转离线 H5 与兼容结构化报告**：`render_markdown_report.py`（Mermaid SVG 与文本回退）及双模式 `render_report.py`。
+
+*（保留自 v0.1.0-beta.4）*
 1. **全面原生中英文双语能力**：主入口 `SKILL.md` 采用英文国际化展示与完整中文能力对齐，建立 16 项核心科学术语对齐表，实现输入语言自动检测与回复自适应。
 2. **安装覆盖严格防损保护**：安装指令引入强制目录与符号链接预检，存在同名路径时阻断解压，并在独立临时目录校验文件完整性后再原子性安装。
 3. **Agent Skills 规范全面兼容**：Frontmatter 元数据采用规范要求的纯字符串键值映射（`metadata.version`、`metadata.historical_components`）。
@@ -261,8 +268,8 @@ UXDA 是一套面向用户研究、交互体验与人因工程的实验性 AI Ag
 ### 同行安装试用方式
 
 **方式 A：直接下载 Release ZIP 安装（推荐，带防覆盖保护）**
-1. 从 [GitHub Pre-release](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.4) 下载 `ux-decision-advisor-v0.1.0-beta.4.zip`；
-2. 校验文件哈希：`shasum -a 256 ux-decision-advisor-v0.1.0-beta.4.zip # SHA-256: 61804458991967686b36febfb35eeca6991b866322dbe3cdfedfbe91fc5ef917`；
+1. 从 [GitHub Pre-release](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.5) 下载 `ux-decision-advisor-v0.1.0-beta.5.zip`；
+2. 校验文件哈希：`shasum -a 256 ux-decision-advisor-v0.1.0-beta.5.zip # SHA-256: 33ed0cf2dac9f9e8109d12f8032980dfa75285e29ee0753b27aa494078cbb9ca`；
 3. 执行安全防覆盖解压指令：
    ```bash
    TARGET="$HOME/.agents/skills/ux-decision-advisor"
@@ -272,7 +279,7 @@ UXDA 是一套面向用户研究、交互体验与人因工程的实验性 AI Ag
    fi
    TMP=$(mktemp -d /tmp/uxda_inst_XXXXXX)
    trap 'rm -rf "$TMP"' EXIT
-   unzip -q ux-decision-advisor-v0.1.0-beta.4.zip -d "$TMP"
+   unzip -q ux-decision-advisor-v0.1.0-beta.5.zip -d "$TMP"
    mkdir -p "$HOME/.agents/skills"
    mv "$TMP/ux-decision-advisor" "$TARGET"
    echo "✅ 成功安装至: $TARGET"
@@ -280,7 +287,7 @@ UXDA 是一套面向用户研究、交互体验与人因工程的实验性 AI Ag
 
 **方式 B：通过 Vercel Skills CLI 安装**
 ```bash
-npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4 --skill ux-decision-advisor
+npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.5 --skill ux-decision-advisor
 ```
 
 在支持 Agent Skill 的工具中通过中文或英文自然语言直接触发：`调用已安装的 ux-decision-advisor 技能，评估……` 或 `Use ux-decision-advisor to evaluate ...`。

@@ -49,6 +49,7 @@ UXDA 公共核心 (Public Core)
 
 | 组件 / 分发层级 | 公开版本号 | 组件演进追踪 | 角色与范围说明 |
 | :--- | :---: | :---: | :--- |
+| **UXDA 本地整合候选** | `0.1.0-beta.5-integration.1` | *本地整合分支（`integration/uxda-research-workflow-v1`）* | Beta.4 × Qoder Pilot.3 本地整合候选（122 个文件，仅限本地分发） |
 | **UXDA 公共核心（正式公开 Beta）** | **`v0.1.0-beta.4`** | *源码公开受限测试版（GitHub `main` 主分支）* | 当前 GitHub `main` 主分支上的官方正式版本 |
 | UXDA 公共核心（历史 RC） | `v0.1.0-beta.4-rc.1`<br>`v0.1.0-beta.4-rc.2`<br>`v0.1.0-beta.4-rc.3` | *同行评审候选版 1–3* | 已归档的历史评审候选版本 |
 | UXDA 公共核心（历史基线） | `v0.1.0-beta.3` | *历史公开测试版* | PR #5 合并前的历史主分支基线 |

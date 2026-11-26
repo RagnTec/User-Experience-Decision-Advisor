@@ -49,6 +49,7 @@ UXDA Public Core
 
 | Component / Layer | Public Version | Evolution Track | Role & Scope |
 | :--- | :---: | :---: | :--- |
+| **UXDA Local Integration Candidate** | `0.1.0-beta.5-integration.1` | *Local Integration Branch (`integration/uxda-research-workflow-v1`)* | Beta.4 × Qoder Pilot.3 integration candidate (122 files, local ZIP only) |
 | **UXDA Public Core (Official Beta)** | **`v0.1.0-beta.4`** | *Source-Available Public Beta (on GitHub `main`)* | Current official public beta release on default branch |
 | UXDA Public Core (Historical RCs) | `v0.1.0-beta.4-rc.1`<br>`v0.1.0-beta.4-rc.2`<br>`v0.1.0-beta.4-rc.3` | *Peer Review Candidates 1–3* | Archived peer review candidates |
 | UXDA Public Core (Prior Baseline) | `v0.1.0-beta.3` | *Historical Public Beta* | Previous public beta baseline on default branch |

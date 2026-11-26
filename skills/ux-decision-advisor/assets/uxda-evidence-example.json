@@ -1,0 +1,74 @@
+{
+  "schema_version": "uxda-evidence-v1",
+  "synthetic": true,
+  "studies": [
+    {
+      "study_id": "S-001",
+      "decision_id": "D-001",
+      "title": "Synthetic export-entry comprehension check",
+      "question": "Do target users understand the export entry without assistance?",
+      "method": "usability",
+      "sample_frame": "Six synthetic participants; no population claim.",
+      "analysis_unit": "participant-task",
+      "status": "completed",
+      "limitations": ["Synthetic demonstration only."]
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "E-001",
+      "study_id": "S-001",
+      "source_type": "usability",
+      "source_locator": "synthetic://session-P01#00:12:04",
+      "evidence_status": "supplied",
+      "access_class": "internal",
+      "authorized_for_use": true,
+      "consent_scope": "Synthetic fixture; no real participant.",
+      "participant_pseudonym": "P01",
+      "timecode": "00:12:04",
+      "note": "Illustrative observation, not a measured result."
+    },
+    {
+      "evidence_id": "E-002",
+      "study_id": "S-001",
+      "source_type": "computation",
+      "source_locator": "synthetic://analysis.json#paired_success",
+      "evidence_status": "computed",
+      "access_class": "internal",
+      "authorized_for_use": true,
+      "version": "fixture-1"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "C-001",
+      "study_id": "S-001",
+      "statement": "The entry label may not match the participant's mental model.",
+      "support_type": "supports",
+      "evidence_refs": ["E-001"],
+      "status": "hypothesis",
+      "boundary": "One synthetic observation cannot establish prevalence."
+    },
+    {
+      "claim_id": "C-002",
+      "study_id": "S-001",
+      "statement": "The available comparison is too small to claim a population effect.",
+      "support_type": "qualifies",
+      "evidence_refs": ["E-002"],
+      "status": "supported",
+      "boundary": "Applies to this synthetic fixture only."
+    }
+  ],
+  "decisions": [
+    {
+      "decision_id": "D-001",
+      "owner": "Research lead (synthetic)",
+      "review_date": "2026-12-03",
+      "recommendation": "Revise the label and run a small authorized comprehension check before a broader study.",
+      "reversal_condition": "An authorized target-user check shows the current label is discovered and understood without assistance.",
+      "claim_refs": ["C-001", "C-002"],
+      "status": "open",
+      "authorization_boundary": "This record grants no launch or implementation approval."
+    }
+  ]
+}

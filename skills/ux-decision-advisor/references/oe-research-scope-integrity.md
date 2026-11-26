@@ -1,3 +1,5 @@
+> **[Compatibility Contract]** Retained for explicit O/E/D/V or legacy workflow requests only. Does NOT override the task-first default, silent four-lens framing, or rule precedence in `SKILL.md` and `references/core-reasoning.md`.
+
 # O/E Research Scope Integrity and Evidence-Calibrated Handoff | v0.4D.8
 
 For O-only, E-only or combined O+E, retain the user's explicit research scope. A previous D **brief** is an evaluated proposal, not an approved product direction unless an explicit user/owner approval is actually present in the project record. On scope switch D → O+E, preserve D as `PREVIOUS_ANALYSIS_NOT_APPROVAL`; do not mark `decision complete`, `roadmap fixed`, `approved`, or `D complete` as business authorization.

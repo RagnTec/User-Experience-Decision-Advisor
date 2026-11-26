@@ -1,3 +1,25 @@
+# Release Notes — UXDA Public Core (`v0.1.0-beta.5-integration.1`, Local Integration Candidate)
+
+**Product:** User Experience Decision Advisor (UXDA) / 用户体验决策顾问  
+**Skill ID:** `ux-decision-advisor`  
+**Canonical path:** `skills/ux-decision-advisor/`  
+**Release Phase:** Local Integration Candidate (not an official GitHub Release; `v0.1.0-beta.4` remains the published public beta)
+
+## Changes in v0.1.0-beta.5-integration.1
+
+### 1. Task-First Entry & Rule Precedence Reconciliation
+- **Task-First Default (`SKILL.md`, `core-reasoning.md`, `decision-and-business-output.md`)**: Adopted silent four-lens framing (Guided, Decision, Project, Specialist) and three-layer delivery (direct answer, optional explanation, requested artifact) without mandatory O/E/D/V or progress-map gates on ordinary chat.
+- **Explicit Precedence & UXRR Boundary**: Established clear precedence (safety/privacy/auth & scientific truth > task contract > domain refs > templates) and defined UXRR cards as upstream inputs without runtime coupling.
+- **Legacy Compatibility Preserved**: Added explicit compatibility notices to legacy O/E/D/V routing files while preserving Beta.4 domain depth (`consumer-context`, `cross-market-evidence`, `voc-source-routing`, `jurisdiction-and-norms-gate`, `offline-knowledge-use`) and the `Evidence-to-Outcome Guardrail`.
+
+### 2. Research Execution, Evidence Contract & Report Rendering
+- **Unified Methodology & Instruments**: Integrated `method-selection.md`, `research-design.md`, `research-materials.md`, `analysis-and-statistics.md`, `human-factors-and-standards.md`, `guided-learning.md`, `continuity-and-collaboration.md`, `bilingual-parity.md`, and working outlines including `qualitative-coding.md`.
+- **Evidence Contract (`uxda-evidence-v1`)**: Integrated `validate_evidence.py` with three consistency guards (rejecting `supported` + `contradicts`, `implemented` + `outcome.implemented=false`, and `restricted` without `consent_scope`).
+- **Dual Report Dispatch & Markdown→H5**: Integrated `render_markdown_report.py` (`assets/markdown-report-shell.html`) and updated `render_report.py` to dispatch both structured v1 (`assets/structured-report-shell.html`) and legacy Beta.4 (`assets/report-shell.html`) payloads.
+- **Packaging**: 122 files, SHA-256: `93b5024f509ed118a05e425a5f67daab2aa3d1e5e8f6534bc3d4d2fac054bf9a`.
+
+---
+
 # Release Notes — UXDA Public Core (`v0.1.0-beta.4`)
 
 **Product:** User Experience Decision Advisor (UXDA) / 用户体验决策顾问  

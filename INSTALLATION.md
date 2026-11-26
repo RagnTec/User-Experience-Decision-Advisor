@@ -8,6 +8,7 @@ This guide covers installing and verifying the UXDA Public Core across common AI
 
 | Release Track | Version | Git Branch / Tag | Description |
 | :--- | :--- | :--- | :--- |
+| **Local Integration Candidate** | `0.1.0-beta.5-integration.1` | `branch: integration/uxda-research-workflow-v1` | Local Beta.4 × Qoder Pilot.3 integration candidate (not officially released). |
 | **Public Beta (Official)** | `v0.1.0-beta.4` | `main`<br>`tag: v0.1.0-beta.4` | Current official public release on GitHub `main`. |
 | **Historical RCs** | `v0.1.0-beta.4-rc.1`<br>`v0.1.0-beta.4-rc.2`<br>`v0.1.0-beta.4-rc.3` | `tag: v0.1.0-beta.4-rc.*` | Archived peer review candidates. |
 | **Historical Baseline** | `v0.1.0-beta.3` | `tag: v0.1.0-beta.3` | Historical baseline on default branch prior to PR #5. |

@@ -34,6 +34,7 @@ Security and boundary updates are provided for active beta versions:
 
 | Version | Supported | Notes |
 | :--- | :--- | :--- |
+| `0.1.0-beta.5-integration.1` | :white_check_mark: | Local Integration Candidate (branch `integration/uxda-research-workflow-v1`, not officially released) |
 | `v0.1.0-beta.4` | :white_check_mark: | Official Public Beta Release on GitHub `main` |
 | `v0.1.0-beta.4-rc.3` | :white_check_mark: | Historical Peer Review Candidate 3 |
 | `v0.1.0-beta.4-rc.2` | :white_check_mark: | Historical Peer Review Candidate 2 |

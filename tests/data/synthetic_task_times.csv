@@ -1,0 +1,11 @@
+participant_id,condition,task,success,duration_seconds
+P01,A,find_and_export,1,10
+P01,B,find_and_export,1,12
+P02,A,find_and_export,1,12
+P02,B,find_and_export,0,20
+P03,A,find_and_export,,
+P03,B,find_and_export,1,15
+P04,A,find_and_export,0,100
+P04,B,find_and_export,1,18
+P05,A,find_and_export,1,14
+P05,B,find_and_export,1,16

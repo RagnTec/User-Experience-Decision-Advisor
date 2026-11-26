@@ -1,3 +1,5 @@
+> **[Compatibility Contract]** Retained for explicit O/E/D/V or legacy workflow requests only. Does NOT override the task-first default, silent four-lens framing, or rule precedence in `SKILL.md` and `references/core-reasoning.md`.
+
 > v0.4D.5 priority: [Router Scope Contract](router-scope-contract.md) overrides all legacy “auto-execute intent” examples below. First Router project turn always offers O/E/D/V and asks one scope confirmation even when one mode is detected. Once user-selected, no repeated question.
 
 # 分支选择与呈现载体协议 v0.3.3

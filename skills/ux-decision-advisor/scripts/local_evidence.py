@@ -35,6 +35,8 @@ def protected_root() -> Path:
     for parent in here.parents:
         if (parent / 'PUBLIC_FILE_MANIFEST.json').is_file():
             return parent
+        if (parent / '.git').exists():
+            return parent
     return here.parents[2]  # Protect the whole installed Skills collection, not only this Skill.
 
 
@@ -122,7 +124,10 @@ def emit_chunks(p: Path):
     elif ext == '.csv':
         with p.open('r', encoding='utf-8-sig', newline='') as fp:
             reader = csv.reader(fp)
-            for idx, row in enumerate(reader, 1):
+            headers = next(reader, [])
+            if headers:
+                yield 'header:1', ' | '.join(headers)
+            for idx, row in enumerate(reader, 2):
                 if any(x.strip() for x in row):
                     yield f'row:{idx}', ' | '.join(row)
     elif ext == '.json':
@@ -132,7 +137,7 @@ def emit_chunks(p: Path):
                 yield f'json-index:{idx}', json.dumps(value, ensure_ascii=False, sort_keys=True)
         elif isinstance(raw, dict):
             for key, value in raw.items():
-                yield f'json-key:{str(key)[:80]}', json.dumps(value, ensure_ascii=False, sort_keys=True)
+                yield f'json-key:{str(key)[:80]}', f'{key}: ' + json.dumps(value, ensure_ascii=False, sort_keys=True)
         else:
             raise InputIssue('JSON_MUST_BE_RECORDS')
     elif ext == '.docx':
@@ -290,6 +295,8 @@ def run(manifest: Path, terms: list[str], output: Path, *, previous: Path | None
         raise InputIssue('OUTPUT_OVERWRITES_PREVIOUS')
     if target == outside_public(manifest):
         raise InputIssue('OUTPUT_OVERWRITES_MANIFEST')
+    if decision_record is not None and target == outside_public(decision_record):
+        raise InputIssue('OUTPUT_OVERWRITES_DECISION_RECORD')
     sources = load_manifest(manifest)
     for source in sources:
         if target == source['path']:

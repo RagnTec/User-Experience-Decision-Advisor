@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>UXDA Local Pilot · Decision Brief</title>
+<style>
+:root{--bg:#f3f6f7;--paper:#fff;--ink:#17313b;--muted:#5d737c;--line:#dbe5e8;--accent:#0f766e;--soft:#e8f5f2;--blue:#315d7c;--warn:#8a5b18;--warnbg:#fff6e5}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}.wrap{max-width:1050px;margin:auto;padding:0 24px}header{background:#173b46;color:#fff;padding:38px 0 34px;border-bottom:4px solid #78bdb2}.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#a9d9d1;font-weight:700}h1{font-size:clamp(25px,4vw,38px);line-height:1.25;margin:9px 0 10px}header p{margin:0;color:#d6e6e8;max-width:820px}.badge{display:inline-block;margin-top:18px;padding:4px 10px;border:1px solid #6ea79f;border-radius:99px;font-size:12px;color:#dff5f1}.toolbar{position:sticky;top:0;z-index:3;background:rgba(243,246,247,.95);border-bottom:1px solid var(--line);padding:10px 0}.tools{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.note{color:var(--muted);font-size:12px}button{border:1px solid #cbdadd;background:#fff;color:#28505b;border-radius:8px;padding:7px 12px;font:inherit;font-size:13px;cursor:pointer}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #4aa99e;outline-offset:3px}main{padding:26px 0 60px}.grid{display:grid;grid-template-columns:1.65fr 1fr;gap:16px}.card{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:22px 24px;box-shadow:0 5px 22px rgba(23,49,59,.045)}.primary{border-left:5px solid var(--accent)}.label{font-size:11px;font-weight:750;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}.lead{font-size:19px;line-height:1.55;margin:8px 0 0}.boundary{margin-top:14px;background:var(--warnbg);border:1px solid #ecd7ae;color:#654718;border-radius:9px;padding:12px 15px}.section{margin-top:24px}.section h2{font-size:20px;margin:0 0 12px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.item{background:#fff;border:1px solid var(--line);border-radius:11px;padding:17px 19px}.item h3{font-size:16px;margin:0 0 8px}.item p{margin:6px 0;color:#425e68}.tag{display:inline-block;font-size:11px;padding:3px 8px;border-radius:6px;background:var(--soft);color:var(--accent);font-weight:700;margin-bottom:7px}table{width:100%;border-collapse:collapse;background:#fff;font-size:13px}th,td{text-align:left;vertical-align:top;border-bottom:1px solid var(--line);padding:10px 11px}th{background:#edf4f4;color:#36545d;font-size:12px}tr:last-child td{border-bottom:0}.tableWrap{overflow:auto;border:1px solid var(--line);border-radius:11px}.bodyText{white-space:pre-wrap;margin:7px 0 0;color:#334f59}details{background:#fff;border:1px solid var(--line);border-radius:11px;padding:15px 19px;margin-top:10px}summary{cursor:pointer;font-weight:700;color:#245b62}.empty{color:var(--muted);font-style:italic}.hidden{display:none!important}footer{margin-top:26px;border-top:1px solid var(--line);padding-top:15px;color:var(--muted);font-size:12px}a{color:var(--accent)}
+@media(max-width:760px){.grid,.cards{grid-template-columns:1fr}.wrap{padding:0 16px}header{padding:28px 0}.card{padding:18px}}
+@media print{body{background:#fff}.toolbar{display:none}.wrap{max-width:none;padding:0 8px}header{background:#fff;color:var(--ink);padding:8px 0;border-bottom:2px solid #9ccbc3}header p,.eyebrow{color:#45616a}.badge{border-color:#9ccbc3;color:#285b55}.card,.item,.tableWrap{box-shadow:none}.section{break-inside:avoid}details{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="eyebrow">UXDA · Qoder Local Pilot</div><h1 id="title"></h1><p id="subtitle"></p><span class="badge" id="badge">Conditional research judgment</span></div></header>
+<div class="toolbar"><div class="wrap tools"><span class="note" id="offlineNote">Offline report · text-rendered · no network or telemetry</span><button id="print" type="button">Print / Save PDF</button></div></div>
+<main class="wrap">
+<div class="grid"><section class="card primary"><div class="label" id="judgmentLabel">Current judgment</div><p class="lead" id="summary"></p></section><section class="card"><div class="label" id="recommendationLabel">Recommendation</div><p class="lead" id="recommendation"></p></section></div>
+<section class="card" style="margin-top:16px"><div class="label" id="nextStepLabel">Smallest next step</div><p class="bodyText" id="nextStep"></p><div class="boundary"><strong id="boundaryLabel">Evidence boundary:</strong> <span id="evidenceBoundary"></span></div></section>
+<section class="section" id="optionsSection"><h2 id="optionsHeading">Options and trade-offs</h2><div class="cards" id="options"></div></section>
+<section class="section" id="hypothesesSection"><h2 id="hypothesesHeading">Hypotheses and discriminating evidence</h2><div class="tableWrap"><table><thead><tr><th>Hypothesis</th><th>Status</th><th>Expected support</th><th>Disconfirming observation</th></tr></thead><tbody id="hypotheses"></tbody></table></div></section>
+<section class="section" id="findingsSection"><h2 id="findingsHeading">Findings and interpretation</h2><div class="cards" id="findings"></div></section>
+<section class="section" id="metricsSection"><h2 id="metricsHeading">Descriptive metrics</h2><div class="tableWrap"><table><thead><tr><th>Metric</th><th>n</th><th>Value</th><th>Unit</th><th>Denominator / scope</th></tr></thead><tbody id="metrics"></tbody></table></div></section>
+<section class="section" id="sectionsSection"><h2 id="sectionsHeading">Detail</h2><div id="sections"></div></section>
+<section class="section" id="evidenceSection"><h2 id="evidenceHeading">Evidence trace</h2><div id="evidence"></div></section>
+<footer id="footerNote">Generated locally from the supplied JSON. Structural validation does not verify claim truth. Research recommendations are not launch, legal, safety, or engineering approval.</footer>
+</main>
+<script type="application/json" id="reportJSON">__JSON_DATA__</script>
+<script>
+(() => {
+'use strict';
+const data = JSON.parse(document.getElementById('reportJSON').textContent);
+const byId = id => document.getElementById(id);
+const text = (el, value) => { el.textContent = value == null ? '' : String(value); return el; };
+const make = (tag, cls, value) => { const node = document.createElement(tag); if (cls) node.className = cls; if (value !== undefined) text(node, value); return node; };
+const section = (id, rows) => { byId(id).classList.toggle('hidden', !rows.length); };
+byId('title').textContent = data.title || 'UX research decision brief';
+document.title = (data.title || 'UX research decision brief') + ' · UXDA Local Pilot';
+document.documentElement.lang = data.language === 'zh' ? 'zh-CN' : 'en';
+const zh = data.language === 'zh';
+const t = (en, cn) => zh ? cn : en;
+text(byId('offlineNote'), t('Offline report · text-rendered · no network or telemetry', '离线报告 · 纯文本渲染 · 无网络或遥测'));
+text(byId('print'), t('Print / Save PDF', '打印 / 存为 PDF'));
+text(byId('judgmentLabel'), t('Current judgment', '当前判断'));
+text(byId('recommendationLabel'), t('Recommendation', '条件性建议'));
+text(byId('nextStepLabel'), t('Smallest next step', '最小下一步'));
+text(byId('boundaryLabel'), t('Evidence boundary:', '证据边界：'));
+text(byId('optionsHeading'), t('Options and trade-offs', '方案与取舍'));
+text(byId('hypothesesHeading'), t('Hypotheses and discriminating evidence', '假设与判别性证据'));
+text(byId('findingsHeading'), t('Findings and interpretation', '发现与解释'));
+text(byId('metricsHeading'), t('Descriptive metrics', '描述性指标'));
+text(byId('sectionsHeading'), t('Detail', '详细内容'));
+text(byId('evidenceHeading'), t('Evidence trace', '证据追溯'));
+text(byId('footerNote'), t('Generated locally from the supplied JSON. Structural validation does not verify claim truth. Research recommendations are not launch, legal, safety, or engineering approval.','根据提供的 JSON 在本地生成。结构校验不证明内容真实。研究建议不构成上线、法律、安全或工程批准。'));
+const hypothesisHeaders = [t('Hypothesis','假设'),t('Status','状态'),t('Expected support','预期支持证据'),t('Disconfirming observation','反证观察')];
+const metricHeaders = [t('Metric','指标'),'n',t('Value','数值'),t('Unit','单位'),t('Denominator / scope','分母 / 范围')];
+document.querySelectorAll('#hypothesesSection th').forEach((el,i)=>{el.textContent=hypothesisHeaders[i]||'';});
+document.querySelectorAll('#metricsSection th').forEach((el,i)=>{el.textContent=metricHeaders[i]||'';});
+text(byId('subtitle'), data.subtitle || '');
+text(byId('badge'), data.synthetic ? t('Synthetic demonstration · not empirical','合成演示 · 非实证') : t('Conditional research judgment','条件性研究判断'));
+text(byId('summary'), data.summary || t('No summary supplied.','未提供摘要。'));
+text(byId('recommendation'), data.recommendation || t('No recommendation supplied.','未提供建议。'));
+text(byId('nextStep'), data.next_step || t('No next step supplied.','未提供下一步。'));
+text(byId('evidenceBoundary'), data.evidence_boundary || t('No evidence boundary supplied.','未提供证据边界。'));
+const options = Array.isArray(data.options) ? data.options : [];
+options.forEach(o => { const card = make('article','item'); if (o.status) card.append(make('span','tag',o.status)); card.append(make('h3','',o.name || t('Option','方案'))); card.append(make('p','', t('Benefit: ','收益：') + (o.benefit || t('not specified','未说明')))); card.append(make('p','', t('Trade-off: ','取舍：') + (o.tradeoff || t('not specified','未说明')))); byId('options').append(card); });
+section('optionsSection', options);
+const hypotheses = Array.isArray(data.hypotheses) ? data.hypotheses : [];
+hypotheses.forEach(h => { const row = document.createElement('tr'); [h.hypothesis,h.status,h.support,h.disconfirm].forEach(v => row.append(make('td','',v || '—'))); byId('hypotheses').append(row); });
+section('hypothesesSection', hypotheses);
+const findings = Array.isArray(data.findings) ? data.findings : [];
+findings.forEach(f => { const card = make('article','item'); if (f.evidence_status) card.append(make('span','tag',f.evidence_status)); card.append(make('h3','',f.title || t('Finding','发现'))); card.append(make('p','', t('Observation: ','观察：') + (f.observation || t('not supplied','未提供')))); card.append(make('p','', t('Interpretation: ','解释：') + (f.interpretation || t('not supplied','未提供')))); byId('findings').append(card); });
+section('findingsSection', findings);
+const metrics = Array.isArray(data.metrics) ? data.metrics : [];
+metrics.forEach(m => { const row = document.createElement('tr'); [m.label,m.n,m.value,m.unit,m.denominator_note].forEach(v => row.append(make('td','',v == null ? '—' : v))); byId('metrics').append(row); });
+section('metricsSection', metrics);
+const sections = Array.isArray(data.sections) ? data.sections : [];
+sections.forEach(s => { const box = make('details'); box.append(make('summary','',s.heading || t('Detail','详细内容'))); box.append(make('p','bodyText',s.body || '')); byId('sections').append(box); });
+section('sectionsSection', sections);
+const evidence = Array.isArray(data.evidence) ? data.evidence : [];
+evidence.forEach(e => {
+  const box = make('details'); box.append(make('summary','',e.title || t('Source','来源'))); box.append(make('p','bodyText',e.note || ''));
+  if (e.url) {
+    const link = make('a','',t('Open inspected public source','打开已核验公开来源')); link.href = e.url; link.target = '_blank'; link.rel = 'noopener noreferrer'; box.append(link);
+    const meta = [
+      e.source_title ? t('Title: ','标题：') + e.source_title : '',
+      e.source_publisher ? t('Publisher: ','发布方：') + e.source_publisher : '',
+      e.source_locator ? t('Locator: ','定位：') + e.source_locator : '',
+      e.source_retrieval_ref ? t('Retrieved: ','获取记录：') + e.source_retrieval_ref : '',
+    ].filter(Boolean);
+    if (meta.length) box.append(make('p','note',meta.join(' · ')));
+    if (e.support_excerpt) box.append(make('p','bodyText',t('Support excerpt: ','支持内容摘录：') + e.support_excerpt));
+  }
+  byId('evidence').append(box);
+});
+section('evidenceSection', evidence);
+byId('print').addEventListener('click', () => window.print());
+})();
+</script>
+</body>
+</html>

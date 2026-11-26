@@ -1,4 +1,4 @@
-# UXDA — User Experience Decision Advisor (Public Core v0.1.0-beta.4)
+# UXDA — User Experience Decision Advisor (Public Core v0.1.0-beta.5)
 
 English | [简体中文](README.zh-CN.md)
 
@@ -49,10 +49,11 @@ UXDA Public Core
 
 | Component / Layer | Public Version | Evolution Track | Role & Scope |
 | :--- | :---: | :---: | :--- |
-| **UXDA Public Core (Official Beta)** | **`v0.1.0-beta.4`** | *Source-Available Public Beta (on GitHub `main`)* | Current official public beta release on default branch |
+| **UXDA Public Core (Official Beta)** | **`v0.1.0-beta.5`** | *Source-Available Public Beta (on GitHub `main`)* | Current official public beta release on default branch (122 files) |
+| UXDA Public Core (Prior Beta) | `v0.1.0-beta.4` | *Historical Public Beta* | Previous bilingual public beta baseline |
 | UXDA Public Core (Historical RCs) | `v0.1.0-beta.4-rc.1`<br>`v0.1.0-beta.4-rc.2`<br>`v0.1.0-beta.4-rc.3` | *Peer Review Candidates 1–3* | Archived peer review candidates |
 | UXDA Public Core (Prior Baseline) | `v0.1.0-beta.3` | *Historical Public Beta* | Previous public beta baseline on default branch |
-| `skills/ux-decision-advisor` (Unified Skill) | `v0.1.0-beta.4` | Consolidated Router (v0.5.4) + Specialist (v0.7.0) | Single entrypoint delivering Guided, Decision, Project, and Specialist workflows |
+| `skills/ux-decision-advisor` (Unified Skill) | `v0.1.0-beta.5` | Consolidated Router (v0.5.4) + Specialist (v0.7.0) | Single entrypoint delivering Guided, Decision, Project, and Specialist workflows |
 | Context Bundle Contract | `v0.2` | Generic Specification v0.2 | Optional JSON interchange specification (no bundled enterprise backend) |
 
 ---
@@ -234,7 +235,7 @@ ln -s ~/.agents/skills/ux-decision-advisor ~/.gemini/config/skills/ux-decision-a
 
 ---
 
-## 8. Public Beta Guide & Feedback Program (v0.1.0-beta.4)
+## 8. Public Beta Guide & Feedback Program (v0.1.0-beta.5)
 
 UXDA is an experimental AI Agent Skill designed for user research, interaction design decision-making, and human-factors tasks. It delivers four core capabilities:
 - **Guided**: Research knowledge and methodology explanation.
@@ -242,7 +243,14 @@ UXDA is an experimental AI Agent Skill designed for user research, interaction d
 - **Project**: Study planning, lightweight instrument execution, and telemetry audit.
 - **Specialist**: Direct ergonomic evaluation, hitbox boundary check, and friction review.
 
-### What is Enhanced in v0.1.0-beta.4
+### What is New in v0.1.0-beta.5
+
+- **Research workflow and multi-turn collaboration**: task-first silent four-lens framing and incremental multi-turn revision.
+- **Qualitative coding and evidence traceability**: versioned codebook worksheet (`assets/qualitative-coding.md`) and optional `uxda-evidence-v1` schema.
+- **Reproducible descriptive analysis and evidence validation**: `analyze_synthetic.py` and `validate_evidence.py` (structural/reference checks only; not truth or scientific certification).
+- **Markdown-to-H5 and compatible structured reporting**: `render_markdown_report.py` with Mermaid SVG/text fallback and dual-schema `render_report.py`.
+
+*(Retained from v0.1.0-beta.4)*
 1. **Full Bilingual Core Architecture**: Main `SKILL.md` entrypoint structured with English-first international display and fully equivalent Chinese capability rules, supporting automatic input language detection and response matching.
 2. **Strict Installation Overwrite Safety**: Guarded extraction halts immediately when target folders or symlinks exist, protecting users against accidental data loss.
 3. **Agent Skills Specification Compliance**: Frontmatter strictly formatted with string-to-string metadata mapping (`metadata.version`, `metadata.historical_components`).
@@ -260,8 +268,8 @@ UXDA is an experimental AI Agent Skill designed for user research, interaction d
 ### How to Install for Trial
 
 **Option A: Direct ZIP Download (Recommended with Overwrite Protection)**
-1. Download `ux-decision-advisor-v0.1.0-beta.4.zip` from the [GitHub Pre-release](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.4).
-2. Verify checksum: `shasum -a 256 ux-decision-advisor-v0.1.0-beta.4.zip # SHA-256: 61804458991967686b36febfb35eeca6991b866322dbe3cdfedfbe91fc5ef917`.
+1. Download `ux-decision-advisor-v0.1.0-beta.5.zip` from the [GitHub Pre-release](https://github.com/RagnTec/User-Experience-Decision-Advisor/releases/tag/v0.1.0-beta.5).
+2. Verify checksum: `shasum -a 256 ux-decision-advisor-v0.1.0-beta.5.zip # SHA-256: 33ed0cf2dac9f9e8109d12f8032980dfa75285e29ee0753b27aa494078cbb9ca`.
 3. Extract safely into your shared skills folder:
    ```bash
    TARGET="$HOME/.agents/skills/ux-decision-advisor"
@@ -271,7 +279,7 @@ UXDA is an experimental AI Agent Skill designed for user research, interaction d
    fi
    TMP=$(mktemp -d /tmp/uxda_inst_XXXXXX)
    trap 'rm -rf "$TMP"' EXIT
-   unzip -q ux-decision-advisor-v0.1.0-beta.4.zip -d "$TMP"
+   unzip -q ux-decision-advisor-v0.1.0-beta.5.zip -d "$TMP"
    mkdir -p "$HOME/.agents/skills"
    mv "$TMP/ux-decision-advisor" "$TARGET"
    echo "✅ Installed to $TARGET"
@@ -279,7 +287,7 @@ UXDA is an experimental AI Agent Skill designed for user research, interaction d
 
 **Option B: Via Vercel Skills CLI**
 ```bash
-npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.4 --skill ux-decision-advisor
+npx skills add RagnTec/User-Experience-Decision-Advisor@v0.1.0-beta.5 --skill ux-decision-advisor
 ```
 
 In your AI agent, invoke naturally in English or Chinese: `Use the installed ux-decision-advisor skill to evaluate ...`.
@@ -307,7 +315,7 @@ Peers with UX research, HCI, ergonomics, or product management experience are in
 - [Installation Guide](INSTALLATION.md) — Setup steps, offline script verification, and host compatibility scope.
 - [Quick Start Guide](QUICK_START.md) — 5-minute hands-on walkthrough across all four capabilities.
 - [Methodology & Limitations](LIMITATIONS.md) — Detailed epistemological rules, sample limits, and non-goals.
-- [Release Notes](RELEASE_NOTES.md) — `v0.1.0-beta.4` changelog, historical baselines, and verification scope.
+- [Release Notes](RELEASE_NOTES.md) — `v0.1.0-beta.5` changelog, historical baselines, and verification scope.
 - [Security & Privacy](SECURITY.md) — Data isolation boundaries, local-script confinement, and reporting guidance.
 - [Contributing Guidelines](CONTRIBUTING.md) — Feedback workflow and Public Core boundary rules.
 

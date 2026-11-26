@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:uxda:evidence:v1",
+  "title": "UXDA Evidence Record v1",
+  "description": "Minimal study-evidence-claim-decision contract. Structural validity does not verify source truth.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "synthetic", "studies", "evidence", "claims", "decisions"],
+  "properties": {
+    "schema_version": {"const": "uxda-evidence-v1"},
+    "synthetic": {"type": "boolean"},
+    "studies": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/study"}},
+    "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidence"}},
+    "claims": {"type": "array", "items": {"$ref": "#/$defs/claim"}},
+    "decisions": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/decision"}}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,127}$"},
+    "string_list": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "study": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["study_id", "decision_id", "title", "question", "method", "sample_frame", "analysis_unit", "status"],
+      "properties": {
+        "study_id": {"$ref": "#/$defs/id"},
+        "decision_id": {"$ref": "#/$defs/id"},
+        "title": {"type": "string", "minLength": 1},
+        "question": {"type": "string", "minLength": 1},
+        "method": {"enum": ["existing_evidence", "interview", "survey", "usability", "experiment", "analytics", "mixed", "human_factors", "other"]},
+        "sample_frame": {"type": "string", "minLength": 1},
+        "analysis_unit": {"type": "string", "minLength": 1},
+        "status": {"enum": ["planned", "active", "completed", "stopped"]},
+        "limitations": {"$ref": "#/$defs/string_list"}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_id", "study_id", "source_type", "source_locator", "evidence_status", "access_class", "authorized_for_use"],
+      "properties": {
+        "evidence_id": {"$ref": "#/$defs/id"},
+        "study_id": {"$ref": "#/$defs/id"},
+        "source_type": {"enum": ["interview", "survey", "usability", "telemetry", "document", "observation", "computation", "standard", "other"]},
+        "source_locator": {"type": "string", "minLength": 1},
+        "evidence_status": {"enum": ["supplied", "observed", "verified", "computed", "unverified"]},
+        "access_class": {"enum": ["public", "internal", "restricted"]},
+        "authorized_for_use": {"const": true},
+        "consent_scope": {"type": "string", "minLength": 1},
+        "participant_pseudonym": {"type": "string", "minLength": 1},
+        "timecode": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "note": {"type": "string", "minLength": 1}
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claim_id", "study_id", "statement", "support_type", "evidence_refs", "status"],
+      "properties": {
+        "claim_id": {"$ref": "#/$defs/id"},
+        "study_id": {"$ref": "#/$defs/id"},
+        "statement": {"type": "string", "minLength": 1},
+        "support_type": {"enum": ["supports", "contradicts", "qualifies", "unknown"]},
+        "evidence_refs": {"type": "array", "items": {"$ref": "#/$defs/id"}, "uniqueItems": true},
+        "conflict_refs": {"type": "array", "items": {"$ref": "#/$defs/id"}, "uniqueItems": true},
+        "status": {"enum": ["hypothesis", "supported", "contested", "rejected", "unresolved"]},
+        "boundary": {"type": "string", "minLength": 1}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"enum": ["supported", "contested", "rejected"]}}, "required": ["status"]},
+          "then": {"properties": {"evidence_refs": {"minItems": 1}}}
+        }
+      ]
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision_id", "owner", "review_date", "recommendation", "reversal_condition", "claim_refs", "status"],
+      "properties": {
+        "decision_id": {"$ref": "#/$defs/id"},
+        "owner": {"type": "string", "minLength": 1},
+        "review_date": {"type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+        "recommendation": {"type": "string", "minLength": 1},
+        "reversal_condition": {"type": "string", "minLength": 1},
+        "claim_refs": {"type": "array", "items": {"$ref": "#/$defs/id"}, "uniqueItems": true},
+        "status": {"enum": ["open", "decided", "implemented", "reviewed", "stopped"]},
+        "authorization_boundary": {"type": "string", "minLength": 1},
+        "outcome": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["implemented", "actual_result"],
+          "properties": {
+            "implemented": {"type": "boolean"},
+            "actual_result": {"type": "string", "minLength": 1},
+            "result_evidence_refs": {"type": "array", "items": {"$ref": "#/$defs/id"}, "uniqueItems": true},
+            "overturned_claim_refs": {"type": "array", "items": {"$ref": "#/$defs/id"}, "uniqueItems": true},
+            "reviewed_on": {"type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"}
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"enum": ["decided", "implemented", "reviewed"]}}, "required": ["status"]},
+          "then": {"properties": {"claim_refs": {"minItems": 1}}}
+        }
+      ]
+    }
+  }
+}

@@ -1,3 +1,5 @@
+> **[Compatibility Contract]** Retained for explicit O/E/D/V or legacy workflow requests only. Does NOT override the task-first default, silent four-lens framing, or rule precedence in `SKILL.md` and `references/core-reasoning.md`.
+
 > v0.4D.5: Output mode auto-inference is advisory only; it cannot mark O/E/D/V as user-approved or start an unconfirmed specialist branch. See [Router Scope Contract](router-scope-contract.md).
 
 # D / E / D+E 意图识别（仅供 Router）

@@ -1,0 +1,6 @@
+{
+  "synthetic": true,
+  "duration_unit": "seconds",
+  "outlier_method": "tukey",
+  "note": "Synthetic test data only. Includes failure, missing outcome/duration, and an extreme duration. Not a real product result."
+}

@@ -1,3 +1,5 @@
+> **[Compatibility Contract]** Retained for explicit O/E/D/V or legacy workflow requests only. Does NOT override the task-first default, silent four-lens framing, or rule precedence in `SKILL.md` and `references/core-reasoning.md`.
+
 ## 业务推进图｜统一主链路与分析范围（必须先呈现）
 
 在**正式 D/E/O/V 输出的第一段**填入本项目的状态路线：`[已知/已确认]需求与决策目标 → [当前/待核实]地域法规与平台规则 → [待评估]人因及行业规范 → [待推进]用户/市场/任务与体验分析 → [建议]方案比较及决策交接`。按本案删减、调整、并行阶段，不得照抄示例称某项已完成。不要默认加入 VOC、问卷、访谈、定向验证等分支。另列“分析范围：已识别/待用户确认 O/E/D/V；确认后仅执行选中的方向”，并指出下一步可能需要的资料；新增分支只在用户明确同意后显示为已启用。
